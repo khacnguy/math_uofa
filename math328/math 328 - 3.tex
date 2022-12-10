@@ -1,0 +1,374 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+$\forall (x_1,y_1), (x_2,y_2) \in G \times G$
+\begin{equation*}
+\begin{aligned}
+\sigma((x_1,y_1)) \cdot (x_2,y_2)) &= \sigma(x_1x_2,y_1y_2) \\
+&= (y_1y_2,x_1x_2) = (y_1,x_1) \cdot (y_2,x_2) \\
+&=\sigma(x_1,y_1) \cdot \sigma(x_2,y_2) \\ 
+\end{aligned}
+\end{equation*}
+Therefore, $\sigma$ is an homomorphism. \\
+We have that 
+\[
+\forall (x,y) \in G \times G: (\sigma \circ \sigma)(x,y) = \sigma(y,x) = (x,y)
+\]
+Therefore, $\sigma$ is an automorphism.
+\begin{equation*}
+\begin{aligned}
+\forall g_1,g_2 \in G: \forall x \in X: &(g_1,g_2) \cdot x = (g_2,g_1) \cdot x \\
+\implies & ((g_1,1) \cdot (1, g_2) )\cdot x = ((g_2,1) \cdot (1, g_1) )\cdot x \\
+\implies & ((1,g_1) \cdot (1, g_2) )\cdot x = ((1,g_2) \cdot (1, g_1) )\cdot x \\
+\implies & (1,g_1g_2) \cdot x = (1,g_2g_1) \cdot x \\
+\text {Similarly,} &(g_1g_2,1)(x) = (g_2g_1,1)(x) 
+\end{aligned}
+\end{equation*}
+$\forall g_1 = (g_{1_1}, g_{1_2}), g_2 = (g_{2_1}, g_{2_2}) \in G \times G, \forall x \in X:$
+\begin{equation*}
+\begin{aligned}
+(\rho(g_1) \circ \rho(g_2)) (x) &=(\rho(g_{1_1}, g_{1_2}) \circ \rho(g_{2_1}, g_{2_2}))(x) \\
+&= (g_{1_1}, g_{1_2}) \cdot (g_{2_1}, g_{2_2}) \cdot x \\
+&= (g_{1_1} \cdot g_{2_1}, g_{1_2} \cdot g_{2_2}) \cdot x \\
+&= (g_{1_1} \cdot g_{2_1},1) (1, g_{1_2} \cdot g_{2_2}) \cdot x \\
+&= (g_{2_1} \cdot g_{1_1},1) (1, g_{2_2} \cdot g_{1_2}) \cdot x \\
+&= (g_{2_1} \cdot g_{1_1}, g_{2_2} \cdot g_{1_2}) \cdot x \\
+&= (g_{2_1}, g_{2_2}) \cdot (g_{1_1}, g_{1_2}) \cdot x \\
+&=(\rho(g_{2_1}, g_{2_2}) \circ \rho(g_{1_1}, g_{1_2}))(x) \\
+&= (\rho(g_2) \circ \rho(g_1)) (x)
+\end{aligned}
+\end{equation*}
+\pagebreak
+\section*{2.}
+$G$ is a group, hence $1 \in G$, which means that $\forall x \in X: 1 \cdot x = x \implies x \sim x$
+If $x \sim y$, then $\exists g \in G: g \cdot x = y$. \\
+Hence, $g^{-1} \in G$ and $g^{-1} \cdot y = g^{-1} \cdot g \cdot x = 1 \cdot x = x$ which means that $y \sim x$
+If $x \sim y$ and $y \sim z$ then $\exists g_1,g_2 \in G: g_1 \cdot x = y$ and $g_2 \cdot y = z$. \\
+Let $g = g_2 g_1$, then $g \cdot x = g_2 \cdot g_1 \cdot x = g_2 \cdot y = z$, hence $x \sim z$.
+Therefore, $\sim$ is an equivalence relation on $X$.
+\pagebreak
+\section*{3.}
+Since Aut($G)$ contains all isomorphism function that maps $G \to G$ which means it is bijective and therefore is an element of Per($G$). Therefore, Aut($G ) \subset$ Per($G$). Since Aut($G$) is a group (hw2), it is a subgroup of Per($G$) \\ 
+$\forall g \in G: \exists g^{-1} \in G: (\rho(g) \circ \rho(g^{-1}))(h) = g \cdot g^{-1} \cdot h \cdot (g^{-1})^{-1} \cdot g^{-1} =  h$.
+Therefore, im($\rho ) \subset$ Aut($G$). \\
+Hence, we can have an induced homomorphisms $\gamma$
+such that range($\gamma$) $\subset$ range($\rho$) and $\forall g \in G: \rho(g) = \gamma(g)$. \\
+Obviously, Ker($\gamma$) = Ker($\rho$) since $\forall g \in G: \rho(g) = \gamma(g)$. \\
+If $g \in $ker$(\gamma)$ then $\gamma(g) = 1$, which means that $\forall g_1 \in G:$ 
+\[g \cdot g_1 \cdot g^{-1} = g_1 \iff g \cdot g_1 \cdot g^{-1} \cdot g = g_1 \cdot g \iff g \cdot g_1 = g_1 \cdot g\] 
+Hence ker($\gamma$) = $Z(G)$\\
+$\forall \sigma \in$ im($\gamma$) $ \implies \exists g_1 \in G: \gamma(g_1) = \sigma_1$.
+$g_1 \in G$. Let $g_2 = \tau(g_1)$, then 
+\[
+g_1 \tau^{-1}(h) g_1^{-1} = \tau^{-1}(g_2) \tau^{-1}(h) \tau^{-1} (g_2^{-1}) = \tau^{-1}(g_2hg_2^{-1}) 
+\]
+and hence 
+\[
+\rho(g_1) (\tau^{-1}(h)) = \tau^{-1}(\rho(g_2) (h)) \implies (\rho(g_1) \circ \tau^{-1})(h) = (\tau^{-1} \circ \rho(g_2)) (h)
+\]
+which means that 
+\[
+(\tau \circ \rho \circ \tau^{-1})(g_1) = \tau(\rho(g_1) (\tau^{-1}(h))) = \tau(\tau^{-1} \circ \rho(g_2))(h) = \rho(g_2)(h)
+\]
+Therefore, $\tau \circ \sigma \circ \tau^{-1} \in $im($\gamma$)
+\pagebreak
+\section*{4.}
+1. 
+Since $g_1,g_2,\ldots, g_n$ are generators of $G$. We have that, $\forall g \in G: \exists i_1,i_2, \ldots i_n \text{such that }: \forall j \in \{1,2,\ldots,n\}: 0 \le i_j < \text{ord}(g_j) = k_j$
+\[
+g = g_1^{i_1} \cdot g_2^{i_2} \cdot \ldots \cdot g_n^{i_n}
+\]
+Hence, there exists at most $k_1 k_2 \ldots k_n$ elements in $G$. \\ 
+Quaternion group has 8 elements. But we have ord($i$) = 4, ord($-i$) = 4 hence the products of order of all elements in $Q_8 \ge 16>8$. \\
+2. Suppose $g_1$ is an element in $G$ such that the order of it is finite: ord($g_1) = k_1$. Then, ord($g_1$) = ord($g_1^{-1}) = k_1$ which means that each element has an inverse. \\
+Suppose $g_1,g_2$ are element in $G$ of finite order, then $\exists m,n \in \mathbb{N}: g_1^m = 1$ and $ g_2^n=1$, then $(g_1g_2)^{mn} = 1$ where $mn$ is also finite.\\
+1 has order 1 hence also in the set. Hence, the set of all elements of finite order in $G$ is a subgroup of $G$.
+Consider the set of all 2 by 2 matrices. 
+\[
+\begin{pmatrix}
+-1 & 0 \\
+0 & 1 
+\end{pmatrix} \cdot 
+\begin{pmatrix}
+-1 & 1 \\
+0 & 1 
+\end{pmatrix} = 
+\begin{pmatrix}
+1 & -1 \\
+0 & -1 
+\end{pmatrix}
+\]
+\[
+\begin{pmatrix}
+-1 & 0 \\
+0 & 1 
+\end{pmatrix}^2 = \begin{pmatrix}
+1 & 0 \\
+0 & 1 
+\end{pmatrix}
+\]
+\[\begin{pmatrix}
+-1 & 1 \\
+0 & 1 
+\end{pmatrix}^2 = \begin{pmatrix}
+1 & 0 \\
+0 & 1 
+\end{pmatrix}
+\]
+But as $\begin{pmatrix}
+1 & -1 \\
+0 & -1 
+\end{pmatrix}
+$ has eigenvalue 1 which means that 
+$\forall x: \begin{pmatrix}
+1 & -1 \\
+0 & -1 
+\end{pmatrix}x = x$, which means that for all naturanl number $k$ 
+\[
+\begin{pmatrix}
+1 & -1 \\
+0 & -1 
+\end{pmatrix}^kx = x
+\]
+As $x$ is arbitary, $\begin{pmatrix}
+1 & -1 \\
+0 & -1 
+\end{pmatrix}^k \ne 0$ and hence has infinite order which means it is not an element of the set of finite order elements. \\
+3. 
+If $\ (\mathbb{Q}, + )$ is a cyclic group then $\exists g>0$ be the generator since if $g<0$ then $\exists g' = -g > 0$ and $g \ne 0$. \\
+Therefore, we have $\forall n \in \mathbb{Z}: g\cdot n < g\cdot (n+1)$ \\
+Hence, $\nexists h \in (g^n, g^{n+1}) \cap \mathbb{Q}$. But since $Q$ is dense, that is there exists a rational number in all open interval, hence contradiction and $\mathbb{Q}$ is a non-cyclic group. \\
+Every subgroup of a cyclic group is cyclic. Suppose, there is a finite generated subgroup generated by $\{g_1,g_2,\ldots, g_n\}$. Since, each $g_i$ is a generators of $\mathbb{Q}$, it is also an element of $\mathbb{Q}$. Let $g_i = \frac{p_i}{q_i}$ then we can find a cyclic group generated by $\{\prod_{i=1}^n\frac{1}{q_i}\}$. \\
+Hence, we have $\forall g \in G: \exists j_1, j_2,\ldots, j_n \in \mathbb{Z}:$
+\[
+g = \sum_{i=1}^{n} j_i \cdot \frac{p_i}{q_i} 
+= \sum_{i=1}^{n} \left(j_i \cdot p_i \cdot \prod_{\substack{k=1 \\ k\ne i}}^n q_k \prod_{k=1}^n\frac{1}{q_k} \right) 
+= \left( \prod_{k=1}^n\frac{1}{q_k}\right) \sum_{i=1}^{n} \left(j_i \cdot p_i \cdot \prod_{\substack{k=1 \\ k\ne i}}^n q_k  \right)
+\] which means that the subgroup generated by $\{g_1,g_2,\ldots, g_n\}$ is a subgroup of the subgroup generated by $\{\prod_{i=1}^n\frac{1}{q_i}\}$, which is a cyclic group. Hence, the subgroup generated by $\{g_1,g_2,\ldots, g_n\}$ is cyclic. \\
+Consider the subgroup $H$ generated by $\{\frac{1}{2^n} | n \in \mathbb{N}\}$. If it is cyclic then there is an element $h$ which can generated the whole subgroup. We have that $\nexists h_1 \in (0,h_1) \cap H$, but $\exists n_0: \frac{1}{2^{n_0}} \in (0,h_1)$ which leads a contradiction. Hence, it is not cyclic.
+\pagebreak
+\section*{5.}
+1.
+If $h \in H$, then $ghg^{-1} = h$. Which means that $H \subseteq N_G(H)$  \\ 
+$H \subseteq C_G(H) \iff \forall h_1,h_2 \in H: h_1 h_2 h_1^{-1} = h_2 \iff h_1 h_2 = h_2 h_1 \iff H$ is abelian. \\
+2.
+Since $H$ has order 2, let it elements be 1 and $h$.
+Since has order 2, one element is 1 and each elements inverse is itself. Then we have that $H \subseteq N_G(H)$, which means that $\forall g \in N_G(H)$, either
+\[ghg^{-1} = h \text{ and } g1g^{-1} = 1\]
+or 
+\[ghg^{-1} = 1 \text{ and } g1g^{-1} = h\]
+In the first case, it is obvious that $N_G(H) = C_G(H)$. \\
+In the second case, $g1g^{-1} = h \implies 1 = h$ which is a contradiction. Hence, $N_G(H) = C_G(H)$. \\
+If $C_G(H) = N_G(H) = G$ then $\forall g \in G: ghg^{-1} = h$ which means that $h$ is a central element, $1$ is also a central element. Hence $H \subset Z(G)$.
+\pagebreak
+\section*{6.}
+1. 
+Every matrix in $H(\mathbb{R})$ is upper triangular hence is invertible.\\
+The identity matrix $\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix} \in H(\mathbb{R})$ \\
+$\forall a_1, b_1, c_1, a_2, b_2, c_2 \in \mathbb{R}:
+\begin{pmatrix}
+1 & a_1 & c_1 \\
+0 & 1 & b_1 \\
+0 & 0 & 1
+\end{pmatrix} \cdot 
+\begin{pmatrix}
+1 & a_2 & c_2 \\
+0 & 1 & b_2 \\
+0 & 0 & 1
+\end{pmatrix} 
+=
+\begin{pmatrix}
+1 & a_1 + a_2 & c_1 + c_2 + a_1b_2 \\
+0 & 1 & b_1 + b_2 \\
+0 & 0 & 1
+\end{pmatrix}$ which is also an element of $H(\mathbb{R})$ \\
+$\forall a,b,c \in \mathbb{R}: 
+\begin{pmatrix}
+1 & a & c \\
+0 & 1 & b \\
+0 & 0 & 1
+\end{pmatrix} \cdot 
+\begin{pmatrix}
+1 & -a & -c+ab \\
+0 & 1 & -b \\
+0 & 0 & 1
+\end{pmatrix} 
+= \begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}$ \\
+which means that every matrix in $H(\mathbb{R})$ has an inverse.
+Therefore, $H(\mathbb{R})$ is a subgroup of $GL_3(\mathbb{R})$ \\
+2. Suppose $\begin{pmatrix}
+1 & a_1 & c_1 \\
+0 & 1 & b_1 \\
+0 & 0 & 1
+\end{pmatrix}$ is an element of $Z(H(\mathbb{R}))$ then $\forall a_2,b_2,c_2 \in \mathbb{R}:$ 
+\[
+\begin{pmatrix}
+1 & a_1 & c_1 \\
+0 & 1 & b_1 \\
+0 & 0 & 1
+\end{pmatrix} 
+\cdot 
+\begin{pmatrix}
+1 & a_2 & c_2 \\
+0 & 1 & b_2 \\
+0 & 0 & 1
+\end{pmatrix} 
+= 
+\begin{pmatrix}
+1 & a_2 & c_2 \\
+0 & 1 & b_2 \\
+0 & 0 & 1
+\end{pmatrix} 
+\cdot 
+\begin{pmatrix}
+1 & a_1 & c_1 \\
+0 & 1 & b_1 \\
+0 & 0 & 1
+\end{pmatrix}
+\]
+Hence,
+\[
+\begin{pmatrix}
+1 & a_1 + a_2 & c_1 + c_2 + a_1b_2 \\
+0 & 1 & b_1 + b_2 \\
+0 & 0 & 1
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 & a_1 + a_2 & c_1 + c_2 + a_2b_1 \\
+0 & 1 & b_1 + b_2 \\
+0 & 0 & 1
+\end{pmatrix}
+\]
+Therefore, $\forall a_2,b_2 \in \mathbb{R}: a_1b_2 = a_2b_1 \implies a_2 = b_2 = 0$. \\
+And hence, $Z(H(\mathbb{R}))$ consists of matrixes in the form: $\begin{pmatrix}
+1 & 0 & x\\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}$.
+We can construct a function 
+\[
+f: (\mathbb{R},+) \to Z(H(\mathbb{R})), \indent x \to \begin{pmatrix}
+1 & 0 & x \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+\]
+$f$ is surjective: $\forall 
+\begin{pmatrix}
+1 & 0 & x \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix} 
+\in Z(H(\mathbb{R})): f(x) = 
+\begin{pmatrix}
+1 & 0 & x \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}$\\
+$f$ is injective: $\forall  x_1, x_2 \in \mathbb{R}$ such that $f(x_1) = f(x_2)$:
+\[
+\begin{pmatrix}
+1 & 0 & x_1 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}=
+\begin{pmatrix}
+1 & 0 & x_1 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+\implies x_1 = x_2
+\]
+$f$ is hommorphic: \\
+$f(x_1 + x_2) = 
+\begin{pmatrix}
+1 & 0 & x_1+x_2 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix} = 
+\begin{pmatrix}
+1 & 0 & x_1 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix} \cdot
+\begin{pmatrix}
+1 & 0 & x_2 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix} =
+f(x_1) \cdot f(x_2)$
+Therefore, $Z(H(\mathbb{R}))$ is isomorphic to $(\mathbb{R}, +)$ \\
+3. Let the map be $g$\\ 
+$\forall (a,b) \in \mathbb{R}: \forall c \in \mathbb{R}: 
+g\begin{pmatrix}
+1 & a & c \\
+0 & 1 & b \\
+0 & 0 & 1
+\end{pmatrix} = (a,b)
+$ which means it is surjective. \\
+$\forall a_1,b_1,c_1,a_2,b_2,c_2 \in \mathbb{R}:$ \\
+\begin{equation*}
+\begin{aligned}
+g \left( 
+\begin{pmatrix}
+1 & a_1 & c_1 \\
+0 & 1 & b_1 \\
+0 & 0 & 1
+\end{pmatrix} 
+\cdot 
+\begin{pmatrix}
+1 & a_2 & c_2 \\
+0 & 1 & b_2 \\
+0 & 0 & 1
+\end{pmatrix}\right) &= (a_1 + a_2, b_1 + b_2) \\
+&= (a_1,b_1) + (a_2 + b_2) \\
+&= g 
+\begin{pmatrix}
+1 & a_1 & c_1 \\
+0 & 1 & b_1 \\
+0 & 0 & 1
+\end{pmatrix} 
++ g 
+\begin{pmatrix}
+1 & a_2 & c_2 \\
+0 & 1 & b_2 \\
+0 & 0 & 1
+\end{pmatrix}
+\end{aligned}
+\end{equation*}
+Which proves that $g$ is homomrphic and hence is a surjective group homomorphism.
+The identity element of $(\mathbb{R}^2, +)$ is $(0,0)$ hence \\
+\[
+\text{ker}(g) = \left\{ \left. \begin{pmatrix}
+1 & 0 & c \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}\right|c \in \mathbb{R}\right\}
+\]
+\end{document}

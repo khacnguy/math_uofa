@@ -1,0 +1,177 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+\subsection*{1.}
+Since a function has an inverse if and only if that function is bijective. \\
+We have that a $G$-equivariant function $f: X \to Y$ is bijective if and only if it is an isomorphism.
+\subsection*{2.}
+$1 \in G$, therefore $\forall g \in G$ and $\forall g_O \cdot x \in \text{Orb}_G(x):$ 
+\[
+    1 \cdot (g \cdot (g_O \cdot x)) = g \cdot (1 \cdot (g_O \cdot x))
+\]
+Hence, there exists an action of $G$ on $\text{Orb}_G(x)$ such that 
+the inclusion $\text{Orb}_G(x) \hookrightarrow X$ is $G$-equivariant. \\
+Since the inclusion maps $g_O \cdot x \to g_O \cdot x$ the action is unique.
+\subsection*{3.}
+Let the map be $f$  
+\[
+    g \cdot f(g \cdot \text{Stab}_G(x)) = g \cdot g \cdot x = (g \cdot g) \cdot x = f(g \cdot g \cdot \text{Stab}_G(x))
+\]
+\subsection*{4.}
+$1 \in G, g_1 \cdot H = H \in G/H$ and $\text{Orb}_G(g_1 \cdot H) = \{g_2 \cdot H | g_2 \in G\} = G/H$.
+\subsection*{5.}
+Since the action of $G$ on $X$ is transitive, $\exists x_0 \in X: X = \text{Orb}_G(x_0)$. \\
+We can define the isomorphisms as follow: 
+\[
+    f: X \to G/H, \indent x \to g \cdot H \text{ where } g \cdot x_0 = x    
+\]
+\[
+    h: G/H \to X, \indent g \cdot H \to x \text{ where } g \cdot x_0 = x    
+\]
+We have that $\forall g \in G, \forall x \in X$:
+\[
+    f(g \cdot x ) = g_1 \cdot H \text{ where } g_1 \cdot x_0 = g \cdot x   
+\]
+\[
+    g \cdot f(x) = g \cdot g_2 \cdot H \text{ where } g_2 \cdot x_0 = x    
+\]
+Hence $g \cdot g_2 \cdot x_0 = g \cdot x = g_1 \cdot x_0$ which means that $g \cdot g_2 = g_1$, therefore
+\[
+    g \cdot f(x) = g_1 \cdot H = f(g \cdot x)    
+\]
+We have that $\forall g \in G, \forall g^* \cdot H \in G/H$:
+\[
+    h(g \cdot g^* \cdot H) = x_1 \text{ where } g \cdot g^* \cdot x_0 = x_1 
+\]
+\[
+    g \cdot h(g^* \cdot H) = g \cdot x_2 \text{ where } g^* \cdot x_0 = x_2    
+\]
+Hence $g \cdot x_2 = g \cdot g^* \cdot x_0 = x_1$ which means that 
+\[
+h(g \cdot g^* \cdot H) = g \cdot h(g^* \cdot H)   
+\]
+It is also obvious that $f\circ h = 1_{G/H}$ and $h \circ f = 1_X$
+\subsection*{6.}
+Let the inclusion be $f$
+$1 \in G$, let 1 act on the disjoint union, therefore
+$\forall i$, let $x_i \in X_i$, then 
+\[
+    f(g \cdot x_i) = g \cdot x_i = g \cdot f(x_i)    
+\]
+Hence, there is an action of $G$ on the disjoint union such that the inclusion are $G$-equivariant for all $i$
+Since the inclusion maps $x_i \to x_i$, the action is unique.
+\subsection*{7.}
+We know that the action of $G$ on $G/H_i$ is transitive 
+and therefore, there is a $G$-equivariant isomorphism between $X$ and $G/H_i$. And since the action is unique, 
+we know that the function maps $X$ to the disjoint union is $G$-equivariant and isomorphism.
+\pagebreak
+\section*{2.}
+\subsection*{1.}
+$A_i$ is a distinct orbits of $H$ acting on $X$. Hence, $\exists h_i \in H: h_i \cdot X = A_i$.
+Hence, as $H$ is a normal subgroup, $\exists j: \forall g \in G: g \cdot h_i \cdot X = h_j \cdot g \cdot X = A_j$
+$1 \in G$, therefore $\forall i: 1 \cdot A_i = A_i$. \\
+$\forall g, h \in G, \forall i: (g \cdot h) \cdot A_i = \{g \cdot h \cdot a_i | a_i \in A_i\} = g \cdot (h \cdot A_i)$
+Since $1 \in H, H \in \{A_1, A_2, \ldots, A_r\}$. Therefore, $Orb_G(H) = \{A_1, A_2, \ldots ,A_r\}$ 
+which means that the action is transitive. 
+Since $A_1, A_2, \ldots, A_r$ are distinct orbits and each $A_i = h_i \cdot H$ for some $h_i$, they have the same size. 
+\subsection*{2.}
+Since $H$ and $\text{Stab}_G(x)$ are subgroups of $G$.
+\[
+    \#(H \cdot \text{Stab}_G(x)) = \cfrac{\#H \cdot \#\text{Stab}_G(x)}{\#(H \cap \text{Stab}_G(x))}
+\]
+Therefore, 
+\[
+    \#A_1
+    = \cfrac{\#(A_1 \cdot \text{Stab}_G(a))}{\#\text{Stab}_G(a)}
+    = \cfrac{\#H }{\#(H \cap \text{Stab}_G(x))}
+    = [H : H \cap \text{Stab}_G(a)]
+\]
+We also have
+\[
+    \#(\text{Stab}_G(a) \cdot H) = \cfrac{\#\text{Stab}_G(a) \cdot \#H}{\#(\text{Stab}_G(a) \cap H)}    
+\]
+Hence, 
+\[
+    \cfrac{\#G}{\#\text{Stab}_G(a) \cdot H} 
+    = \cfrac{\#G \cdot \#(\text{Stab}_G(a) \cap H)}{\#\text{Stab}_G(a) \cdot \#H} 
+    = \cfrac{\#G \cdot \#\text{Stab}_G(a)}{\#\text{Stab}_G(a) \cdot \#H} 
+    = \cfrac{\#G}{\#H} = r    
+\]
+\pagebreak
+\section*{3.}
+\subsection*{1.}
+Since $N$ is a normal subgroup of order 2, it includes the identity element and a non-identity element $n$ which inverse is itself.
+Then $\forall g \in G$ we have that $g \cdot n \cdot g^{-1} \in \{a,1\}$. \\
+If $g \cdot n \cdot g^{-1} = n$, then $g \cdot n \cdot g^{-1} \cdot g = g \cdot n = n \cdot g$. \\
+If $g \cdot n \cdot g^{-1} = 1$, then $gn = g$ which means that $n = 1$ which is a contradiction.
+\subsection*{2.}
+Let the group be $G$, then as $G$ has order 6, one of its element must have order 2. \\
+Therefore, that element and $1$ forms a subgroup $H$ in $G$. 
+Same argument, there is an element with order 3 and hence create a subgroup $K$ with order 3.
+We know that there is a map $\rho: G \to S_2$ with $\rho(K) = 1$, also $[G:K] = 2$ hence K is normal. \\
+Hence, if $H$ is normal then $HK = G$ is abelian which is a contradiction.
+\subsection*{3.}
+Since we know that there exists $x,y \in G$ has order 2,3 respectively. \\
+If $G$ is abelian then $xy = yx$ $G$ is cyclic. \\
+If $G$ is not abelian then \\
+If $yx = y^m$ for some m then $x = y^{m-1}$ which is a contradiction as then $x,y$ commutes. \\
+If $yx = y$ then $b=1$ which is a contradiction.
+If $ba = ab^2$ then this gropu is isoromorphic to $S_3$ 
+\pagebreak
+\section*{4.}
+\subsection*{1.}
+Let the group be $G$. Since $\{1\}$ is a conjugacy class, let $S_a$ be the other. 
+Since the conjugacy class of $G$ partition $G$. $\#G = 1 + \#S_a$ also $\#S_a$ divides $\#S_a +1$.
+Therefore $\#S_a = 1$ and $\#G$ = 2 which means that $G$ has the identity element and another element whose inverse is itself.
+\subsection*{2.}
+Let $x\le y$ be the sizes of the two conjugacy classes that is not $\{1\}$. Then $\#G = 1 + x + y$.  
+Then since both $x$ and $y$ divide $\#G$, $x$ divides $1 + y$ and $y divides 1 + x, x=y=1 or y = 1 + x$ 
+If $y = 1 + x$ then since $x$ divides $1 + y = 2 + x, x \in \{1,2\}, (x,y) \in  \{(1,1), (1,2), or (2,3)\}.$ 
+If $(x,y) = (1,1)$ then $\#G =3$ and hence $G = Z_3$. 
+If $(x,y) = (1,2)$ then $\#G =4$ and since there are only up-to-isomorphism two abelian groups with order four, 
+G has four conjugacy classes which leads to a contradiction. 
+If $(x,y) = (2,3)$ then $\#G =6$, there is up-to-isomorphism only one nonabelian group of order 6, which is S3.
+\pagebreak
+\section*{5.}
+\subsection*{1.}
+We have that $Z(G) \le C(g_i)$, therefore $[G:C(g_i)] \le [G:Z(G)] = n$
+\subsection*{2.}
+Since $\#G = \sum_{i=1}^r [G:C_G(g_i)]$ we have that $[G:C_G(g_i)] = [G:Z(G)] = n$ and 
+therefore each conjugacy class has 1 element, which means that the group is abelian.
+\pagebreak
+\section*{6.}
+\subsection*{1.}
+\[
+    \forall g^* \in G: \varphi_{g^*}: G \to G, \indent g \to g^* \cdot g \cdot {g^*}^{-1} 
+\]
+is an automorphism and hence if $\varphi_{g^*}(H) = H$ then $H$ is normal.
+\subsection*{2.}
+Consider the additive group $\mathbb{Q}$. Then $\mathbb{Z}$ is a normal subgroup. However, the automorphism 
+\[
+\varphi: \mathbb{Q} \to \mathbb{Q}, \indent x \to x/2     
+\]
+does not map $\mathbb{Z}$ to $\mathbb{Z}$.
+\subsection*{3.}
+Since for all automorphism $\varphi: \# (\varphi(H)) = \#H$ which means that $\varphi(H) = H$ 
+as $H$ is the only subgroup with order $n$, which means that $H$ is characteristic then normal.
+\subsection*{4.}
+Since $H$ is the unique subgroup of $G$ of index $n$, we have that $H$ is the unique subgroup of $G$ of order $n$
+which means that $H$ is characteristic and normal as proven above. 
+\end{document}
