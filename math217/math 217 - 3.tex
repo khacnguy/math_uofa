@@ -1,0 +1,174 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Stat 265 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+Let $S \subset \mathbb{R}^N$ be any set. To prove that $\partial S$ is closed, we need to prove it contains all of its cluster point.\\ 
+Let $x$ be a cluster point of $\partial S$, we need to prove $x \in \partial S$, that is $x$ is boundary point of S. \\
+Since $x$ is a cluster point of $\partial S,\forall \epsilon >0: \exists y \in \partial S \cap B_\epsilon(x) \backslash \{x\} \ne \varnothing$. \\
+Therefore, $\exists \delta >0:B_\delta(y) \subset B_\epsilon(x) $and $y$ is a boundary point of $S$, which means that $B_\delta(y) \cap S \ne \varnothing \land B_\delta(y) \cap S^c \ne \varnothing$ and hence $B_\epsilon(x) \cap S \ne \varnothing \land B_\epsilon(x) \cap S^c \ne \varnothing$.
+\pagebreak
+\section*{2.}
+Suppose $x \in \partial (S_1 \cup S_2 \cup \ldots \cup S_n) = \partial\left(\bigcup_{k=1}^n S_k\right)$, which means that $\forall \epsilon >0: B_\epsilon(x) \cap \left(\bigcup_{k=1}^n S_k\right)^c \ne \varnothing \land B_\epsilon(x) \cap \bigcup_{k=1}^n S_k \ne \varnothing$. \\
+Let $y \in B_\epsilon(x) \cap \bigcup_{k=1}^n S_k \ne \varnothing$ then $y \in \bigcup_{k=1}^n S_k$ and hence \\
+$\exists j \in \{1,2,\ldots, n\}: y \in S_j$. Therefore, $B_\epsilon(x) \cap S_j \ne \varnothing$.\\
+Let $z \in B_\epsilon(x) \cap \left(\bigcup_{k=1}^n S_k\right)^c$, then as $\forall i \in \{1,2,\ldots, n\}: S_i \subset \bigcup_{k=1}^n S_k \implies \left(\bigcup_{k=1}^n S_k\right)^c \subset S_i^c, z \in S_i^c$. Therefore, $B_\epsilon(x) \cap S_j^c \ne \varnothing$, which proves that $x$ is a boundary points of $S_j$ and finally,
+\[
+\partial (S_1 \cup S_2 \cup \ldots \cup S_n) \subset \partial S_1 \cup \partial S_2 \cup \ldots \cup \partial S_n
+\]
+Equal does not necessarily hold because: consider [-1,0] and [0,1]
+\[
+\partial ([-1,0] \cup [-0,1]) = \partial [-1,1] = \{-1,1\}
+\]
+and
+\[
+\partial[-1,0] \cup \partial [0,1] = \{-1,0\} \cup \{1,0\} = \{-1,0,1\}
+\]
+\pagebreak
+\section*{3.}
+\subsection*{a.} 
+Let $A = \{x \in \mathbb{R}^N: r \le \|x\| \le R\}$ \\
+For all $0 \le r \le R : B_R[0] \backslash B_r(0) = B_R[0] \cup B_r^c(0) = \{x \in \mathbb{R}^N: r \le \|x\| \le R\}$. \\
+Since $B_R[0]$ is closed and $B_r(0)$ is open hence $B^c_r(0)$ is closed, the union of the two sets are closed and hence $A$ is closed.
+Since $x \in A \implies \|x\| \le R, \forall i \in \{1,2,\ldots,N\}: x_i \le R$. A is bounded and therefore compact.
+\subsection*{b.}
+Let $B = \{x \in \mathbb{R}^N: r < \|x\| \le R\}$ \\
+Consider the point $x = (r,0,\ldots,0)$ then $x$ is a cluster point of $B$ because:
+\[
+\forall \epsilon >0: \{y = (r',0,\ldots,0) |r<r'<r + \epsilon\} \in B_\epsilon(x) 
+\]
+Hence, $\forall m: r<m<r+\epsilon :\exists y \in B_\epsilon(x) \land \|y\| = m$ and therefore \\$(B_\epsilon(x) \cap B) \backslash \{x\} \ne \varnothing$ 
+Therefore, $B$ is not closed and not compact.\\
+\subsection*{c.}
+Closure of any set is closed. \\
+$0<t\le 2022$ and $-1 \le \text{sin}\frac{1}{t}\le 1$
+Hence, for all boundary point $x = (x_1,x_2)$ of the set: $-1<x_1<2023$ and $-2<x_2<2$. Because else, $B_{1/2}(x) \cap \left\{ \left(t,\text{sin} \frac{1}{t} \right): t \in (0,2022]\right\} = \varnothing$ which means that $x$ is not a boundary point. Therefore, the set is bounded and closed and hence compact.
+\subsection*{d.}
+Let $D = \left\{\frac{1}{n}: n \in \mathbb{N} \right\}$We have 
+\[
+\forall \epsilon >0: \exists n \in \mathbb{N}: \frac{1}{n} < \epsilon \implies \frac{1}{n} \in B_\epsilon(0) \implies (B_\epsilon(0) \cap D) \backslash \{0\}\ne \varnothing 
+\]
+which means that 0 is a cluster point and therefore $D$ is not closed and therefore not compact. \\
+\subsection*{e.}
+If there exists a cluster point $s$ not in $E$. Then \\
+If $s < 0$ then let $s = -\epsilon$ where $\epsilon>0$, then $\left(-\epsilon - \frac{\epsilon}{2} , -\epsilon + \frac{\epsilon}{2} \right) \cap E = \varnothing$ which is a contradiction. \\
+If $s > 1$ then let $s = 1+ \epsilon$ where $\epsilon>0$, then $\left(1 + \epsilon - \frac{\epsilon}{2} , 1 + \epsilon + \frac{\epsilon}{2} \right) \cap E = \varnothing$ which is a contradiction. \\ 
+If $0<s<1$ then $\exists ! n \in \mathbb{N}: s \in \left(\cfrac{1}{n+1},\cfrac{1}{n} \right)$, which $\left(\cfrac{1}{n+1},\cfrac{1}{n} \right) \cap E = \varnothing$ \\
+Let $\epsilon = \text{min}\left\{s-\cfrac{1}{n+1}, \cfrac{1-n}{s}\right\}$, then $(s-\epsilon, s+ \epsilon) \cap \left\{\cfrac{1}{n+1},\cfrac{1}{n} \right\}= \varnothing$ and $(s-\epsilon, s+ \epsilon) \subset \left(\cfrac{1}{n+1},\cfrac{1}{n} \right) $ which have no common elements with $E$ and therefore $E$ contains all its cluster point.\\
+Therefore, $E$ is closed. 
+We have \\
+\[\forall n \in \mathbb{N}: \frac{1}{n} \ge 0  \implies \forall e \in E: e \ge 0 > -1 \]
+Also, \\
+\[\forall n \in \mathbb{N}: 1 \le n \implies 2 > 1 = \frac{1}{1} \ge \frac{1}{n} \implies \forall e \in E: e \le 2\]
+Therefore $E$ is bounded and compact. 
+\pagebreak
+\section*{4.}
+\subsection*{a.}
+For an arbitary point $x = (x_1, x_2) \in U_1 \times U_2$. \\
+Because $x_1 \in U_1,$ which is open, $\exists \epsilon_1 > 0: B_{\epsilon_1}(x_1) \subset U_1$.\\
+Similarly, $\exists \epsilon_2 > 0: B_{\epsilon_2}(x_2) \subset U_2$.\\
+Let $\epsilon = \text{min}\{\epsilon_1 , \epsilon_2\}$. Then
+\[ 
+\forall y = (y_1, y_2) \in B_\epsilon(x): |y_1 - x_1| < \epsilon \le \epsilon_1\land |y_2 - x_2| < \epsilon \le \epsilon_2 \text{ else } \|x-y\| \ge \epsilon 
+\]
+Therefore $y_1 \in U_1 \land y_2 \in U_2$ and hence $B_\epsilon(x) \subset U_1 \times U_2$. Which means that $U_1 \times U_2$ is open.
+\subsection*{b.}
+Since $F_1$ is closed, $F_1^c$ is open and therefore $F_1^c \times \mathbb{R}^M$ is open.
+Similarly, $\mathbb{R}^N \times F_2^c$ is open and therefore because of 
+\[
+(F_1 \times F_2)^c = (F_1^c \times \mathbb{R}^M) \cup (\mathbb{R}^N \times F_2^c)
+\]
+$(F_1 \times F_2)^c$ is open and $F_1 \times F_2$ is closed.
+\subsection*{c.}
+We know from part b that $K_1 \times K_2$ is also closed. 
+And since $K_1$ and $K_2$ is bounded, $K_1 \times K_2$ is also bounded hence compact. 
+
+\pagebreak
+\section*{5.}
+If $K$ is compact and there is a family of closed set $\{ F_i: i \in I\}$ in $\mathbb{R}^N$ such that 
+\[
+K \cap \bigcap_{i \in I}F_i = \varnothing
+\]
+then we have 
+\begin{equation*}
+\begin{aligned}
+&K \cap \left(\bigcup_{i\in I}F_i^c\right)^c = \varnothing \\
+\implies & K \cap \bigcup_{i\in I}F_i^c = K \\
+\implies &K \subset \bigcup_{i\in I}F_i^c
+\end{aligned}
+\end{equation*}
+$K$ is compact, therefore $\exists i_1, i_2, \ldots, i_N: K \subset F^c_{i_1} \cup  F^c_{i_2} \cup \ldots \cup  F^c_{i_n} = F_{i_1} \cap F_{i_2} \cap \ldots \cap F_{i_n}$ which proves that $K$ has the finite intersection property. \\
+If $K$ has the finite intersection property, suppose that $K$ is not closed, that is there is a cluster point $s \notin K$ then 
+\[
+\forall \epsilon>0: (B_\epsilon(s) \cap K) \backslash \{s\} \ne \varnothing
+\]
+Therefore, create a family $\{B_{\frac{1}{n}}[s] \, | n \in \mathbb{N}\}$. 
+If $K \cap \bigcap_{n \in \mathbb{N}} B_{\frac{1}{n}}[x] \ne \varnothing$, then there exists a point $y \in K \cap \bigcap_{n \in \mathbb{N}} B_{\frac{1}{n}}[x]$. Since $x \notin K, y \ne x$. \\
+Moreover, we can find a $n_0 \in \mathbb{N} \text{ such that } \cfrac{1}{n_0} < \|x-y\|$ which means that $y \notin B_{\frac{1}{n_0}} [x]$ which contradicts with  $K \cap \bigcap_{n \in \mathbb{N}} B_{\frac{1}{n}}[x] \ne \varnothing$ and hence  
+\begin{equation}
+K \cap \bigcap_{n \in \mathbb{N}} B_{\frac{1}{n}}[x] = \varnothing
+\end{equation}
+For all $i_1, i_2, \ldots , i_n \in \mathbb{N}$, let $j = \text{max}\{i_1, i_2, \ldots ,i_n\}$ then $j>=i_t \, \forall t \in \{1,2,\ldots,n\}$ which means that $B_j [x] \subseteq B_{i_t}[x] \, \forall t \in \{1,2,\ldots,n\}$ and hence $B_j [x] \cap B_{i_t}[x] = B_j[x] \, \forall t \in \{1,2,\ldots,n\}$
+.Therefore,
+\begin{equation}
+K \cap B_{\frac{1}{i_1}} [x] \cap B_{\frac{1}{i_2}} [x] \cap \ldots \cap B_{\frac{1}{i_n}} [x] = K \cap B_{\frac{1}{j}} [x] \ne \varnothing
+\end{equation}
+(1) and (2) contradicts with the finite intersection property, and hence $K$ is closed.
+\pagebreak
+\section*{6.}
+Let 
+\[
+X_{s_i} \text{ be any point }
+\begin{cases}
+\in I_i &\text {if } s_i = 1 \\
+\in \{a_i, b_i\} &\text {if } s_i = 2 
+\end{cases}
+\]
+and $X_{s_1, s_2, \ldots, s_N} = X_{s_1} \times X_{s_2} \times \ldots \times X_{s_N}$.
+Now claim that
+\[
+\partial I = X:= \bigcup\limits_{\exists i: s_i = 2} X_{s_1, s_2, \ldots, s_n} 
+\]
+For every point $x \in X$, because $\exists i:s_i = 2$, suppose $x_i = b_i$ which means that $\forall \epsilon >0: y = (x_1, x_2, \ldots, x_i + \epsilon/2, \ldots, x_n) \in B_\epsilon(x) \cap I^c$ and $z = (x_1, x_2, \ldots, x_i - \epsilon/2, \ldots, x_n) \in B_\epsilon(x) \cap I$. \\
+Similarly, if $x_i = a_i$ then $\forall \epsilon >0: y = (x_1, x_2, \ldots, x_i - \epsilon/2, \ldots, x_n) \in B_\epsilon(x) \cap I^c$ and $z = (x_1, x_2, \ldots, x_i + \epsilon/2, \ldots, x_n) \in B_\epsilon(x) \cap I$.\\
+Hence $x$ is a boundary points.\\~\\
+For every point $t= (t_1, t_2, \ldots, t_n) \notin X$ . 
+Suppose $t \in I$, then 
+\[
+\nexists i \in \{1,2,\ldots, N\}:t_i \in \{a_i, b_i\} 
+\]
+Let
+\[
+\epsilon:= \text{min} (\{ |t_1 - a_i| \, | i \in \{1,2,\ldots,N\}\} \cup \{|t_1 - b_i| \, | i \in \{1,2,\ldots,N\}\})
+\]
+Which means that $\epsilon >0$ because $\forall i \in \{1,2,\ldots,N\}: a_i - t_i \ne 0 \land b_i - t_i \ne 0$. \\
+If $t \in I$ then $B_\epsilon(t) \subset I$ as $\forall i \in \{1,2,\ldots,N\}: t_i + \epsilon \le b_i$ and $t_i -\epsilon \ge a_i$ and hence $B_\epsilon(t) \cap I^c = \varnothing$, which means $t$ is not a boundary points.
+If $t \notin I$ then 
+\[\exists i \in \{1,2,\ldots,N\}: t_i \notin I_i\]
+If $t_i>b_i$ then let
+\[
+\epsilon:= t_i - b_i
+\]
+Then $\forall m=(m_1,m_2,\ldots, m_N) \in B_\epsilon(t): m_i > t_i - \epsilon = b_i$, which means that $m \notin I$ and therefore $B_\epsilon(t) \cap I = \varnothing$, which means $t$ is not a boundary point. \\
+Similarly, if $t_i<a_i$ then let
+\[
+\epsilon:= a_i - t_i
+\]
+Then $\forall m=(m_1,m_2,\ldots, m_N) \in B_\epsilon(t): m_i < t_i + \epsilon = a_i$, which means that $m \notin I$ and therefore $B_\epsilon(t) \cap I = \varnothing$, which means $t$ is not a boundary point. \\
+In all cases $t \notin X, t$ is not a boundary point.
+\end{document}

@@ -1,0 +1,152 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+Let $I = I_1 \times I_2 \times \ldots \times I_N, I_i = [a_i,b_i]$, from homework 3, we know that 
+\[
+    \partial I = J_1 \cup J_2 \cup \ldots \cup J_N  
+\]
+where 
+\[
+    J_j = I_1 \times \ldots \times \{a_j,b_j\} \times \ldots I_N
+\]
+It is straight from definition that $\mu(J_j) = 0$ for all $j \in \{1,2,\ldots ,N\}.$ \\
+and as any subset $F$ of $\{1,2,\ldots,N\}: \mu(\bigcup_{j\in F} J_j) = 0$, we have that 
+\[
+    \mu(\partial I) = \sum_{j=1}^N \mu(J_j) = 0
+\]
+\pagebreak
+\section*{2.}
+If $\int_I f_i$ is integrable for all $i \in \{1,2,\ldots ,M\}$. Let $\int_I f_i = y_i$. Hence, \\
+$\forall i: \forall \epsilon >0$, there exists a partition $P_{\epsilon_1}$ such that for all refinement of $P_{\epsilon_1}$: 
+\[
+    \|S(P,f) - y_i\| < \cfrac{\epsilon}{\sqrt{M}}
+\]
+which means that 
+\[
+    \|S(P,(f_1,f_2,\ldots,f_M)) - (y_1,y_2,\ldots,y_M)\| < \sqrt{\cfrac{\epsilon^2}{M} \cdot M} = \sqrt{\epsilon^2} = \epsilon
+\]
+which is equivalent to
+\[
+    \|S(P,f) - y\| < \epsilon    
+\]
+and from what we got, 
+\[
+\int_I f = y = (y_1,y_2, \ldots, y_M) = \left(\int_I f_1, \int_I f_2, \ldots, \int_I f_M\right)    
+\]
+If $\int_I f_i$ is not integrable for some $i$, that means that there exists $\epsilon >0$, for all partition $P_i$, 
+\[
+    \|S(P_i, f_i) \| > \epsilon    
+\]
+Hence, for any partition $P = P_1 \times P_2 \times \ldots \times P_N$
+\[
+    \|S(P, f) \| \ge \|S(P_i, f_i) > \epsilon
+\]
+\pagebreak
+\section*{3.}
+First, we will prove that if $f$ is integrable on $D$, $f^2$ is also integrable on $D$. \\
+We have that $f$ is bounded, that is $\forall x \in D: \| f(x) \| < M$
+\[
+|(f(x))^2 - (f(y))^2| = |f(x) - f(y)||f(x) + f(y)| \le 2M|f(x)-f(y)|
+\]
+Since $f$ is integrable on $D$, let $\int_D f = y = f(x_0) \mu(D)$ for some $x_0 \in D$ and $\forall \epsilon >0$, there exists a partition $P_\epsilon$ 
+such that for all refinement $P$ of $P_\epsilon$
+\[    
+    \| S(P,f) - y \| < \epsilon
+\]
+and hence 
+\[
+    \mathcal{U}(P,f) - \mathcal{L}(P,f) < \frac{\epsilon}{2M}
+\]
+Therefore, it is obvious that with $x_1, x_2$ be the maximum and minimum value in the subdivision, we have
+\begin{equation*}
+    \begin{aligned}
+    S(P,f^2) - U(P,f^2) &= \sum_{v} \mu(I_v)((f(x_1))^2 - (f(x_2))^2) \\
+    &= \sum_{v} \mu(I_v)(f(x_1)-f(x_2))(f(x_1) + f(x_2)) \\
+    &\le 2M \cdot (\mathcal{U}(P,f) - \mathcal{L}(P,f) \\
+    &\le 2M \cdot \frac{\epsilon}{2M} = \epsilon
+    \end{aligned}
+\end{equation*}
+Hence, $f^2$ is also integrable, and therefore, $g^2$ and $(f+g)^2$ are integrable. \\
+Consider a set $S \subset \mathbb{R}$, where $\mu(S) = 10$ and the function
+\[
+f: S \to \mathbb{R}, \indent x \to 1
+\]
+We have that 
+\[
+\left(\int_S f \right)^2 = (1 \cdot \mu(S))^2 = \mu(S)^2 \ne \mu(S) = \mu(S) \cdot 1^2 = \int_S f^2
+\]
+Therefore, 
+\[
+    \int_D fg = \frac{1}{2} \int_D \left((f+g)^2 - f^2 - g^2 \right)
+\]
+is also integrable but
+\[
+    \int_D fg \ne \left(\int_D f\right)  \left(\int_D g\right)   
+\]
+\pagebreak
+\section*{4.}
+Since $f$ is bounded, $\forall x \in D: \exists M \in \mathbb{R}:  \|f(x) \| < M$. \\
+Since $D$ has content zero, $\forall \epsilon >0:$ for all compact interval $I_1, \ldots, I_n \in R^M$ satisfies  
+\[
+    D \subset \bigcup_{j=1}^n I_j \text{ and } \sum_{j=1}^n \mu(I_j) < \frac{\epsilon}{M}
+\]
+and hence
+\[
+S(P,f) = \sum_v f(x_v) \mu(I_v) \le \frac{\epsilon}{M} \cdot M = \epsilon
+\]
+which means that 
+\[
+    \int_D f = 0    
+\]
+\pagebreak
+\section*{5.}
+If $\exists x_0 \in U: f(x_0) = \delta > 0$, then since $f$ is continuous, we have 
+$\exists \epsilon > 0: B_\epsilon(x_0) \in U: \forall x \in B_\epsilon(x_0): f(x) > \frac{\delta}{2}$ \\
+then 
+\[
+    \int_{B_\epsilon(x_0)} f > \frac{\delta}{2} \cdot \mu(B_\epsilon(x_0)) > 0
+\]
+We also know that since $\forall x \in U: f(x) \ge 0$
+\[\int_{U\backslash B_\epsilon(x_0)} f\ge 0\]
+and hence
+\[
+    \int_U f = \int_{B_\epsilon(x_0)} f + \int_{U\backslash B_\epsilon(x_0)} f > 0    
+\]
+which is a contradiction. Therefore, $f\equiv 0$ on $U$
+\pagebreak
+\section*{6.}
+Suppose $f$ is not bounded, we have that  
+$\exists (x_n) \in I: \lim_{n \to \infty} x_n = x$ and $\lim_{n \to \infty}\|f(x_n)\| = \infty$. \\
+Hence, for all partition $P$:
+\[\exists v_0: \exists (x'_n) \in I_{v_0}: \lim_{n \to \infty} x'_n = x 
+\text{ and } \lim_{n \to \infty}\|f(x'_n)\| = \infty\]
+Therefore, $\forall M >0: \forall y \in \mathbb{R}^N: \exists n_0: \|f(x_{n_0}) \| > \cfrac{M + \|y\|}{\mu(I_{v_0})}$
+and hence
+\begin{equation*}
+    \begin{align}
+        \|S(P,f)-y\| &= \left\| \sum_v \mu(I_v) \cdot f(x_{n_0}) - y \right\| \\
+        &\ge \left\|\sum_v \mu(I_v) \cdot f(x_{n_0}) \right\| - \|y\| \\
+        &= \sum_v \mu(I_v) \cdot \left\|f(x_{n_0}) \right\| - \|y\| \\
+        &\ge \frac{M+\|y\|}{\mu(I_{v_0})} \cdot \mu(I_{v_0}) - \|y\|= M    
+    \end{align}
+\end{equation*}
+which means that $S(P,f)$ diverges and hence the riemann sum does not exists, which is a contradiction. \\
+Therefore, $f$ is bounded
+\end{document}

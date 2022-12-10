@@ -1,0 +1,159 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+\begin{equation*}
+\begin{aligned}
+\Delta(fg) &= \sum_{i=1}^N \frac{\partial^2(fg)}{\partial x_i^2} \\
+&= \sum_{i=1}^N \frac{\partial}{\partial x_i} \left( \frac{\partial f}{\partial x_i} \cdot g + \frac{\partial g}{\partial x_i} \cdot f \right) \\
+&= \sum_{i=1}^N \frac{\partial}{\partial x_i} \left( \frac{\partial f}{\partial x_i} \cdot g \right) + \frac{\partial}{\partial x_i} \left(\frac{\partial g}{\partial x_i} \cdot f \right) \\
+&= \sum_{i=1}^N \frac{\partial}{\partial x_i} \frac{\partial f}{\partial x_i} \cdot g + \frac{\partial f}{\partial x_i} \cdot \frac{\partial g}{\partial x_i}  + \frac{\partial}{\partial x_i} \frac{\partial g}{\partial x_i} \cdot f + \frac{\partial g}{\partial x_i} \cdot \frac{\partial f}{\partial x_i} \\
+&= \Delta f \cdot g + 2 (\nabla f)(\nabla g) + f \cdot \Delta g 
+\end{aligned}
+\end{equation*}
+\pagebreak
+\section*{2.}
+\begin{equation*}
+\begin{aligned}
+\nabla f \times \nabla g = \left(\frac{\partial f}{\partial x_2} \frac{\partial g}{\partial x_3}- \frac{\partial f}{\partial x_3} \frac{\partial g}{\partial x_2}, \frac{\partial f}{\partial x_3} \frac{\partial g}{\partial x_1}- \frac{\partial f}{\partial x_1} \frac{\partial g}{\partial x_3}, \frac{\partial f}{\partial x_1} \frac{\partial g}{\partial x_2}- \frac{\partial f}{\partial x_2} \frac{\partial g}{\partial x_1} \right) \\
+\end{aligned}
+\end{equation*}
+Hence, 
+\begin{equation*}
+\begin{aligned}
+\text{div}(\nabla f \times \nabla g) &= \frac{\partial}{\partial x_1} \left(\frac{\partial f}{\partial x_2} \frac{\partial g}{\partial x_3}- \frac{\partial f}{\partial x_3} \frac{\partial g}{\partial x_2} \right) \\
+&+ \frac{\partial}{\partial x_2} \left( \frac{\partial f}{\partial x_3} \frac{\partial g}{\partial x_1}- \frac{\partial f}{\partial x_1} \frac{\partial g}{\partial x_3} \right) \\
+&+ \frac{\partial}{\partial x_3} \left( \frac{\partial f}{\partial x_1} \frac{\partial g}{\partial x_2}- \frac{\partial f}{\partial x_2} \frac{\partial g}{\partial x_1} \right) \\ 
+&= \frac{\partial^2 f}{\partial x_1 x_2} \frac{\partial g}{\partial x_3} + \frac{\partial f}{\partial x_2} \frac{\partial^2 g}{\partial x_1 x_3}- \frac{\partial^2 f}{\partial x_1 x_3} \frac{\partial g}{\partial x_2} - \frac{\partial f}{\partial x_3} \frac{\partial^2 g}{\partial x_1 x_2} \\
+&+\frac{\partial^2 f}{\partial x_2 x_3} \frac{\partial g}{\partial x_1} + \frac{\partial f}{\partial x_3} \frac{\partial^2 g}{\partial x_2 x_1}- \frac{\partial^2 f}{\partial x_2 x_1} \frac{\partial g}{\partial x_3} - \frac{\partial f}{\partial x_1} \frac{\partial^2 g}{\partial x_2 x_3} \\
+&+\frac{\partial^2 f}{\partial x_3 x_1} \frac{\partial g}{\partial x_2} + \frac{\partial f}{\partial x_1} \frac{\partial^2 g}{\partial x_3 x_2}- \frac{\partial^2 f}{\partial x_3 x_2} \frac{\partial g}{\partial x_1} - \frac{\partial f}{\partial x_2} \frac{\partial^2 g}{\partial x_3 x_1} \\
+&= 0 
+\end{aligned}
+\end{equation*}
+as $f$ and $g$ are twice continuously partially differentiable hence 
+\[\forall i,j \in \{1,2,3\}: \frac{\partial^2 f}{\partial x_i x_j} = \frac{\partial^2 f}{\partial x_j x_i} \text{ and } \frac{\partial^2 g}{\partial x_i x_j} = \frac{\partial^2 g}{\partial x_j x_i}\]
+\pagebreak
+\section*{3.}
+\begin{equation*}
+\begin{aligned}
+\frac{\partial^2 f}{\partial x^2} &= \frac{\partial}{\partial x} \left( \frac{-x}{(x^2 + y^2 + z^2)^{3/2}}\right) \\
+&= \frac{-1 \cdot (x^2 + y^2 + z^2)^{3/2} - (-x) \cdot \cfrac{3}{2} \cdot  (x^2 + y^2 + z^2)^{1/2} \cdot 2x}{(x^2 + y^2 + z^2)^3} \\
+&= \frac{2x^2 - y^2 - z^2}{(x^2 + y^2 + z^2)^{5/2}}
+\end{aligned}
+\end{equation*}
+Similarly, 
+\[
+\frac{\partial^2 f}{\partial y^2} = \frac{2y^2 - x^2 - z^2}{(x^2 + y^2 + z^2)^{5/2}}
+\]
+\[
+\frac{\partial^2 f}{\partial z^2} = \frac{2z^2 - x^2 - y^2}{(x^2 + y^2 + z^2)^{5/2}}
+\]
+Hence,
+\[
+\Delta f = \frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} + \frac{\partial^2 f}{\partial z^2} = 0
+\]
+\pagebreak
+\section*{4.}
+\[
+\frac{\partial f}{\partial x_i} = \frac{1}{t^{\frac{N}{2}}}\exp \left( -\frac{\|x\|^2}{4t}\right) \cdot \left(\frac{-2x_i}{4t} \right) 
+\]
+\[
+\frac{\partial^2 f}{\partial x_i^2} = \frac{1}{t^{\frac{N}{2}}} \exp\left( -\frac{\|x\|^2}{4t}\right) \cdot \frac{4x_i^2}{16t^2} + 
+\frac{1}{t^{\frac{N}{2}}}\exp \left( -\frac{\|x\|^2}{4t}\right) \cdot \left(\frac{-2}{4t} \right) = \frac{1}{t^{\frac{N}{2}}}\exp\left( -\frac{\|x\|^2}{4t}\right) \left(\frac{4x_i^2-8t}{16t^2}\right)
+\]
+\[
+\frac{\partial f}{\partial t} = - \frac{N}{2} \frac{1}{t^{\frac{N}{2}+1}} \exp \left( -\frac{\|x\|^2}{4t}\right)  + \frac{1}{t^{\frac{N}{2}}} \exp \left( -\frac{\|x\|^2}{4t}\right) \left(\frac{\|x\|^2}{4t^2}\right) 
+\]
+\begin{equation*}
+\begin{aligned}
+\Delta f = \sum_{i=1}^N \frac{\partial f}{\partial x_i} &= \sum_{i=1}^N\frac{1}{t^{\frac{N}{2}}}\exp\left( -\frac{\|x\|^2}{4t}\right) \left(\frac{4x_i^2-8t}{16t^2}\right) \\
+&= \sum_{i=1}^N\frac{1}{t^{\frac{N}{2}}}\exp\left( -\frac{\|x\|^2}{4t}\right) \left(\frac{x_i^2}{4t^2}\right) + \sum_{i=1}^N\frac{1}{t^{\frac{N}{2}}}\exp\left( -\frac{\|x\|^2}{4t}\right) \left(\frac{-8t}{16t^2}\right) \\
+&= - \frac{N}{2} \frac{1}{t^{\frac{N}{2}+1}} \exp \left( -\frac{\|x\|^2}{4t}\right)  + \frac{1}{t^{\frac{N}{2}}} \exp \left( -\frac{\|x\|^2}{4t}\right) \left(\frac{\|x\|^2}{4t^2}\right) \\
+&= \frac{\partial f}{\partial t}
+\end{aligned}
+\end{equation*}
+\pagebreak
+\section*{5.}
+Since 
+\[
+F(x,t) = f(x \cdot v - wt)
+\]
+We have that $\forall i \in \{1,2, \ldots, N \}:$
+\begin{equation*}
+\begin{aligned}
+&\frac{\partial F}{\partial x_i}(x,t) = v_i f'(x \cdot v - wt) \\ 
+\implies &\frac{\partial^2 F}{\partial x_i^2} (x,t) = v_i^2 f'(x \cdot v -wt) \\ 
+\end{aligned}
+\end{equation*}
+\[
+\implies (\Delta F)(x,t) = \sum_{i=1}^N \frac{\partial^2 F}{\partial x_i^2} = f''(x\cdot v -wt)\sum_{i=1}^N v_i^2 = \|v\|^2 f''(x\cdot v -wt)
+\]
+We also have that 
+\[
+\frac{\partial^2 F}{\partial t^2}(x,t) = w^2 f''(x\cdot v -wt) = c^2 \|v\|^2 f''(x\cdot v -wt)
+\]
+Therefore, 
+\[
+\frac{1}{c^2} \frac{\partial^2 F}{\partial t^2}(x,t) = (\Delta F) (x,t)
+\]
+\pagebreak
+\section*{6.}
+$\forall (x, y) \ne (0,0) \in \mathbb{R}^2$, $f$ is twice partially differentiable at $(x,y)$ with \\
+\[
+\frac{\partial^2 f}{\partial x^2}(x,y) = \frac{-4y^3x(x^2-3y^2)}{(x^2+y^2)^3}
+\]
+\[
+\frac{\partial^2 f}{\partial y^2}(x,y) = \frac{4x^3y(y^2-3x^2)}{(x^2+y^2)^3}
+\]
+\[
+\frac{\partial^2 f}{\partial x \partial y}(x,y) = \frac{x^6 + 9y^2x^4 - 9y^4x^4 -y^6}{(x^2+y^2)^3}
+\]
+\[
+\frac{\partial^2 f}{\partial y \partial x}(x,y) = -\frac{y^6 + 9x^2y^4 -9x^4y^2 - x^6}{(y^2+x^2)^3}
+\]
+At $(0,0)$:
+\[
+\frac{\partial^2 f}{\partial x \partial y}(0,0) = \left( \frac{\partial}{\partial x} \left( \frac{-x(y^4+4x^4y^2-x^4)}{(y^2 + x^2)^2}\right) \right)(0,0) = \lim_{\substack{h \to 0 \\ h \ne 0}} \frac{\cfrac{-h(0^4 + 4h^40^2 -h^4)}{(0^2 + h^2)^2}-0}{h} = 1
+\]
+\[
+\frac{\partial^2 f}{\partial y \partial x}(0,0) = \left( \frac{\partial}{\partial y} \left( \frac{y(x^4+4y^4x^2-y^4)}{(x^2 + y^2)^2}\right) \right)(0,0) = \lim_{\substack{h \to 0 \\ h \ne 0}} \frac{\cfrac{h(0^4 + 4h^40^2 -h^4)}{(0^2 + h^2)^2}-0}{h} = -1
+\]
+\[
+\frac{\partial^2 f}{\partial y^2}(0,0) = \left( \frac{\partial}{\partial y} \left( \frac{-x(y^4+4x^4y^2-x^4)}{(y^2 + x^2)^2}\right) \right)(0,0) = \lim_{\substack{h \to 0 \\ h \ne 0}} \frac{0-0}{h} = 0
+\]
+\[
+\frac{\partial^2 f}{\partial y^2}(0,0) = \left( \frac{\partial}{\partial y} \left( \frac{-x(y^4+4x^4y^2-x^4)}{(y^2 + x^2)^2}\right) \right)(0,0) = \lim_{\substack{h \to 0 \\ h \ne 0}} \frac{0-0}{h} = 0
+\]
+Hence, it is twice differentiable everywhere but $\cfrac{\partial^2 f}{\partial y \partial x} \ne \cfrac{\partial^2 f}{\partial x \partial y}$. \\
+We have that $\forall (x,y) \ne (0,0)$
+\[
+-1 = \frac{-x^2-y^2}{x^2+y^2} \le \frac{x^2-y^2}{x^2+y^2} \le \frac{x^2+y^2}{x^2+y^2} = 1
+\]
+Therefore, if $xy \ge 0$, $-xy \le xy\cfrac{x^2-y^2}{x^2+y^2}\le xy$ and \\
+$-xy \le xy\cfrac{x^2-y^2}{x^2+y^2}\le xy$ if $xy <0$. \\
+We have that $\lim_{(x,y) \to (0,0)} xy = 0 = \lim_{(x,y) \to (0,0)} -xy$. \\
+Hence, $\lim_{(x,y) \to (0,0)}xy\cfrac{x^2-y^2}{x^2+y^2} = 0$ which means that $f$ is continuous at $(0,0)$
+
+
+
+
+
+
+
+\end{document}

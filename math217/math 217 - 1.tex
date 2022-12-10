@@ -1,0 +1,177 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+
+\begin{document}	
+
+
+\section*{1.}
+Suppose what is given is a field, $\dagger$ is the multiplicative identity since it is the only element in the set satisfy the condition:
+\[
+\forall x \in \{ \spadesuit, \dagger, \bigcirc, \text{A} \}: x \cdot \dagger = x
+\]
+But, since
+\[
+\forall x \in \{ \spadesuit, \dagger, \bigcirc, \text{A} \}: x \cdot \bigcirc \ne x
+\]
+which means that $\bigcirc$ does not have all the inverse, hence
+what given is not a field.
+
+
+
+
+
+
+\pagebreak
+\section*{2.}
+For any number 	$x = x_1 + ix_2, y = y_1 + iy_2, z = z_1 + iz_2 \in \mathbb{Q}[i] \text{ with } x_1, x_2, y_1, y_2, z_1, z_2 \in \mathbb{Q}$ \\
+F1: $\mathbb{Q}$ is closed under addition and multiplication, therefore \\
+$x+y = (x_1+y_1) + i(x_2+y_2) \in \mathbb{Q}[i]$\\
+F2: $\mathbb{Q}$ is commutative, therefore
+\[x_1+y_1 = y_1+x_1\]
+\[x_2+y_2 = y_2 + x_2\]
+\[x_1 \cdot y_1 = y_1 \cdot x_1\]
+\[x_2 \cdot y_2 = y_2 \cdot x_2\]
+Therefore, $x+y = y+x, x \cdot y = y \cdot x$  \\
+F3: $\mathbb{Q}$ is associative, therefore
+\[x_1 + (y_1+z_1) = (x_1 + y_1) +z_1\]
+\[x_2 + (y_2+z_2) = (x_2 + y_2) +z_2\]
+Therefore, $x+(y+z) = (x+y)+z$ \\
+F4: 
+\begin{equation*}
+\begin{aligned}
+x \cdot (y+z) 
+&= (x_1 + ix_2) \cdot ((y_1 + z_1) + i(y_2+z_2)) \\
+&= x_1 \cdot (y_1 + z_1) - x_2 \cdot (y_2 + z_2) + i(x_2 \cdot (y_1 + z_1) + x_1 \cdot (y_2 + z_2)) \\
+&= (x_1 \cdot y_1 -x_2 \cdot y_2 + i(x_2 \cdot y_1 + x_1 \cdot y_2)) + (x_1 \cdot z_1 - x_2 \cdot z_2 + i(x_2 \cdot z_1 + x_1 \cdot z_2))\\
+&= (x_1 + ix_2) \cdot (y_1 + iy_2) + (x_1+ ix_2) \cdot (y_1 + iy_2) \\
+&=x \cdot y + x \cdot z
+\end{aligned}
+\end{equation*}
+F5: If $x = 0 + i0 \text{ and } y = 1 + i0$ then $\forall z \in \mathbb{Q}[i]:$
+\[
+x + z = (x_1 + z_1) + i(x_2 + z_2) = (0+z_1)+i(0+z_2) = z 
+\]
+and 
+\begin{equation*}
+\begin{aligned}
+y \cdot z 
+&= (y_1 \cdot z_1 - y_2 \cdot z_2) + i(y_1 \cdot z_2 + y_2 \cdot z_1) \\
+&= (z_1 - 0) + i(z_2 + 0) \\
+&= z
+\end{aligned}
+\end{equation*}
+Therefore, $x=0+i0$ and $y=1+i0$ are the neutral elements. \\
+F6: $\forall x \in \mathbb{Q}[i]: \exists y=-x1+i(-x2)$ such that 
+\[
+x + y = (x_1 + (-x_1)) + i(x_2 + (-x_2)) = 0 + 0i
+\]
+and $\forall x \in \mathbb{Q}[i] \backslash \{0\}: \exists z= \cfrac{x_1 - ix_2}{x_1^2+x_2^2}$ (since $x_1^2+x_2^2=0$ if and only if $x_1 = x_2 = 0$ which means that $x = 0+0i$) such that 
+\[
+x \cdot z = \left(x_1 \cdot \cfrac{x_1}{x_1^2 + x_2^2} - x_2 \cdot \frac{-x_2}{x_1^2 + x_2^2} \right) + i\left( x_1 \cdot \cfrac{-x_2}{x_1^2 + x_2^2} + x_2 \cdot \frac{x_1}{x_1^2 + x_2^2}\right) = 1+0i
+\]
+It is not possible to turn $\mathbb{Q}[i]$ into an ordered field because: \\
+Supppose $\mathbb{Q}[i]$ is a field then
+\[
+i \in \mathbb{Q}[i] \cap i \ne 0+0i \implies i \ne 0 \implies i^2=-1>0 
+\]
+which is a contradiction and hence $\mathbb{Q}[i]$ is not a field.
+
+
+
+
+
+
+
+\pagebreak
+\section*{3.}
+a.
+Since $S$ is bounded below, there exists a number $M$ such that \\
+\[\forall s \in S: s \ge M  \iff \forall s \in S: -s \le -M\]
+Therefore, the set $-S$ is bounded above by $-M$ \\	
+b.
+Also, $-S$ is not empty and is a subset of $\mathbb{R}$ which is complete, hence -$S$ has a supremum. \\
+Let $X, Y$ respectively be the set contains all the upper bound of $-S$ and the set contains all the lower bound of $S$. \\
+We have 
+\[\forall x \in X: sup(-S) \ge x \iff \forall x \in X: -sup(-S) \le -x \iff \forall y \in Y: -sup(-S) \le y\]
+because from part a, we know that $M$ is a lower bound of $S$ or $M \in X$ \text{if and only if } $-M$ is an upper bound of $-S$ ($-M \in Y$).\\
+Therefore, -sup(-$S$) is the infimum of $S$ and inf($S$) = -sup(-$S$)
+
+
+
+
+\pagebreak
+\section*{4.}
+$\forall n \in \mathbb{N}: 1>1- \cfrac{1}{n} \ge 0 $\\
+$\forall k \in \mathbb{N}: (-1)^{2k} = 1, (-1)^{2k-1} = -1$ \\
+$\forall n \in \mathbb{N}, \exists k \in \mathbb{N}: n = 2k \lor n = 2k-1$. \\
+If $n = 2k$ then $-1 < 0 \le(-1)^{n} \left(1-\cfrac{1}{n}\right)<1$ \\
+Else if $n = 2k-1$ then $-1<(-1)^{n} \left(1-\cfrac{1}{n}\right)\le 0 <1$ \\
+Hence, 1 and -1 is respectively the upper bound and upperbound for $S$
+and therefore the supremum of $S$ must be less or equal to 1. If sup$(S)$ is less than $1$, then \\
+Let sup$(S) = 1 - \epsilon$, then  $\forall n \in \mathbb{N} \text{ such that } 2n>\cfrac{1}{\epsilon}: (-1)^{2n} \left(1- \cfrac{1}{2n}\right) > 1 - \epsilon$ which is a contradiction because supremum must be larger than all number in the set. Therefore, sup$(S)$ = 1. \\
+Similarly, inf($S$) is larger than equal to -1 then \\
+Let inf$(S) = -1 + \epsilon$, then  $\forall n \in \mathbb{N} \text{ such that } 2n+1>\cfrac{1}{\epsilon}: (-1)^{2n+1}\left(1- \cfrac{1}{2n+1} \right) < -1 + \epsilon$ which is a contradiction because infimum must be smaller than all number in the set. Therefore, inf($S$) = $-1$ \\
+
+
+
+
+
+
+\pagebreak
+\section*{5.}
+We know that $\forall s \in S: \text{sup}S \ge s$ and $\forall t \in T: \text{sup}T \ge t$. \\
+Therefore, $\forall s \in S \text{ and an arbitary } t \in T: \text{sup}S + t \ge s + t$ and hence $\forall s \in S \,\forall t \in T: \text{sup}S + \text{sup}(T) \ge s + t$. \\
+Therefore sup$S$ + sup$T$ is an upperbound of $S+T$, which means that sup$(S+T) \le$ sup$S$ + sup$T$. \\
+Suppose sup$(S+T) <$ sup$S$ + sup$T$, then there exists an $\epsilon >0$ such that sup$(S+T) =$ sup$S$ + sup$T - \epsilon$. However,
+\[
+\exists s' \in S \text{ satisfies } s \in \left(\text{sup}S - \frac{\epsilon}{2}, \text{sup}S\right]
+\]
+bceause else, sup $S - \cfrac{\epsilon}{4}$ is an upper bound smaller than sup $S$ \\
+Similarly, 
+\[
+\exists t' \in T \text{ satisfies } s \in \left(\text{sup}T - \frac{\epsilon}{2}, \text{sup}T\right]
+\]
+Hence, $s' + t' >$ sup$S - \cfrac{\epsilon}{2} +$ sup $T - \cfrac{\epsilon}{2}$ = sup$S$ + sup$T$ - $\epsilon$ which is a contradiction because a supremum must be larger than all the elements in the set and therefore, sup$S$ + sup$T$ = sup$(S+T)$
+
+
+
+
+
+
+
+\pagebreak
+\section*{6.}
+Let $S$ be a non-empty set having at least one upper bound. Then the set $U$ containing all upper bound of $S$ is not empty. \\
+First, choose a random element from $S$ and a random element from $U$ which we denote respectively $s_1$ and $u_1$.
+Then define $I_i := [s_i,u_i]$ as follows
+\[
+I_i:=
+\begin{cases}
+[s_1, u_1], \text{for } i=1 \\~\\
+\left[s_{i-1} , \cfrac{s_{i-1} + u_{i-1}}{2} \right], \text{for } \cfrac{s_{i-1} + u_{i-1}}{2} \text{ is an upper bound}\\~\\
+\left[\cfrac{s_{i-1} + u_{i-1}}{2}, u_{i-1} \right], \text{for } \cfrac{s_{i-1} + u_{i-1}}{2} \text{ is not an upper bound}\\
+\end{cases}
+\]
+Since $\forall i \in \mathbb{N}: \cfrac{s_i + u_i}{2} \in (s_1, u_1)$, therefore $I_{i+1} \subset I_i$ for all natural number $i$. Hence,
+\[
+\bigcap\limits_{n=1}^{\infty}I_n \ne \varnothing
+\]
+and
+\[
+\lim_{n \to \infty} \mu\left(\bigcap\limits_{i=1}^n I_n\right) = \lim_{n \to \infty} \mu(I_n) = \lim_{n \to \infty}\cfrac{\mu(I_1)}{2^n} = 0
+\]
+which means that $\bigcap\limits_{n=1}^{\infty}I_n$ contains a single point which we denote $x$ because it is not empty, it cannot be an interval larger than 0 and from how we define the interval $I_i$, $\bigcap\limits_{n=1}^{\infty}I_n$ cannot contain two seperate points . \\
+If x is not the supremum of S then there exists an upper bound y that is smaller than x, which means that $\nexists i \in \mathbb{N}: s_i \in [y,x]$ because $s_i$ cannot be an upper bound and therefore $s_i$ is always smaller than $y$ and hence  $\mu\left(\bigcap\limits_{i=1}^n I_n\right) \ge x-y >0$, which is a contradiction. As a result, that single point x is the supremum of S.
+
+\end{document}

@@ -1,0 +1,178 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+Let $A=\{(x,y,z) \in \mathbb{R}^3: r^2 \le x^2+ z^2 \le R^2, |y| \in [\epsilon,1]\}$. \\
+The set is not open: Consider $m = \left(0, \cfrac{\epsilon +1}{2}, r \right)$, then
+\[
+\forall \epsilon' >0: \exists \delta: \epsilon' >\delta >0: \left(0, \cfrac{\epsilon+1}{2}, R+\delta \right) \in B_{\epsilon'}(m)
+\]
+But $\left(0, \cfrac{\epsilon+1}{2},R+\delta \right) \notin A$ because $x^2 + z^2 \ge R^2$. \\
+The set in closed: \\
+From the homework 3: \\
+$\{(x,z) \in \mathbb{R}^2: r \le \|(x,z)\| \le R\} = \{(x,z) \in \mathbb{R}^2: r^2 \le x^2 + z^2 \le R^2\}$ is closed. $[\epsilon,1], [-1,-\epsilon]$ are closed, therefore its union is also closed and therefore, $\{y \in \mathbb{R}: |y| \in [\epsilon,1]\}$ is closed. Hence, $A$ is closed. \\
+The set is bounded:
+$-R \le x,z \le R, -1 \le y \le 1$, hence compact.
+The set is not connected: \\
+\begin{equation*}
+\begin{aligned}
+A=&\{(x,y,z) \in \mathbb{R}^3: r^2 \le x^2+ z^2 \le R^2, |y| \in [\epsilon,1]\} = \\
+&\{(x,y,z) \in \mathbb{R}^3: r^2 \le x^2+ z^2 \le R^2, y \in [\epsilon,1]\} \cup \\
+&\{(x,y,z) \in \mathbb{R}^3: r^2 \le x^2+ z^2 \le R^2, y \in [-1,-\epsilon]\}\}. \\
+\end{aligned}
+\end{equation*}
+Consider \\
+$U = \{(x,y,z) \in \mathbb{R}^3: y>0\} \supset \{(x,y,z) \in \mathbb{R}^3: r^2 \le x^2+ z^2 \le R^2, y \in [\epsilon,1]\}$ and \\$V =\{(x,y,z) \in \mathbb{R}^3: y<0\} \supset \{(x,y,z) \in \mathbb{R}^3: r^2 \le x^2+ z^2 \le R^2, y \in [-1,-\epsilon]\}$ \\
+$(0,\infty), (-\infty,0), \mathbb{R}^2$ are open, hence $U$ and $V$ are also open, but
+\[ U \cap A \ne \varnothing \ne V \cap A\]
+\[(U \cap A) \cap (V \cap A) = \varnothing\]
+\[(U \cap A) \cup (V \cap A) = A\]
+\pagebreak
+\section*{2.}
+Definition of a path connected set:  Let $C \subset \mathbb{R}^N$. We say that $x_0, x_1 \in C$ can be joined by a path if there is a continuous function $\gamma : [0, 1] \to \mathbb{R}^N$ with $\gamma([0, 1]) \subset C, \gamma(0) = x_0$, and $\gamma(1) = x_1$. We call $C$ path connected if any two points in $C$ can be joined by a path. \\ 
+First, we prove that every path connected set is connected. Suppose $S$ is not a connected set, 
+then $\exists U,V$ open such that \\
+\begin{equation} U \cap S \ne \varnothing \ne V \cap S\end{equation}
+\begin{equation}(U \cap S) \cap (V \cap S) = \varnothing\end{equation}
+\begin{equation}(U \cap S) \cup (V \cap S) = S\end{equation}
+then from (1), $\exists x \in U \cap S \land \exists y \in V \cap S$. Then as a path connected set, there exists a continuous function $\gamma: [0,1] \to S$ such that $\gamma(0) = x, \gamma(1) = y$.\\
+Then, as [0,1] is connected, img($\gamma$) is also connected. However, we have that 
+\[
+(1) \implies U \cap \text{img}(\gamma) \ne \varnothing \ne \varnothing = V \cap \text{img}(\gamma)
+\]
+\[
+(2) \land \text{img}(\gamma) \subset S \implies (U \cap \text{img}(\gamma)) \cap (V \cap \text{img}(\gamma)) = \varnothing
+\]
+\[
+(3) \land \text{img}(\gamma) \subset S \implies (U \cap \text{img}(\gamma))  \cup (V \cap \text{img}(\gamma)) = \text{img}(\gamma)
+\]
+Therefore, $\text{img}(\gamma)$ is not connected, which is a contradiction. Hence, if S is a path connected set then S is connected. \\
+It is obvious that a stap-shaped set S is connected: \\
+Firstly, $\exists x_0: \forall x \in S \land t \in [0,1]: tx_0 + (1-t)x \in S$ \\
+Then, $\forall x,y \in S$, we can construct a path as follows: \\
+\[\gamma_1: [0,1] \to S, \indent t_1 \to t_1x_0 + (1-t)x\]
+\[\gamma_2: [0,1] \to S, \indent t_2 \to t_2y + (1-t_2)x_0\]
+\[
+\gamma: [0,1] \to S, \indent t \to \begin{cases} \gamma_1(2t) &\text{ if } t \le 1/2 \\ \gamma_2(2t-1) &\text{ otherwise }\end{cases}
+\]
+We have that $\gamma_1, \gamma_2$ is continuous and the functions mapping $t$ to $2t$ and $t$ to $2t-1$ are continuous.
+Also, $\displaystyle{\lim_{t \to \frac{1}{2}^+}\gamma(t)} = x_0 = \gamma(\frac{1}{2}) = \displaystyle{\lim_{t \to \frac{1}{2}^-}\gamma(t)}$. Hence, $\gamma$ is continuous and it maps an arbitary point $x$ to $y$, which means that stap-shaped sets is path connected and therefore connected. \\
+Consider the set $A = \{(x,y) \in \mathbb{R}^2: y = x \lor y = -x \}$. Then we have \\
+\[\forall (a,b) \in A: \forall t \in \mathbb{R}: (0,0)t + (1-t)(a,b) = ((1-t)a, (1-t)b)\]
+But since $(a,b) \in A: a = b \lor a = -b, (1-t)a = (1-t)b \lor (1-t)a = -(1-t)b$. Which means that $\forall t \in [0,1] \subset \mathbb{R}: (0,0)t + (1-t)(a,b) = ((1-t)a, (1-t)b) \in A$. Hence, the set is stap shaped.
+However, consider (1,1) and (-1,1),
+\[\frac{1}{2} \cdot (1,1) + (1-\frac{1}{2} ) \cdot (-1,1) = (0,1) \notin A\]
+Therefore, $A$ is not convex but is stap shaped.  
+\pagebreak
+\section*{3.}
+Suppose $C$ is connected. 
+If $\overline{C}$ is not connected then, exists $U,V$ such that \\
+\begin{equation} U \cap \overline{C} \ne \varnothing \ne V \cap  \overline{C} \end{equation}
+\begin{equation}(U \cap  \overline{C}) \cap (V \cap  \overline{C}) = \varnothing\end{equation}
+\begin{equation}(U \cap  \overline{C}) \cup (V \cap  \overline{C}) =  \overline{C}\end{equation}
+Then it is obvious that as $U \cap C \subset U \cap \overline{C}$ and $V \cap C \subset V \cap \overline{C}$
+\begin{equation}(U \cap C) \cap (V \cap  C) = \varnothing \end{equation}
+\begin{equation}(U \cap  C) \cup (V \cap C) =  C\end{equation}
+Since, $U \cap \overline{C} \ne \varnothing$, take $x \in \overline{C} \cap U$, then $x \in U$ and $x \in \overline{C}$. Then $\forall \epsilon >0: B_\epsilon(x) \cap C \ne \varnothing \implies U \cap C \ne \varnothing$. Hence $\overline{C}$ is connected.
+\pagebreak
+\section*{4.}
+Proof: $x \in \overline{S} \implies $ there is a sequence $(x_n)_{n=1}^\infty \in S$ such that $x = \lim_{n \to \infty}x_n$
+If $x \in S$ then it is obvious that there exists a sequence $(x)_{n=1}^\infty$ such that $x =  \lim_{n \to \infty}x = \lim_{n \to \infty}x_n$. \\
+If $x \in \partial S$ then since $\forall \epsilon >0: B_\epsilon(x) \cap S \ne \varnothing$. We can construct a sequnce: $(x_n)$ where $x_n$ is a random point in $B_\frac{1}{n}(x)$, which means $\forall \delta >0: \exists n_0: \forall n>n_0: \frac{1}{n} < \delta \implies \|x_n -x\| < \delta$. Therefore, $x$ is the limit of the sequence. \\
+If $x \notin \overline{S}$, $x$ is not a cluster point of $S$. Then $\exists \epsilon: B_\epsilon \subset S^c$, which means that there don't exist a sequence in $S$  such that its limit is $x$. 
+\pagebreak
+\section*{5.}
+Let $S$ be the set.
+For every open cover $\{U_i: i \in I\}$ of $S$, since $x \in S$, $\exists i_1 \in I$ such that $x \in U_{i_0}$. Hence, $\exists \epsilon >0: B_\epsilon(x) \in U_{i_0}$. We also have that $x = \lim_{n \to \infty}x_n$, therefore $\exists n_0 \in \mathbb{N}: \forall m > m_0: \|x- x_m\| < \epsilon \implies x_m \in B_\epsilon(x)$. \\
+$\forall m \le m_0: x_m \in S \implies \exists i_1,i_2,\ldots,i_{m_0} \in I: x_m \in U_{i_m}$. \\
+Hence, $\{x_n: n \in \mathbb{N}\} \cup \{x\} \subset U_{i_0} \cup U_{i_1} \cup U_{i_2} \cup \ldots \cup U_{i_m}$. 
+Therefore, $S$ is compact. 
+\pagebreak
+\section*{6.}
+\begin{proof} 
+$\forall N>1: \mathbb{R}^N\backslash\{0\}$ is connected. \\
+Definition of a path connected set:  Let $C \subset \mathbb{R}^N$. We say that $x_0, x_1 \in C$ can be joined by a path if there is a continuous function $\gamma : [0, 1] \to \mathbb{R}^N$ with $\gamma([0, 1]) \subset C, \gamma(0) = x_0$, and $\gamma(1) = x_1$. We call $C$ path connected if any two points in $C$ can be joined by a path. \\ 
+First, we prove that every path connected set is connected (this is just a repeat of what proved in question 2). Suppose $S$ is not a connected set, 
+then $\exists U,V$ open such that \\
+\begin{equation} U \cap S \ne \varnothing \ne V \cap S\end{equation}
+\begin{equation}(U \cap S) \cap (V \cap S) = \varnothing\end{equation}
+\begin{equation}(U \cap S) \cup (V \cap S) = S\end{equation}
+then from (9), $\exists x \in U \cap S \land \exists y \in V \cap S$. Then as a path connected set, there exists a continuous function $\gamma: [0,1] \to S$ such that $\gamma(0) = x, \gamma(1) = y$.\\
+Then, as [0,1] is connected, img($\gamma$) is also connected. However, we have that 
+\[
+(9) \implies U \cap \text{img}(\gamma) \ne \varnothing \ne \varnothing = V \cap \text{img}(\gamma)
+\]
+\[
+(10) \land \text{img}(\gamma) \subset S \implies (U \cap \text{img}(\gamma)) \cap (V \cap \text{img}(\gamma)) = \varnothing
+\]
+\[
+(11) \land \text{img}(\gamma) \subset S \implies (U \cap \text{img}(\gamma))  \cup (V \cap \text{img}(\gamma)) = \text{img}(\gamma)
+\]
+Therefore, $\text{img}(\gamma)$ is not connected, which is a contradiction. Hence, if S is a path connected set then S is connected. \\
+Next, we will prove that $\forall N>1: S = \mathbb{R}^N \backslash \{0\}$ is a path connected set.
+$\forall x,y \in S$ \\
+If $\nexists t \in [0,1]: tx+ (1-t)y = 0$ then the function
+\[\gamma: [0,1] \to S, \indent t \to tx+(1-t)y \]
+is continuous, $\gamma(0) = y, \gamma(1) = x$ and $tx+(1-t)y \ne 0 \forall t \in [0,1]$ \\
+Else if $\exists t_0 \in (0,1)$ (because $x,y\ne 0): t_0x+ (1-t_0)y = 0$ which means that $y = \cfrac{t_0x}{(t_0-1)}$.\\
+Then let $\overrightarrow{u} = \overrightarrow{xy} = \cfrac{x}{t_0-1}$. \\
+Based on $\overrightarrow{u}$, we can construct a basis for $\mathbb{R}^{N} \backslash\{0\}$. And because of $N > 1$, we have that $\exists \overrightarrow{v}\ne \overrightarrow{u}$ in that basis of $\mathbb{R}^{N} \backslash\{0\}$. Hence, $\overrightarrow{v} \ne 0$ and  $\overrightarrow{u}$ is linearly dependent, which means that we can have a point $z = (v_1,v_2,\ldots, v_N) \ne 0$ such that $\{\overrightarrow{zx}, \overrightarrow{xy}\}$ is linearly indepndent and  $\{\overrightarrow{zy} , \overrightarrow{xy}\}$ is linearly independent. Therefore, the two functions:
+\[\gamma_1: [0,1] \to S, \indent t \to tz+(1-t)x \]
+\[\gamma_2: [0,1] \to S, \indent t \to ty+(1-t)z \]
+does not pass through 0 because else if:
+\begin{equation*}
+\begin{aligned}
+\exists t_1 \in (0,1) (\text{beacuse }x,z \ne 0): &t_1z + (1-t_1)x = 0 \\
+\implies &z = \frac{x(t_1-1)}{t_1} \\
+\implies &\overrightarrow{xz} = \frac{-x}{t_1} = \frac{x}{t_0-1} \cdot \frac{-(t_0-1)}{t_1} = \frac{1-t_0}{t_1} \overrightarrow{xy} \text{ (contradiction)}
+\end{aligned}
+\end{equation*}
+\begin{equation}
+\begin{aligned}
+\exists t_2 \in (0,1) (\text{beacuse }x,z \ne 0): &t_2y + (1-t_2)z = 0 \\
+\implies &z = \frac{yt_2}{t_2-1} \\
+\implies &\overrightarrow{yz} = \frac{y}{t_2-1} = \frac{t_0x}{(t_2-1)(t_0-1)} = \frac{t_0}{t_2-1} \overrightarrow{xy} \text{ (contradiction)}
+\end{aligned}
+\end{equation}
+As a result, $\nexists t \in [0,1]:  tz+(1-t)x = 0 \land  ty+(1-t)z = 0$.
+Hence, we can construct a new function based on the two funcions $\gamma_1, \gamma_2$:
+\[
+\gamma_3: [0,1] \to S, \indent t \to \begin{cases} \gamma_1(2t) & \text{ if } t\le \frac{1}{2} \\ \gamma_2(2t-1) & \text{ if } t>\frac{1}{2}\end{cases}
+\]
+We have that $\gamma_1, \gamma_2$ is continuous and the functions mapping $t$ to $2t$ and $t$ to $2t-1$ are continuous.
+Also, $\displaystyle{\lim_{t \to \frac{1}{2}^+}\gamma(t)} = z = \gamma(\frac{1}{2}) = \displaystyle{\lim_{t \to \frac{1}{2}^-}\gamma(t)}$. Hence, $\gamma_3$ is continuous and $\gamma_3(0) = x, \gamma_3(1) = y$ means that every 2 point $x,y \in \mathbb{R}^N \backslash\{0\}$ for $N>1$ is path connected, therefore $\mathbb{R}^N \backslash\{0\}$ for $N>1$ is connected. 
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

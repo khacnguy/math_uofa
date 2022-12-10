@@ -1,0 +1,185 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+\[
+J_f(r,\theta,\phi) =
+\begin{bmatrix}
+\sin\theta\cos\phi &r\cos\theta\cos\phi &-r\sin\theta\sin\phi\\
+\sin\theta\cos\phi &r\cos\theta\sin\phi & r\cos\theta\cos\phi\\
+\cos\theta & -r\sin\theta & 0 
+\end{bmatrix}
+\]
+and\\
+\[
+J_g(r,\theta,z) =
+\begin{bmatrix}
+\cos\theta & -r\sin\theta & 0\\
+\sin\theta & r\cos\theta & 0\\
+0 & 0 & 1
+\end{bmatrix}
+\]
+\pagebreak
+\section*{2.} 
+\begin{proof}
+Using the fact that the matrix $X(N \times N)$ is invertible if and only if its determinant is 0. Let each entries of the matrix be the entries of the function 
+\[
+g: \mathbb{R}^{N \times N} \to \mathbb{R}, \indent X\to \det(X) 
+\]
+Since $\det(X) = \sum_\sigma \text{sgn}(\sigma) \prod_{i=1}^n x_{\sigma{i}, i}$, which is a polynomial of the matrix's coordinate. Hence $g$ is continuous.
+Since $\mathbb{R}\backslash \{0\}$ is open, there is an open set $V \in \mathbb{R}^{N \times N}$ such that $f(V) = \mathbb{R} \backslash \{0\}$. That set V is the set of all invertible matrices. \\
+By Cramer's rule, $X^{-1} = \frac{1}{\det(X)}\text{adj}(X)$. The function g is continuous, and the function $h$ that maps the matrix $X$ to its adjugate matrix is also continuous. Therefore,
+\[f=h \cdot \frac{1}{g}:U \to M_N(\mathbb{R}), \indent X \to X^{-1}= \frac{1}{\det(X)}\text{adj}(X)\]
+is continuous\\
+We have as $H \to 0, -HX_0^{-1} \to 0$, and hence
+\begin{equation*}
+\begin{aligned}
+f(X_0+H) &= (X_0+H)^{-1} \\
+&=((I+HX_0^{-1})X_0)^{-1} \\
+&=X_0^{-1}(I+HX_0^{-1})^{-1} \\
+&=X_0^{-1}\left(I-HX_0^{-1}+ \sum_{i=2}^\infty(-HX_0^{-1})^i \right)\\
+&=f(X_0)-X_0^{-1}HX_0^{-1}+ X_0^{-1}\sum_{i=2}^\infty(-HX_0^{-1})^i
+\end{aligned}
+\end{equation*}
+Therefore, define
+\[
+T: M_N(\mathbb{R}) \to M_N(\mathbb{R}), \indent X \to -X_0^{-1}XX_0^{-1}
+\]
+so that as $H \to 0$
+\[
+\frac{\|f(X_0+H)-f(X_0)-T(H)\|}{\|H\|} 
+=\frac{\|X_0^{-1} \sum_{i=2}^\infty(-HX_0^{-1})^i\|}{\|H\|}
+\to 0
+\]
+which proves that f is (totally) differentiable and that $Df(X_0)X= -X_0^{-1}XX_0^{-1}$\\
+\end{proof}
+\pagebreak
+\section*{3.}
+\begin{equation*}
+\begin{aligned}
+\frac{\partial (f \circ p)}{\partial r}(r,\theta) &= \frac{\partial f}{\partial r}(p(r,\theta)) \cdot \frac{\partial p}{\partial r} (r,\theta) \\
+&= \left( \frac{\partial f}{\partial r} \circ p \right)(r,\theta) \cdot (\cos\theta, \sin\theta)
+\end{aligned}
+\end{equation*}
+\begin{equation*}
+\begin{aligned}
+\frac{\partial^2 (f \circ p)}{\partial r^2}(r,\theta) &= \frac{\partial}{\partial r} \left( \left(\frac{\partial f}{\partial r} \circ p \right)(r,\theta)) \cdot (\cos\theta, \sin\theta) \right) \\
+&= \left(\frac{\partial^2 f}{\partial r^2} \circ p \right) (r,\theta) \cdot \frac{\partial p}{\partial r}(r, \theta) \cdot (\cos\theta, \sin\theta) \\
+&= \left(\frac{\partial^2 f}{\partial r^2} \circ p \right) (r,\theta) \cdot (\cos^2\theta + \sin^2 \theta) \\
+&= \left(\frac{\partial^2 f}{\partial r^2} \circ p \right) (r,\theta)
+\end{aligned}
+\end{equation*}
+\begin{equation*}
+\begin{aligned}
+\frac{\partial^2 (f\circ p)}{\partial \theta^2} &= \frac{\partial}{\partial \theta} \left( \frac{\partial f}{\partial \theta} (p(r,\theta)) \cdot \frac{\partial p}{\partial \theta}(r,\theta) \right) \\
+&= \frac{\partial}{\partial \theta} \left( \left(\frac{\partial f}{\partial \theta} \circ p \right) (r,\theta) \cdot (-r\sin\theta, r\cos\theta) \right) \\
+&= \left( \frac{\partial^2}{\partial \theta^2} \circ p \right)(r,\theta) \cdot \frac{\partial p}{\partial \theta}(r,\theta) \cdot (-r\sin\theta, r\cos\theta) + \left( \frac{\partial f}{\partial \theta} \circ p \right) (r, \theta) \cdot (-r\cos\theta, -r \sin\theta) \\
+&= \left( \frac{\partial^2 f}{\partial \theta^2} \circ p \right)(r,\theta) \cdot (-r\sin\theta, r\cos\theta) \cdot (-r\sin\theta, r\cos\theta) -r \cdot \left( \frac{\partial f}{\partial \theta} \circ p \right) (r, \theta) \cdot (\cos\theta, \sin\theta) \\
+&= \left( \frac{\partial^2 f}{\partial \theta^2} \circ p \right)(r,\theta) \cdot r^2 -r \frac{\partial (f \circ p)}{\partial r}
+\end{aligned}
+\end{equation*}
+Therefore, 
+\[
+\frac{\partial^2 (f \circ p)}{\partial r^2} + \frac{1}{r} \frac{\partial (f \circ p)}{\partial r} + \frac{1}{r^2} \frac{\partial^2 (f\circ p)}{\partial \theta^2} = \frac{\partial^2 f}{\partial r^2} \circ p + \frac{\partial^2 f}{\partial \theta^2} \circ p = (\Delta f) \circ p
+\]
+\pagebreak
+\section*{4.}
+We have that 
+\[
+\left| \frac{xy^3}{x^2 + y^4} \right| = \frac{|x^2y| \cdot |y|}{x^2 + y^4} \le \frac{\frac{x^2 + y^4}{2} \cdot |y|}{x^2 + y^4} = \frac{|y|}{2}
+\]
+Therefore, $\forall \epsilon > 0: \forall (x,y) \in B_\epsilon(x,y): |f(x,y)| \le \cfrac{|y|}{2} < \cfrac{\epsilon}{2} < \epsilon$. Hence, $f$ is continuous at (0,0). \\
+$\forall v= (v_1,v_2) \in \mathbb{R}^2: \|v\| = 1:$
+\begin{equation*}
+\begin{aligned}
+D_vf(0,0) &= \lim_{\substack{h \to 0 \\ h \ne 0}} \frac{f( (0,0) + hv) - f(0,0)}{h} \\
+&= \lim_{\substack{h \to 0 \\ h \ne 0}}\frac{hv_1 \cdot h^3v_2^3}{h \cdot (h^2v_1^2 + h^4v_2^4)} \\
+&= \lim_{\substack{h \to 0 \\ h \ne 0}} \frac{v_1v_2^3}{\cfrac{v_1^2}{h}  + h v_2^4} \\
+&= 0
+\end{aligned}
+\end{equation*}
+Therefore, $\cfrac{\partial f}{\partial x} = \cfrac{\partial f}{\partial y} = 0$. Which means that if $f$ is totally differentiable, $T = (0,0)$ is the jacobian matrix. \\
+Consider the function 
+\[
+g: \mathbb{R} \to \mathbb{R}, \indent t \to f(t^2,t)
+\]
+$g(t^2,t) = \frac{t}{2}$, hence $g'(0) = g'(t) = \frac{1}{2}$ . But given the function
+\[
+h: \mathbb{R} \to \mathbb{R}^2, \indent t \to (t^2,t)
+\]
+We have $f \circ h = g$ but $D(f \circ h)(0) = Df(h(0))Dh(0) = T \cdot Dh(0) = 0 \ne \frac{1}{2}$
+Therefore, $f$ is not totally differentiable at (0,0).
+\pagebreak
+\section*{5.}
+$U$ is open and convex, $U$ also contains 0. Hence, $\{tx: t \in [0,1]\} \subset U$. By Taylor's theorem, there is $\theta \in [0,1]$ such that 
+\begin{equation*}
+\begin{aligned}
+f(x) &= \sum_{|\alpha| \le n} \frac{1}{\alpha !} \frac{\partial ^\alpha f }{\partial x^\alpha}(0)x^\alpha + \sum_{|\alpha| = n+1} \frac{1}{\alpha !} \underbrace{\frac{\partial^\alpha f}{\partial x^\alpha}}_{0}(0 + \theta x) \\
+&= \sum_{|\alpha| \le n} \frac{1}{\alpha !} \frac{\partial ^\alpha f }{\partial x^\alpha}(0)x^\alpha 
+\end{aligned}
+\end{equation*}
+Hence, for $|a| \le  n$, there is
+\[
+c_\alpha = \frac{1}{\alpha !} \frac{\partial^\alpha f}{\partial x^\alpha} (0)
+\]
+that satisfies
+\[
+f(x) = \sum_{|a| \le n} c_\alpha x^\alpha
+\]
+\pagebreak
+\section*{6.}
+$f$ is differentiable such that $\Delta f = 0$, hence $f$ is totally differentiable and $\forall v: D_vf = 0$. 
+If $c$ is convex, then $\forall x,y \in C$, there exsits a continuous function 
+\[
+g: [0,1] \to C, \indent t \to tx + (1-t)y
+\]
+Let $h = f \circ g$. Then $\forall t \in [0,1]:$
+\begin{equation*}
+\begin{aligned}
+h'(t) &= Dh(t) \\
+&= D(f \circ g)(t) \\
+&= Df(g(t)) Dg(t) \\
+&= (x-y) \sum_{j=1}^N \frac{\partial f}{\partial x_j} (tx+(1-t)y) \\
+&= 0
+\end{aligned}
+\end{equation*} Hence, $h$ is constant and that $y = h(0) = h(1) = x$. \\
+Since $x,y$ are arbitary, $f$ is also constant. \\
+For general $C$, if $f$ is not contant then $\exists x,y \in C: f(x) \ne f(y)$. Consider the set 
+\[
+U:= \{z \in C: f(z) = f(x) \}
+\]
+\[
+V:= \{z \in C: f(z) \ne f(x) \}
+\]
+It is obvious that $x \in U \cap C$ and $y \in V \cap C$, hence
+\[
+U \cap C \ne \varnothing \ne V \cap C
+\]
+Straight from the definition of $U$ and $V$, we also have that
+\[
+(U \cap C) \cap (V \cap C) = \varnothing
+\]
+\[
+(U \cap C) \cup (V \cap C) = C
+\]
+We also have that if $z \in U$, then $\exists \epsilon > 0: B_\epsilon(z) \in C$ as $C$ is open. $B_\epsilon(z)$ is convex hence $\forall z' \in B_\epsilon(z): f(z') = f(z) = f(x)$ which means that $B_\epsilon(z) \in U$ and hence $U$ is open. \\
+If $z \in V$, then similarly, $\exists \epsilon > 0: B_\epsilon(z) \in C$ as $C$ is open. $B_\epsilon(z)$ is convex hence $\forall z' \in B_\epsilon(z): f(z') = f(z) \ne f(x)$ which means that $B_\epsilon(z) \in V$ and hence $V$ is open. \\
+Hence, $\{U,V\}$ is a disconnection for $C$, therefore $f$ is constant.
+
+\end{document}
