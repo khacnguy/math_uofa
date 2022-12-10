@@ -1,0 +1,267 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+a.
+we have that 
+\[
+\begin{cases}
+\cfrac{c}{2} + \cfrac{c}{3} + \cfrac{c}{4} + \cfrac{c}{5} + p \cdot 2 = \cfrac{77}{60} \, c + 2p = 1 \\
+\cfrac{c}{2} \cdot 0 + \cfrac{c}{3} \cdot 1 + \cfrac{c}{4} \cdot 2 + \cfrac{c}{5} \cdot 3 + p \cdot (4+5) = \cfrac{43}{30} \, c + 9p =1.5
+\end{cases}
+\implies \begin{cases}
+c = \cfrac{360}{521} \\
+p = \cfrac{59}{1042}\\
+\end{cases}
+\]
+b.
+Given that there is at least 2 injuries, then the probability that there is 5 injuries is 
+\[
+\cfrac{p}{1-\cfrac{c}{2}-\cfrac{c}{3}} = \frac{59}{442}
+\]
+Hence the probability that there is less than 5 injuries is
+\[
+1 - \cfrac{59}{442} = 0.8665
+\]
+\pagebreak
+\section*{2.}
+Bowl 1: 3 white and 4 red \\
+Bowl 2: 4 white and 3 red \\
+Bowl 3 : 5 white and 2 red \\
+$P(B_1) = 0.2, P(B_2) = 0.5, P(B_3) = 0.3$ \\
+The probability 2 red balls is chosen is
+\[
+\cfrac{C^4_2}{C^7_2} \cdot 0.2 + \cfrac{C^3_2}{C^7_2} \cdot 0.5 + \cfrac{C^2_2}{C^7_2} \cdot 0.3 = \cfrac{1}{7} 
+\]
+The probability 1 red ball is chosen is 
+\[
+\cfrac{C^4_1 \cdot C^3_1}{C^7_2} \cdot 0.2 + \cfrac{C^3_1 \cdot C^4_1}{C^7_2} \cdot 0.5 + \cfrac{C^2_1 \cdot C^5_1}{C^7_2} \cdot 0.3 = \cfrac{19}{35} 
+\]
+Hence, the expected value of W is
+\[
+\cfrac{1}{7} \cdot (2^1-1) + \cfrac{19}{35} \cdot (2^2-1) = 0.9714
+\]
+\pagebreak
+\section*{3.}
+a.
+Let $Y_i$ be the amount of money we get/lose in the i-th turn. Then the expected value and variance of any $Y_i$ is 
+\[
+E[Y_i] = 5 \cdot \cfrac{1}{10} + 3 \cdot \frac{2}{10} + 1 \cdot \cfrac{3}{10} - 2 \cdot \cfrac{4}{10} = \frac{3}{5}
+\]
+\[
+V[Y_i] = E[Y_i^2] - (E[Y_i])^2 =  5^2 \cdot \cfrac{1}{10} + 3^2 \cdot \frac{2}{10} + 1^2 \cdot \cfrac{3}{10} + (-2)^2 \cdot \cfrac{4}{10} - \frac{9}{25} = 5.84
+\]
+Therefore, the expected value and variance of $Y$ is 
+\[
+E[Y] = E[Y_1+Y_2+Y_3+Y_4] = E[Y_1] + E[Y_2] + E[Y_3] + E[Y_4] = 4 \cdot \frac{3}{5} = \frac{12}{5}
+\]
+\[
+V[Y] =  V[Y_1+Y_2+Y_3+Y_4] =  V[Y_1] + V[Y_2] + V[Y_3] + V[Y_4] = 4 \cdot 5.84 = 23.36
+\]
+b. since $X$ follows a hypergeometric distribution (10,5,4), we have that 
+We have that the expected value and variance of $X$ is
+\[
+E[X] = 4 \cdot 5 / 10 = 2
+\]
+\[
+V[X] = 4 \cdot \frac{5}{10} \cdot \frac{5}{10} \cdot \frac{6}{9} = \frac{2}{3}
+\]
+Hence the expected value and variance of $W$ is 
+\[
+E[W] = E[9-5X] = 9 - 5E[X] = -1
+\]
+\[
+V[W] = V[9-5X] = (-5)^2 \cdot V[X] = \frac{50}{3}
+\]
+\pagebreak
+\section*{4.}
+Let $S$ be the amount you have to pay in the original grid. \\
+Let $A'$ be the amount you have to pay if there is only point $A$ on the grid. \\
+Let $B'$ be the amount you have to pay if there is only point $B$ on the grid. \\
+Let $C'$ be the amount you have to pay if there is only point $C$ on the grid. \\
+Let $D'$ be the amount you have to pay if there is only point $D$ on the grid. \\
+Then let $y$ be a random path. It is obvious that 
+\[S(y) = A'(y) + B'(y) + C'(y) + D'(y)\]
+Because if $y$ passes through point $A$ in $S$, then $y$ also passes through point $A$ in $A'$. Since $A$ only exists in $A'$ and $S$, the amount you have to pay for point $A$ going through $S$ and going through all of $A', B',C',D' $ is the same. The same happens for $B,C,D$. \\
+Hence, 
+\begin{equation*}
+\begin{aligned}
+E[Y] = E[S(y)] &= E[A'(Y) + B'(Y) + C'(Y) + D'(Y)] \\
+&= E[A'(Y)] + E[B'(Y)] + E[C'(Y)] + E[D'(Y)] \\
+&= 10 \cdot \cfrac{C^4_1 \cdot C^9_4}{C^{13}_5} + 5 \cdot \cfrac{C^8_2 \cdot C^5_2}{C^{13}_5} + 3 \cdot \cfrac{C^7_4 \cdot C^6_2}{C^{13}_5}+ 6 \cdot \cfrac{C^{11}_3 \cdot C^2_2}{C^{13}_5} \\
+&\approx 6.997
+\end{aligned}
+\end{equation*}
+\pagebreak
+\section*{5.}
+The total number of ways the hand can be dealt is $C_5^{52} = 2598960$. \\
+Let $A(X)$ mean the number of ways we are dealt $X$ amount of hearts. \\
+The number of ways our hand have 0 and 1 hearts are
+\[
+A(X = 1) = C_4^{39} \cdot C_1^{13} = 1069263
+\]
+\[
+A(X = 0) = C_5^{39} = 575757
+\]
+Hence the number of ways our hand have at least two hearts is 
+\[
+A(X\ge 2) = 2598960 - A(X=0) - A(X=1) = 953940
+\]
+The number of ways our hand have three hearts is 
+\[
+C_2^{39} \cdot C_3^{13} = 211926
+\]
+Hence, the probability that the hand have exactly there hearts given that it has at least two hearts is:
+\[\frac{A(X = 3)}{A(X \ge 2)} = \frac{211926}{953940}\]
+\pagebreak
+\section*{6.}
+The probability that the team has there fourth win before therefore 4-th loss is the probability that the team has 4 wins and less than or equal to 3 losses, which means that the team has their fourth win before or at the 7-th turn. Let $Y$ be the number of trial until the r-th success, then $Y \sim \text{NegativeBinomial}(4,0.6)$. Hence the probability that the teams has their 4-th win before their 4-th loss is
+\[
+\sum_{y=4}^7 P(Y=y) = \sum_{y=4}^7 \begin{pmatrix} y-1 \\ 3 \end{pmatrix} \cdot 0.6^4 \cdot 0.4^{y-4} = \frac{11097}{15625}
+\]
+\pagebreak
+\section*{7.}
+a. Let $X$ be the number of attempts an applicants need to complete the first task. Then $X \sim$ Geometric($0.19$) \\
+Hence the probability that any applicants complete their first task on the first, second, third, fourth and fifth attempts are
+\[
+P(X=1) = 0.81^0 \cdot 0.19 = 0.19
+\]
+\[
+P(X=2) = 0.81^1 \cdot 0.19 = 0.1539
+\]
+\[
+P(X=3) = 0.81^2 \cdot 0.19 = 0.1247
+\]
+\[
+P(X=4) = 0.81^3 \cdot 0.19 \approx 0.10097379
+\]
+\[
+P(X=5) = 0.81^4 \cdot 0.19 \approx 0.0817887699
+\]
+Hence the probability that a random applicant get the job is 
+\[
+P(X\le 5) \approx 0.6513
+\]
+b.
+The probability that an applicant does not complete the task in the first 5 tries is 
+\[
+P(X>5) = 1 - P(X\le 5) \approx 0.3487
+\] 
+Therefore, the expected value for $X, X^2$ is 
+\begin{equation*}
+\begin{aligned}
+E[Y] &= E[Y | X = 1] P(X = 1) + E[Y | X = 2] P(X = 2) + E[Y | X = 3] P(X = 3) \\
+&\indent + E[Y | X = 4] P(X = 4) + E[Y | X = 5] P(X = 5) + E[Y| X >5] P(X>5) \\
+&\approx 356542.5 \\
+E[Y^2] &= E[Y^2 | X = 1] P(X = 1) + E[Y^2 | X = 2] P(X = 2) + E[Y^2 | X = 3] P(X = 3) \\
+&\indent + E[Y^2 | X = 4] P(X = 4) + E[Y^2 | X = 5] P(X = 5) + E[Y^2| X >5] P(X>5) \\
+&\approx 232845062500
+\end{aligned}
+\end{equation*}
+\[
+\sigma_Y = |\sqrt{V(Y)}| = |\sqrt{E[(Y-\mu_Y)^2]}| = \sqrt{E[Y^2] - (E[Y])^2} \approx 325149.978
+\]
+\pagebreak
+\section*{8.}
+Since, the computer does not crash on the first 2 days, the probability that it has its third crash on the seventh day is the same as the probability that it has its third crash on the fifth-day, given that the computer can crash any days with the same probability 0.42. \\
+Let $Y$ be the numuber of days until the third crash happens, then $Y \sim $ NegativeBinomial($3,0.42$), which means that the probability for the computer to crash given that it did not crash on the first 2 days is 
+\[
+P(Y=5) = \begin{pmatrix} 5-1 \\ 2 \end{pmatrix} \cdot 0.42^3 \cdot 0.58^2 = 0.149539
+\]
+\pagebreak
+\section*{9.}
+Since the number of defects per foot on each beam follows a Poisson distribution with mean 0.52:
+$\mu_Y = E[Y] = \lambda = 0.52$. Hence, the expected profits on one product is 
+\begin{equation*}
+\begin{aligned}
+E[X] = E[30-2Y-3Y^2] &= 30 - 2E[Y] - 3E[Y^2] + 3\mu_Y^2 - 3\mu_Y^2 \\
+&= 30 - 2E[Y] - 3 \sigma_Y^2 - 3\mu_Y^2 \\
+&= 30 - 5 \cdot 0.52 - 3 \cdot 0.52^2 \\
+&= 26.5888
+\end{aligned}
+\end{equation*}
+And therefore, the expected profits on three random products is
+\[
+26.5888 \cdot 3 = 79.7664
+\]
+\pagebreak
+\section*{10.}
+Let $X$ be the expected value of the difference between the amount you would be reimbursed in the case of hail damage to your car and the amount you paid for this policy.\\
+the number of times per year you will have hail damage to your car (call this the random variable Y ) follows a Poisson distribution with a mean of 1.45: 
+$\mu_Y = E[Y] = \lambda = 1.45$. Let $n$ be the number of times you hail damage to your car, then $\forall n \ge 1,$ the number of times you would be reimbruised is $n-1$. In case, the number of times you hail damage is 0, the number of times you would be reimbruised is $0$. \\ 
+\[P(Y=0) = P(X=-750) = \cfrac{1.45^0}{0!} \cdot e^{-1.45}\]
+For $y\ge 1$:
+\[
+P(Y=y) = P(X = -750+1000(y-1)) 
+\]
+We also have,
+\[ 
+\]
+Hence,
+\begin{equation*}
+\begin{aligned}
+&E[Y] = E[Y|Y\ge 1] P(Y\ge 1) + E[Y=0] P(Y=0) \\
+\implies & 1.45 = E[Y| Y\ge 1](1-P(Y=0)) + 0 = E[Y|Y\ge 1] \cdot (1- e^{-1.45})\\
+\implies & E[Y|Y\ge 1] = \frac{1.45}{1-e^{-1.45}} = 1.8944
+\end{aligned}
+\end{equation*}
+Therefore,
+\begin{equation*}
+\begin{aligned}
+E[X] &= E[X|Y\ge 1] \cdot P(Y\ge 1) + E[X|Y=0] \cdot P(Y=0) \\
+&= E[-750+1000(Y-1) | Y \ge 1] \cdot P(Y\ge 1) + E[X|Y=0] \cdot P(Y=0) \\
+&= E[-1750+1000Y|Y \ge 1]  \cdot P(Y\ge 1) + E[-750|Y=0] \cdot P(Y=0)\\
+&= (-1750 + 1000E[Y| Y \ge 1]) \cdot 0.7654 + (-750) \cdot 0.23457 + = -65.404
+\end{aligned}
+\end{equation*}
+Therefore, we should not buy it.
+\pagebreak
+\section*{11.}
+The number of points the player score per game follows a distribution with a mean of 1.43.
+Hence, the probability that he scores exactly 3 points in a game is
+\[
+P(Y=3) = \frac{1.43^3}{3!} \cdot e^{-1.43} = 0.11663
+\] 
+Therefore, the number of game the player scores exactly 3 points $\sim$ Binomial$(10,0.11663)$. Let $X$ be the number of games he scores exactly 3 points. The probability that he has 0 and 1 games in which he scores exactly 3 points are
+\[
+P(X=0) = C^{10}_0 \cdot 0.11663^0 \cdot (1-0.11663)^{10-0} = 0.28935
+\]
+\[
+P(X=1) = C^{10}_1 \cdot 0.11663^1 \cdot (1-0.11663)^{10-1} = 0.38203
+\]
+Therefore, the probability that the player scores at least 2 games with exactly 3 points is
+\[
+P(X\ge 2) = 1 - P(X=0) - P(X=1) = 0.32862
+\]
+Also, the probability that he scores less than 3 points is the sum of the probability he scores 0,1 and 2 points. Therefore, the probability that he scores less than 3 points is 
+\[
+P(Y\le 2) = \sum_{k=0}^2 \frac{1.43^k}{k!} \cdot e^{-1.43} = 0.8262
+\]
+Which means that the probability that he scores at least 3 points is 
+\[
+P(Y \ge 3) = 1 - P(Y\le 2) = 0.1738 
+\]
+Therefore, the number of games the player need to score at least 3 points the first time follows a geometric series with $p=0.1738$. As a result, the expected value and variance of $U$ is 
+\[
+E[U] = \frac{1}{0.1738} = 5.7537
+\]
+\[
+V[U] = \frac{1-p}{p^2} = 27.35178
+\]
+\end{document}

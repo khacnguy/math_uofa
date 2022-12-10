@@ -1,0 +1,286 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+
+
+
+
+
+
+
+\section*{1.}
+\subsection*{a.}
+We have
+\[
+\int_{-\infty}^\infty f_Y(y)dy = \int_0^6 f_Y(y) dy = \int_0^6 c(8-y) dy = \left.c\left(8y-\cfrac{y^2}{2}\right) \right|_0^6 =30c=1
+\]
+Therefore, $c = \cfrac{1}{30}$\\
+\subsection*{b.}
+\[
+    E[Y] = \int_0^6 y f_Y(y) dy = \int_0^6 y\left(\cfrac{4}{15} - \cfrac{y}{30}\right)dy = \left.\left(\cfrac{4y^2}{30}-\cfrac{y^3}{90}\right) \right|_0^6 = 2.4
+\]
+Similarly, we have that 
+\[
+    E[Y] = \int_0^6 y^2 f_Y(y) dy = \int_0^6 y^2\left(\cfrac{4}{15} - \cfrac{y}{30}\right)dy = \left.\left(\cfrac{4y^3}{45}-\cfrac{y^4}{120}\right) \right|_0^6 = 8.4
+\]
+Hence, 
+\[
+    V[Y] = 8.4 - 2.4^2 = 2.64\]
+\subsection*{c.}
+\begin{equation*}
+    F_Y(y) =
+    \begin{cases}
+        0, \text{ if } y \le 0 \\
+        1, \text{ if } y \ge 6 \\
+        \int_0^y \left(\cfrac{4}{15} - \cfrac{t}{30}\right)dt = \cfrac{8y}{30} - \cfrac{y^2}{60}, \text{ otherwise }
+    \end{cases}
+\end{equation*}
+For $y\le 0$:
+\[
+F_Y(y) = 0
+\]
+For $0<y<6$:
+\[
+F_Y(y) =\int_0^y \left(\cfrac{4}{15} - \cfrac{t}{30}\right)dt = \frac{8y}{30} - \frac{y^2}{60}
+\]
+For $y\ge 6$:
+\[
+F_Y(y) = 1
+\]
+\pagebreak
+
+
+
+
+\section*{2.}
+\subsection*{a.}
+\[
+E[Y] = \int_{-1}^0 \cfrac{y}{16} dy + \int_0^{1} \left( \cfrac{y}{16} + y^4 \right) dy + \int_1^3 \cfrac{5y^2}{32} dy = \frac{373}{240} 
+\]
+\subsection*{b.}
+\[
+P(-0.75 < Y < 1.25) = \int_{-0.75}^{1.25} f_Y(y) dy = 1- \int_{-1}^{-0.75} \cfrac{dy}{16} - \int_{1.25}^3 \cfrac{5y}{32} dy = \frac{413}{1024}
+\]
+\subsection*{c.}
+For $y < 0$:
+\[F_Y(y) = 0\]
+For $-1 < y < 0$:
+\[F_Y(y) = \int_{-1}^y \cfrac{1}{16} dt = \cfrac{y}{16} + C\]
+Since the cumulative distribution function is continuous, we also have 
+\[
+F_Y(-1) = \cfrac{-1}{16} + C = 0 \implies C = \cfrac{1}{16}   
+\]
+And hence
+\[
+    F_Y(y) = \cfrac{y+1}{16}  
+\]
+For $0 < y < 1$:
+\[F_Y(y) = \int_{0}^y \left(\cfrac{1}{16} + t^3 \right) dt = \cfrac{y}{16} + \cfrac{y^4}{4}+ C\]
+Since the cumulative distribution function is continuous, we also have 
+\[
+F_Y(0) = C =  \left. \cfrac{y+1}{16} \right|_{y=0} = \cfrac{1}{16}
+\]
+And hence
+\[
+    F_Y(y) = \cfrac{1+y}{16} + \cfrac{y^4}{4}
+\]
+For $1 < y < 3$:
+\[F_Y(y) = \int_{0}^y \cfrac{5t}{32} dt = \cfrac{5y^2}{64} + C\]
+Since the cumulative distribution function is continuous, we also have 
+\[
+F_Y(1) = \cfrac{5}{64} + C =  \left. \cfrac{y+1}{16} + \cfrac{y^4}{4} \right|_{y=1} = \cfrac{3}{8} \implies C = \cfrac{19}{64}
+\]
+And hence
+\[
+    F_Y(y) = \cfrac{5y^2}{64} + \cfrac{19}{64} 
+\]
+For $y>1$:
+\[F_Y(y) = 1\]
+\subsection*{d.}
+$F_Y(1) = \cfrac{24}{64} < 0.8$, hence the $80^{th}$ percentile of $Y$ is at $x$ where $x$ satisfies:
+\[
+    F_Y(x) = \cfrac{5x^2+ 19}{64} = 0.8 \implies x = 2.5377 
+\]  
+\pagebreak
+
+
+
+
+
+
+\section*{3.}
+We have
+\begin{equation*}
+\int_0^4 ay^b dy = \left. \cfrac{ay^{b+1}}{b+1} \right|_0^4 = \cfrac{a4^{b+1}}{b+1} = 1
+\end{equation*}
+\begin{equation*}
+E[Y] = \int_0^4 y \cdot ay^b dy = \left. \cfrac{ay^{b+2}}{b+2} \right|_0^4 = \cfrac{a4^{b+2}}{b+2} = \cfrac{a4^{b+1}}{b+1} \cdot \cfrac{4(b+1)}{b+2} = \cfrac{4(b+1)}{b+2} = 3
+\end{equation*}
+Hence, $b=2$ and $a = \cfrac{3}{64}$ 
+\pagebreak
+
+
+
+\section*{4.}
+\[
+E[Y] = \left. \cfrac{d}{dt}\left(e^t(1+12t)^{-2}\right) \right|_{t=0} = -23
+\]
+\[
+E[Y^2] = \left. \cfrac{d^2}{dt^2}\left(e^t(1+12t)^{-2}\right) \right|_{t=0} = 817
+\]
+\[
+E[Y^3] = \left. \cfrac{d^3}{dt^3}\left(e^t(1+12t)^{-2}\right) \right|_{t=0} = -38951
+\]
+\[
+E[(Y-\mu_Y)^3] = E[Y^3] - 3E[Y^2\mu_Y] + 3E[Y \mu_Y^2] - E[\mu_Y^3] = E[Y^3] - 3\mu_YE[Y^2] + 2\mu_Y^3 = -6912
+\]
+\[
+\sigma^3 = (V[Y])^{3/2} = (817-(-23)^2)^{3/2} = 3456\sqrt2
+\]
+Hence, the skewness coefficient is 
+\[
+\frac{-6912}{3456\sqrt2} = -\sqrt2
+\]
+\pagebreak
+\section*{5.}
+\[
+m_X(t) = E[e^{t(3Y-6)}] = E[e^{-6t}] \cdot (E[e^{(3t)Y}]) = e^{-6t} e^{6t} (1-9t)^{-1} = (1-9t)^{-1}
+\]
+which is a exponential distribution with $\theta = 9$.
+\pagebreak
+\section*{6.}
+\subsection*{a.}
+Since $Y$ is uniform, $f_Y(y) = \frac{1}{10}$ if $0<y<10$ is given.
+\[
+E[X] = \int_0^{10} 10\sqrt2(2^{\frac{-y}{2}})\frac{1}{10}dy = 3.953
+\]
+\[
+E[X^2] = \int_0^{10} \left(10\sqrt2(2^{\frac{-y}{2}}) \right)^2 \frac{1}{10}dy = 28.8257
+\]
+Hence
+\[
+V[X] = 28.8257 - 3.953^2 = 13.1995    
+\]
+\subsection*{b.}
+$X>4 \iff Y < 3.6439$ \\
+$X<10 \iff Y > 1$
+\[
+P(X>4|X<10) = \cfrac{P(10>X>4)}{P(X<10)} = \cfrac{P(1<Y<3.6439)}{P(Y>1)} = \frac{2.6439}{9} = 0.29377
+\]
+\pagebreak
+\section*{7.}
+From the table, we have that 
+\[
+P(Y>-0.5) = P(Z>-1.56) \text{ and } P(Y<1.25) = P(Z<1.04)
+\]
+Hence, we have the equations
+\[
+\cfrac{-0.5 - \mu}{\sigma} = -1.56 \text{ and } \cfrac{1.25 - \mu}{\sigma} = 1.04
+\]
+Therefore, $\sigma = \frac{35}{52}$ and $\mu = 0.55$, hence $\sigma^2 = \frac{1225}{2704}
+\pagebreak
+\section*{8.}
+\subsection*{1.}
+We need to find $X$ such that $P(Y>X) = 0.12$. \\
+We have that $P(Z>1.175) = 0.12$ hence $\cfrac{X-2.25}{0.49} = 1.175$ and therefore $X= 2.82575 $
+\subsection*{2.}
+Consider $U = Y_1 - 2Y_2$.
+\[
+\mu_U = -2.25 \text{ and } \sigma_U = \sqrt{0.49^2 + 4* 0.49^2} = 1.0957
+\]
+Hence, $P(U>0) = P(Z>2.05) = 0.0202$
+\pagebreak
+\section*{9.}
+The possibility that any person achieves more than 80\% is 
+\[
+\int_{0.8}^1 12y^2(1-y) dy = \left.\left(4y^3-3y^4\right)\right|_{0.8}^1 = 0.1808
+\]
+and hence the possibility that at least three of them achieve more than 80\% is 
+\[
+1- 
+\begin{pmatrix}
+    10 \\ 0    
+\end{pmatrix}
+0.1808^0 \cdot (1-0.1808)^{10}
+-
+\begin{pmatrix}
+    10 \\ 1    
+\end{pmatrix}
+0.1808^1 \cdot (1-0.1808)^9
+-
+\begin{pmatrix}
+    10 \\ 2    
+\end{pmatrix}
+0.1808^2 \cdot (1-0.1808)^8
+= 0.26513
+\]
+\pagebreak
+\section*{10.}
+Median of $Y$ is 8, that means that 
+\[
+P(Y>8) = P(Y<8) = 0.5
+\]
+Hence, 
+\[
+\int_8^\infty \frac{1}{\beta} e^{\frac{-y}{\beta}} dy = \left.-e^{\frac{-y}{\beta}}\right|_0^8 = 1 - e^{\frac{-8}{\beta}} = 0.5 \implies \beta = \frac{8}{\ln2}
+\]
+\[
+P(a<Y<2a) = e^{\frac{-a}{\beta}} - e^{\frac{-2a}{\beta}} = 0.16 \implies e^{\frac{-a}{\beta}} \in \{0.2, 0.8\} \implies a \in \{ 2.5754, 18.5754\}
+\]
+\pagebreak
+\section*{11.}
+We have the relationship between $B$(bonus) and $H$(hour segment) is 
+\[
+B = 1000 - 100H
+\]
+Also,
+\[
+P_H(h) = P_Y(h<Y<h+1) = e^{\frac{-h}{6}} - e^{\frac{-h-1}{6}}
+\]
+Hence, 
+\[
+E[H] = (1-e^{\frac{-1}{6}})\sum_{h=0}^\infty he^{\frac{-h}{6}} = \cfrac{e^{\frac{-1}{6}}}{1-e^{\frac{-1}{6}}} = 5.51388
+\]
+and 
+\[
+E[H^2] = (1-e^{\frac{-1}{6}})\sum_{h=0}^\infty \left(h^2e^{\frac{-h}{6}} \right) = \frac{e^{\frac{-2}{6}} + e^{\frac{-1}{6}}}{\left(1-e^\frac{-1}{6}\right)^2} = 66.31968
+\]
+Therefore, 
+\[
+  E[B] = 1000 - 100\cdot E[B] = 448.6118
+\]
+\[
+  V[B] = E[B^2] - (E[B])^2 = E[1000000 - 200000H + 10000H^2] -448.6118^2 = 359168.253
+\]
+\pagebreak
+\section*{12.}
+Probability that any claim is less than 4k is 
+\[
+\int_0^{4000} \frac{1}{5000}e^{\frac{-y}{5000}}dy = 1- e^{-0.8} = 0.5507
+\]
+Sum of 2 identical exponentially distributed, hence it is a gamma distribution. 
+Probability that any 2 claim has a total less than 4k is 
+\[
+    \int_0^{4000} \frac{1}{\Gamma(2) 5000^2} t^1 e^{\frac{-t}{5000}} dt = 0.1912
+\]
+Hence, the possibility that a person claim less than 4k is 
+\[
+0.1912 \cdot 0.1 + 0.5507 \cdot 0.25 + 0.65 = 0.806795  
+\]
+\end{document}

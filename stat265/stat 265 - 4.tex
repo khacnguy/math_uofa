@@ -1,0 +1,220 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+\subsection*{a.}
+Since the time to wrap 1 present follows an exponential distribution with a mean of 5 minutes,
+the time to wrap 4 presents follow an gamma distribution with a mean of 20 and . \\
+Therefore, the probability that 4 presents are wrapped in less than 15 minutes is
+\[
+\int_0^{15} \frac{1}{\Gamma(4)5^4}y^3e^{-\frac{y}{5}}dy = 0.35276811121
+\]
+\subsection*{b.}
+We have that the probability that 1 present is wrapped in under 3 minutes is
+\[
+\int_0^3 \frac{1}{5}e^{-\frac{y}{5}} dy = 0.4511883639059736
+\]
+Hence the probability that none of the three presents is wrapped under 3 minutes, 
+    which is also the probability that the fastest present in over 3 minutes is
+\[
+    (1-0.4511883639059736)^3 = 0.16529888822
+\]
+    and hence the probability that the present wrapped fastest is under 3 minutes is
+\[
+    1 - 0.16529888822 = 0.83470111177
+\]
+\pagebreak
+\section*{2.}
+\subsection*{a.}
+We have that $X-Y< 1.5 \iff X < 1.5 +Y$. Therefore, 
+\[
+    P(X-Y<1.5) = \int_0^1 \int_0^{1.5 + y} \frac{1}{4}dx dy = 0.5    
+\]
+\subsection*{b.}
+We have that $XY < 2 \iff X < \cfrac{2}{Y}$. As $0<X<4$, we only need to consider $0.5<Y<1$. Therefore, 
+\[
+    P(XY < 2) = \int_0^{0.5} \int_0^4 \frac{1}{4} dxdy + \int_{0.5}^1 \int_0^{2/Y} \frac{1}{4} dx dy = 0.84657
+\]
+\pagebreak
+\section*{3.}
+\subsection*{a.}
+We have that
+\[
+\int_{-2}^2 \int_{x^2}^4 c dy dx = \cfrac{32c}{3} = 1 \iff c = \cfrac{3}{32}    
+\]
+\subsection*{b.}
+$x^2 < 2 - x \iff x^2+x-2=(x-1)(x+2) < 0 \iff -2<x<1$.
+\[
+    P(Y<2-X) = \int_{-2}^1 \int_{x^2}^{2-x} \cfrac{3}{32} dy dx = \cfrac{27}{64}
+\]
+\subsection*{c.}
+Since $y= 2.25$, we have that $x^2<y \iff x^2 < 2.25 \iff -1.5 < x < 1.5$. Therefore, as it is uniformly distributed 
+\begin{equation*}
+    \begin{aligned}
+        P(X<1 | Y = 2.25) &= \cfrac{P((X<1) \cap (-1.5 < X < 1.5), Y=2.25)}{P(-1.5 < X < 1.5,Y=2.25)} \\
+        &= \frac{1 - (-1.5)}{1.5-(-1.5)}  \\
+        &= \frac{5}{6}
+    \end{aligned}
+\end{equation*}
+\subsection*{d.}
+We have
+\[
+    f_X(x) = \int_{x^2}^4 \cfrac{3}{32} dy = \cfrac{12-3x^2}{32}
+\]
+and
+\[
+    f_Y(y) = \int_{-2}^2 \cfrac{3}{32} dx = \cfrac{3}{8}    
+\]
+Hence, $X$ and $Y$ are not independent as 
+\[
+    f_X(x) \cdot f_Y(y) = \cfrac{36-9x^2}{256} \ne f(x,y)    
+\]
+\pagebreak
+\section*{4.}
+\subsection*{a.}
+We have
+\[
+    E[XY] = \int_0^2 \int_0^3 \cfrac{(x+y)}{15} \cdot xy dy dx = 2
+\]
+\[
+    E[X] = \int_0^2 \int_0^3 \cfrac{(x+y)}{15} \cdot x dy dx = \cfrac{17}{15}
+\]
+\[
+    E[Y] = \int_0^2 \int_0^3 \cfrac{(x+y)}{15} \cdot y dy dx = \cfrac{9}{5}
+\]
+Hence, 
+\[
+    \text{Cov}(X,Y) = 2 - \frac{9}{5} \cdot \frac{17}{15} = - \frac{1}{25}
+\]
+\subsection*{b.}
+We have that $f(1.5, y) = \cfrac{y}{15} + \cfrac{1}{10}$. Therefore, 
+\[
+    P(X=1.5) = \int_0^3 \frac{1.5 + y}{15} dy = 0.6
+\]
+\[
+    E[Y | X = 1.5] = \cfrac{\int_0^3 \cfrac{(1.5+y)}{15} \cdot y dy}{0.6} = \frac{1.05}{0.6} = \frac{7}{4}
+\]
+\[
+    E[Y^2 | X = 1.5] = \cfrac{\int_0^3 \cfrac{(1.5+y)}{15} \cdot y^2 dy}{0.6} = \frac{2.25}{0.6} = \frac{15}{4}  
+\]
+And hence, 
+\[
+    V[Y | X = 1.5] = \frac{15}{4} - \left(\frac{7}{4} \right)^2 = \frac{11}{16} 
+\]
+\pagebreak
+\section*{5.}
+We have that 
+\[
+    f_X(x) = \frac{1}{4\pi}e^{-\frac{1}{8}(x^2-2x+1)} \int_0^\infty \sqrt{y} e^{-\frac{y}{2}}dy 
+    = \frac{\sqrt{2\pi}}{4\pi}e^{-\frac{1}{8}(x^2-2x+1)}     
+\]
+\[
+    f_Y(y) = \frac{\sqrt{y}}{4\pi}e^{-\frac{y}{2}} \int_{-\infty}^\infty e^{-\frac{(x-1)^2}{8}} dx 
+    = \frac{\sqrt{2y\pi}}{2\pi}e^{-\frac{y}{2}     
+\]
+and hence
+\[
+    f(x,y) = f_X(x) \cdot f_Y(y)    
+\]
+which means that $X$ and $Y$ is independent, therefore, we can see that $X$ follows the normal distribution
+with a mean of 1 and variance of 2 and $Y$ follows the chi-square distribution with a mean of $3$ and variance of $6$.
+We have that 
+Therefore, 
+\[
+    V[3X-5Y+100] = 9 \cdot 2^2 + 25 \cdot 6  = 186      
+\]
+\pagebreak
+\section*{6.}
+For $y\ge 4$:
+\[
+    f_Y(y) = \int_0^{8-y} \cfrac{3}{128}(8-x-y) dx = \frac{3\left(y^2-16y+64\right)}{256}
+\]
+For $y<4$:
+\[
+    f_Y(y) = \int_0^{y} \cfrac{3}{128}(8-x-y) dx = \frac{3\left(16y-3y^2\right)}{256}
+\]
+\pagebreak
+\section*{7.}
+\subsection*{a.}
+We have that $X$ follows an exponential distribution with a mean of 1.75 (thousands of dollars).
+Which means that $f_X(x) = \cfrac{1}{1.75}e^{-x/1.75}$. 
+And hence since $y$ is uniformly distributed over the range $x$ to $2.25x$, we have that
+\[
+    f(x,y) = 
+    \begin{cases}
+        \cfrac{1}{1.75 \cdot 1.25 x}e^{-x/1.75} \indent , \indent 0<x<y<2.25x \\
+        0 \indent , \indent \text{else}
+    \end{cases}    
+\]
+and therefore,
+\[
+    E[X+Y] = \int_0^\infty \int_x^{2.25x} (x+y) \cdot \cfrac{e^{-x/1.75}}{2.1875x} dy dx = 4.59375
+\]
+\subsection*{b.}
+Given that $x>0$, we have that 
+\[x^2 < x \iff x < 1\] 
+\[x < x^2 < 2.25x \iff 1 < x < 2.25\] 
+\[x^2 > 2.25x \iff x > 2.25\]
+Therefore, we can partition 
+\begin{equation*}
+    \begin{aligned}
+        P(Y > X^2) 
+        &= \int_0^1 \int_x^{2.25x} \cfrac{1}{1.75 \cdot 1.25 x}e^{-x/1.75} dy dx \\
+        &+ \int_1^{2.25} \int_x^{x^2} \cfrac{1}{1.75 \cdot 1.25 x}e^{-x/1.75} dy dx  + 0 \\
+        &= 0.43528 + 0.16114 = 0.59642
+    \end{aligned}
+\end{equation*}
+\pagebreak
+\section*{8.}
+We have that 
+\[
+    f_X(x) = \int_x^\infty \cfrac{1}{16}e^{-y/4} dy = \frac{1}{4}e^{-\frac{x}{4}}
+\]
+Therefore, 
+\begin{equation*}
+    \begin{aligned}    
+        P(6<Y<9 | X>3) 
+        &= \cfrac{P(6<Y<9, X>3)}{P(X>3)} \\
+        &= \cfrac{\displaystyle\int_6^9 \int_3^y \cfrac{1}{16}e^{-y/4} dx dy}{\displaystyle\int_3^\infty \frac{1}{4}e^{-\frac{x}{4}} dx} \\
+        &= \cfrac{0.12697}{0.47236} = 0.2688
+    \end{aligned}
+\end{equation*}
+\pagebreak
+\section*{9.}
+We have that 
+\[
+    E[Y|X] = \frac{2}{x}    
+\]
+and 
+\[
+    V[Y|X] = \frac{1-p}{p^2} = \frac{4-2x}{x^2}   
+\]
+Therefore,
+\begin{equation*}
+    \begin{aligned}
+        V[Y] 
+        &= E[V[Y|X]] + V[E[Y|X]] \\
+        &= \int_0^2 \frac{4-2x}{x^2} \cdot \frac{5x^4}{32} dx 
+        + \int_0^2 \frac{4}{x^2} \cdot \frac{5x^4}{32} dx 
+        - \left(\int_0^2 \frac{2}{x} \cdot \frac{5x^4}{32} dx \right)^2 \\
+        &= \frac{5}{12} + \frac{5}{3} - \frac{25}{16} = \frac{25}{48} 
+    \end{aligned}
+\end{equation*}
+    
+\end{document}
