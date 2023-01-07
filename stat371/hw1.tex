@@ -1,0 +1,60 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+\begin{equation*}
+    \begin{aligned}
+        \int_{-\infty}^\infty (x^2-x)1_{[0,a]}(x)dx 
+        &= \int_0^a (x^2-x)dx \\
+        &= \left.\left(\frac{x^3}{3} - \frac{x^2}{2}\right)\right|_0^a \\
+        &= \frac{a^3}{3} - \frac{a^2}{2} = 0 \\
+        \implies &a= \frac{3}{2}
+    \end{aligned}
+\end{equation*}
+\pagebreak
+\section*{2.}
+\begin{equation*}
+    \begin{aligned}
+        \iint_R xy dx dy &= \int_0^1 \int_0^{x^2} xy dy dx \\
+        &= \int_0^1 x \cdot \left.\frac{y^2}{2} \right|^{x^2}_{y=0} dx \\
+        &= \int_0^1 \frac{x^5}{2} \\
+        &= \left.\frac{x^6}{12} \right|_0^1 \\
+        &= \frac{1}{12}
+    \end{aligned}
+\end{equation*}
+\pagebreak
+\section*{3.}
+Since $0\le 0 < \lambda \le \lambda$, we have that
+\[
+    P([0,\lambda]) = e^\lambda - e^0 = e^\lambda - 1 = 1
+\]
+and hence
+\[
+    e^\lambda = 1 \implies \lambda = \ln2    
+\]
+\pagebreak
+\section*{4.}
+\begin{equation*}
+    \begin{aligned}
+        P((-2,-1) \cup (1,2]) &= F(-1) - F(-2) + F(2) - F(1) \\
+        &= 0.202
+    \end{aligned}
+\end{equation*}
+\end{document}
