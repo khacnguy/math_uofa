@@ -1,0 +1,131 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+From definition, we have that
+\[
+    P(Y>y) = \int_y^\infty f_Y(x) dx 
+\]
+and
+\[
+    P(Y>y) = \int_{-\infty}^y f_Y(x) dx 
+\]
+Therefore, 
+\begin{equation*}
+    \begin{aligned}
+        E[Y] 
+        &= \int_0^\infty P(Y>y) dy - \int_{-\infty}^0 P(Y<y) dy \\
+        &= \int_0^\infty \int_y^{\infty} f_Y(x) dxdy - \int_{-\infty}^0 \int_{-\infty}^y f_Y(x) dxdy \\
+        &= \int_0^\infty \int_0^x f_Y(x) dydx - \int_{-\infty}^0 \int_{-x}^0 f_Y(x) dydx \\
+        &= \int_0^\infty yf_Y(x)|^x_{y=0} dx - \int_{-\infty}^0 yf_Y(x)|^0_{y=-x} dx \\
+        &= \int_0^\infty xf_Y(x) dx + \int_{-\infty}^0 xf_Y(x) dx\\
+        &= \int_0^\infty yf_Y(y) dy + \int_{-\infty}^0 yf_Y(y) dy
+    \end{aligned}
+\end{equation*}
+\pagebreak
+\section*{2.}
+\[
+    f_Y(y) = \int_0^1 \frac{x^y}{\ln2} dx = \frac{1}{(y+1)\ln2} 
+\]
+\[
+    f_X(x) = \int_0^1 \frac{x^y}{\ln2} dy =  \frac{x-1}{\ln x \ln2}    
+\]
+Hence, 
+\[
+    f_{XY}(x,y) \ne f_Y(y) \cdot f_X(x)     
+\]
+and hence they are independent
+\begin{equation*}
+    \begin{aligned}
+        E[XY] 
+        &= \int_0^1 \int_0^1 \frac{yx^{y+1}}{\ln2} dx dy  \\
+        &= \int_0^1 \frac{y}{(y+2)\ln2}dy \\
+        &= \frac{1}{\ln2} (y-2\ln(y+2))|^1_0 \\
+        &= \frac{1-2\ln3 + 2\ln2}{\ln2} \\
+        &\equiv 0.273
+    \end{aligned}
+\end{equation*}
+\pagebreak
+\section*{3.}
+\[
+    \int_0^{0.5} 0.25 \cdot e^{-0.25t} dt = 0.1175 \implies 11.75\%
+\]
+\pagebreak
+\section*{4.}
+\subsection*{a.}
+Suppose the location of the fire station is $x$, then the expected distance is 
+\begin{equation*}
+    \begin{aligned}
+        \int_0^A \frac{1}{A} |x-y| dy 
+        &= \frac{1}{A} \left(\int_0^x (x-y) dy + \int_x^A (y-x) dy \right) \\
+        &= \frac{1}{A} \left( x^2 - \frac{x^2}{2} + \frac{A^2}{2} -\frac{x^2}{2} - Ax +x^2\right) \\
+        &= \frac{1}{A} \left( x^2 -Ax + \frac{A^2}{2} \right) \\
+        &= \frac{1}{A} \left( \left(x-\frac{A}{2}\right)^2 + \frac{A^2}{4}\right)            
+    \end{aligned}
+\end{equation*}
+Therefore, the optimal location is at $\frac{A}{2}$.
+\subsection*{b.}
+Similarly, the expected distance is 
+\[ 
+    \int_0^{A/2} \frac{1}{A} |x-y| dy + \int_{5A/8}^A \frac{1}{A} |x-y| dy 
+\]
+Here, we consider two cases, the first cases is the fire station is located between $0$ and $A/2$, 
+the second case is the fire station is located between $5A/8$ and $A$. 
+In the first case, the expceted distance is 
+\begin{equation*}
+    \begin{aligned}
+        &\frac{1}{A} \left( \int_0^x (x-y) dy + \int_x^{A/2} (y-x) dy + \int_{5A/8}^A (y-x) dy \right) \\
+        =&\frac{1}{A} \left( x^2-\frac{x^2}{2} + \frac{A^2}{8} - \frac{x^2}{2} - \frac{Ax}{2} + x^2 + \frac{A^2}{2} - \frac{25A^2}{128} -Ax +\frac{5Ax}{8}\right) \\
+        =& \frac{1}{A} \left( x^2 - \frac{7Ax}{8} + \frac{55A^2}{128} \right) \\   
+        =& \frac{1}{A} \left(\frac{61A^2}{256} + \frac{1}{256}(7 A - 16 x)^2 \right)
+    \end{aligned}
+\end{equation*}
+Therefore, the optimal location in the interval between $0$ and $A/2$ is $7A/16$ with the expected value being $\frac{61A}{256}$. \\
+In the second case, the expected distance is
+\begin{equation*}
+    \begin{aligned}
+        &\frac{1}{A} \left( \int_0^{A/2} (x-y) dy + \int_{5A/8}^{x} (x-y) dy + \int_x^A (y-x) dy \right) \\
+        =&\frac{1}{A} \left(\frac{Ax}{2} - \frac{A^2}{8} + x^2 - \frac{5Ax}{8} -\frac{x^2}{2} + \frac{25A^2}{128} + \frac{A^2}{2} - \frac{x^2}{2} -Ax + x^2 \right) \\  
+        =& \frac{1}{A}\left( \frac{73 A^2}{128} - \frac{9A x}{8} + x^2 \right) \\
+        =& \frac{1}{A} \left(\frac{65A^2}{256}+ \frac{1}{256}(9A - 16x)^2 \right)
+    \end{aligned}
+\end{equation*}
+Hence, the optimal location in the interval between $5A/8$ and $A$ is at $A$ or $5A/8$ as $9/16A < 5A/8$. \\
+If the fire station location is $A$, then the expected distance is $57A/128$. \\
+If the fire station location is $5A/8$, then the expected distance is $33A/128$. \\
+Therefore, the best location for the fire station is at $A/2$.
+\subsection*{c.}
+The expected distance is 
+\begin{equation*}
+    \begin{aligned}
+        \int_0^\infty |x-y| \cdot \lambda e^{-\lambda y}dy  
+        &= \int_0^x (x-y) \lambda e^{-\lambda y} dy  + \int_x^\infty (y-x) \lambda e^{-\lambda y} dy \\
+        &= -xe^{-\lambda y} |^x_0+ \int_0^x -y\lambda e^{-\lambda y} dy  + xe^{-\lambda y}|^\infty_x  + \int_x^\infty y\lambda e^{-\lambda y} dy\\
+        &=  -2xe^{-\lambda x} + x +  \int_0^x -y\lambda e^{-\lambda y} dy  + \int_x^\infty y\lambda e^{-\lambda y} dy\\
+        &= -2xe^{-\lambda x} + x - \left.\left(-y \cdot e^{-\lambda y}\right)\right|_0^x + \left.\left(-y \cdot e^{-\lambda y}\right)\right|_x^\infty - \int_0^x e^{-\lambda y} dy + \int_x^\infty e^{-\lambda y} dy \\
+        &=  x + \frac{e^{-\lambda x}-1}{\lambda} + \frac{e^{-\lambda x}}{\lambda} \\ 
+        &=  \frac{\lambda x+2e^{-\lambda x}-1}{\lambda}
+    \end{aligned}
+\end{equation*}
+Consider $f(x) = \lambda x + 2e^{-\lambda x} - 1$ \\
+$f'(x) = \lambda - 2 \lambda e^{-\lambda x} = 0 \iff e^{-\lambda x}= 1/2 \iff x = \frac{\ln2}{\lambda}$. \\
+We also have that $f''(x) = 2 \lambda^2 e^{-\lambda x} \ge 0 \indent \forall x \ge 0$. \\
+Hence, $f$ reaches its global minimum at $x = \frac{\ln2}{\lambda}$ and therefore the best place to place the fire station is at $\frac{\ln 2}{\lambda}$
+\end{document}

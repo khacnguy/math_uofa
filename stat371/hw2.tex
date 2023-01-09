@@ -1,0 +1,65 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+\begin{equation*}
+    \begin{aligned}
+        \int_0^\infty yf(y) dy 
+        &= \int_0^\infty y^2e^{-y} \\
+        &= \left.y^2e^{-y} \right|^\infty_0 + \int_0^\infty 2ye^y dy \\
+        &= 0 - \left.ye^{-y}\right|^\infty_0 + 2\int_0^\infty e^{-y}dy \\
+        &= 2\left(-e^{-y}|_0^\infty\right) = 2
+    \end{aligned}
+\end{equation*}
+\pagebreak
+\section*{2.}
+Let the function $g$ be the indicator function $1_{\left(\frac{1}{4}, \frac{9}{16}\right)}$.
+Then we have that 
+\begin{equation*}
+    \begin{aligned}
+        P\left(\frac{1}{2} < X < \frac{3}{4}\right) &= E[g(X)] \\
+        &= \int_{0}^{1}\left(1_{\frac{1}{4}<x^{2}<\frac{9}{16}}\right)dx \\ 
+        &=\int_{\frac{1}{2}}^{\frac{3}{4}}1 dx \\
+        &= x|_\frac{1}{2}^\frac{3}{4} \\
+        &= \frac{1}{4}
+    \end{aligned}
+\end{equation*}
+\pagebreak
+\section*{3.}
+We have that
+\begin{equation*}
+    \begin{aligned}
+        0.8*50000 
+        &= \int_D^{100000} (x-D) \cdot \frac{1}{100000} dx \\
+        &= \left(50000 - D + \frac{D^2}{200000}\right)
+    \end{aligned}
+\end{equation*}
+Hence,  we have that $D \approxeq 10557.281$
+\pagebreak
+\section*{4.}
+Since $\lim_{y\to 0.5^-} F_Y(y) = 0.5$ and $\lim_{y\to 0.5^+} F_Y(y) = 1$. \\ 
+We have that $P(Y=0.5) = 1-0.5 = 0.5$
+Therefore, 
+\[
+    E[Y] = \int_0^{0.5} (y)' \cdot y dy + \frac{1}{2} \cdot \frac{1}{2} 
+    = \left.\frac{y^2}{2} \right|_0^{0.5} + \frac{1}{4} 
+    = \frac{3}{8}
+\]
+\end{document}

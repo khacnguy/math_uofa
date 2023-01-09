@@ -1,0 +1,82 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+\begin{equation*}
+    \begin{aligned}
+        &P(T \in (-4,-2] \cup (-3,1) \cup [4,5) \cup [4.5,6)) \\
+        =&\int_0^1  e^{-t} dt +\int_4^5 e^{-t} dt+  \int_{4.5}^6 e^{-t} dt \\
+        =& 0.652
+    \end{aligned}
+\end{equation*}
+\pagebreak
+\section*{2.}
+\subsection*{a.}
+Let $Y$ be the total time and $X$ be the amount of times we have to wait. Then we have that
+\[
+    E[Y] = E[E[Y|X]] = E\left[x \cdot \frac{1-0}{2}\right] = \frac{1}{2} E[X] 
+    = \frac{1}{2} \cdot \frac{1}{\frac{1}{6}} = 3
+\]
+\subsection*{b.}
+\[
+    V[Y|X] = x \cdot \frac{1-0}{12} = \frac{x}{12}
+\]
+\[
+    V[X] = \frac{1-\frac{1}{6}}{\frac{1}{6^2}} = 30 
+\]
+\[
+    V[Y] = E[V[Y|X]] + V[E[Y|X]] = E[\frac{x}{12}] + V[0.5x] = \frac{1}{12} \cdot 6 + 0.25 \cdot 30 = 8    
+\]
+\pagebreak
+\section*{3.}
+\subsection*{a.}
+As $\int 2z-2 dz = z^2 - 2z + C$, $C = 1$ so that $F_Z(1) = 0$ and $F_Z(2) = 1$. Hence,  we have
+\[
+    F_Z(z) = 
+    \begin{cases}
+        0 \indent & z<1 \\
+        z^2-2z+1 \indent &1 \le z \le 2 \\
+        1 \indent &z>2
+    \end{cases}    
+\]
+\subsection*{b.}
+Let $U(z)$ be the uniform random variable between 0 and 1 and 
+$V(z)$ be a function such that $U(z) = F_Z(V(z))$. Then 
+\begin{equation*}
+    \begin{aligned}
+        V(z) 
+        &= F^{-1}_Z(U(z)) \\
+        &=  
+    \end{aligned}
+\end{equation*}
+\pagebreak
+\section*{4.}
+The inverse function that maps $\cfrac{e^{x^3}}{e^{x^3} + e^{-x^3}}$ to $x$. \\
+We also have that 
+\[
+    \cfrac{e^{x^3}}{e^{x^3} + e^{x^{-3}}} = \cfrac{1}{1 + e^{-2x^3}}
+\]
+and hence 
+\[
+    \sqrt[3]{-\frac{1}{2}\ln\left(\cfrac{1}{\cfrac{e^{x^3}}{e^{x^3} + e^{-x^3}}}-1\right)} = x    
+\]
+which means that $F^{-1}_X$ is the function that maps $x$ to $\sqrt[3]{-\frac{1}{2}ln(\frac{1}{x}-1)}$ 
+\subsection*{b.}
+\end{document}
