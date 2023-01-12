@@ -135,6 +135,8 @@ As $y>0$, we have that $v>0$ and hence
 \]
 \pagebreak
 \section*{7.}
+\subsection*{a.}
+For $0<\cfrac{u-v}{2}<y, x<\cfrac{u+v}{2}<1 \iff 2>u>v>0, u<2-v, v<1$.
 \[
     x = h_1^{-1}(u,v) = \frac{u-v}{2}, \indent y = h_2^{-1}(u,v) = \frac{u+v}{2}    
 \]
@@ -155,5 +157,45 @@ As $y>0$, we have that $v>0$ and hence
 \[
     f_{U,V}(u,v) = f_{X,Y}\left( \frac{u-v}{2}, \frac{u+v}{2}\right) \cdot \frac{1}{2} 
     = 6 \cdot \frac{u-v}{2} \cdot \frac{1}{2} = \frac{3(u-v)}{2}     
+\]
+\subsection*{b.}
+For $0<u<1$
+\[
+    f_U(u) =  \int_0^{u} \frac{3(u-v)}{2} dv
+\]
+For $1<u<2$
+\[
+    f_U(u) =  \int_0^{2-u} \frac{3(u-v)}{2} dv
+\]
+\[
+    f_V(v) = \int_u^{2-v} \frac{3(u-v)}{2} du =
+\]
+\pagebreak
+\section*{8.}
+\[
+    x = h_1^{-1}(u,v) = \frac{uv}{u-1}, \indent y = h_2^{-1}(u,v) = \frac{v}{u-1}
+\]
+For $0<\cfrac{uv}{u-1}<2, 0<\cfrac{v}{u-1}<3$ 
+\[
+    \det 
+    \begin{vmatrix}
+        \cfrac{\partial h_1^{-1}}{\partial u} & \cfrac{\partial h_1^{-1}}{\partial v} \\
+        \cfrac{\partial h_2^{-1}}{\partial u} & \cfrac{\partial h_2^{-1}}{\partial v}
+    \end{vmatrix}    
+    = 
+    \det 
+    \begin{vmatrix}
+        \cfrac{v}{1-u} & \cfrac{u}{u-1} \\
+        \cfrac{-v}{(u-1)^2} & \cfrac{1}{u-1} 
+    \end{vmatrix}
+    = \cfrac{v}{(u-1)^3}
+\]
+If $u>1$ then for $v<\cfrac{2u-2}{u}, v < 3u-3, v>0$ 
+\[
+    f_{U,V}(u,v) = f_{X,Y}\left(\frac{uv}{u-1}, \frac{v}{u-1}\right) \cdot \frac{v}{(u-1)^3} = \frac{v}{6(u-1)^3}
+\]
+If $0<u<1$ then for $v>\cfrac{2u-2}{u}, v>3u-3, v<0$
+\[
+    f_{U,V}(u,v) = f_{X,Y}\left(\frac{uv}{u-1}, \frac{v}{u-1}\right) \cdot \frac{v}{(u-1)^3} = \frac{v}{6(u-1)^3}
 \]
 \end{document}
