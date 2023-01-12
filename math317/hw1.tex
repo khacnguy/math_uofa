@@ -1,0 +1,111 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+\subsection*{a.}
+Let $x, y \in U$ such that $f(x) = f(y)$ and $\xi =  y-x$. 
+From the Taylor's theorem and the fact that $x+\theta \xi$ is in the convex set $U$ for $\theta \in [0,1]$, we have that for each $j= 1,\ldots, N$, there exists a number $\theta_j \in [0,1]$ such that
+\[
+    f_j(y) = f_j(x+\xi) = f_j(x) + \sum_{k=1}^N \frac{\partial f_j}{\partial x_k}(x+\theta_j \xi)\xi_k = f_j(x)   
+\]
+It follows that 
+\[
+    \sum_{k=1}^N \frac{\partial f_j}{\partial x_k}(x+\theta_j \xi)\xi_k = 0
+\]
+for $j = 1, \ldots, N$. Let 
+\[
+    A:=
+    \begin{bmatrix}
+        \frac{\partial f_1}{\partial x_1}(x+\theta_1 \xi) & \hdots &\frac{\partial f_1}{\partial x_N}(x+\theta_1 \xi) \\
+        \vdots & \ddots & \vdots \\
+        \frac{\partial f_N}{\partial x_1}(x+\theta_N \xi) & \hdots &\frac{\partial f_1}{\partial x_N}(x+\theta_N \xi)
+    \end{bmatrix}    
+\]
+so that $A\xi = 0$. However, since the points in the set $\{x + \theta\xi | \theta \in [0,1]\}$ are collinear points.
+We have that $\det(A) \ne 0$ and therefore $\xi=0$ which  means that $x=y$.
+\subsection*{b.}
+For any $(x_1,y_1), (x_2, y_2) \in \mathbb{R}^2$, we have that
+\[
+    \det 
+    \begin{bmatrix}
+        \cfrac{\partial f_1}{\partial x_1}(x_1,y_1) & \cfrac{\partial f_1}{\partial x_2}(x_1,y_1)  \\
+        \cfrac{\partial f_2}{\partial x_1}(x_1,y_1) & \cfrac{\partial f_2}{\partial x_2}(x_1,y_1)  
+    \end{bmatrix}   
+    = \det 
+    \begin{bmatrix}
+        3x_1^2 & -1 \\
+        e^{x_1+y_1} & e^{x_2+y_2}  
+    \end{bmatrix}
+    = 3x_1^2 \cdot e^{x_2+y_2} + e^{x_1 + y_1}
+\]
+which is $>0$ for all $(x_1,y_1), (x_2, y_2)$ and hence $f$ is injective.
+\pagebreak
+\section*{2.}
+\subsection*{a.}
+\begin{equation*}
+    \begin{aligned}
+        J_f(x,y) &= 
+        \begin{bmatrix}
+            \cfrac{\sqrt{x^2+y^2} - x \cdot \cfrac{2x}{2\sqrt{x^2+y^2}}}{x^2+y^2} & \cfrac{-2xy}{x^2+y^2}\\
+            \cfrac{-2xy}{x^2+y^2} & \cfrac{\sqrt{x^2+y^2} - y \cdot \cfrac{2y}{2\sqrt{x^2+y^2}}}{x^2+y^2}
+        \end{bmatrix}  \\
+        &=  
+        \begin{bmatrix}
+            \cfrac{y^2}{(x^2+y^2)^{3/2}} & \cfrac{-2xy}{x^2+y^2} \\
+            \cfrac{-2xy}{x^2+y^2} & \cfrac{x^2}{(x^2+y^2)^{3/2}}
+        \end{bmatrix} 
+    \end{aligned}
+\end{equation*}
+\subsection*{b.}
+For all $(x,y)$, we have that 
+\[
+    |f(x,y)| = \sqrt{\frac{x^2}{x^2 + y^2} + \frac{y^2}{x^2 + y^2}} = 1    
+\]
+Therefore, $f(U)$ is the circle around the origin with radius 1. It does not contain any non-empty open 
+subset as for all point $(x,y) \in f(U): \forall \epsilon >0: (x+\epsilon, y) \notin f(U)$
+\pagebreak
+\section*{3.}
+Consider 
+\[
+    f: \mathbb{R} \to \mathbb{R}, \indent x \to x^3
+\]
+Then $f \in \mathcal{C}^1(U,\mathbb{R}^N)$ where $U = \mathbb{R}$ and $N=1$. \\
+$\det J_f(0) = 0$ but every neighborhood $(-\epsilon , \epsilon)$ is mapped to $(-\epsilon^3, \epsilon^3)$ which is open. 
+\pagebreak
+\section*{4.}
+\subsection*{a.}
+Consider the function 
+\[
+    h: \mathbb{R}^N \to \mathbb{R}, \indent x \to |x|    
+\]
+It is obvious that for each $j=1, \ldots ,N$, $\cfrac{\partial h}{\partial x_j}(x) = \cfrac{x_j}{|x|}$. \\
+If there is a local maximum at $x_0 \ne (0,\ldots, 0)$, then applying the chain rule, we have that for each $j = 1, \ldots ,N$
+\[
+    0 = \frac{\partial g}{\partial x_j}(x_0) = 
+    \frac{\partial (h \circ f)}{\partial x_j}(x_0) = \frac{\partial h}{\partial x_j}(f(x_0)) 
+    \cdot \underbrace{\frac{\partial f}{\partial x_j}(x_0)}_{\ne 0}
+\]
+and hence $f(x_0) = (0,\ldots ,0)$, which is a contradiction. At $f(x_0) = (0,\ldots,0)$, 
+$g(x_0)= h(f(x_0))=0$ and hence it is clearly the global minimum. Therefore, there is no local maximum.  
+\subsection*{b.}
+Since $\overline{U}$ is compact $g(\overline{U})$ is also compact and hence $g(\overline{U})$ must attain its maximum. \\
+Since $\tilde{f}$ does not attain its local maximum and hence global maximum on $\text{int}$ $\overline{U}$, 
+the global maximum must be attained on the boundary $\partial U = \partial \overline{U}$.  
+\end{document}
