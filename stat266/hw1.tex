@@ -21,7 +21,7 @@
 \section*{1.}
 \subsection*{a.}
 \[
-    f_Y(y) = \int_0^2 \frac{1}{6}dx = \frac{1}{3}    
+    f_Y(y) = \int_0^2 \frac{1}{6}dx = \frac{1}{3} 
 \]
 Since $0<y<3$, $2<y^2 +2<11$, and hence if $u\le 2, F_U(u) = 0$ and if $u \ge 11, F_U(u) = 1$. For $2<u<11$, we have that
 \begin{equation*}
@@ -36,25 +36,33 @@ Since $0<x<2, 0<y<3, -3<x-y<2$. Therefore, if $v \le -3, F_V(v) = 0$ and if $v\g
 For $-3<v<2$, we have that
 \begin{equation*}
     \begin{aligned}
-        F_V(v) &= P(V \le v) = P(X-Y\le v) \\
-        &= P(Y\ge v+X)         
+        F_V(v) &= P(V \le v) = P(X-Y\le v) \\ 
+        &= P(Y\ge -v+X)         
     \end{aligned}
 \end{equation*}
-For $0<v<2$,
+For $-3<v<-1$,
 \begin{equation*}
     \begin{aligned}
-        F_V(v) &= 1-\int_0^{2-v} \int_{v+x}^{2} \frac{1}{6} dxdy \\
-        &= 1- \int_0^{2-v} \frac{2-v-x}{6} dy = 1- \left(\frac{(2-v)^2}{6} - \frac{(2-v)^2}{12}\right) \\
-        &= 1- \frac{(2-v)^2}{12} \\
+        F_V(v) &= \int_{-v}^3 \int_{0}^{y+v} \frac{1}{6} dxdy \\
+        &= \int_{-v}^3 \frac{y+v}{6} dy = \frac{9}{12} + \frac{3v}{6} -\frac{v^2}{12} + \frac{v^2}{6} \\
+        &= \frac{(3+v)^2}{12} \\
     \end{aligned}
 \end{equation*}
-For $-3<v<0$, 
+For $0<v<2$, 
 \begin{equation*}
     \begin{aligned}
-        F_V(v) &= \int_{-v}^3 \int_0^{v+x} \frac{1}{6} dx dy \\
-        &= \int_{-v}^3 \frac{1}{6}(v+x) dx \\
-        &= \frac{3v+v^2}{6} + \frac{9-v^2}{12} \\
-        &= \frac{(v+3)^2}{12}
+        F_V(v) &= 1- \int_v^2 \int_0^{-v+x} \frac{1}{6} dy dx \\
+        &= 1- \int_v^2 \frac{1}{6}(-v+x) dx \\
+        &= 1 +\frac{2v}{6} - \frac{1}{3} - \frac{v^2}{6} + \frac{v^2}{12}\\
+        &= 1- \frac{(v-2)^2}{12} \\
+        \implies & f_V(v) = \frac{-2v+4}{12}
+    \end{aligned}
+\end{equation*}
+For $-1<v<0$
+\begin{equation*}
+    \begin{aligned}
+        F_V(v) &= \int_0^2 \int_{-v+x}^3 \frac{1}{6} dydx \\
+        &= \frac{4v+8}{12}
     \end{aligned}
 \end{equation*}
 \pagebreak
@@ -185,17 +193,128 @@ For $0<\cfrac{uv}{u-1}<2, 0<\cfrac{v}{u-1}<3$
     = 
     \det 
     \begin{vmatrix}
-        \cfrac{v}{1-u} & \cfrac{u}{u-1} \\
+        \cfrac{-v}{(u-1)^2} & \cfrac{u}{u-1} \\
         \cfrac{-v}{(u-1)^2} & \cfrac{1}{u-1} 
     \end{vmatrix}
-    = \cfrac{v}{(u-1)^3}
+    = \cfrac{v}{(u-1)^2}
 \]
 If $u>1$ then for $v<\cfrac{2u-2}{u}, v < 3u-3, v>0$ 
 \[
-    f_{U,V}(u,v) = f_{X,Y}\left(\frac{uv}{u-1}, \frac{v}{u-1}\right) \cdot \frac{v}{(u-1)^3} = \frac{v}{6(u-1)^3}
+    f_{U,V}(u,v) = f_{X,Y}\left(\frac{uv}{u-1}, \frac{v}{u-1}\right) \cdot \frac{v}{(u-1)^2} = \frac{v}{6(u-1)^2}
 \]
 If $0<u<1$ then for $v>\cfrac{2u-2}{u}, v>3u-3, v<0$
 \[
-    f_{U,V}(u,v) = f_{X,Y}\left(\frac{uv}{u-1}, \frac{v}{u-1}\right) \cdot \frac{v}{(u-1)^3} = \frac{v}{6(u-1)^3}
+    f_{U,V}(u,v) = f_{X,Y}\left(\frac{uv}{u-1}, \frac{v}{u-1}\right) \cdot \frac{v}{(u-1)^2} = \frac{v}{6(u-1)^2}
 \]
+For $0<v<2$, 
+\[
+    f_V(v) = \int_{-2/(v-2)}^\infty \cfrac{v}{6(u-1)^2} du  = -\frac{v-2}{6}
+\]
+which is the same as the answer in question 1b
+\pagebreak
+\section*{9.}
+We have that
+\[
+    m_U(t) = E[e^{tu}] = E[e^{tcY}] = m_Y(tc) = (1-\beta tc)^{-n/2}
+\]
+If $U \sim \chi_n^2$ then
+\[
+    m_U(t) = m_\chi(t) \implies (1-\beta tc)^{-n/2} = (1-2t)^{-n/2} \implies c = \frac{2}{\beta}  
+\]
+\pagebreak
+\section*{10.}
+\begin{equation*}
+    \begin{aligned}
+        m_U(t) &= E[e^{t(3y^2-2)}] = e^{-2t}E[e^{3ty^2}] \\
+        &= e^{-2t} \int_0^3 e^{3ty^2} \cdot \frac{2y}{9} dy \\
+        &= \frac{e^{-2t} (e^{27t}-1)}{27t} \\
+        &= \frac{e^{25t} - e^{-2t}}{27t}          
+    \end{aligned}
+\end{equation*}
+which is the moment generating function of Uniform($25t, -2t$) if $t<0$ or Uniform($-2t, 25t$) if $t>0$.
+\pagebreak
+\section*{11.}
+\begin{equation*}
+    \begin{aligned}
+        m_U(t) &= E[e^{-at\ln(y/x)}] = E\left[\left(\frac{y}{x}\right)^{-at}\right] \\
+        &= \int_0^\infty \int_0^x \left(\frac{y}{x}\right)^{-at} \cdot \frac{e^{-x/2}}{4} dydx \\
+        &= \int_0^\infty \frac{x^{-at+1}}{-at+1} \cdot \frac{1}{x^{-at}} \cdot \frac{e^{-x/2}}{4} dx \\
+        &= \frac{1}{4(-at+1)}\int_0^\infty x \cdot e^{-x/2} \\
+        &= \frac{1}{4(-at+1)} \cdot 4 \\
+        &= \frac{1}{-at+1}
+    \end{aligned}
+\end{equation*} 
+which is the moment generating function of Exponential($a$)
+\pagebreak
+\section*{12.}
+We have that
+\[
+    F_Y(y) = y^5    
+\]
+and hence
+\[
+    f_{Y_7}(y) = 7(F_Y(y))^6 f_Y(y) = 35y^{34}
+\]
+Therefore, the expected value of the biggest bonus is 
+\[
+    \int_0^1 y \cdot 35y^{34} dy = \frac{35}{36}y^{36} |^1_0 = \frac{35}{36}  
+\]
+\pagebreak
+\section*{13.}
+\[
+    f_X(x) = \int_0^\infty \cfrac{1}{\beta \theta} e^{-\left(x/\beta +y/\theta\right)} dy = \frac{e^{-x/\beta}}{\beta}
+\]
+\[
+    f_Y(y) = \int_0^\infty \cfrac{1}{\beta \theta} e^{-\left(x/\beta +y/\theta\right)} dx = \frac{e^{-y/\theta}}{\theta}
+\]
+and hence $X$ and $Y$ is independent.
+Let $U = \min(X,Y)$, then
+\begin{equation*}
+    \begin{aligned}
+        F_U(u) &= P(U\le u) = 1- P(X\ge u, Y \ge u) \\
+        &= 1- P(X\ge u)P(Y\ge u) \\
+        &= 1- \int_u^\infty \frac{e^{-x/\beta}}{\beta} dx \cdot \int_u^\infty \frac{e^{-y/\theta}}{\theta} dy  \\
+        &= 1 - e^{-u/\beta} \cdot  e^{-u/\theta}
+    \end{aligned}
+\end{equation*}
+Therefore, 
+\[
+    f_U(u) = -e^{-u/\beta-u/\theta}\left(-\frac{1}{\beta}-\frac{1}{\theta}\right)
+\]
+and hence
+\begin{equation*}
+    \begin{aligned}
+        E[U] &= \int_0^\infty u \cdot -e^{-u/\beta-u/\theta}\left(-\frac{1}{\beta}-\frac{1}{\theta}\right) du \\
+        &= \left(-\frac{1}{\beta}- \frac{1}{\theta}\right) \cdot \left(-\frac{1}{\left(\frac{1}{\beta} + \frac{1}{\theta}\right)^2} \right) \\ 
+        = \frac{1}{\frac{1}{\beta} + \frac{1}{\theta}} = \frac{\beta \theta}{\beta + \theta}
+    \end{aligned}
+\end{equation*}
+\pagebreak
+\section*{14.}
+Let $U = \min(X,Y)$, then
+\begin{equation*}
+    \begin{aligned}
+        F_U(u) &= P(U\le u) = 1- P(X\ge u, Y\ge u) \\ 
+        &= 1 - \int_u^1 \int_u^1 \frac{4}{3}x + \frac{2}{3}y dxdy \\
+        &=  -u^3+u^2+u
+    \end{aligned}
+\end{equation*}
+and hence
+\[
+    f_U(u) = -3u^2 + 2u + 1 
+\]
+Therefore, 
+\[
+    E[U] = \int_0^1 u(-3u^2+2u+1) du = \frac{5}{12} 
+\]
+\pagebreak
+\section*{15.}
+We have that 
+\begin{equation*}
+    \begin{aligned}
+        f_{Y_1, Y_2}(y_1, y_2) &= \frac{2!}{0!} [F_{Y_2}(y_2) - F_{Y_1}(y_1)]^0 f_Y(Y_2) \cdot f_Y(y_1) \\
+        &= 2 \cdot \frac{1}{\beta}e^{-y_1/\beta} \cdot \frac{1}{\beta}e^{-y_2/\beta}  \\
+        &= 2 \cdot \frac{1}{\beta^2}e^{-(y_1+y_2)/\beta}
+    \end{aligned}
+\end{equation*}
 \end{document}
