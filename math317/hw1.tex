@@ -94,19 +94,15 @@ $\det J_f(0) = 0$ but every neighborhood $(-\epsilon , \epsilon)$ is mapped to $
 \pagebreak
 \section*{4.}
 \subsection*{a.}
-Consider the function 
-\[
-    h: \mathbb{R}^N \to \mathbb{R}, \indent x \to |x|    
-\]
-It is obvious that for each $j=1, \ldots ,N$, $\cfrac{\partial h}{\partial x_j}(x) = \cfrac{x_j}{|x|}$. \\
-If there is a local maximum at $f(x_0) \ne (0,\ldots, 0)$, then applying the chain rule, we have that for each $j = 1, \ldots ,N$
-\[
-    0 = \frac{\partial g}{\partial x_j}(x_0) = 
-    \frac{\partial (h \circ f)}{\partial x_j}(x_0) = \frac{\partial h}{\partial x_j}(f(x_0)) 
-    \cdot \underbrace{\frac{\partial f}{\partial x_j}(x_0)}_{\ne 0}
-\]
-and hence $f(x_0) = (0,\ldots ,0)$, which is a contradiction. At $f(x_0) = (0,\ldots,0)$, 
-$g(x_0)= h(f(x_0))=0$ and hence it is clearly the global minimum as norm is always $\ge 0$. Therefore, there is no local maximum.  
+We have that for all $x$ satisfies $f(x) \ne (0,\ldots, 0)$,
+\begin{equation*}
+    \begin{aligned}
+        \frac{\partial g}{\partial x_j}(x_0) &= \frac{\sum_{j=1}^N 2f_j(x) \frac{\partial f_j(x)}{\partial x_i}}{\sqrt{\sum_{j=1}^N f_j(x)^2}} 
+    \end{aligned}
+\end{equation*}
+and hence $\nabla g(x) = \frac{J_f(x) f(x)}{\sqrt{\sum_{j=1}^N f_j(x)^2}}$
+which $=0$ if and only if $J_f(x) f(x) = 0$ which means that $f(x) = 0$ as $\det J_f(x) \ne 0$ (its inverse exists) and therefore is a contradiction. \\
+At $f(x_0) = (0,\ldots,0), g(x_0)= 0$ and hence it is clearly the global minimum as norm is always $\ge 0$. Therefore, there is no local maximum.  
 \subsection*{b.}
 Since $\overline{U}$ is compact $g(\overline{U})$ is also compact and hence $g(\overline{U})$ must attain its maximum since every converges sequence converges to a point in the set and hence the supremum is the maximum. \\
 Since $\tilde{f}$ does not attain its local maximum and hence global maximum on $\text{int}$ $\overline{U}$, 
