@@ -39,6 +39,20 @@
         &= \frac{1}{12}
     \end{aligned}
 \end{equation*}
+From the Fubini's theorem, we know that
+\[
+    \iint_R xy dx dy &= \int_0^1 \int_0^{x^2} xy dy dx = \int_0^1 \int_0^{x^2} xy dx dy   
+\]
+To be clear, 
+\begin{equation*}
+    \begin{aligned}
+        \iint_R xy dx dy &= \int_0^1 \int_{\sqrt{y}}^1 xy dx dy  \\
+        &= \int_0^1 y \cdot \left.\frac{x^2}{2} \right|^{1}_{x=\sqrt{y}} dy \\
+        &= \int_0^1 \left(\frac{y}{2}- \frac{y^2}{2}\right) dy \\
+        &= \left.\left(\frac{y^2}{4} - \frac{y^3}{6} \right)\right|_0^1 \\
+        &= \frac{1}{4}- \frac{1}{6} = \frac{1}{12} 
+    \end{aligned}
+\end{equation*}
 \pagebreak
 \section*{3.}
 Since $0\le 0 < \lambda \le \lambda$, we have that
@@ -47,7 +61,7 @@ Since $0\le 0 < \lambda \le \lambda$, we have that
 \]
 and hence
 \[
-    e^\lambda = 1 \implies \lambda = \ln2    
+    e^\lambda = 2 \implies \lambda = \ln2    
 \]
 \pagebreak
 \section*{4.}
