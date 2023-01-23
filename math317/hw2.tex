@@ -156,25 +156,24 @@ Consider the function
 \[
     \phi: \mathbb{R}^2 \to \mathbb{R}, \indent (x,y) \to 1-xy    
 \]
-then at the point $(x_0, y_0)$ where $f$ reaches its minimum, we have
+then at the point $(x_0, y_0)$ where $f$ reaches its extremum, we have
 \begin{equation*}
     \begin{aligned}
         &\frac{\partial f}{\partial x}(x_0,y_0) = \frac{\partial f}{\partial y} (x_0,y_0) \cdot \left( \frac{\partial \phi}{\partial y}(x_0,y_0) \right)^{-1} \cdot \frac{\partial f}{ \partial x} (x_0,y_0) \\  
         \implies & x_0^{p-1} = y_0^{q-1} \cdot \frac{1}{-x_0} \cdot (-y_0) \\ 
         \implies & x_0^p = y_0^q \\
-        \implies & \frac{x_0^p}{y_0^q} = 1
+        \implies & x_0^{p+q} = 1 \\
+        \implies & x_0 = 1 \text{ (p+q} \ne 0) \\
+        \implies & y_0 = 1
     \end{aligned}
 \end{equation*}
-Therefore, $(x_0,y_0) = (1,1)$
-as $x_0y_0 = 1$, if $x_0>1$ then $y_0<1$ 
-and hence $x_0^p > x_0 > y_0 > y_0^q$ which is a contradiction.
 Therefore, the minimum is 
 \[
     f(1,1) = \frac{1}{p}+ \frac{1}{q} = 1
 \]
-as clearly, $f(x,y) \ge \frac{1}{p}+\frac{1}{q} = 1$
+as it cannot be the maximum because $\lim_{x \to \infty} f(x,\frac{1}{x}) = \infty $
 \subsection*{b.}
-Changing $\phi$ to
+Changing $\phi$ 
 \[
     \phi: \mathbb{R}^2 \to \mathbb{R}, \indent (x,y) \to ab-xy    
 \]
@@ -187,9 +186,14 @@ If $(x_0,y_0)$ is where $f$ reaches its extremum, then applying the same process
         \implies & ab = y_0^q
     \end{aligned}
 \end{equation*}
-Hence, $f$ reaches its minimum at $(x_0,y_0)$ and 
+Hence, $f$ reaches its extremum at $(x_0,y_0)$ and 
 \[
-    f(a,b) \ge f(x_0,y_0) =  \frac{x_0^p}{p} + \frac{y_0^q}{q} = y_0^q\left(\frac{1}{p} + \frac{1}{q}\right) = ab
+    f(x_0,y_0) =  \frac{x_0^p}{p} + \frac{y_0^q}{q} = y_0^q\left(\frac{1}{p} + \frac{1}{q}\right) = ab
+\]
+as it cannot be the maximim because $\lim_{x \to \infty} f(x,\frac{ab}{x}) = \infty $
+and hence we have that 
+\[
+    f(a,b) = \frac{a^p}{p}+\frac{b^q}{q} \ge ab    
 \]
 \subsection*{c.}
 Let $x_k = \cfrac{a_k}{\left(\sum_{k=1}^n a_k^p \right)^{1/p}}, y_k = \cfrac{b_k}{\left(\sum_{k=1}^n b_k^q \right)^{1/q}}$.
