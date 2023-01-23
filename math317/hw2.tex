@@ -1,0 +1,288 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+Consider the function
+\[
+    g: \mathbb{R}^2 \to \mathbb{R}, \indent (x,y) \to f(x,y)-1
+\]
+Then consider the set $U$ satisfies $f(x,y) = 1 \iff g(x,y)=1$. \\
+Let $(x_0,y_0) = (0,1)$. We have that 
+\[
+    \det 
+    \begin{bmatrix} 
+        \frac{\partial g}{\partial y} (x_0,y_0)
+    \end{bmatrix} 
+    = 2 \ne 0   
+\]
+Therefore, there exists $(-\epsilon, \epsilon)$ and a unique function $\phi$ such that
+$\phi(0) = 1$ and
+\[
+    \phi'(x) = -\left( 2 \phi(x)\right)^{-1} \cdot 2x = -\frac{x}{\phi(x)}    
+\]
+\pagebreak
+\section*{2.}
+\subsection*{a.}
+If $(\alpha, \beta), (\xi, \eta)$ are respectively the points on $f$ and $g$ such that 
+the distance between them reaches an extremum then  \\
+Consider the function 
+\[
+    \phi_1: \mathbb{R}^2 \to \mathbb{R}, \indent (x,y) \to |(x,y)- (\xi, \eta)|
+\]
+Then we have $\phi_1$ have an extremum at $(\alpha, \beta)$ under the constraint that $f(x,y) = 0$.
+Hence, 
+\[
+    f_x(\alpha,\beta) = \frac{\partial \phi}{\partial x}(\alpha, \beta) \cdot f_y (\alpha, \beta) \cdot \left(\frac{\partial \phi}{\partial y}\right)^{-1}(\alpha, \beta) = \frac{\alpha - \xi}{\beta - \eta} \cdot f_y(\alpha, \beta)  
+\]
+and therefore, 
+\[
+    f_y(\alpha, \beta)(\alpha-\xi) = f_x(\alpha, \beta)(\beta - \eta)
+\]
+Following the same process, we can get that
+\[
+    g_y(\xi, \eta)(\alpha-\xi) = g_x(\xi, \eta)(\beta - \eta)
+\]
+\subsection*{b.}
+Consider two smooth curves $f(x,y) = x + y - 2 = 0$ and $g(x,y) = x^2+2y^2-1=0$.
+We have that
+\[
+    f_x(x,y) = f_y(x,y) = 1, g_x(x,y) = 2x, g_y(x,y) = 4y    
+\]
+Then there is two points $(\alpha,\beta), (\xi,\eta)$ lying on the respective curves such that 
+the distance between those two points is the minimum and hence is the distance between those curves. \\
+Substitute what we know into the results obtained from part a, we have that
+\[
+    \alpha-\xi = \beta - \eta     
+\] 
+and 
+\[
+    4\beta (\alpha-\xi) = 2\alpha (\beta-\eta) = 2\alpha(\alpha-\xi)    
+\]
+Therefore, $\alpha = 2\beta$. Substitute that into $f(x,y) = 0$, we have
+\[
+    \alpha + \beta - 2 = 0 \implies \beta + 2\beta - 2 = 0 \implies \beta = \frac{2}{3} \implies \alpha = \frac{4}{3}    
+\]
+Then we have that
+\[
+    \frac{4}{3} - \xi = \frac{2}{3}- \eta \implies \xi = \frac{2}{3} + \eta
+\]
+Substitute that into the $g(x,y) = 0$, we have
+\[
+    \left(\frac{2}{3} + \eta\right)^2 + 2\eta^2 - 1 = 3 \eta^{2} + \frac{4 \eta}{3} - \frac{5}{9} = 0
+\]
+Hence, 
+\[
+    \eta = \frac{1}{9} (-2-\sqrt{19}) \implies \xi = \frac{1}{9}(4 - \sqrt{19})    
+\]
+in which case the distance between $(\alpha,\beta)$ and $(\xi,\eta)$ is approximately 1.942.
+or 
+\[
+    \eta = \frac{1}{9} (-2+\sqrt{19}) \implies \xi = \frac{1}{9}(4 + \sqrt{19}) 
+\]
+in which case the distance between $(\alpha,\beta)$ and $(\xi,\eta)$ is approximately 0.572. \\
+Taking the minimum of those distance we have that the distance between the two curves is 0.572
+\pagebreak
+\section*{3.}
+As $K$ is compact and $f$ is continuous, $f$ attains both a minimum and a maximum on $K$. First we consider the interior of $k$.
+We have
+\[
+    \nabla f(x,y,z) = (2x-2,y,2z+2) = 0 \iff (x,y,z) = (1,0,-1)
+\]
+Since 
+\[
+    (\text{Hess} f)(1,0,-1) = 
+    \begin{bmatrix}
+        2 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 2 
+    \end{bmatrix}    
+\]
+the Hessian is positive definite and hence $f$ reaches its minimum at $(1,0,-1)$ with the value of $f(1,0,-1) = -1$ Therefore, $f$ attains its maximum on 
+$\partial K$. Let 
+\[
+    \phi: \mathbb{R}^3 \to \mathbb{R}, \indent (x,y,z) \to x^2 + y^2 + z^2 - 9    
+\]
+so that $\partial K = \{(x,y,z)\in \mathbb{R}^3: \phi(x,y,z) = 0\}$. We then have that 
+\[
+    y = 2\lambda y \implies \lambda = \frac{1}{2} \text{ or } y=0
+\]
+In case $\lambda = \frac{1}{2}$, we have that 
+\[
+    2x-2 = 2\lambda x \implies x = 2
+\]
+
+\[
+    2z+2 = 2\lambda z \implies z = -2
+\]
+and 
+\[
+    x^2+y^2+z^2 = 9 \implies y = 1
+\]
+In case $y=0$, as $2x-2=2\lambda x$ and $2z+2 = 2\lambda z$, $x\ne 0$ and $z\ne 0$. Therefore, we have that
+\[
+    \frac{2x-2}{2x} = 2\lambda = \frac{2z+2}{2z} \implies x = -z    
+\]
+Therefore, 
+\[
+    x^2+y^2+z^2=9 \implies (x,z) = \left(\frac{3\sqrt{2}}{2},-\frac{3\sqrt{2}}{2}\right) \text{ or } (x,z) = \left(-\frac{3\sqrt{2}}{2},\frac{3\sqrt{2}}{2}\right)    
+\]
+To sum everything up 
+\[
+    f(2,1,-2) = 2, f\left(\frac{3\sqrt{2}}{2},-\frac{3\sqrt{2}}{2}\right) = 1.515, f\left(-\frac{3\sqrt{2}}{2},\frac{3\sqrt{2}}{2}\right) = 18.485 
+\]
+and hence $f$ attains its maximum at $\left(\frac{3\sqrt{2}}{2},-\frac{3\sqrt{2}}{2}\right)$ with the value of 18.485
+and its minimum at $(1,0,-1)$ with the value of -1.
+\pagebreak
+\section*{4.}
+\subsection*{a.}
+Consider the function
+\[
+    \phi: \mathbb{R}^2 \to \mathbb{R}, \indent (x,y) \to 1-xy    
+\]
+then at the point $(x_0, y_0)$ where $f$ reaches its minimum, we have
+\begin{equation*}
+    \begin{aligned}
+        &\frac{\partial f}{\partial x}(x_0,y_0) = \frac{\partial f}{\partial y} (x_0,y_0) \cdot \left( \frac{\partial \phi}{\partial y}(x_0,y_0) \right)^{-1} \cdot \frac{\partial f}{ \partial x} (x_0,y_0) \\  
+        \implies & x_0^{p-1} = y_0^{q-1} \cdot \frac{1}{-x_0} \cdot (-y_0) \\ 
+        \implies & x_0^p = y_0^q \\
+        \implies & \frac{x_0^p}{y_0^q} = 1
+    \end{aligned}
+\end{equation*}
+Therefore, $(x_0,y_0) = (1,1)$
+as $x_0y_0 = 1$, if $x_0>1$ then $y_0<1$ 
+and hence $x_0^p > x_0 > y_0 > y_0^q$ which is a contradiction.
+Therefore, the minimum is 
+\[
+    f(1,1) = \frac{1}{p}+ \frac{1}{q} = 1
+\]
+as clearly, $f(x,y) \ge \frac{1}{p}+\frac{1}{q} = 1$
+\subsection*{b.}
+Changing $\phi$ to
+\[
+    \phi: \mathbb{R}^2 \to \mathbb{R}, \indent (x,y) \to ab-xy    
+\]
+
+If $(x_0,y_0)$ is where $f$ reaches its extremum, then applying the same process, we have
+\begin{equation*}
+    \begin{aligned}
+        &x_0^p = y_0^q
+        \implies & (ab)^p = y_0^{p+q} = (y_0^q)^p
+        \implies & ab = y_0^q
+    \end{aligned}
+\end{equation*}
+Hence, $f$ reaches its minimum at $(x_0,y_0)$ and 
+\[
+    f(a,b) \ge f(x_0,y_0) =  \frac{x_0^p}{p} + \frac{y_0^q}{q} = y_0^q\left(\frac{1}{p} + \frac{1}{q}\right) = ab
+\]
+\subsection*{c.}
+Let $x_k = \cfrac{a_k}{\left(\sum_{k=1}^n a_k^p \right)^{1/p}}, y_k = \cfrac{b_k}{\left(\sum_{k=1}^n b_k^q \right)^{1/q}}$.
+We have that 
+\begin{equation*}
+    \begin{aligned}
+        \sum_{k=1}^n x_ky_k &= \frac{\sum_{k=1}^n a_k}{\left(\sum_{k=1}^n a_k^p \right)^{1/p}} 
+        + \frac{\sum_{k=1}^n b_k}{\left(\sum_{k=1}^n b_k^q \right)^{1/q}}  \\
+        \le & \frac{\sum_{k=1}^n a_k^p}{p\left(\sum_{k=1}^n a_k^p \right)} 
+        + \frac{\sum_{k=1}^n b_k^q}{q\left(\sum_{k=1}^n b_k^q \right)}  \\
+        =& \frac{1}{p} + \frac{1}{q} \\
+        =& 1
+    \end{aligned}
+\end{equation*}
+Multiplying both sides of the inequality by $\left(\sum_{k=1}^n a_k^p \right)^{1/p}\left(\sum_{k=1}^n b_k^q \right)^{1/q}$, we get the results 
+\[
+    \sum_{k=1}^n a_kb_k \le \left(\sum_{k=1}^n a_k^p \right)^{1/p}\left(\sum_{k=1}^n b_k^q \right)^{1/q}    
+\]
+\subsection*{d.}
+Since $p\ge 1$, there exists a $q \in \mathbb{R}$ such that $\frac{1}{p}+ \frac{1}{q} = 1$. Therefore, 
+\begin{equation*}
+    \begin{aligned}
+        \sum_{k=1}^n |a_k + b_k|^p 
+        &= \sum_{k=1}^n |a_k + b_k| \cdot |a_k+b_k|^{p-1} \\
+        &= \left(\sum_{k=1}^n |a_k + b_k|^p \right)^{1/p} \cdot 
+        \left( \sum_{k=1}^n (|a_k + b_k|^{p-1} )^q \right)^{1/q} \\
+        &\le \left(\sum_{k=1}^n |a_k|^p \right)^{1/p} \cdot
+        \left( \sum_{k=1}^n (|a_k + b_k|^{p-1} )^q \right)^{1/q} \\
+        & +\left(\sum_{k=1}^n |b_k|^p \right)^{1/p} \cdot
+        \left( \sum_{k=1}^n (|a_k + b_k|^{p-1} )^q \right)^{1/q} \\
+        &= \left(\left(\sum_{k=1}^n |a_k|^p \right)^{1/p} 
+        + \left(\sum_{k=1}^n |b_k|^p \right)^{1/p} \right)
+        \left( \sum_{k=1}^n |a_k + b_k|^p \right)^{1/q} \\
+    \end{aligned}
+\end{equation*}
+Dividing both sides of the inequality by $\left( \sum_{k=1}^n |a_k + b_k|^p \right)^{1/q}$, we get the desired results
+\[
+    \left(\sum_{k=1}^n |a_k+b_k|^p \right)^{1/p} \le \left(\sum_{k=1}^n |a_k|^p \right)^{1/p} 
+    + \left(\sum_{k=1}^n |b_k|^p \right)^{1/p}
+\]
+\pagebreak
+\section*{5.}
+\begin{proof}
+Consider the function $F$:
+\[
+    F: U \times f_1(U) \to \mathbb{R}, \indent (x,y,t) \to f_1(x,y) - t    
+\]
+Then we have that
+\[
+    \frac{\partial F}{\partial x}(x_0,y_0,f_1(x_0,y_0)) = \frac{\partial f_1}{\partial x}(x_0,y_0) \ne 0   
+\]
+and 
+\[
+    F(x_0,y_0,f_1(x_0,y_0)) = 0    
+\]
+Therefore, there exists neighborhoods $V \subset \mathbb{R}^2$ of $(y_0,f_1(x_0,y_0))$ and
+$W \subset \mathbb{R}$ of $x_0$ such that $W \times V \subset U \times \mathbb{R}$ and 
+a unique $\phi \in \mathcal{C}^1(V, \mathbb{R})$ such that for all $(x,y,t) \in U \times f_1(U):$
+\[
+    x = \phi(y,t) \iff f_1(x,y) = t 
+\]
+Thus, we have that
+\[
+    f_1(\phi(y,t),y) = t
+\]
+and hence, taking the derivative with respect to $y$, we get
+\[
+    f_{1_x}(\phi(y,t),y) \cdot \phi_y(y,t) + f_{1_y}(\phi(y,t),y) = 0
+\]
+\[
+    \implies \phi_y(y,t) = -\frac{f_{1_y}(\phi(y,t),y)}{f_{1_x}(\phi(y,t),y)} = -\frac{f_{2_y}(\phi(y,t),y)}{f_{2_x}(\phi(y,t),y)} 
+\]
+as rank $J_f(x,y) = 1$ for all $(x,y) \in U$.
+Now consider the function:
+\[
+    \psi: V \to f_2(U), \indent (y,t) \to f_2(\phi(y,t),y)
+\]
+We can see that $g$ is not dependent on $y$ as 
+\[
+    g_y = f_{2_x}(\phi(y,t),y) \cdot \phi_y(y,t) + f_{2_y}(\phi(y,t),y) = 0
+\]
+It is possible then to rewrite $\psi$ as 
+\[
+    \psi: V_y \to f_2(U), \indent (y,t) \to f_2(\phi(y,t),y)    
+\]
+Let $(x, y)$ be an arbitary point in $W \times V_y$ 
+then we can find a $t$ such that $f_1(x,y) = t \iff x = \phi(y,t)$ and therefore
+\[
+    f_2(x,y) = f_2(\phi(y,t),y) = \psi(t) = \psi(f_1(x,y))    
+\]
+which finishes the proof.
+\end{proof}
+\pagebreak
+\section*{6.}
+
+\end{document}
