@@ -30,7 +30,7 @@
 \end{equation*}
 \pagebreak
 \section*{2.}
-Let the function $g$ be the indicator function $1_{\left(\frac{1}{4}, \frac{9}{16}\right)}$.
+Since $g$ can be any function. Let the function $g$ be the indicator function $1_{\left(\frac{1}{4}, \frac{9}{16}\right)}$.
 Then we have that 
 \begin{equation*}
     \begin{aligned}
@@ -43,15 +43,15 @@ Then we have that
 \end{equation*}
 \pagebreak
 \section*{3.}
-We have that
+Since the payment is none if it is below the amount $D$. We have that 
 \begin{equation*}
     \begin{aligned}
-        0.8*50000 
+        0.8 \cdot \frac{100000-0}{2} 
         &= \int_D^{100000} (x-D) \cdot \frac{1}{100000} dx \\
         &= \left(50000 - D + \frac{D^2}{200000}\right)
     \end{aligned}
 \end{equation*}
-Hence,  we have that $D \approxeq 10557.281$
+Hence,  we have that $D \simeq 10557.281$
 \pagebreak
 \section*{4.}
 Since $\lim_{y\to 0.5^-} F_Y(y) = 0.5$ and $\lim_{y\to 0.5^+} F_Y(y) = 1$. \\ 
@@ -62,4 +62,7 @@ Therefore,
     = \left.\frac{y^2}{2} \right|_0^{0.5} + \frac{1}{4} 
     = \frac{3}{8}
 \]
+It is not continuous at 0.5 and hence is not continuous.
+It is not discrete because for any open ball around (0.25,f(0.25)) = (0.25,0.25), there is a point in the form 
+$(x,f(x))$ such that it is contained in that ball because $f$ is continuous at 0.25.
 \end{document}
