@@ -23,7 +23,7 @@
 \[
     f_Y(y) = \int_0^2 \frac{1}{6}dx = \frac{1}{3} 
 \]
-Since $0<y<3$, $2<y^2 +2<11$, and hence if $u\le 2, F_U(u) = 0$ and if $u \ge 11, F_U(u) = 1$. For $2<u<11$, we have that
+Since $0<y<3$, $2<y^2 +2<11$, and hence if $u\le 2, f_U(u) = 0$ and if $u \ge 11, f_U(u) = 0$. For $2<u<11$, we have that
 \begin{equation*}
     \begin{aligned}
         F_U(u) &= P(U\le u) = P(Y^2+2 \le u) \\
@@ -32,7 +32,7 @@ Since $0<y<3$, $2<y^2 +2<11$, and hence if $u\le 2, F_U(u) = 0$ and if $u \ge 11
     \end{aligned}
 \end{equation*}
 \subsection*{b.}
-Since $0<x<2, 0<y<3, -3<x-y<2$. Therefore, if $v \le -3, F_V(v) = 0$ and if $v\ge 2, F_V(v) = 1$. 
+Since $0<x<2, 0<y<3, -3<x-y<2$. Therefore, if $v \le -3, f_V(v) = 0$ and if $v\ge 2, f_V(v) = 0$. 
 For $-3<v<2$, we have that
 \begin{equation*}
     \begin{aligned}
@@ -69,17 +69,23 @@ For $-1<v<0$
 \end{equation*}
 \pagebreak
 \section*{2.}
-Since $ 16 \ge U = Y^4 \ge 0$. We have that if $0\le u, F_U(u) = 0$ and if $u\ge 16, F_U(u) = 1$.
+Since $ 16 \ge U = Y^4 \ge 0$. We have that if $0\le u, f_U(u) = 0$ and if $u\ge 16, f_U(u) = 0$.
 For $0<u<16$, we have that
 \begin{equation*}
     \begin{aligned}
         F_U(u) &= P(U\le u) = P(Y^4 \le u) = P(-\sqrt[4]{u} \le Y \le \sqrt[4]{u}) \\
-        &=  \int_0^{\sqrt[4]{u}} \frac{y}{6} dy + \left|\int_{-\sqrt[4]{u}}^0 \frac{y^2}{4} dy \right|\\
+        &=  \int_0^{\sqrt[4]{u}} \frac{y}{6} dy + \int_{-\sqrt[4]{u}}^0 \frac{y^2}{4} dy \\
         &= \frac{\sqrt{u}}{12} + \frac{\sqrt[4]{u^3}}{12}
     \end{aligned}
 \end{equation*} 
+and hence
+\[
+    f_U(u) = \frac{1}{24u^{1/2}} + \frac{1}{16u^{1/4}}    
+\]
 \pagebreak
 \section*{3.}
+\subsection*{a.}
+$U = 1-Y^2 \le 1$ hence if $u > 1$ then $f_U(u) = 0$, otherwise if $u\le 1$ then 
 \[
     f_Y(y) = \int_y^\infty \frac{1}{9}e^{-x/3} dx = \frac{1}{3}e^{-y/3}    
 \]
@@ -89,6 +95,24 @@ For $0<u<16$, we have that
         &= \int_{\sqrt{1-u}}^\infty \frac{1}{3}e^{-y/3} dy  = e^{-\sqrt{1-u}/3} 
     \end{aligned}
 \end{equation*}
+and hence 
+\[
+    f_U(u) = e^{-\sqrt{1-u}/3} \cdot \frac{1}{6\sqrt{1-u}}
+\]
+\subsection*{b.}
+Since $x>y>0$, $v=x-y>0$. Therefore, if $v\le 0$ then $f_V(v) = 0$, else if $v > 0$ then 
+\begin{equation*}
+    \begin{aligned}
+        F_V(v) &= P(V\le v) = P(X-Y\le v) = P(X\le v+Y) \\
+        &= \int_0^\infty \int_y^{y+v} \frac{1}{9}e^{-x/3} dx dy \\
+        &= \int_0^\infty \dfrac{\left(\mathrm{e}^\frac{v}{3}-1\right)\mathrm{e}^{-\frac{y}{3}-\frac{v}{3}}}{3} dy  \\
+        &= 1 - e^{-v/3}
+    \end{aligned}
+\end{equation*}
+and hence
+\[
+    f_U(u) = \frac{1}{3}e^{-v/3}    
+\]
 \pagebreak
 \section*{4.}
 \subsection*{a.}
@@ -114,10 +138,12 @@ If $v\ge 1$ or $v \le 0$ then $f_V(v) = 0$.
 \[
     y = h^{-1}(u) = \frac{2-u}{4} \implies \frac{d}{du}h^{-1}(u) = -\frac{1}{4}    
 \]
-If $-1<\cfrac{2-u}{4}< 1 \iff -2<u<6$
+If $-1<\cfrac{2-u}{4}< 1 \iff -2<u<6$. \\
+For $-2<u<6$, 
 \[
     f_U(u) = f_X\left(\frac{2-u}{4}\right) \cdot \left|-\frac{1}{4}\right| = \frac{6-u}{32} 
 \]
+Otherwise, $f_U(u) = 0$.
 \pagebreak
 \section*{6.}
 Consider $V=Y$
@@ -138,11 +164,16 @@ Consider $V=Y$
     \end{vmatrix}
     = -\frac{v}{u^2}
 \]
-As $y>0$, we have that $v>0$ and hence 
+For $v>0, u>0$, we have 
 \[
     f_{U,V}(u,v) = f_{X,Y}\left(\frac{v}{u}, v\right) \cdot \left| -\frac{v}{u^2} \right| =  
     \frac{v}{u} e^{-(v/u + v)} \cdot \frac{v}{u^2} = \frac{v^2}{u^3}e^{-(v+uv)/u} 
 \]
+Hence, for $u>0$
+\[
+    f_U(u) = \int_0^\infty \frac{v^2}{u^3}e^{-(v+uv)/u} dv = \dfrac{2}{\left(u+1\right)^3}
+\]
+and $f_U(u) = 0$ for $u \le 0$
 \pagebreak
 \section*{7.}
 \subsection*{a.}
@@ -164,22 +195,18 @@ For $0<\cfrac{u-v}{2}<y, x<\cfrac{u+v}{2}<1 \iff 2>u>v>0, u<2-v, v<1$.
     \end{vmatrix}
     = \frac{1}{2}
 \]
+For $0\le v \le 1$ and $v\le u\le 2-v$, we have that 
 \[
     f_{U,V}(u,v) = f_{X,Y}\left( \frac{u-v}{2}, \frac{u+v}{2}\right) \cdot \frac{1}{2} 
     = 6 \cdot \frac{u-v}{2} \cdot \frac{1}{2} = \frac{3(u-v)}{2}     
 \]
+$f_{U,V}(u,v) = 0$ otherwise.
 \subsection*{b.}
-For $0<u<1$
+For $0\le v \le 1$, we have that 
 \[
-    f_U(u) =  \int_0^{u} \frac{3(u-v)}{2} dv
+    f_V(v) = \int_v^{2-v} \frac{3(u-v)}{2} du = 3 v^{2} - 6 v + 3 
 \]
-For $1<u<2$
-\[
-    f_U(u) =  \int_0^{2-u} \frac{3(u-v)}{2} dv
-\]
-\[
-    f_V(v) = \int_u^{2-v} \frac{3(u-v)}{2} du =
-\]
+and $f_V(v) = 0$ otherwise.
 \pagebreak
 \section*{8.}
 \[
@@ -220,6 +247,7 @@ For $-3<v<-1$,
 \[
     f_V(v) = \int_{0}^{(v+3)/3} -\cfrac{v}{6(u-1)^2} du = \frac{v+3}{6}
 \]
+and $f_V(v) = 0$ otherwise,
 which is the same as the answer in question 1b
 \pagebreak
 \section*{9.}
@@ -241,7 +269,7 @@ If $U \sim \chi_n^2$ then
         &= \frac{e^{25t} - e^{-2t}}{27t}          
     \end{aligned}
 \end{equation*}
-which is the moment generating function of Uniform($25t, -2t$) if $t<0$ or Uniform($-2t, 25t$) if $t>0$.
+which is the moment generating function of Uniform(-2, 25).
 \pagebreak
 \section*{11.}
 \begin{equation*}
@@ -267,7 +295,7 @@ and hence
 \]
 Therefore, the expected value of the biggest bonus is 
 \[
-    \int_0^1 y \cdot 35y^{34} dy = \frac{35}{36}y^{36} |^1_0 = \frac{35}{36}  
+    55000 \cdot \int_0^1 y \cdot 35y^{34} dy = \frac{35}{36}y^{36} |^1_0 = \frac{35}{36} \cdot 55000 = \frac{481250}{9}
 \]
 \pagebreak
 \section*{13.}
@@ -319,7 +347,7 @@ Therefore,
 \]
 \pagebreak
 \section*{15.}
-We have that 
+For $Y_1<Y_2$, we have that 
 \begin{equation*}
     \begin{aligned}
         f_{Y_1, Y_2}(y_1, y_2) &= \frac{2!}{0!} [F_{Y_2}(y_2) - F_{Y_1}(y_1)]^0 f_Y(Y_2) \cdot f_Y(y_1) \\
@@ -330,17 +358,15 @@ We have that
 Therefore, 
 \begin{equation*}
     \begin{aligned}
-        P(3Y_1 > Y_1 > Y_2) 
-        &= \int_0^\infty \int_{y_1}^{3y_1} 2 \cdot \frac{1}{\beta^2}e^{-(y_1+y_2)/\beta} dy_2 dy_1 \\
-        P(3Y_1 > Y_2>Y_1) 
-        &= \int_0^\infty \int_{0}^{y_1} 2 \cdot \frac{1}{\beta^2}e^{-(y_1+y_2)/\beta} dy_2 dy_1 \\
-        P(3Y_1 > Y_2) 
-        &= P(3Y_1 > Y_2 | Y_1>Y_2) \cdot P(Y_1>Y_2) \\
-        &+ P(3Y_1>Y_2|Y_2>Y_1)\cdot P(Y_2>Y_1) \\
-        &= 0.5 \int_0^\infty \int_{y_1}^{3y_1} 2 \cdot \frac{1}{\beta^2}e^{-(y_1+y_2)/\beta} dy_2 dy_1 \\
-        &= \int_0^\infty -\frac{\left(e^{-\frac{4y_1}{\beta}}-e^{-\frac{y_1}{\beta}}\right)}{\beta} dy_1 \\
-        &= -\frac{1}{\beta}\left(\frac{\beta}{4}-\beta\right) \\
-        &= \frac{3}{4}
+        P(3Y_1 < Y_2) 
+        &= \int_0^\infty \int_{3y_1}^{\infty} 2 \cdot \frac{1}{\beta^2}e^{-(y_1+y_2)/\beta} dy_2 dy_1 \\
+        &= \int_0^\infty \frac{2e^{-\frac{4y_1}{\beta}}}{\beta} dy_1 \\
+        &= \left(-\frac{\mathrm{e}^{-\frac{4x}{{\beta}}}}{2} \right)^\infty_0 \\
+        &= \frac{1}{2}
     \end{aligned}
 \end{equation*}
+Therefore, 
+\[
+    P(3Y_1 > Y_2) = 1- P(3Y_1 < Y_2) = \frac{1}{2}    
+\]
 \end{document}
