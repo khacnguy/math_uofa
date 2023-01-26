@@ -43,24 +43,70 @@ for $x \in (-\epsilon ,\epsilon )$
 \pagebreak
 \section*{2.}
 \subsection*{a.}
-If $(\alpha, \beta), (\xi, \eta)$ are respectively the points on $f$ and $g$ such that 
-the distance between them attains an extremum then  \\
-Consider the function 
+Consider the funciton 
 \[
-    \phi_1: \mathbb{R}^2 \to \mathbb{R}, \indent (x,y) \to |(x,y)- (\xi, \eta)|
+    F: \mathbb{R}^4 \to \mathbb{R}, \indent (x_1,y_1,x_2,y_2) \to (x_1-x_2)^2 + (y_1-y_2)^2
 \]
-Then we have $\phi_1$ have an extremum at $(\alpha, \beta)$ under the constraint that $f(x,y) = 0$.
-Hence, 
+and the
 \[
-    f_x(\alpha,\beta) = \frac{\partial \phi}{\partial x}(\alpha, \beta) \cdot f_y (\alpha, \beta) \cdot \left(\frac{\partial \phi}{\partial y}\right)^{-1}(\alpha, \beta) = \frac{\alpha - \xi}{\beta - \eta} \cdot f_y(\alpha, \beta)  
+    \phi: \mathbb{R}^4 \to \mathbb{R}^2, \indent (x_1,y_1,x_2,y_2) \to 
+    \begin{pmatrix}
+        f(x_1,y_1) \\
+        g(x_2,y_2)
+    \end{pmatrix}    
 \]
-and therefore, 
+We know that 
 \[
-    f_y(\alpha, \beta)(\alpha-\xi) = f_x(\alpha, \beta)(\beta - \eta)
+    J_\phi(\alpha,\beta,\xi,\eta) = 
+    \begin{bmatrix}
+        f_{x}(\alpha,\beta) & f_{y}(\alpha,\beta) & 0 & 0 \\
+        0 & 0 & g_{x}(\xi,\eta) & g_{y}(\xi,\eta)
+    \end{bmatrix}    
 \]
-Following the same process, we can get that
+If rank$J_f(x_0) = 0$, it is trivial that we get the desired results as 
 \[
-    g_y(\xi, \eta)(\alpha-\xi) = g_x(\xi, \eta)(\beta - \eta)
+    f_{x}(\alpha,\beta) = f_{y}(\alpha,\beta) = g_{x}(\xi,\eta) = g_{y}(\xi,\eta) = 0    
+\]
+If rank$J_f(x_0) = 1$, then WLOG assume $f_{x}(\alpha,\beta) = f_{y}(\alpha,\beta) = 0$ and 
+$(\nabla g)(\xi,\eta) \ne 0$. Then 
+\[
+    f_y(\alpha,\beta)(\alpha-\xi) = f_x(\alpha,\beta)(\beta-\eta)
+\]
+and consider the function
+\[
+    \phi_g: \mathbb{R}^4 \to \mathbb{R}^2, \indent (x_1,y_1,x_2,y_2) \to g(x_2,y_2)
+\]
+We know that $F$ attains an extremum at $(\alpha,\beta,\xi,\eta)$ under the constraint function 
+$\phi(x)=0$. Therefore, there exists $\lambda \in \mathbb{R}$ such that 
+\[
+    \nabla F(\alpha,\beta,\xi,\eta) = \lambda (\nabla \phi_g)(\alpha,\beta, \xi,\eta)    
+\]
+\[
+    (2\xi - 2 \alpha , 2\eta-2\beta) = \lambda (g_x(\xi,\eta), g_y(\xi,\eta))
+\]
+and therefore
+\[
+    g_y(\xi,\eta)(\alpha-\xi) = g_x(\xi,\eta)(\beta-\eta)
+\]
+If rank$J_f(x_0) = 2$, then there exists $\lambda_1, \lambda_2 \in \mathbb{R}$ such that 
+\[
+    (\nabla F)(\alpha,\beta, \xi,\eta) = \lambda_1 (\nabla \phi_1) (\alpha,\beta, \xi,\eta) + \lambda_2 (\nabla \phi_2) (\alpha,\beta, \xi,\eta)
+\]
+and hence
+\[
+    (2\alpha-2\xi, 2\beta-2\eta) = \lambda_1 (f_x(\alpha,\beta), f_y(\alpha,\beta))    
+\]
+and
+\[
+    (2\eta-\alpha, 2\eta-2\beta) = \lambda_2 (g_x(\xi,\eta), g_y(\xi,\eta))    
+\] 
+Therefore, we get the results
+\[
+    f_y(\alpha,\beta)(\alpha-\xi) = f_x(\alpha,\beta)(\beta-\eta)
+\]
+and
+\[
+    g_y(\xi,\eta)(\alpha-\xi) = g_x(\xi,\eta)(\beta-\eta)
 \]
 \subsection*{b.}
 Consider two smooth curves $f(x,y) = x + y - 2 = 0$ and $g(x,y) = x^2+2y^2-1=0$.
@@ -76,31 +122,32 @@ Substitute what we know into the results obtained from part a, we have that
 \] 
 and 
 \[
-    4\beta (\alpha-\xi) = 2\alpha (\beta-\eta) = 2\alpha(\alpha-\xi)    
+    4\eta (\alpha-\xi) = 2\xi (\beta-\eta) = 2\xi(\alpha-\xi)    
 \]
-Therefore, $\alpha = 2\beta$. Substitute that into $f(x,y) = 0$, we have
+Therefore, $\xi = 2\eta$. Substitute that into $g(x,y) = 0$, we have
 \[
-    \alpha + \beta - 2 = 0 \implies \beta + 2\beta - 2 = 0 \implies \beta = \frac{2}{3} \implies \alpha = \frac{4}{3}    
+    (2\eta)^2 + 2\eta^2 - 1 = 0 \implies \eta = \frac{1}{\sqrt{6}} \text{ or } -\frac{1}{\sqrt{6}}
 \]
-Then we have that
+We have that 
+\[  
+    \alpha - 2\eta = \beta - \eta \implies \alpha = \beta + \eta
+\]
+Subtracting two equations together
 \[
-    \frac{4}{3} - \xi = \frac{2}{3}- \eta \implies \xi = \frac{2}{3} + \eta
+    \begin{cases}
+        \alpha + \beta = 2 \\
+        \alpha - \beta = \eta 
+    \end{cases}    
 \]
-Substitute that into the $g(x,y) = 0$, we have
+We get that $\beta = \cfrac{2-\eta}{2}$, and hence $\beta - \eta = \cfrac{2-3\eta}{2}$ 
+The distance between $(\alpha,\beta)$ and $(\xi,\eta)$ is 
 \[
-    \left(\frac{2}{3} + \eta\right)^2 + 2\eta^2 - 1 = 3 \eta^{2} + \frac{4 \eta}{3} - \frac{5}{9} = 0
+    \sqrt{(\alpha- \xi)^2 + (\beta - \eta^2)} = \sqrt{2}|\beta-\eta| = \sqrt{2}\left|\frac{2-3\eta}{2}\right|
 \]
-Hence, 
-\[
-    \eta = \frac{1}{9} (-2-\sqrt{19}) \implies \xi = \frac{1}{9}(4 - \sqrt{19})    
-\]
-in which case the distance between $(\alpha,\beta)$ and $(\xi,\eta)$ is approximately 1.942.
-or 
-\[
-    \eta = \frac{1}{9} (-2+\sqrt{19}) \implies \xi = \frac{1}{9}(4 + \sqrt{19}) 
-\]
-in which case the distance between $(\alpha,\beta)$ and $(\xi,\eta)$ is approximately 0.572. \\
-Taking the minimum of those distance we have that the distance between the two curves is 0.572
+Substitute the two cases of $\eta$ in, we get that 
+the minimum distance is $\cfrac{2\sqrt{2} - \sqrt{3}}{6}$ when $\eta = \cfrac{1}{6}$ 
+and the maximum distance is $\cfrac{2\sqrt{2} + \sqrt{3}}{6}$ when $\eta = -\cfrac{1}{6}$
+
 \pagebreak
 \section*{3.}
 As $K$ is compact and $f$ is continuous, $f$ attains both a minimum and a maximum on $K$. First we consider the interior of $K$.
@@ -141,9 +188,9 @@ Therefore,
 \]
 To sum everything up 
 \[
-    f(2,1,-2) = 2, f\left(\frac{3\sqrt{2}}{2},-\frac{3\sqrt{2}}{2}\right) = 1.515, f\left(-\frac{3\sqrt{2}}{2},\frac{3\sqrt{2}}{2}\right) = 18.485 
+    f(2,1,-2) = 2, f\left(\frac{3\sqrt{2}}{2},0,-\frac{3\sqrt{2}}{2}\right) = 1.515, f\left(-\frac{3\sqrt{2}}{2},0,\frac{3\sqrt{2}}{2}\right) = 18.485 
 \]
-and hence $f$ attains its maximum at $\left(\frac{3\sqrt{2}}{2},-\frac{3\sqrt{2}}{2}\right)$ with the value of 18.485
+and hence $f$ attains its maximum at $\left(\frac{3\sqrt{2}}{2},0,-\frac{3\sqrt{2}}{2}\right)$ with the value of 18.485
 and its minimum at $(1,0,-1)$ with the value of -1.
 \pagebreak
 \section*{4.}
