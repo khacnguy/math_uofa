@@ -72,14 +72,17 @@ $(\nabla g)(\xi,\eta) \ne 0$. Then
 \[
     f_y(\alpha,\beta)(\alpha-\xi) = f_x(\alpha,\beta)(\beta-\eta)
 \]
-and consider the function
+and consider the functions
 \[
-    \phi_g: \mathbb{R}^4 \to \mathbb{R}^2, \indent (x_1,y_1,x_2,y_2) \to g(x_2,y_2)
+    F': \mathbb{R}^2 \to \mathbb{R}, \indent (x_2,y_2) \to (x_2 - \alpha)^2 + (y_2- \beta)^2  
 \]
-We know that $F$ attains an extremum at $(\alpha,\beta,\xi,\eta)$ under the constraint function 
-$\phi(x)=0$. Therefore, there exists $\lambda \in \mathbb{R}$ such that 
 \[
-    \nabla F(\alpha,\beta,\xi,\eta) = \lambda (\nabla \phi_g)(\alpha,\beta, \xi,\eta)    
+    \phi_g: \mathbb{R}^2 \to \mathbb{R}, \indent (x,y) \to g(x,y)
+\]
+We know that $F'$ attains an extremum at $(\xi,\eta)$ under the constraint function 
+$\phi_g(x)=0$. Therefore, there exists $\lambda \in \mathbb{R}$ such that 
+\[
+    \nabla F'(\xi,\eta) = \lambda (\nabla \phi_g)(\xi,\eta)    
 \]
 \[
     (2\xi - 2 \alpha , 2\eta-2\beta) = \lambda (g_x(\xi,\eta), g_y(\xi,\eta))
@@ -98,7 +101,7 @@ and hence
 \]
 and
 \[
-    (2\eta-\alpha, 2\eta-2\beta) = \lambda_2 (g_x(\xi,\eta), g_y(\xi,\eta))    
+    (2\xi- 2\alpha, 2\eta-2\beta) = \lambda_2 (g_x(\xi,\eta), g_y(\xi,\eta))    
 \] 
 Therefore, we get the results
 \[
@@ -145,8 +148,8 @@ The distance between $(\alpha,\beta)$ and $(\xi,\eta)$ is
     \sqrt{(\alpha- \xi)^2 + (\beta - \eta^2)} = \sqrt{2}|\beta-\eta| = \sqrt{2}\left|\frac{2-3\eta}{2}\right|
 \]
 Substitute the two cases of $\eta$ in, we get that 
-the minimum distance is $\cfrac{2\sqrt{2} - \sqrt{3}}{6}$ when $\eta = \cfrac{1}{6}$ 
-and the maximum distance is $\cfrac{2\sqrt{2} + \sqrt{3}}{6}$ when $\eta = -\cfrac{1}{6}$
+the minimum distance is $\cfrac{2\sqrt{2} - \sqrt{3}}{6}$ when $\eta = \cfrac{1}{\sqrt{6}}$ 
+and the maximum distance is $\cfrac{2\sqrt{2} + \sqrt{3}}{6}$ when $\eta = -\cfrac{1}{\sqrt{6}}$
 
 \pagebreak
 \section*{3.}
