@@ -1,0 +1,54 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+Since the set is compact with content zero, we have that there exists $I_1, I_2, \ldots, I_n$ such that
+\[
+    I_1 \cup I_2 \cup \ldots \cup I_n \subset U \text{ and } \sum_{j=1}^n \mu(I_j) < \frac{\epsilon}{2} 
+\]
+Consider the interval $I_i = (a_{i,1}, b_{i,1}) \times \ldots \times (a_{i,n}, b_{i,n})$. 
+Since the set of rational number is dense, we can find $b_1'$ such that 
+\[
+    \mathbb{Q} \ni b_{i,1}' - a_{i,1} < \frac{\epsilon (b_{i,1}- a_{i,1})}{2nN\mu(A_i)}
+\]
+Therefore, $O_{i,1} = [a_{i,1}, b_{i,1}'] \times \ldots \times [a_{i,n}, b_{i,n}]$ satisfies
+\[
+    \mu(O_{i,1}) - \mu(I_i) 
+    = \mu(I_i) \frac{b_{i_1}' - a_{i,1}}{b_{i,1} - a_{i,1}} -\mu(I_i) 
+    = \mu(I_i)\frac{b_{i_1}' - b_{i,1}}{b_{i,1} - a_{i,1}} 
+    < \frac{\mu(I_i)}{b_{i,1} - a_{i,1}} \cdot \frac{\epsilon (b_{i,1}- a_{i,1})}{2nN\mu(A_i)} 
+    = \frac{\epsilon}{2nN}
+\]
+Then using $O_{i,1}$, we can find $O_{i,2}$ such that $\mu(O_{i,2}) - \mu(O_{i,1}) < \cfrac{\epsilon}{2nN}$ using the same process. \\
+Do this process for the rest $n-1$ subintervals, 
+we have that $O_i = O_{i,n} = [a_{i,1}, b_{i,1}'] \times \ldots \times [a_{i,n}, b_{i,n}']$ satisfies $I_i \subset O_i$ and 
+\[
+    \mu(O_i) - \mu(I_i) < \frac{\epsilon}{2nN} \cdot N = \frac{\epsilon}{2n}
+\]
+and hence
+\[
+    \sum_{j=1}^n \mu(O_i) - \sum_{j=1}^n \mu(I_i) < \frac{\epsilon}{2n} \cdot n = \frac{\epsilon}{2}    
+\]
+Therefore, 
+\[
+    \sum_{j=1}^n \mu(O_i) < \sum_{j=1}^n \mu(I_i) + \frac{\epsilon}{2} < \epsilon    
+\]
+Since each intervals in $O_i$ has a rational length, we can split it into cubes and thus got the desired results
+\end{document}
