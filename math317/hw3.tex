@@ -51,4 +51,120 @@ Therefore,
     \sum_{j=1}^n \mu(O_i) < \sum_{j=1}^n \mu(I_i) + \frac{\epsilon}{2} < \epsilon    
 \]
 Since each intervals in $O_i$ has a rational length, we can split it into cubes and thus got the desired results
+\pagebreak
+\section*{2.}
+Let $I$ be a compact interval such that  $D \subset I_1 \cup I_2 \cup \ldots \cup I_n \subset I$, we have that 
+\[
+    \mu(D) = \int_I \chi_D \le \int_I \chi_{\bigcup_{j=1}^n I_j} \le \int_I \sum_{j=1}^n \chi_{I_j} = \sum_{j=1}^n \int_I \chi_{I_j} = \sum_{j=1}^n \mu(I_j)    
+\]
+and hence $\mu(D) \le \inf \sum_{j=1}^n \mu(I_j)$. \\
+For all $\epsilon >0$ then there is a partition $P$ of $I$ such that 
+\[
+    \left| \mu(D) - \sum_v \chi_D(x_v)\mu(I_v) \right| < \epsilon    
+\] 
+Next, we choose $I_1, I_2, \ldots, I_n$ satisfy the condition $D \cap I_v \ne \varnothing$ 
+and choose $x_v \in D \cap I_v$. 
+Therefore, 
+\begin{equation*}
+    \begin{aligned}
+        \sum_{j=1}^n \mu(I_j) &= \sum_v \chi_D(x_v)\mu(I_v) \\
+        &\le \mu(D) + \left| \mu(D) - \sum_v \chi_D(x_v) \mu(I_v) \right| \\
+        &< \mu(D) + \epsilon     
+    \end{aligned}
+\end{equation*}
+Therefore, 
+\[
+    \mu(D) = \inf \sum_{j=1}^n \mu(I_j)    
+\]
+\pagebreak
+\section*{3.}
+Since $f$ and $g$ are continuous and $I$ is compact. $f$ and $g$ are Riemann integrable on $I$ and 
+hence $fg$ is also Riemann integrable, which means that there exists a partition $P$ such that 
+for all refinement $P_\epsilon$ of $P$
+\[
+    \left| \int_I fg - \sum_v f(x_v) g(x_v) \mu(I_v)\right| < \frac{\epsilon}{2} 
+\]
+for arbitary $x_v \in I_v$. We know that $f(I)$ are compact 
+since $f$ is continuous and $I$ is compact. 
+Therefore, there exists $M = \sup_{x \in I}f(x)$.
+Then since $g$ is uniformly continuous on $I$, we can find a refinement $Q$ of $P$ such that 
+for all subdivision, $|g(x_v) - g(y_v)| < \frac{\epsilon}{2 M \mu(I)}$. 
+Hence, for all refinement $Q_\epsilon$ of $Q$, we have 
+\begin{equation*}
+    \begin{aligned}
+        \left| \int_I fg - \sum_v f(x_v) g(y_v) \mu(I_v) \right| 
+        \le & \left| \int_I fg - \sum_v f(x_v) g(x_v) \mu(I_v) \right| \\
+         +& \left| \sum_v f(x_v) g(x_v) \mu(I_v) - \sum_v f(x_v) g(y_v) \mu(I_v) \right| \\
+        < & \frac{\epsilon}{2} 
+        + \left| \sum_v f(x_v) \mu(I_v) (g(x_v) - g(y_v) )\right| \\
+        < & \frac{\epsilon}{2} + \sum_v M \mu(I_v) \frac{\epsilon}{2 M \mu(I)}  \\
+        = & \frac{\epsilon}{2} + \frac{\epsilon}{2 \mu(I)} \sum_v \mu(I_v) 
+        = \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+    \end{aligned}
+\end{equation*}
+\pagebreak
+\section*{4.}
+\subsection*{a.}
+Since $D$ has content, $\partial D$ has content zero, and hence
+\[
+    \mu(\overline{D}) = \mu(D \cup \partial D) \le \mu(D) + \mu(\partial D) = \mu(D)    
+\]
+Since $D \subseteq \overline{D}, \mu(D) \le \mu(\overline{D})$ and hence $\mu(D) = \mu(\overline{D})$
+\subsection*{b.}
+$Z$ is a set of content zero, therefore $Z$ is bounded and 
+hence $\overline{Z}$ is compact and has content zero. 
+Therefore, $\phi(\overline{Z})$ has content zero, which means that $\phi(Z) \subset \phi(\overline{Z})$ also has content zero.
+\pagebreak
+\section*{5.}
+\subsection*{a.}
+Consider the function 
+\[
+    \phi: \mathbb{R}^2 \to \mathbb{R}^2, \indent (x,y) \to \left(\frac{zx}{h}, \frac{zy}{h} \right)    
+\]
+Then 
+\[
+    \det \phi(x,y) =
+    \det 
+    \begin{pmatrix}
+        \frac{z}{h} & 0 \\
+        0 & \frac{z}{h}
+    \end{pmatrix}
+    = \frac{z^2}{h^2}  
+\]
+\begin{equation*}
+    \begin{aligned}
+        \mu_3 
+        &= \int_{0+}^h \int_{\mathbb{R}^2} \chi_D  \left(\frac{hx}{z}, \frac{hy}{z} \right) dxdydz \\
+        &= \int_{0+}^h \int_{\mathbb{R}^2} \chi_D (x,y) \cdot \frac{z^2}{h^2} dxdydz \\
+        &= \mu_2(D) \int_{0+}^h \frac{z^2}{h^2} dz \\
+        &= \mu_2(D) \left.\frac{z^3}{3h^2} \right|_{0+}^{h} \\
+        &= \mu_2(D) \cdot \frac{h}{3}
+    \end{aligned}
+\end{equation*}
+which is the volume of a “cone” formed by projecting $D$ to the origin of $\mathbb{R}^3$
+\subsection*{b.}
+\begin{equation*}
+    \begin{aligned}
+        \mu_n 
+        &= \int_{0+}^h \int_{\mathbb{R}^{n-1}} \chi_D  \left(x, y \right) dxdydz \\
+        &= \mu_{n-1}(D) \int_{0+}^h 1 dz \\
+        &= \mu_{n-1}(D) \left.z \right|_{0+}^{h} \\
+        &= \mu_{n-1}(D) \cdot h
+    \end{aligned}
+\end{equation*}
+\subsection*{c.}
+When $n=1$, the object generated is a line with $\mu_1 = h$
+When $n=2$, the object generated is a rectangle with $\mu_2 = h \cdot \mu_1$
+\pagebreak
+\section*{6.}
+Suppose $x_0 \in K$ such that $\phi(x_0) \in \partial \phi(K)$, then $x_0 \in K\backslash Z$ or $x_0 \in Z$. \\
+In the case where $x_0 \in K\backslash Z$. Suppose that $x_0 \notin \partial K$. 
+Since $Z$ has content zero, 
+there exists an open neighborhood around $x_0$: $B(x_0)$ such that $B(x_0) \subset K$ and $\det J_\phi(x) \ne 0$ for all $x \in B(x_0)$.
+Hence, $\phi(B(x_0)) \subset \phi(K)$ is open. \\
+However, we know that $\phi(x_0) \in \partial \phi(K)$, 
+which means that for every open neighborhood around $\phi(x_0)$, there exists a point not in $K$. 
+Therefore, this is a contradiction and $x_0 \in \partial K$. \\
+Finally, since if $x_0 \in K$ satisifes $\phi(x_0) \in \partial \phi(K)$ then $x_0 \in \partial K$ or $x_0 \in Z$, 
+we have that $\phi(\partial K) \subset \phi(\partial K) \cup \phi(Z)$.
 \end{document}
