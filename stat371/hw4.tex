@@ -22,8 +22,8 @@
 \begin{equation*}
     \begin{aligned}
         &P(T \in (-4,-2] \cup (-3,1) \cup [4,5) \cup [4.5,6)) \\
-        =&\int_0^1  e^{-t} dt +\int_4^5 e^{-t} dt+  \int_{4.5}^6 e^{-t} dt \\
-        =& 0.652
+        =&\int_0^1  e^{-t} dt +\int_4^6 e^{-t} dt \\
+        =& 0.647
     \end{aligned}
 \end{equation*}
 \pagebreak
@@ -36,7 +36,15 @@ Let $Y$ be the total time and $X$ be the amount of times we have to wait. Then w
 \]
 \subsection*{b.}
 \[
-    V[Y|X] = x \cdot \frac{1-0}{12} = \frac{x}{12}
+    V[Y|X] = E[Y^2|X] - (E[Y|X])^2 = x \cdot E[Y_i^2] + x \cdot (x-1) E[Y_iY_j] = \frac{x}{12}
+\]
+since 
+\[
+    E[Y_i^2] = \int_0^1 y^2 dy = \frac{1}{3}    
+\]
+and 
+\[
+    E[Y_iY_j] = \left(\int_0^1 ydy\right)^2 = \frac{1}{4}    
 \]
 \[
     V[X] = \frac{1-\frac{1}{6}}{\frac{1}{6^2}} = 30 
@@ -57,15 +65,11 @@ As $\int 2z-2 dz = z^2 - 2z + C$, $C = 1$ so that $F_Z(1) = 0$ and $F_Z(2) = 1$.
     \end{cases}    
 \]
 \subsection*{b.}
-Let $U(z)$ be the uniform random variable between 0 and 1 and 
-$V(z)$ be a function such that $U(z) = F_Z(V(z))$. Then 
-\begin{equation*}
-    \begin{aligned}
-        V(z) 
-        &= F^{-1}_Z(U(z)) \\
-        &=  
-    \end{aligned}
-\end{equation*}
+Let $U(s)$ be the uniform random variable between 0 and 1, then 
+\[
+    V(s) = F^{-1}_X(U(s))    
+\]
+simulates the random variable.
 \pagebreak
 \section*{4.}
 The inverse function that maps $\cfrac{e^{x^3}}{e^{x^3} + e^{-x^3}}$ to $x$. \\
@@ -79,4 +83,9 @@ and hence
 \]
 which means that $F^{-1}_X$ is the function that maps $x$ to $\sqrt[3]{-\frac{1}{2}ln(\frac{1}{x}-1)}$ 
 \subsection*{b.}
+Let $U(s)$ be the uniform random variable between 0 and 1, then 
+\[
+    V(s) = F^{-1}_X(U(s))    
+\]
+simulates the random variable.
 \end{document}

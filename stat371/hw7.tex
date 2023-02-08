@@ -1,0 +1,44 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+\[
+    e^{-\lambda} = 1-0.2 = 0.8    
+\]
+\[
+    1 - \sum_{i=0}^2 e^{-\lambda} \frac{\lambda^i}{i!} = 0.00157
+\]
+\pagebreak
+\section*{2.}
+\begin{equation*}
+    \begin{aligned}
+        E[X] 
+        &= E[X|Y=0] \cdot P(Y=0) + E[X|Y>0] \cdot P(Y>0)  \\
+        &= E[Y\cdot 8000|Y=0] \cdot P(Y=0) + E[(Y-1)\cdot 8000|Y>0] \cdot (1-P(Y=0)) \\
+        &= 8000 E[Y|Y=0] \cdot P(Y=0) + (8000 E[Y|Y>0] - 8000) \cdot (1-P(Y=0)) \\
+        &= 8000 \cdot E[Y] - 8000 \cdot (1-P(Y=0)) \\
+        &= 8000 \cdot 4 -8000\cdot (1-e^{-4}) \\
+        &= 24146.525
+    \end{aligned}
+\end{equation*}
+\pagebreak
+\section*{3.}
+
+\end{document}

@@ -1,0 +1,74 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+Let $A$ be random value picked between 0 and 2 and $B$ be the random value picked between 1 and 3. 
+\begin{equation*}
+    \begin{aligned}
+        F_X(x) &= P(\max(A,B) \le x) = P(A\le x, B\le x) \\
+        &= P(A\le x) \cdot P(B\le x) \\
+    \end{aligned}
+\end{equation*}
+If $0<x<1$ then $P(B \le x) = 0$ and hence $F_X(x) = 0$. \\
+If $1<x<2$ then 
+\[
+    F_X(x) = \int_0^x \frac{1}{2} da + \int_1^x \frac{1}{2} db = \frac{x}{2}\cdot \left(\frac{x-1}{2}\right)
+\]
+\[
+    \implies f_X(x) = \frac{x}{2}-\frac{1}{4}    
+\]
+If $2<x<3$ then $P(A\le x) = 1$
+\[
+    F_X(x) = \int_1^x \frac{1}{2} db = \frac{x-1}{2}
+\]
+\[
+    \implies f_X(x) = \frac{1}{2}
+\]
+\[
+    E[X] = \int_1^2 \frac{x^2}{2}-\frac{x}{4} dx + \int_2^3 \frac{x}{2} dx = \frac{49}{24}
+\]
+\pagebreak
+\section*{2.}
+Let $A$ be the minute that the man arrives, $B$ be the minute that the woman arrives. Then since $A$ and $B$ is independent, we can find the joint probability
+\[
+    f_{A,B}(a,b) = \frac{1}{60} \cdot \frac{1}{30} = \frac{1}{1800}    
+\] the probability that 
+the first to arrive waits no longer than 5 minutes is 
+\[
+    P(|A-B|\le 5) = P(B-5\le A \le B+5) = \int_{15}^{45} \int_{a-5}^{a+5} \frac{1}{1800} dbda = \frac{1}{6}
+\]
+\[
+    P(A<B) = \int_{15}^{45} \int_0^a \frac{1}{1800} dbda = \frac{1}{2}
+\]
+\pagebreak
+\section*{3.}
+Gamma(3,2)
+\[
+    1-\int_0^8  \frac{x^2e^{-x/2}}{2^3 \cdot 2!} dx = 0.238 
+\]
+\pagebreak
+\section*{4.}
+\[
+    P(Y \in (60,75] \cup [70,90) \cup [120,240) \cup {59}) = P(Y \in (60,90) \cup (120,240))
+\]
+\[
+    = \int_{60}^{90} \frac{y^2e^{-y/60}}{60^3 2!} dy + \int_{120}^{240} \frac{y^2e^{-y/60}}{60^3 2!} dy = 0.54942
+\]
+\end{document}

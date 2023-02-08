@@ -33,8 +33,8 @@ Therefore,
         E[Y] 
         &= \int_0^\infty P(Y>y) dy - \int_{-\infty}^0 P(Y<y) dy \\
         &= \int_0^\infty \int_y^{\infty} f_Y(x) dxdy - \int_{-\infty}^0 \int_{-\infty}^y f_Y(x) dxdy \\
-        &= \int_0^\infty \int_0^x f_Y(x) dydx - \int_{-\infty}^0 \int_{-x}^0 f_Y(x) dydx \\
-        &= \int_0^\infty yf_Y(x)|^x_{y=0} dx - \int_{-\infty}^0 yf_Y(x)|^0_{y=-x} dx \\
+        &= \int_0^\infty \int_0^x f_Y(x) dydx - \int_{-\infty}^0 \int_{x}^0 f_Y(x) dydx \\
+        &= \int_0^\infty yf_Y(x)|^x_{y=0} dx - \int_{-\infty}^0 yf_Y(x)|^0_{y=x} dx \\
         &= \int_0^\infty xf_Y(x) dx + \int_{-\infty}^0 xf_Y(x) dx\\
         &= \int_0^\infty yf_Y(y) dy + \int_{-\infty}^0 yf_Y(y) dy
     \end{aligned}
@@ -91,26 +91,26 @@ the second case is the fire station is located between $5A/8$ and $A$.
 In the first case, the expceted distance is 
 \begin{equation*}
     \begin{aligned}
-        &\frac{1}{A} \left( \int_0^x (x-y) dy + \int_x^{A/2} (y-x) dy + \int_{5A/8}^A (y-x) dy \right) \\
-        =&\frac{1}{A} \left( x^2-\frac{x^2}{2} + \frac{A^2}{8} - \frac{x^2}{2} - \frac{Ax}{2} + x^2 + \frac{A^2}{2} - \frac{25A^2}{128} -Ax +\frac{5Ax}{8}\right) \\
-        =& \frac{1}{A} \left( x^2 - \frac{7Ax}{8} + \frac{55A^2}{128} \right) \\   
-        =& \frac{1}{A} \left(\frac{61A^2}{256} + \frac{1}{256}(7 A - 16 x)^2 \right)
+        &\frac{8}{7A} \left( \int_0^x (x-y) dy + \int_x^{A/2} (y-x) dy + \int_{5A/8}^A (y-x) dy \right) \\
+        =&\frac{8}{7A} \left( x^2-\frac{x^2}{2} + \frac{A^2}{8} - \frac{x^2}{2} - \frac{Ax}{2} + x^2 + \frac{A^2}{2} - \frac{25A^2}{128} -Ax +\frac{5Ax}{8}\right) \\
+        =& \frac{8}{7A} \left( x^2 - \frac{7Ax}{8} + \frac{55A^2}{128} \right) \\   
+        =& \frac{8}{7A} \left(\frac{61A^2}{256} + \frac{1}{256}(7 A - 16 x)^2 \right)
     \end{aligned}
 \end{equation*}
-Therefore, the optimal location in the interval between $0$ and $A/2$ is $7A/16$ with the expected value being $\frac{61A}{256}$. \\
+Therefore, the optimal location in the interval between $0$ and $A/2$ is $7A/16$ with the expected value being $\frac{61A}{256} \cdot \frac{8}{7}$. \\
 In the second case, the expected distance is
 \begin{equation*}
     \begin{aligned}
-        &\frac{1}{A} \left( \int_0^{A/2} (x-y) dy + \int_{5A/8}^{x} (x-y) dy + \int_x^A (y-x) dy \right) \\
-        =&\frac{1}{A} \left(\frac{Ax}{2} - \frac{A^2}{8} + x^2 - \frac{5Ax}{8} -\frac{x^2}{2} + \frac{25A^2}{128} + \frac{A^2}{2} - \frac{x^2}{2} -Ax + x^2 \right) \\  
-        =& \frac{1}{A}\left( \frac{73 A^2}{128} - \frac{9A x}{8} + x^2 \right) \\
-        =& \frac{1}{A} \left(\frac{65A^2}{256}+ \frac{1}{256}(9A - 16x)^2 \right)
+        &\frac{8}{7A} \left( \int_0^{A/2} (x-y) dy + \int_{5A/8}^{x} (x-y) dy + \int_x^A (y-x) dy \right) \\
+        =&\frac{8}{7A} \left(\frac{Ax}{2} - \frac{A^2}{8} + x^2 - \frac{5Ax}{8} -\frac{x^2}{2} + \frac{25A^2}{128} + \frac{A^2}{2} - \frac{x^2}{2} -Ax + x^2 \right) \\  
+        =& \frac{8}{7A}\left( \frac{73 A^2}{128} - \frac{9A x}{8} + x^2 \right) \\
+        =& \frac{8}{7A} \left(\frac{65A^2}{256}+ \frac{1}{256}(9A - 16x)^2 \right)
     \end{aligned}
 \end{equation*}
 Hence, the optimal location in the interval between $5A/8$ and $A$ is at $A$ or $5A/8$ as $9/16A < 5A/8$. \\
-If the fire station location is $A$, then the expected distance is $57A/128$. \\
-If the fire station location is $5A/8$, then the expected distance is $33A/128$. \\
-Therefore, the best location for the fire station is at $A/2$.
+If the fire station location is $A$, then the expected distance is $57A/128 \cdot \frac{8}{7}$. \\
+If the fire station location is $5A/8$, then the expected distance is $33A/128 \cdot \frac{8}{7}$. \\
+Therefore, the best location for the fire station is at $7A/16$.
 \subsection*{c.}
 The expected distance is 
 \begin{equation*}
