@@ -50,7 +50,11 @@ Therefore,
 \[
     \sum_{j=1}^n \mu(O_i) < \sum_{j=1}^n \mu(I_i) + \frac{\epsilon}{2} < \epsilon    
 \]
-Since each intervals in $O_i$ has a rational length, we can split it into cubes and thus got the desired results
+Since each intervals in $O_i$ has a rational length, we can split it into cubes. \\
+Suppose we have a interval $I = [a_1,b_1] \times \ldots \times [a_N,b_N]$ such that $b_i - a_i = \cfrac{x_i}{y_i}$ where $x_i$ and $y_i$ are integers. Then
+since for every subintervals $[a_i,b_i]$, we have that $\cfrac{\frac{x_i}{y_i}}{\frac{1}{\prod_{j=1}^N y_j}} = x_i \cdot \prod_{\substack{j=1 \\ i\ne j}}^N y_j$ is also an integer and hence
+we can split the interval $I$ into cubes with sides of length $\frac{1}{\prod_{j=1}^N y_j}$. Therefore, 
+we get the results. 
 \pagebreak
 \section*{2.}
 Let $I$ be a compact interval such that  $D \subset I_1 \cup I_2 \cup \ldots \cup I_n \subset I$, we have that 
@@ -113,7 +117,8 @@ Since $D \subseteq \overline{D}, \mu(D) \le \mu(\overline{D})$ and hence $\mu(D)
 \subsection*{b.}
 $Z$ is a set of content zero, therefore $Z$ is bounded and 
 hence $\overline{Z}$ is compact and has content zero. 
-Therefore, $\phi(\overline{Z})$ has content zero, which means that $\phi(Z) \subset \phi(\overline{Z})$ also has content zero.
+Therefore, $\phi(\overline{Z})$ has content zero, which means that 
+$\phi(Z) \subset \phi(Z) \cup \phi(\partial Z) = \phi(\overline{Z})$ also has content zero.
 \pagebreak
 \section*{5.}
 \subsection*{a.}
