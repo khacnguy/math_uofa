@@ -26,14 +26,14 @@ Since the set is compact with content zero, we have that there exists $I_1, I_2,
 Consider the interval $I_i = (a_{i,1}, b_{i,1}) \times \ldots \times (a_{i,N}, b_{i,N})$. 
 Since the set of rational number is dense, we can find $b_1'$ such that 
 \[
-    \mathbb{Q} \ni b_{i,1}' - b_{i,1} < \frac{\epsilon (b_{i,1}- a_{i,1})}{2nN\mu(A_i)}
+    \mathbb{Q} \ni b_{i,1}' - b_{i,1} < \frac{\epsilon (b_{i,1}- a_{i,1})}{2nN\mu(I_i)}
 \]
 Therefore, $O_{i,1} = [a_{i,1}, b_{i,1}'] \times \ldots \times [a_{i,N}, b_{i,N}]$ satisfies
 \[
     \mu(O_{i,1}) - \mu(I_i) 
     = \mu(I_i) \frac{b_{i_1}' - a_{i,1}}{b_{i,1} - a_{i,1}} -\mu(I_i) 
     = \mu(I_i)\frac{b_{i_1}' - b_{i,1}}{b_{i,1} - a_{i,1}} 
-    < \frac{\mu(I_i)}{b_{i,1} - a_{i,1}} \cdot \frac{\epsilon (b_{i,1}- a_{i,1})}{2nN\mu(A_i)} 
+    < \frac{\mu(I_i)}{b_{i,1} - a_{i,1}} \cdot \frac{\epsilon (b_{i,1}- a_{i,1})}{2nN\mu(I_i)} 
     = \frac{\epsilon}{2nN}
 \]
 Then using $O_{i,1}$, we can find $O_{i,2}$ such that $\mu(O_{i,2}) - \mu(O_{i,1}) < \cfrac{\epsilon}{2nN}$ using the same process. \\
@@ -171,5 +171,7 @@ However, we know that $\phi(x_0) \in \partial \phi(K)$,
 which means that for every open neighborhood around $\phi(x_0)$, there exists a point not in $K$. 
 Therefore, this is a contradiction and $x_0 \in \partial K$. \\
 Finally, since if $x_0 \in K$ satisifes $\phi(x_0) \in \partial \phi(K)$ then $x_0 \in \partial K$ or $x_0 \in Z$, 
-we have that $\phi(\partial K) \subset \phi(\partial K) \cup \phi(Z)$.
+we have that $\partial\phi(K) \subset \phi(\partial K) \cup \phi(Z)$. \\
+Since $\partial K$ has content zero because $K$ has content, and $Z$ has content zero, 
+$\phi(\partial K)$ and $\phi(Z)$ has content zero and hence $\partial \phi(K)$ also has content zero. Therefore, $\phi(K)$ has content.
 \end{document}
