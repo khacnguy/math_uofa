@@ -1,0 +1,123 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+Consider the partition $t_{2n+1} = 0$ and $t_j = \cfrac{1}{j}$ where $1 \le j \le 2n$. Then we have that 
+\begin{equation*}
+    \begin{aligned}
+        \sum_{j=1}^{2n} \| t_{j+1} - t_j \| 
+        &= \| t_{2n+1} - t_{2n} \| + \sum_{j=1}^{2n-1} \sqrt{(1-1)^2 + \left(\cfrac{\cos((j+1) \pi)}{j+1} - \cfrac{\cos(j \pi)}{j} \right)^2} \\
+        &= \cfrac{\cos(2n \pi)}{2n} + \sum_{j=1}^{2n-1} \left| \cfrac{1}{j+1} + \cfrac{1}{j} \right| \cdot | \cos((j+1)\pi) | \\
+        &> \cfrac{1}{2n} + \sum_{j=1}^{2n-1} \cfrac{1}{j} \\
+        &= \sum_{j=1}^{2n} \cfrac{1}{j}
+    \end{aligned}
+\end{equation*}
+However, we know that the harmonic series $\sum_{j=1}^\infty \cfrac{1}{j}$ diverges. Therefore, the supremum
+of $\sum_{j=1}^{2n} \|t_{j+1} - t_j \|$ of all partitions does not exists and hence the curve is not rectifiable.
+\pagebreak
+\section*{2.}
+\begin{equation*}
+    \begin{aligned}
+        \alpha'(t) 
+        &= J_{\Phi \circ \gamma}(t) \\
+        &= J_\Phi(\gamma(t)) J_\gamma(t) \\
+        &= 
+        \begin{bmatrix}
+            \cfrac{\partial \Phi_1}{\partial x}(\gamma(t)) & \cfrac{\partial \Phi_1}{\partial y}(\gamma(t)) \\
+            \cfrac{\partial \Phi_2}{\partial x}(\gamma(t)) & \cfrac{\partial \Phi_2}{\partial y}(\gamma(t)) \\
+            \cfrac{\partial \Phi_3}{\partial x}(\gamma(t)) & \cfrac{\partial \Phi_3}{\partial y}(\gamma(t)) 
+        \end{bmatrix}
+        \begin{bmatrix}
+            \cfrac{\partial x}{\partial t}(t) \\
+            \cfrac{\partial y}{\partial t}(t) 
+        \end{bmatrix} \\
+        &= 
+        \begin{bmatrix}
+            \cfrac{\partial \Phi_1}{\partial x}(\gamma(t)) \cfrac{\partial x}{\partial t}(t) + \cfrac{\partial \Phi_1}{\partial y}(\gamma(t)) \cfrac{\partial y}{\partial t}(t) \\
+            \cfrac{\partial \Phi_2}{\partial x}(\gamma(t)) \cfrac{\partial x}{\partial t}(t) + \cfrac{\partial \Phi_2}{\partial y}(\gamma(t)) \cfrac{\partial y}{\partial t}(t) \\
+            \cfrac{\partial \Phi_3}{\partial x}(\gamma(t)) \cfrac{\partial x}{\partial t}(t) + \cfrac{\partial \Phi_3}{\partial y}(\gamma(t)) \cfrac{\partial y}{\partial t}(t) 
+        \end{bmatrix}
+    \end{aligned}
+\end{equation*}
+Let $
+x_i = \cfrac{\partial \Phi_i}{\partial x}(\gamma(t)), 
+y_i = \cfrac{\partial \Phi_i}{\partial y}(\gamma(t)), 
+a = \cfrac{\partial x}{\partial t}(t), 
+b =\cfrac{\partial y}{\partial t}(t)$, then 
+\begin{equation*}
+    \begin{aligned}
+        \alpha'(t) \cdot N(\gamma(t)) 
+        &= \alpha'(t) \cdot \left( \frac{\partial \Phi}{\partial x}(\gamma(t)) \times \frac{\partial \Phi}{\partial y}(\gamma(t)) \right) \\
+        &= 
+        \det 
+        \begin{bmatrix}
+            x_1 \cdot a + y_1 \cdot b & x_2 \cdot a + y_2 \cdot b & x_3 \cdot a + y_3 \cdot b \\
+            x_1 & x_2 & x_3 \\
+            y_1 & y_2 & y_3 
+        \end{bmatrix} \\
+        &= 0
+    \end{aligned}
+\end{equation*}
+as the first row is a linear combination of the second and third row. Therefore, the two vectors are orthogonal.
+\pagebreak
+\section*{3.}
+Since $K$ is a normal domain, 
+there exists a piecewise $\mathcal{C}^1$ curve 
+$\gamma: [a,b] \to \mathbb{R}^2$ on the boundary of $K$, and since $\Phi|_{\partial K} = \Psi|_{\partial K}$. \\
+\[
+    \int_{\Phi} \text{curl} f \cdot n d\sigma = \int_{\Phi \circ \gamma} Pdx + Qdy + Rdz = \int_{\Psi \circ \gamma} Pdx + Qdy + Rdz = \int_{\Psi} \text{curl} f \cdot n d\sigma 
+\]
+\pagebreak
+\section*{4.}
+\subsection*{a.}
+Apply the Gauss theorem to the vector field $f\nabla g$ then
+\begin{equation*}
+    \begin{aligned}
+        \int_S f D_n g d\sigma &=  \int_S f \nabla g \cdot n d\sigma \\
+        & = \int_V \nabla (f \nabla g) \\
+        & = \int_V f \nabla^2 g + \nabla f \cdot \nabla g \\
+        & = \int_V f \Delta g + \int_V \nabla f \cdot \nabla g
+    \end{aligned}
+\end{equation*}
+\subsection*{b.}
+From part a, we have that 
+\[
+    \int_S f D_n g d\sigma = \int_V f \Delta g + \int_V \nabla f \cdot \nabla g    
+\]
+\[
+    \int_S g D_n f d\sigma = \int_V g \Delta f + \int_V \nabla g \cdot \nabla f
+\]
+Therefore, 
+\[
+    \int_S (f D_n g - g D_n f) d\sigma = \int_V (f \Delta g - g \Delta f)
+\]
+\pagebreak
+\section*{5.}
+\subsection*{a.}
+From 4a, let $g=1$ then $\nabla g = \Delta g = 0$, we have that 
+\[
+    0 = \int_V (\nabla g) \cdot (\nabla f) + \int_V g \nabla f = \int_S g D_n f d\sigma
+\]
+\subsection*{b.}
+From 4a, let $g = f$, we have that 
+\[
+    \int_S f D_n f d\sigma = \int_V f \Delta f + \int_V \nabla f \cdot \nabla f = \int_V |\nabla f|^2
+\]
+\end{document}
