@@ -1,0 +1,148 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+We know that $\frac{1}{4} \left(Z_1 + Z_2 + Z_3 + Z_4\right) \sim Normal(0,\frac{1}{4})$ \\
+and hence $\frac{1}{2} \left(Z_1 + Z_2 + Z_3 + Z_4\right) \sim Normal(0,1)$ \\
+We also have that $W=Z_5^2 + Z_6^2 + Z_7^2 + Z_8^2 + Z_9^2 + Z_{10}^2 \sim \chi_6^2$ \\
+Therefore, with $c=\sqrt{6}/2$
+\[
+    \frac{\sqrt{6}}{2}\cdot \frac{Z_1 + Z_2 + Z_3 + Z_4}{\sqrt{Z_5^2 + Z_6^2 + Z_7^2 + Z_8^2 + Z_9^2 + Z_{10}^2}} \sim t_6    
+\]
+\pagebreak
+\section*{2.}
+We have that 
+\[
+    Z_1^2 + Z_2^2 + \ldots + Z_n^2 \sim \chi^2_{n}
+\]
+and 
+\[
+    Z_{n+1}^2 + Z_{n+2}^2 + \ldots + Z_{3n}^2 \sim \chi^2_{2n}
+\]
+Therefore, with $c=2$
+\[
+    2 \cdot \frac{Z_1^2 + Z_2^2 + \ldots + Z_n^2}{Z_{n+1}^2 + Z_{n+2}^2 + \ldots + Z_{3n}^2 \sim \chi^2_{2n}} \sim F_{2n}^n
+\]
+\pagebreak
+\section*{3.}
+\[
+    \overline{X} = 2\overline{Y} + 35 > 60 \iff \overline{Y} > 12.5    
+\]
+\[
+    \sum_{i=1}^{52} Y_i \sim Gamma(\alpha = 3 \cdot 52 = 160, \beta = 5)
+\]
+\[
+    \overline{Y} = \frac{1}{52} \sum_{i=1}^{52} Y_i \sim Gamma(\alpha = 160/52=3, \beta = 5\cdot52 = 260)
+\]
+and hence
+\pagebreak
+\section*{4.}
+Consider $Y = \sum_{i=1}^{100} Y_i \sim Normal(\mu_Y = 100 \cdot 2540 = 254000, \sigma_Y = 100 \cdot 2100 = 210000)$ 
+Then $Z = \cfrac{300000-254000}{210000}  = \cfrac{23}{105}$ and hence the proability that the total of 100 claims will be over 300000 dollars is 0.4129
+\pagebreak
+\section*{5.}
+For each bulb, the probability that it is not a dud is 
+\[
+    1 - \int_0^{2.5} 11 \cdot e^{-11x} dx  = e^{- \frac{55}{2}}
+\]
+Then the probability that there is less than 45 duds follows a normal distribution with $\mu = 200 \cdot e^{- \frac{55}{2}}$
+and $\sigma = \sqrt{200 \cdot e^{- \frac{55}{2}} \cdot (1-e^{- \frac{55}{2}})}$, which hence is 
+\[
+    \frac{45-200 \cdot e^{- \frac{55}{2}}}{\sqrt{200 \cdot e^{- \frac{55}{2}} \cdot (1-e^{- \frac{55}{2}})}}
+\]
+\pagebreak
+\section*{6.}
+We have that 
+\begin{equation*}
+    \begin{aligned}
+        E[\overline{Y}]^2 
+        & = E[\overline{Y}^2] - V[\overline{Y}] \\
+        & = E[\overline{Y}^2] -  \frac{\beta^2}{m} \\
+        & = E[\overline{Y}^2] -  \frac{E[\overline{Y}]^2}{m} \\
+    \end{aligned}
+\end{equation*}
+Therefore, 
+\[
+    E[\overline{Y}]^2 = E[\overline{Y}^2] \cdot \frac{m}{m+1}   
+\]
+Hence, 
+\begin{equation*}
+    \begin{aligned}
+        E[C] &= E[2Y^2 - 4Y] \\
+        & = 2E[Y^2] - 4E[Y] \\
+        & = 2(V[Y] +E[Y]^2) - 4E[Y] \\
+        & = 2(\beta^2 + \beta^2) - 4 \beta \\
+        & = 4\beta^2 - 4\beta \\
+        & = 4E[\overline{Y}]^2 - 4 E[\overline{Y}] \\
+        & = 4 \frac{m}{m+1} E[\overline{Y}^2] - 4E[\overline{Y}]
+    \end{aligned}
+\end{equation*}
+Therefore, an unbiased estimator is $\cfrac{4m \overline{Y}^2}{m+1} - 4\overline{Y}$
+\pagebreak
+\section*{7.}
+$X_{(n)} = \max\{X_1, X_2, \ldots, X_n\}$. Therefore, 
+\begin{equation*}
+    \begin{aligned}
+        F_{X_{(n)}}(x) &= P(X_{(n)} \le x) = P(X_1, X_2, \ldots, X_n < x) \\
+        &= \left(\frac{x}{\theta}\right)^n \\
+        f_{X_{(n)}}(x) &= n \cdot \frac{1}{\theta} \cdot \left(\frac{x}{\theta}\right)^{n-1}\\
+    \end{aligned}
+\end{equation*}
+Therefore, 
+\[
+    E[X_{(n)}] = \int_0^{\theta} x \frac{n}{\theta}  \left(\frac{x}{\theta} \right)^{n-1} dx 
+    = \frac{n}{\theta^n} \int_0^\theta x^n dx = \frac{\theta n }{n+1}    
+\]
+and similarly
+\[
+    E[X_{(n)}^2] = \int_0^{\theta} x^2 \frac{n}{\theta}  \left(\frac{x}{\theta} \right)^{n-1} dx 
+    = \frac{n}{\theta^n} \int_0^\theta x^{n+1} dx = \frac{\theta^2 n }{n+2}
+\]
+We have that 
+\begin{equation*}
+    \begin{aligned}
+        V[Y] &= V[E[Y|X]] + E[V[Y|X]] \\
+        &= V\left[\frac{X}{3} \right] + E\left[\frac{X^2}{9} \right] \\
+        &= \frac{\theta^2}{108}  + \frac{1}{9} (E[X]^2 - V[X]) \\
+        &= \frac{\theta^2}{108}  + \frac{1}{9} \left(\frac{\theta^2}{4} - \frac{\theta^2}{12} \right) \\
+        &= \frac{\theta^{2}}{36} \\
+        &= \frac{n+2}{36n}E[X_{(n)}^2]
+    \end{aligned}
+\end{equation*}
+\pagebreak
+\section*{8.}
+\[
+    F_{Y_{(n)}}(y) = \left(\frac{5y^4}{(\beta+1)^5} \right)^n    
+\]
+\[
+    f_{Y_{(n)}}(y) = n \left(\frac{5y^4}{(\beta+1)^5} \right)^{n-1} \cdot \frac{20y^3}{(\beta+1)^5}
+\]
+\begin{equation*}
+    \begin{aligned}
+        E[Y_{(n)}] 
+        &= \int_0^{\beta+1} y \cdot n \left(\frac{5y^4}{(\beta+1)^5} \right)^{n-1} \cdot \frac{20y^3}{(\beta+1)^5} \\
+        &=
+    \end{aligned}
+\end{equation*}
+
+\[
+    E[\hat{\beta_1}] =     
+\]
+\end{document}
