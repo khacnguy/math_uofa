@@ -2,10 +2,10 @@
     \title{\textbf{Math 217 Homework I}}
     \author{Khac Nguyen Nguyen}
     \date{}
-    
+
     \addtolength{\topmargin}{-3cm}
     \addtolength{\textheight}{3cm}
-    
+
 \usepackage{amsmath}
 \usepackage{mathtools}
 \usepackage{amsthm}
@@ -24,15 +24,15 @@ and hence $\frac{1}{2} \left(Z_1 + Z_2 + Z_3 + Z_4\right) \sim Normal(0,1)$ \\
 We also have that $W=Z_5^2 + Z_6^2 + Z_7^2 + Z_8^2 + Z_9^2 + Z_{10}^2 \sim \chi_6^2$ \\
 Therefore, with $c=\sqrt{6}/2$
 \[
-    \frac{\sqrt{6}}{2}\cdot \frac{Z_1 + Z_2 + Z_3 + Z_4}{\sqrt{Z_5^2 + Z_6^2 + Z_7^2 + Z_8^2 + Z_9^2 + Z_{10}^2}} \sim t_6    
+    \frac{\sqrt{6}}{2}\cdot \frac{Z_1 + Z_2 + Z_3 + Z_4}{\sqrt{Z_5^2 + Z_6^2 + Z_7^2 + Z_8^2 + Z_9^2 + Z_{10}^2}} \sim t_6
 \]
 \pagebreak
 \section*{2.}
-We have that 
+We have that
 \[
     Z_1^2 + Z_2^2 + \ldots + Z_n^2 \sim \chi^2_{n}
 \]
-and 
+and
 \[
     Z_{n+1}^2 + Z_{n+2}^2 + \ldots + Z_{3n}^2 \sim \chi^2_{2n}
 \]
@@ -43,46 +43,51 @@ Therefore, with $c=2$
 \pagebreak
 \section*{3.}
 \[
-    \overline{X} = 2\overline{Y} + 35 > 60 \iff \overline{Y} > 12.5    
+    \overline{X} = 2\overline{Y} + 35 > 60 \iff \overline{Y} > 12.5
 \]
+We have that 
 \[
-    \sum_{i=1}^{52} Y_i \sim Gamma(\alpha = 3 \cdot 52 = 160, \beta = 5)
+    \overline{Y} \sim N(\mu_{\overline{Y}}\mu_Y = 15, \sigma^2_{\overline{Y}} = \sigma_Y^2/52 = 75/52)    
 \]
+Then since $\frac{15-12.5}{\sqrt{75/52}} = \frac{\sqrt{39}}{3}$
 \[
-    \overline{Y} = \frac{1}{52} \sum_{i=1}^{52} Y_i \sim Gamma(\alpha = 160/52=3, \beta = 5\cdot52 = 260)
+    P(X>60) = P(Y>12.5) =  1- 0.0188 = \frac{2453}{2500}
 \]
-and hence
 \pagebreak
 \section*{4.}
-Consider $Y = \sum_{i=1}^{100} Y_i \sim Normal(\mu_Y = 100 \cdot 2540 = 254000, \sigma_Y = 100 \cdot 2100 = 210000)$ 
-Then $Z = \cfrac{300000-254000}{210000}  = \cfrac{23}{105}$ and hence the proability that the total of 100 claims will be over 300000 dollars is 0.4129
+Consider $Y = \sum_{i=1}^{100} Y_i \sim Normal(\mu_Y = 100 \cdot 2540 = 254000, \sigma^2_Y = 2100^2\cdot 100)$
+Then $Z = \cfrac{300000-254000}{21000} = \cfrac{46}{21} $ and hence the proability that the total of 100 claims will be over 300000 dollars is 0.0143
 \pagebreak
 \section*{5.}
-For each bulb, the probability that it is not a dud is 
+For each bulb, the probability that it is not a dud is
 \[
-    1 - \int_0^{2.5} 11 \cdot e^{-11x} dx  = e^{- \frac{55}{2}}
+    1 - \int_0^{2.5} \frac{1}{11} \cdot e^{-x/11} dx = e^{-5/22} = 0.2033
 \]
-Then the probability that there is less than 45 duds follows a normal distribution with $\mu = 200 \cdot e^{- \frac{55}{2}}$
-and $\sigma = \sqrt{200 \cdot e^{- \frac{55}{2}} \cdot (1-e^{- \frac{55}{2}})}$, which hence is 
+Then the probability that there is less than 45 duds follows a normal distribution with $\mu = 200 \cdot 0.2033 = 40.66$
+and $\sigma = \sqrt{200 \cdot 0.2033 \cdot 0.7967} = 5.69156$, which hence is 
 \[
-    \frac{45-200 \cdot e^{- \frac{55}{2}}}{\sqrt{200 \cdot e^{- \frac{55}{2}} \cdot (1-e^{- \frac{55}{2}})}}
+    1 - 0.2236 = 0.7486
+\]
+because 
+\[
+    \frac{45- 40.66}{5.69156} = 0.7625 
 \]
 \pagebreak
 \section*{6.}
-We have that 
+We have that
 \begin{equation*}
     \begin{aligned}
-        E[\overline{Y}]^2 
+        E[\overline{Y}]^2
         & = E[\overline{Y}^2] - V[\overline{Y}] \\
         & = E[\overline{Y}^2] -  \frac{\beta^2}{m} \\
         & = E[\overline{Y}^2] -  \frac{E[\overline{Y}]^2}{m} \\
     \end{aligned}
 \end{equation*}
-Therefore, 
+Therefore,
 \[
-    E[\overline{Y}]^2 = E[\overline{Y}^2] \cdot \frac{m}{m+1}   
+    E[\overline{Y}]^2 = E[\overline{Y}^2] \cdot \frac{m}{m+1}
 \]
-Hence, 
+Hence,
 \begin{equation*}
     \begin{aligned}
         E[C] &= E[2Y^2 - 4Y] \\
@@ -97,7 +102,7 @@ Hence,
 Therefore, an unbiased estimator is $\cfrac{4m \overline{Y}^2}{m+1} - 4\overline{Y}$
 \pagebreak
 \section*{7.}
-$X_{(n)} = \max\{X_1, X_2, \ldots, X_n\}$. Therefore, 
+$X_{(n)} = \max\{X_1, X_2, \ldots, X_n\}$. Therefore,
 \begin{equation*}
     \begin{aligned}
         F_{X_{(n)}}(x) &= P(X_{(n)} \le x) = P(X_1, X_2, \ldots, X_n < x) \\
@@ -105,44 +110,271 @@ $X_{(n)} = \max\{X_1, X_2, \ldots, X_n\}$. Therefore,
         f_{X_{(n)}}(x) &= n \cdot \frac{1}{\theta} \cdot \left(\frac{x}{\theta}\right)^{n-1}\\
     \end{aligned}
 \end{equation*}
-Therefore, 
+Therefore,
 \[
-    E[X_{(n)}] = \int_0^{\theta} x \frac{n}{\theta}  \left(\frac{x}{\theta} \right)^{n-1} dx 
-    = \frac{n}{\theta^n} \int_0^\theta x^n dx = \frac{\theta n }{n+1}    
+    E[X_{(n)}] = \int_0^{\theta} x \frac{n}{\theta}  \left(\frac{x}{\theta} \right)^{n-1} dx
+    = \frac{n}{\theta^n} \int_0^\theta x^n dx = \frac{\theta n }{n+1}
 \]
 and similarly
 \[
-    E[X_{(n)}^2] = \int_0^{\theta} x^2 \frac{n}{\theta}  \left(\frac{x}{\theta} \right)^{n-1} dx 
+    E[X_{(n)}^2] = \int_0^{\theta} x^2 \frac{n}{\theta}  \left(\frac{x}{\theta} \right)^{n-1} dx
     = \frac{n}{\theta^n} \int_0^\theta x^{n+1} dx = \frac{\theta^2 n }{n+2}
 \]
-We have that 
+We have that
 \begin{equation*}
     \begin{aligned}
         V[Y] &= V[E[Y|X]] + E[V[Y|X]] \\
         &= V\left[\frac{X}{3} \right] + E\left[\frac{X^2}{9} \right] \\
-        &= \frac{\theta^2}{108}  + \frac{1}{9} (E[X]^2 - V[X]) \\
-        &= \frac{\theta^2}{108}  + \frac{1}{9} \left(\frac{\theta^2}{4} - \frac{\theta^2}{12} \right) \\
-        &= \frac{\theta^{2}}{36} \\
-        &= \frac{n+2}{36n}E[X_{(n)}^2]
+        &= \frac{\theta^2}{108}  + \frac{1}{9} (E[X]^2 + V[X]) \\
+        &= \frac{\theta^2}{108}  + \frac{1}{9} \left(\frac{\theta^2}{4} + \frac{\theta^2}{12} \right) \\
+        &= \frac{5\theta^{2}}{108} \\
+        &= \frac{5(n+2)}{108n}E[X_{(n)}^2]
     \end{aligned}
 \end{equation*}
 \pagebreak
 \section*{8.}
+\subsection*{a.}
 \[
-    F_{Y_{(n)}}(y) = \left(\frac{5y^4}{(\beta+1)^5} \right)^n    
+    F_{Y_{(n)}}(y) = \left(\int_0^y \frac{5y^4}{(\beta+1)^5} dy \right)^n = \left( \frac{y}{\beta+1} \right)^{5n}
 \]
 \[
-    f_{Y_{(n)}}(y) = n \left(\frac{5y^4}{(\beta+1)^5} \right)^{n-1} \cdot \frac{20y^3}{(\beta+1)^5}
+    f_{Y_{(n)}}(y) = 5n \left(\frac{y}{\beta+1} \right)^{5n-1} \cdot \frac{1}{\beta+1}
 \]
 \begin{equation*}
     \begin{aligned}
-        E[Y_{(n)}] 
-        &= \int_0^{\beta+1} y \cdot n \left(\frac{5y^4}{(\beta+1)^5} \right)^{n-1} \cdot \frac{20y^3}{(\beta+1)^5} \\
-        &=
+        E[Y_{(n)}]
+        &= \int_0^{\beta+1} y \cdot 5n \left(\frac{y}{\beta+1} \right)^{5n-1} \cdot \frac{1}{\beta+1} dy \\
+        &= \frac{5n}{(\beta+1)^{5n}} \int_0^{\beta+1} y^{5n} dy \\
+        &= \frac{5n \cdot (\beta+1)^{5n+1}}{(5n+1)(\beta+1)^{5n}}\\
+        &= \frac{5n (\beta+1)}{5n+1}
     \end{aligned}
 \end{equation*}
-
+\begin{equation*}
+    \begin{aligned}
+        \beta = E[\beta] &= E[\hat{\beta_1}] =  a \cdot E[Y_{(n)}] + b \\
+        &= a \cdot \frac{5n (\beta+1)}{5n+1} + b \\
+    \end{aligned}
+\end{equation*}
+Therefore, $a = \frac{5n+1}{5n}, b = -1$ and $aY_{(n)} + b$ is an estimator for $\beta$
+\subsection*{b.}
 \[
-    E[\hat{\beta_1}] =     
+    E[Y] = \int_0^{\beta +1} y \cdot \frac{5y^4}{(\beta+1)^5} dy = \frac{5(\beta+1)}{6}
 \]
+\begin{equation*}
+    \begin{aligned}
+        \beta = E[\beta] &= E[\hat{\beta_2}] =  a \cdot E[\overline{Y}] + b \\
+        &= a \cdot \frac{5 (\beta+1)}{6} + b \\
+    \end{aligned}
+\end{equation*}
+Therefore, $a = \frac{6}{5}, b = -1$ and $aY_{(n)} + b$ is an estimator for $\beta$
+\subsection*{c.}
+\begin{equation*}
+    \begin{aligned}
+        V[Y_{(n)}] &= E[Y_{(n)}^2] - E[Y_{(n)}]^2 \\
+        &= \int_0^{\beta+1} y^2 \cdot 5n \left(\frac{y}{\beta+1} \right)^{5n-1} \cdot \frac{1}{\beta+1} dy - \left(\frac{5n(\beta+1)}{5n+1} \right)^2 \\
+        &= \dfrac{5\left({\beta}^2+2{\beta}+1\right)n}{5n+2} - \left(\frac{5n(\beta+1)}{5n+1} \right)^2 \\
+        &= \frac{5n(\beta+1)^2}{(5n+1)^2 (5n+2)}
+    \end{aligned}
+\end{equation*}
+Hence, 
+\[
+    V[\hat{\beta_1}] = a^2 \cdot V[Y_{(n)}] = \frac{(\beta+1)^2}{5n(5n+2)}    
+\]
+\begin{equation*}
+    \begin{aligned}
+        V[\overline{Y}] 
+        &= \frac{V[Y]}{n} \\
+        &= \frac{1}{n} \left(\int_0^{\beta+1} y^2 \cdot \frac{5y^4}{(\beta+1)^5} dy - \left(\frac{5(\beta+1)}{6}\right)^2 \right) \\
+        &= \frac{1}{n} \left( \frac{5(\beta+1)^2}{7} - \left(\frac{5(\beta+1)}{6}\right)^2 \right) \\
+        &= \frac{5(\beta+1)^2}{252n}
+    \end{aligned}
+\end{equation*}
+Hence, 
+\[
+    V[\hat{\beta_2}] = a^2 \cdot V[\overline{Y}] = \frac{(\beta+1)^2}{35n}    
+\]
+Therefore, if $n=1$ then $V[\hat{\beta_1}] = V[\hat{\beta_2}]$, if $n>1$ then $V[\hat{\beta_1}] < V[\hat{\beta_2}]$,
+which means that $\hat{\beta_1}$ is more efficient than $\hat{\beta_2}$ if $n>1$ else, they have the same efficiency. 
+\pagebreak
+\section*{9.}
+\subsection*{a.}
+We have that
+\[
+    F_Y(y) = \int_0^y \frac{cy^{c-1}}{\theta} e^{-y^c/\theta} dy = 1-e^{-y^c/\theta}
+\]
+Therefore,
+\[
+    F_{Y^C}(y^c) =  P(Y^C < y^c) =  P(Y<y) = F_Y(y) = 1 - e^{-y^c / \theta}
+\]
+Let $V = Y^C$, then
+\[
+    F_V(v) = 1 - e^{-v / \theta}
+\]
+Hence, $Y^C$ or $V$ follows an exponential distribution with mean $\theta$, which means that $U$ follows
+the gamma distribution with $\alpha = n, \beta = \theta$.
+\[
+    L(\theta) = \prod_{i=1}^n f_Y(y_i|\theta) = \prod_{i=1}^n \frac{cy_i^{c-1}}{\theta}e^{-y_i^c/\theta}       
+\]
+Hence, 
+\begin{equation*}
+    \begin{aligned}
+        L(\theta|U) &= \frac{L(\theta)}{f_U(u)} \\
+        &= \frac{\prod_{i=1}^n \frac{cy_i^{c-1}}{\theta}e^{-y_i^c/\theta}}{\frac{1}{\Gamma(n)\theta^n} u^{n-1} e^{-u/\theta}} \\
+        &= \frac{\prod_{i=1}^n cy_i^{c-1}}{\frac{1}{\Gamma(n)} u^{n-1}} \\
+    \end{aligned}
+\end{equation*}
+which means that $U$ is sufficient for $\theta$
+\subsection*{b.}
+We know that 
+\begin{equation*}
+    \begin{aligned}
+        L(\theta) = \prod_{i=1}^n \frac{cy_i^{c-1}}{\theta}e^{-y_i^c/\theta} = \underbrace{e^{-u/\theta}}_{g(u,\theta)} \underbrace{\prod_{i=1}^n \frac{cy_i^{c-1}}{\theta}}_{h(y_1,y_2, \ldots, h_n)}
+    \end{aligned}
+\end{equation*}
+Therefore, $U$ is sufficient for $\theta$.
+\pagebreak
+\section*{10.}
+\subsection*{a.}
+\begin{equation*}
+    \begin{aligned}
+        P(|Y_{(1)} - \beta| \le c) &= P(Y_{(1)} - \beta \le c) = P(Y_{(1)} \le c + \beta) \\
+        &= 1 - (Y \ge c+\beta)^n \\
+        &= 1 - \left(\int_{c+\beta}^\infty \frac{\alpha \beta^\alpha}{y^{\alpha+1}} dy \right)^n \\
+        &= 1 - \left(\dfrac{{\beta}}{c+{\beta}} \right)^{\alpha n}
+    \end{aligned}
+\end{equation*}
+Then 
+\[
+    P(|Y_{(1)} - \beta | \le c) = \lim_{n \to \infty} P(|Y_{(1)} - \beta | \le c) = \lim_{n \to \infty} 1 - \left(\dfrac{{\beta}}{c+{\beta}} \right)^{\alpha n} = 1  
+\]
+Hence, $Y_{(1)}$ is a consistent estimator for $\beta$.
+\subsection*{b.}
+\begin{equation*}
+    \begin{aligned}
+        L(\alpha, \beta) &= \prod_{i=1}^n \frac{\alpha \beta^{\alpha}}{y^{\alpha + 1}} I_{(\beta, \infty)}(y_i) \\
+        &= \underbrace{\frac{(\alpha \beta^\alpha)^n}{\left(\prod_{i=1}^n y_i \right)^{\alpha+1}}  I_{(\beta, \infty)}(y_{(1)}) }_{g(\alpha, \beta, u_1, u_2)} \cdot \underbrace{1}_{h(y_1, y_2, \ldots, y_n)}\\ 
+    \end{aligned}
+\end{equation*}
+Then $U_1 = \prod_{i=1}^n Y_i$ and $U_2 = Y_{(1)}$ are jointly sufficient for $\alpha$ and $\beta$
+\subsection*{c.}
+If $y_{(1)} \ge \beta$ then 
+\begin{equation*}
+    \begin{aligned}
+        \ln(L(\alpha, \beta)) 
+        &= \ln \left( \frac{(\alpha \beta^\alpha)^n}{\left( \prod_{i=1}^n y_i \right)^{\alpha +1}}\right) \\
+        &= n \ln(\alpha) + n\alpha \ln(\beta) - (\alpha + 1) \ln\left(\prod_{i=1}^n y_i \right)
+    \end{aligned}
+\end{equation*}
+\[
+    \frac{d}{d\beta} l(\alpha, \beta) = \frac{n\alpha}{\beta} \ge 0 
+\]
+Therefore, $\beta$ has to be the largest possible, which is $y_{(1)}$
+\[
+    \frac{d}{d\alpha} l(\alpha, \beta) = \frac{n}{\alpha} + n \ln(\beta) - \ln \left( \prod_{i=1}^n y_i \right) = 0 \iff \alpha = \frac{-n}{n \ln(y_{(1)}) - \ln\left(\prod_{i=1}^n y_i \right)}  
+\]
+\subsection*{d.}
+\begin{equation*}
+    \begin{aligned}
+        F_{Y_{(1)}}(y) = P(Y_{(1)} < y) = 1- \left(\int_y^\infty \frac{3\beta^3}{y^4} dy \right)^n = 1- \left(\frac{\beta}{y}\right)^{3n}
+    \end{aligned}
+\end{equation*}
+Then 
+\[
+    f_{Y_{(1)}}(y) = -3n\left(\frac{\beta}{y}\right)^{3n-1} \cdot \left(-\frac{\beta}{y^2}\right) = \frac{3n}{y} \left(\frac{\beta}{y}\right)^{3n}
+\]
+Then 
+\[
+    E[Y_{(1)}] =  \int_\beta^\infty y \cdot \frac{3n}{y} \left(\frac{\beta}{y}\right)^{3n} dy = \dfrac{3{\beta}n}{3n-1}
+\]
+Therefore, 
+\[
+    \beta = \frac{3n-1}{3n}E[Y_{(1)}]    
+\]
+\pagebreak
+\section*{11.}
+\[
+    E[Y] = \int_0^\theta y \cdot \frac{\beta (\theta - y)^{\beta-1}}{\theta^\beta} dy = \frac{\theta}{\beta + 1}
+\]
+\[
+    E[Y^2] = \int_0^\theta y^2 \cdot \frac{\beta (\theta - y)^{\beta-1}}{\theta^\beta} dy = \dfrac{2{\theta}^2}{\left({\beta}+1\right)\left({\beta}+2\right)}
+\]
+We know that
+\[
+    \frac{\theta}{\beta + 1} = E[Y] = \mu_1', m_1' = \overline{Y}
+\] 
+\[
+    \frac{2\theta^2}{(\beta+1)(\beta+2)} = E[Y^2] = \mu_2', m_2' = \frac{1}{n}\sum_{i=1}^n Y_i^2  
+\]
+and hence
+\[
+    V[Y] = \frac{2\theta^2}{(\beta+1)(\beta+2)} - \left(\frac{\theta}{\beta + 1}\right)^2 = \frac{\beta \theta^{2}}{(\beta + 1)^{2} (\beta + 2)}
+\]
+Therefore, 
+\[
+    \frac{\theta_{MM}}{\beta_{MM} + 1} = \overline{Y}    
+\]
+and 
+\[
+    \frac{\beta_{MM} \theta_{MM}^{2}}{(\beta_{MM} + 1)^{2} (\beta_{MM} + 2)} = \frac{n-1}{n}S^2
+\]
+Therefore, 
+\[
+    \beta_{MM} = \frac{2}{1 - \frac{n-1}{n} \cdot \frac{S^2}{\overline{Y}^2}} - 2    
+\]
+and 
+\[
+    \theta_{MM} = \overline{Y} \cdot \left(\frac{2}{1 - \frac{n-1}{n} \cdot \frac{S^2}{\overline{Y}^2}} - 1 \right)    
+\]
+\pagebreak
+\section*{12.}
+\[
+    E[Y] = \int_{-\beta}^0 \frac{24}{17\beta^3}y^3 dy + \int_0^\beta \frac{18}{17\beta^2}y^2 dy = -\frac{6\beta}{17} + \frac{6\beta}{17} = 0   
+\]
+\[
+    V[Y] = E[Y^2] = \int_{-\beta}^0 \frac{24}{17\beta^3}y^4 dy + \int_0^\beta \frac{18}{17\beta^2}y^3 dy = \frac{24\beta^2}{85} + \frac{9\beta^2}{34} = \frac{93\beta^2}{170}
+\]
+Then, 
+\[
+    \beta_{MM} = \sqrt{\frac{170(n-1)}{93n} S^2}   
+\]
+\pagebreak
+\section*{13.}
+\[
+    E[\hat{\theta}] = 1 \cdot P(Y_i = k) + 0 \cdot P(Y_1 \ne k) = P(Y_1 = k) = p(1-p)^{k-1}    
+\]
+Since $Y_i$ is a geometric distribution, $\sum_{i=1}^n$ is a negative binomial. Therefore, 
+\begin{equation*}
+    \begin{aligned}
+        \hat{p}^* 
+        &= E[\hat{\theta} | U = u] \\
+        &= E[X | \sum_{i=1}^n Y_i = u] \\
+        &= P(Y_i = k | \sum_{i=1}^s Y_i = u) \\
+        &= \frac{P(Y_1 = k) \cdot P\left(\sum_{i=2}^n Y_i = u-k \right)}{P\left(\sum_{i=1}^n Y_i = u \right)} \\
+        &= \frac
+        {p(1-p)^{k-1} 
+        \cdot 
+        \begin{pmatrix}
+            u-k-1  \\
+            n-2
+        \end{pmatrix}
+        \cdot p^{n-1} (1-p)^{u-k-n+1}
+        }
+        {p^n (1-p)^{u-n}
+        \cdot 
+        \begin{pmatrix}
+            u-1  \\
+            n-1
+        \end{pmatrix}
+        } \\
+        &= \frac
+        {\begin{pmatrix}
+            u-k-1  \\
+            n-2
+        \end{pmatrix}}
+        {\begin{pmatrix}
+            u-1  \\
+            n-1
+        \end{pmatrix}}
+    \end{aligned}
+\end{equation*}
 \end{document}
