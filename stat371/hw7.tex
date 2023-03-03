@@ -40,5 +40,34 @@
 \end{equation*}
 \pagebreak
 \section*{3.}
-
+\subsection*{a.}
+We have that the probability that 
+the fire appears in any specific quadrant follows a poisson distribution with mean 
+$10^{-3} \cdot (10\cdot 10 /4) = 0.025$. Hence, the probability that fire appears in any quadrant is 
+\[
+    1 - \frac{0.025^0 e^{-0.025}}{0!} = 1 - e^{-0.025}  
+\]
+Hence, the probability that fire appears in three or more quadrant is 
+\[
+    C_3^4 (1-e^{-0.025})^3 (e^{-0.025}) + C_4^4 (1-e^{-0.025})^4 = 0.0000590895
+\]
+\subsection*{b.}
+The number of fires appears in the city follows a poisson distribution with mean 
+$10^{-3} \cdot 10 \cdot 10 = 0.1$.
+Hence, the expected value of fire happens in the city is 0.1
+\pagebreak
+\section*{4.}
+Since the number of jobs arrive in 1 minute follows a poisson distribution with mean 1,
+N, the number of jobs arrive in 15 minutes follows a poisson distribution with mean 15.
+\begin{equation*}
+    \begin{aligned}
+        P(\text{there will be lost job}) &= 1 - P(\text{there will not be lost job}) \\
+        &= 1 - \sum_{i=1}^\infty P(N = i, B > N) \\
+        &= 1 - \sum_{i=1}^\infty P(N=i)P(B>i) \\
+        &= 1 - \sum_{i=1}^\infty \frac{15^i e^{-15}}{i!} 2^{-i} \\
+        &= 1 - e^{-15/2} \sum_{i=1}^\infty \frac{\left(\frac{15}{2}\right)^i e^{-15/2}}{i!} \\
+        &= 1 - e^{-15/2} \\
+        &= 0.999447
+    \end{aligned}
+\end{equation*}
 \end{document}
