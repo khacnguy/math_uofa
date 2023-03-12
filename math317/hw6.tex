@@ -189,6 +189,7 @@ Hence,
 \]
 \pagebreak
 \section*{4.}
+\subsection*{a.}
 We know that the surface area of the frostum is $\pi (r_1 + r_2) l$, then we partition the x-axis into 
 $\{x_1, x_2, \ldots, x_n\}$. \\
 Consider the area of the surface with $x_i \le x \le x_{i+1}$. 
@@ -207,4 +208,16 @@ Hence, the total area of the surface is
     \end{aligned}
 \end{equation*}
 as both $f(x_i^*)$ and $f'(t)$ is bounded because $f$ is uniformly continuous.
+\subsection*{b.}
+The outer hull of the cone is the rotation surface obtained from the function 
+\[
+    f: [0,h] \to \mathbb{R}, \indent t \to \frac{r}{h}t    
+\]
+We thus have
+\begin{equation*}
+    \begin{aligned}
+        \text{surface area} &= 2\pi\frac{r}{h}\sqrt{1+\frac{r^2}{h^2}}\int_0^h t dt \\
+        &= \pi r \sqrt{r^2 + h^2}
+    \end{aligned}
+\end{equation*}
 \end{document}
