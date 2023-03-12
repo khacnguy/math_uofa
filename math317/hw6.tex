@@ -1,0 +1,192 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+Since $f$ is a $\mathcal{C}^1$ function, the graph of $f$
+\[
+    \gamma: [a,b] \to [a,b] \times f([a,b]), \indent t \to (t,f(t)) 
+\]
+is also a $\mathcal{C}^1$ function and hence is rectifiable, therefore has the length 
+\[
+    \int_a^b \sqrt{ \left(\frac{dt}{dt} \right)^2 + \left(\frac{df(t)}{dt} \right)^2} dt = \int_a^b \sqrt{1 + f'(t)} dt
+\]
+\pagebreak
+\section*{2.}
+Since $x$ and $y$ plays the same role in the domain $K$, if $K$ is normal with respect to $x$-axis means that 
+$K$ is also normal with respect to the $y$-axis. We consdier
+\[
+    \phi_1: \mathbb{R} \to \mathbb{R}, \indent x \to 0   
+\]
+and 
+\[
+    \phi_2: \mathbb{R} \to \mathbb{R}, \indent x \to 1 - x  
+\]
+Then let 
+\[
+    \sigma: [a,b] \to [a,b], \indent x \to x    
+\]
+We have the curve $\gamma_1$ and $\gamma_2$
+\[
+    \gamma_1: [a,b] \to \mathbb{R}^2, \indent t \to (\sigma(t), \phi_1(\sigma(t))) = (t, 0)
+\]
+\[
+    \gamma_1: [a,b] \to \mathbb{R}^2, \indent t \to (\sigma(t), \phi_2(\sigma(t))) = (t, 1-t)
+\]
+which is clearly a $\mathcal{C}^1$ curves and hence $K$ is a normal domain.
+\pagebreak
+\section*{3.}
+\subsection*{a.}
+$S_1(1) = 2\pi$ since it is all the point in the set $\{(x_1, x_2): x_1^2 + x_2^2 = 1$, which is a circle with radius 1. \\
+$S_2(1) = 4\pi $ since it is all the point in the set $\{(x_1, x_2, x_3): x_1^2 + x_2^2 +x_3^2 = 1\}$, which is a sphere with radius 1. 
+\subsection*{b.}
+Consider $\phi(x) = rx$ then apply the change of variables theorem, we have that 
+\begin{equation*}
+    \begin{aligned}
+        S_n(r) &=2^n \int_0^r \int_0^{\sqrt{r^2-x_1^2}} \ldots \int_0^{\sqrt{r^2 - x_1^2 - x_2^2 - \ldots - x_{n-1}^2}} |N| dx_n \ldots dx_2 dx_1 \\
+        &= 2^n |\det J_\phi|^n \int_0^1 \int_0^{\sqrt{1-\left(\frac{x_1}{r}\right)^2}} \ldots \int_0^{\sqrt{1 - \left(\frac{x_1}{r}\right)^2 - \left(\frac{x_2}{r}\right)^2 - \ldots - \left(\frac{x_{n-1}}{r}\right)^2}} |N| d\left(\frac{x_n}{r}\right) \ldots d\left(\frac{x_2}{r}\right) d\left(\frac{x_1}{r}\right)\\
+        &= r^n S_n(1)
+    \end{aligned}
+\end{equation*}
+\subsection*{c.}
+Since swapping columns of a determinant return the same answer or the negative value of that. 
+That is for a specific $(i_1, i_2, \ldots, i_n)$ and 
+a composition $\sigma$ mapping $\{1, 2, \ldots, n\}$ to itself then
+\[
+    \left( \frac{\partial (\phi_{i_1}, \phi_{i_2}, \ldots, \phi_{i_n})}{\partial (x_1, x_2, \ldots, x_n)}\right)^2
+    = \left( \frac{\partial (\phi_{i_{\sigma(1)}}, \phi_{i_{\sigma(2)}}, \ldots, \phi_{i_{\sigma(n)}})}{\partial (x_1, x_2, \ldots, x_n)}\right)^2
+\]
+and since there is exactly $n$! ways of ways to shuffle the columns and there is only 1 ways to put them in a 
+non-ascending order. We have that 
+\begin{equation*}
+    \begin{aligned}
+        &\frac{1}{n!} \sum_{i_1 = 1}^{n+1} \sum_{i_2 = 1}^{n+1} \ldots \sum_{i_n = 1}^{n+1}  \left| \frac{\partial (\phi_{i_1}, \phi_{i_2}, \ldots, \phi_{i_n})}{\partial (x_1, x_2, \ldots, x_n)}\right|^2 \\
+        =& \sum_{\substack{i_1, i_2, \ldots, i_n = 1 \\ i_1 \le i_2 \le \ldots \le i_n}}^n \left( \frac{\partial (\phi_{i_1}, \phi_{i_2}, \ldots, \phi_{i_n})}{\partial (x_1, x_2, \ldots, x_n)}\right)^2 \\
+        =& \sum_{\substack{i_1, i_2, \ldots, i_n = 1 \\ i_1 < i_2 < \ldots < i_n}}^n \left( \frac{\partial (\phi_{i_1}, \phi_{i_2}, \ldots, \phi_{i_n})}{\partial (x_1, x_2, \ldots, x_n)}\right)^2 + \underbrace{\sum_{\substack{i_1, i_2, \ldots, i_n = 1 \\ i_1 \le i_2 \le \ldots \le i_n \\ \exists j_1, j_2 : i_{j_1} = i_{j_2}}}^n \left( \frac{\partial (\phi_{i_1}, \phi_{i_2}, \ldots, \phi_{i_n})}{\partial (x_1, x_2, \ldots, x_n)}\right)^2 }_{=0} \\  
+        =& \sum_{j=1}^n  \left| \frac{\partial (\phi_1, \phi_2, \ldots, \phi_{j-1}, \phi_{j+1}, \ldots, \phi_{n+1})}{\partial (x_1, x_2, \ldots, x_n)}\right|^2 +  \left| \frac{\partial (\phi_1, \phi_2, \ldots, \phi_n)}{\partial (x_1, x_2, \ldots, x_n)}\right|^2 \\
+        =& \sum_{j=1}^n  \left| \frac{\partial (\phi_1, \phi_2, \ldots, \phi_{j-1}, \phi_{j+1}, \ldots, \phi_{n+1})}{\partial (x_1, x_2, \ldots, x_n)}\right|^2 + 1
+    \end{aligned}
+\end{equation*}
+\subsection*{d.}
+\begin{equation*}
+    \begin{aligned}
+        |N(x_1, x_2, \ldots, x_n)| 
+        &= \left(\sum_{j=1}^n  \left| \frac{\partial (\phi_1, \phi_2, \ldots, \phi_{j-1}, \phi_{j+1}, \ldots, \phi_{n+1})}{\partial (x_1, x_2, \ldots, x_n)}\right|^2 + 1 \right)^{1/2} \\
+        &= \left(\sum_{j=1}^n \left|\frac{\partial \phi_{n+1}}{x_j} \right|^2 + 1 \right)^{1/2} \\
+        &= \left(1 + \sum_{j=1}^n \left|\frac{-x_j}{\sqrt{r^2 - x_1^2 - x_2^2 - \ldots x_n^2}} \right|^2 \right)^{1/2} \\
+        &= \left(1 + \sum_{j=1}^n \frac{x_j^2}{r^2 - \sum_{i=1}^n x_i^2} \right)^{1/2} \\
+        &= \left(1 + \frac{\sum_{j=1}^n x_j^2}{r^2 - \sum_{i=1}^n x_i^2} \right)^{1/2} \\
+        &= \left(\frac{r^2}{r^2 - \sum_{i=1}^n x_i^2} \right)^{1/2} \\
+        &= \frac{r}{\sqrt{r^2 - \sum_{i=1}^n x_i^2}}
+    \end{aligned}
+\end{equation*}
+\subsection*{e.}
+We have that 
+\begin{equation*}
+    \begin{aligned}
+        &\frac{S_{n-2}\left(\sqrt{1-x_1^2 - x_2^2} \right)}{\sqrt{1-x_1^2 -x_2^2}} \\
+        =& 2^{n-2} \int_0^{\sqrt{1-x_1^2-x_2^2}} \int_0^{\sqrt{1-x_1^2-x_2^2-x_3^2}} \ldots \int_0^{\sqrt{1-x_1^2-x_2^2-\ldots-x_{n-1}^2}} \frac{|N(x_3, x_4, \ldots, x_n)|}{\sqrt{1-x_1^2-x_2^2}} dx_n \ldots dx_4 dx_3 \\
+        =& 2^{n-2} \int_0^{\sqrt{1-x_1^2-x_2^2}} \int_0^{\sqrt{1-x_1^2-x_2^2-x_3^2}} \ldots \int_0^{\sqrt{1-x_1^2-x_2^2-\ldots-x_{n-1}^2}} \frac{1}{\sqrt{1-x_1^2-x_2^2-\ldots-x_n^2}} dx_n \ldots dx_4 dx_3 \\
+    \end{aligned}
+\end{equation*}
+Hence 
+\begin{equation*}
+    \begin{aligned}
+        & 4 \int_0^1 \int_0^{\sqrt{1-x_1^2}} \frac{S_{n-2}(\sqrt{1-x_1^2 -x_2^2})}{\sqrt{1-x_1^2-x_2^2}} \\
+        =& 4 \int_0^1 \int_0^{\sqrt{1-x_1^2}} \ldots \int_0^{\sqrt{1-x_1^2 - x_2^2 - \ldots - x_n^2}} 2^{n-2} \frac{1}{\sqrt{1 - \sum_{j=1}^n x_j^2}} dx_n \ldots dx_2 dx_1 \\
+        =& 2^n \int_0^1 \int_0^{\sqrt{1-x_1^2}} \ldots \int_0^{\sqrt{1-x_1^2 - x_2^2 - \ldots - x_n^2}} |N(x_1, x_2, \ldots, x_n)| dx_n \ldots dx_2 dx_1 \\
+        =& S_n(1)
+    \end{aligned}
+\end{equation*}
+\subsection*{f.}
+Consider the spherical coordinates, let
+\[
+    \phi: \mathbb{R}^3 \to \mathbb{R}^3, \indent (r, \theta, \sigma) \to (r\cos\theta\cos\sigma, r\cos\theta\sin\theta, r \sin \theta)
+\]
+and $K = [0, 1] \times [0, \pi/2] \times [0, \pi/2]$ so that \\
+$\phi(K) = \{(x,y,z): x^2 + y^2 + z^2 \le 1, x,y,z> 0\}$
+\begin{equation*}
+    \begin{aligned}
+        S_n(1) 
+        &= 4 \int_0^1 \int_0^{\sqrt{1-x_1^2}} \frac{S_{n-2}(\sqrt{1-x_1^2-x_2^2})}{\sqrt{1-x_1^2-x_2^2}} dx_2 dx_1 \\
+        &= 4 \int_0^1 \int_0^{\sqrt{1-x_1^2}} \frac{S_{n-2}(1) \cdot \left(\sqrt{1-x_1^2-x_2^2}\right)^{n-2}}{\sqrt{1-x_1^2-x_2^2}} dx_2 dx_1 \\
+        &= 4 \int_0^1 \int_0^{\sqrt{1-x_1^2}} S_{n-2}(1) \cdot \left(\sqrt{1-x_1^2-x_2^2}\right)^{n-3} dx_2 dx_1 \\
+        &= 4 S_{n-2}(1) \int_0^1 \int_0^{\sqrt{1-x_1^2}} \int_0^{\sqrt{1-x_1^2-x_2^2}} (n-3) \cdot x_3^{n-4} dx_3 dx_2 dx_1 \\
+        &= 4 (n-3) S_{n-2}(1) \int_0^1 \int_0^{\sqrt{1-x_1^2}} \int_0^{\sqrt{1-x_1^2-x_2^2}}  x_3^{n-4} dx_3 dx_2 dx_1 \\
+        &= 4 (n-3) S_{n-2}(1) \int_0^1 \int_0^{\pi/2} \int_0^{\pi/2} (r\sin\theta)^{n-4} \cdot r^2 \cos \theta d\sigma d \theta dr \\
+        &= 4 \frac{\pi}{2}(n-3) S_{n-2}(1) \int_0^1 r^{n-2} \int_0^{\pi/2} (\sin\theta)^{n-4} \cdot \cos \theta d \theta dr \\
+        &= 4 \frac{\pi}{2}(n-3) S_{n-2}(1) \int_0^1 r^{n-2} \left.\left(\frac{(\sin\theta)^{n-3}}{n-3}\right)\right|_{\theta = 0}^{\pi/2} dr \\ 
+        &= 2\pi S_{n-2}(1) \frac{n-3}{n-3} \int_0^1 r^{n-2} dr \\
+        &= 2\pi S_{n-2}(1) \left.\frac{r^{n-1}}{n-1}\right|_{r=0}^1 \\
+        &= 2\pi S_{n-2}(1) \frac{1}{n-1}
+    \end{aligned}
+\end{equation*}
+First we prove the case for odd $n = 2m-1$ for all natural $m$. We have the base case: 
+\[
+    S_1(1) = \frac{2\pi^1}{(1-1)!} = 2\pi    
+\]
+which is the same as the answers we have in part a and the inductive steps: \\
+Given that $S_{2m-1}(1) = \cfrac{2\pi^m}{(m-1)!}$, we have that 
+\begin{equation*}
+    \begin{aligned}
+        S_{2(m+1)-1}(1) 
+        &= S_{2m+1}(1) = 2\pi S_{2m-1}(1) \cdot \frac{1}{2m} \\
+        &=\pi \cdot \frac{1}{m} \cdot \frac{2\pi^m}{(m-1)!} \\
+        &= \frac{2\pi^{m+1}}{m!} \\
+    \end{aligned}
+\end{equation*}
+For even $n=2m$, we have the base case: 
+\[
+    S_2(1) = \frac{(4\pi)^1 \cdot (1-1)!}{(2-1)!} = 4\pi    
+\]
+which is the same as the answers we have in part a and the inductive steps: \\
+Given that $S_{2m}(1) = \cfrac{(4\pi)^m \cdot (m-1)!}{(2m-1)!}$, we have that
+\begin{equation*}
+    \begin{aligned}
+        S_{2(m+1)}(1) 
+        &= S_{2m+2}(1) = 2\pi S_{2m}(1) \cdot \frac{1}{2m+1} \\
+        &= 2\pi \cdot \frac{1}{2m+1} \cdot \frac{(4\pi)^m \cdot (m-1)!}{(2m-1)!} \cdot \frac{2 \cdot m}{2m} \\
+        &= 4\pi \cdot \frac{(4\pi)^m \cdot (m-1)! \cdot m}{2m(2m+1)(2m-1)!} \\     
+        &= \frac{(4\pi)^{m+1} m!}{(2m+1)!}   
+    \end{aligned}
+\end{equation*}
+\subsection*{g.}
+From part f, we know that 
+\[
+    \lim_{m\to \infty} S_{2m-1}(1) = 0     
+\]
+as 
+\[ 
+    \lim_{m\to \infty} \frac{S_{2m-1}(1)}{S_{2m+1}(1)} = \lim_{m\to \infty} \frac{\pi}{m} = 0
+\]
+and 
+\[
+    \lim_{m\to \infty} S_{2m}(1) = 0     
+\]
+as 
+\[ 
+    \lim_{m\to \infty} \frac{S_{2m+2}(1)}{S_{2m}(1)} = \lim_{m\to \infty} \frac{2\pi}{2m+1} = 0
+\]
+Hence, 
+\[
+    \lim_{n\to \infty} S_n(1) = 0    
+\]
+\pagebreak
+\section*{4.}
+\end{document}
