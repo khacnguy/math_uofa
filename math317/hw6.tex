@@ -189,4 +189,22 @@ Hence,
 \]
 \pagebreak
 \section*{4.}
+We know that the surface area of the frostum is $\pi (r_1 + r_2) l$, then we partition the x-axis into 
+$\{x_1, x_2, \ldots, x_n\}$. \\
+Consider the area of the surface with $x_i \le x \le x_{i+1}$. 
+Then $r_1 = f(x_i), r_2 = f(x_{i+1}), \exists x_i^*: 2f(x_i^*) = f(x_i) + f(x_{i+1})$ and from question 1, \\
+$l = \int_{x_i}^{x_{i+1}} \sqrt{1+f'(t)^2} dt$.\\
+Hence, we have that the area having $x$ between $x_i$ and $x_{i+1}$ which we denote $A_i$ is 
+\[
+    2\pi f(x_i^*) \int_{x_i}^{x_{i+1}} \sqrt{1+f'(t)^2} dt = 2\pi \int_{x_i}^{x_{i+1}} f(x_i^*) \sqrt{1+f'(t)^2} dt 
+\]
+Hence, the total area of the surface is 
+\begin{equation*}
+    \begin{aligned}
+        &\lim_{n\to \infty} \sum_{i=1}^{n-1} 2\pi \int_{x_i}^{x_{i+1}} f(x_i^*)  \sqrt{1+f'(t)^2} dt \\
+        =& 2\pi \lim_{n\to \infty} \sum_{i=1}^{n-1} \int_{x_i}^{x_{i+1}} f(x_i^*)  \sqrt{1+f'(t)^2} dt \\
+        =& 2\pi \int_a^b f(t) \sqrt{1+f'(t)^2} dt
+    \end{aligned}
+\end{equation*}
+as both $f(x_i^*)$ and $f'(t)$ is bounded because $f$ is uniformly continuous.
 \end{document}
