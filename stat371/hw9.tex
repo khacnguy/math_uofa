@@ -1,0 +1,127 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+The amount of grams needed is 
+\[
+    \frac{1000}{2 \cdot 10} = 50    
+\]
+\pagebreak
+\section*{2.}
+Since the number of customers between Dog-buyers follows the geometric distribution, we know that
+the probability any of the customers buying will be $\frac{1}{3}$. Hence, the probability that any 
+of the customers buying Cockapoos will be $\frac{1}{3} \cdot \frac{1}{4} = \frac{1}{12}$. Hence, 
+we hav the probability that 5 Cockapoos will be sold in a 12 hours day is 
+\begin{equation*}
+    \begin{aligned}
+        &\sum_{i=0}^\infty P(\text{number of customers}=i) \cdot 
+        \begin{pmatrix}
+            i \\
+            5
+        \end{pmatrix}
+        \cdot \left(\frac{1}{12}\right)^5
+        \cdot \left(\frac{11}{12}\right)^{i-5} \\
+        =&
+        \frac{36^i e^{-36}}{i!} \cdot \frac{i!}{5!(i-5)!} 
+        \cdot \left(\frac{1}{12}\right)^5
+        \cdot \left(\frac{11}{12}\right)^{i-5} \\
+        =& 
+        \frac{3^5 e^{-3}}{5!} \underbrace{\sum_{i=0}^\infty \frac{33^i e^{-33}}{i!}}_{1}
+    \end{aligned}
+\end{equation*}
+\pagebreak
+\section*{3.}
+Using polar coordinates, we have 
+\[
+    E[X] = \int_G x = \int_0^1 \int_0^{2\pi} r\cos{\theta} r d\theta dr = \int_0^1 r^2 \sin\theta|_0^{2\pi} = 0 
+\]
+\[
+    E[Y] = \int_G y = \int_0^1 \int_0^{2\pi} r\sin{\theta} r d\theta dr = - \int_0^1 r^2 \cos\theta|_0^{2\pi} = 0 
+\]
+\[
+    E[XY] = \int_G xy = \int_0^1 \int_0^{2\pi} r\cos{\theta} r\sin\theta  r d\theta dr = \int_0^1 r^3 \left.\left(-\frac{\cos(2\theta)}{2}\right)\right|_0^{2\pi} dr = 0  
+\]
+Hence, 
+\[
+    Cov(X,Y) = E[XY] - E[X]E[Y] = 0    
+\]
+\[
+    f_X(x) =  \int_{-\sqrt{1-x^2}}^{\sqrt{1-x^2}} \frac{1}{\pi R^2} dy = \frac{2 \sqrt{1-x^2}}{\pi R^2}
+\]
+\[
+    f_Y(y) =  \int_{-\sqrt{1-y^2}}^{\sqrt{1-y^2}} \frac{1}{\pi R^2} dx = \frac{2 \sqrt{1-y^2}}{\pi R^2}
+\]
+and hence 
+\[
+    f_X(x) \cdot f_Y(y) \ne f_{X,Y}(x,y)    
+\]
+Hence, it is not independent 
+\pagebreak
+\section*{4.}
+Let $t$ be the time of the first event of both distributions. Then since it is poisson, we know 
+that the probability that the event is from the first distribution is 
+\[
+    \cfrac{(t-0)\left(\frac{1}{2}\right)^3}{\frac{t-0}{32} C^5_3 + (t-0)\left(\frac{1}{2}\right)^3} = \frac{2}{7}     
+\]
+At time 8, the number of species 1 in sites $i$ follows the poisson distribution with mean 
+\[
+    8 \left(\frac{1}{2}\right)^i = 2^{3-i}  
+\]
+The number of species 2 in sites $i$ follows the poisson distribution with mean 
+\[
+    \frac{1}{4} \frac{5!}{i!(5-i)!}
+\]
+Using the mean and the formula for the poisson distribution, we can calculate the likeliest 
+number of both species on all sites is \\ 
+Species 1: 4,2,1,0,0 respectively in 5 sites \\
+Species 2: 1,2,2,1,0 respectively in 5 sites \\
+We have at time $t$, the probability that there is no animals in sites 2 and 3 are 
+\[
+    P(\text{no animals in site 2}) = e^{-t\left(\frac{t}{4} + \frac{10t}{32}\right)} = e^{-\frac{9t}{16}}
+\]
+\[
+    P(\text{no animals in site 3}) = e^{-t\left(\frac{t}{8} + \frac{10t}{32}\right)} = e^{-\frac{7t}{16}}
+\]
+Hence, the probability that there is no animals in both sites are 
+\[
+    P(\text{no animals in sites 2 and 3}) = e^{-t}    
+\]
+Then let $T$ be the distribution of the time the first animal appear in any site 2 or 3.
+We have that 
+\[
+    P(T>t) = e^{-t}    
+\]
+which means $T$ is an exponential distribution with mean 1. For the animal appear, we know that
+there is a $\frac{7}{16}$ chance it is from site 2 and $\frac{9}{16}$ chance it is from site 3. 
+Hence, the expected time for 2 animals to appear in sites 2 and 3 are 
+\[
+    \left(\frac{7}{16}\right)^2 \cdot 2 + \left(\frac{9}{16}\right)^2 \cdot 2 
+    + \left(\frac{7}{16}\right)^2 \left(\frac{9}{16}\right) \cdot 3 \cdot 
+    \begin{pmatrix}
+        2 \\
+        1
+    \end{pmatrix} 
+    + \left(\frac{9}{16}\right)^2 \left(\frac{7}{16}\right) \cdot 3 \cdot 
+    \begin{pmatrix}
+        2 \\
+        1
+    \end{pmatrix} = 2.4921875
+\]
+\end{document}
