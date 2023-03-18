@@ -1,0 +1,103 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+Let $T$ be the time expected for the next first call. Then, since we have that 
+\[
+    P(T>t) = P(\text{no call occurs before t seconds}) = e^{-10t/60} = e^{-t/6}   
+\]
+which means that $T$ is an exponential distribution with $\lambda = 1/6$. Hence, we
+can calculate
+\[
+    E[T|T>10] = \frac{\int_{10}^\infty \frac{t}{6} e^{-t/6} dt}{\int_{10}^\infty \frac{1}{6} e^{-t/6} dt} = \frac{16e^{-5/3}}{e^{-5/3}} = 16    
+\]
+Hence, the expected time for the 90-th call to be processed is $16 \cdot 90 / 60 = 24$ minutes.
+\pagebreak
+\section*{2.}
+Let $T_1$ be the time she has to wait to pass the entrance and $T_2$ be the time she passes the bar line. \\
+For the first process: \\
+We have that $T_{1_C}^SS$ is an exponential distribution with $\lambda = \lambda_S - \lambda_A = 1$. \\
+For the second process: \\
+We have that $r = \frac{\lambda_A}{\lambda_S} = 2.5 \in (2,3) = (k-1,k)$, hence
+\[
+    \pi(3) 
+    = \pi(0) \cdot \frac{r^3}{3!} 
+    = \left(\sum_{j=0}^1 \frac{2.5^j}{j!} + \frac{3 \cdot 2.5^{3-1}}{(3-1)!(3-2.5)} \right)^{-1} \cdot \frac{2.5^3}{3!} = \frac{125}{1068}
+\]
+\[
+    B_K = -\pi(k) \left( \frac{k\lambda_S^2}{((k\lambda_S - \lambda_A - \lambda_S)(k \lambda_S - \lambda_A)}\right) = - \frac{125}{1068} \cdot (-12) = \frac{125}{89}
+\]
+\[
+    f_{T_C^SS}(t) = -\frac{36}{89} \cdot 2e^{-2t} + \frac{125}{89} e^{-t}    
+\]
+Then $T = T_1 + T_2$. Applying convolution twice, we have that 
+\begin{equation*}
+    \begin{aligned}
+        f_T(t) &= \frac{-36}{89} \int_0^t 2e^{-2\tau} e^{-(t-\tau)} d\tau + \frac{125}{89} \int_0^t e^{-\tau}e^{-(t-\tau)} d\tau \\
+        &= \frac{-72}{89} (e^{-t}-e^{-2t}) + \frac{125}{89} te^{-t} \\
+    \end{aligned}
+\end{equation*}
+\pagebreak
+\section*{3.}
+\begin{equation*}
+    \begin{aligned}
+        E[Q(\infty)^2] &= \sum_{i=0}^\infty i^2 \cdot \pi(i) \\
+        &= \sum_{i=0}^\infty i^2 \cdot \frac{p_S - p_A}{p_S(1-p_S)} \left(\frac{p_A(1-p_S)}{p_S(1-p_A)}\right) \\
+        &= \frac{0.1}{0.2 \cdot 0.8} \sum_{i=0}^\infty i^2 \left(\frac{0.1 \cdot 0.8}{0.2 \cdot 0.9} \right)^i \\
+        &= \frac{5}{8} \sum_{i=0}^\infty i^2 \cdot \left(\frac{4}{9}\right)^i \\
+        &= \frac{5}{8} \frac{\left(\frac{4}{9}\right)^2 + \frac{4}{9}}{\left(1-\frac{4}{9}\right)^3} \\
+        &= \frac{117}{50} 
+    \end{aligned}
+\end{equation*}
+\pagebreak
+\section*{4.}
+We have that 
+\[
+    \pi(i) = 
+    \begin{pmatrix}
+        n \\
+        i    
+    \end{pmatrix}
+    p^i (1-p)^{n-i}
+    = \frac{n!}{i! (n-i)!} p^i (1-p)^{n-i}
+\]
+We also have 
+\[
+    \pi(i) = \frac{\prod_{j=0}^{i-1} a_j}{\prod_{j=1}^{i} s_j} \pi(0) 
+\]
+Hence, 
+\begin{equation*}
+    \begin{aligned}
+        \prod_{j=0}^{i-1} a_j &= \frac{n!}{\pi(0) i! (n-i)!} p^i (1-p)^{n-i} \cdot \prod_{j=1}^{i} j (1-p) \\
+        &= \frac{n!}{\pi(0) i! (n-i)!} p^i (1-p)^{n-i} \cdot i! (1-p)^i \\
+        &= \frac{n! p^i (1-p)^n}{\pi(0) (n-i)!}
+    \end{aligned}
+\end{equation*}
+and thus,
+\begin{equation*}
+    \begin{aligned}
+        a_i 
+        &= \frac{\prod_{j=0}^{i} a_j}{\prod_{j=0}^{i-1} a_j} \\
+        &= \cfrac{\cfrac{n! p^{i+1} (1-p)^n}{\pi(0) (n-(i+1))!}}{\cfrac{n! p^i (1-p)^n}{\pi(0) (n-i)!}} \\
+        &= \frac{p (n-i)!}{(n-i-1)!} \\
+        &= p(n-i)
+    \end{aligned}
+\end{equation*}
+\end{document}
