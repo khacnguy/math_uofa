@@ -1,0 +1,63 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+\begin{equation*}
+    \begin{aligned}
+        \pi(0) 
+        &= \left(1 + \frac{a_1}{s_1} +  \frac{a_1 a_2}{s_1 s_2} + \ldots \right)^{-1} \\
+        &= \left(\sum_{i=0}^\infty \left(\frac{1/9}{4/9}\right)^i \right)^{-1} \\
+        &= \frac{3}{4}
+    \end{aligned}
+\end{equation*}
+\[
+    \pi(4) = \pi(0) \cdot \left(\frac{1}{4}\right)^4 = \frac{3}{1024}    
+\]
+\pagebreak
+\section*{2.}
+If there is 9 people in the line then 
+\[
+    P(T=2n) = \left(\frac{1}{2}\right)^n \frac{(n-1)!}{9!(n-10)!}    
+\]
+If the line is operating in steady state, then the formula gives us 
+\[
+    P(T=2n) = a \cdot q(1-q)^{n-1} - (a-1)\cdot p_S(1-p_S)^{n-1} 
+    = \frac{1}{5} \left(\frac{5}{6}\right)^{n-1} - \frac{1}{5} \cdot \left(\frac{1}{2}\right)^n
+\]
+as $a=\cfrac{1-p_A}{1-p_S} = \cfrac{6}{5}$ and $q = \cfrac{p_S-p_A}{1-p_A} = \cfrac{1}{6}$
+\pagebreak
+\section*{3.}
+\[
+    \lim_{t \to \infty} E(Q(t)) = \frac{r}{1-r} = \frac{3}{2} \implies \frac{\lambda_A}{\lambda_S} = r=\frac{3}{5} \implies \lambda_A = \frac{1}{5}   
+\]
+Hence, 
+\[
+    \pi(i) = \frac{2}{5} \left(\frac{3}{5}\right)^i    
+\]
+and $f_{T_C^{SS}}$ is a exponential distribution with mean $\lambda_S - \lambda_A = \cfrac{2}{15}$
+\pagebreak
+\section*{4.}
+We have that 
+\[
+    \pi(0) = 1-r = 1-\frac{10}{30} = \frac{2}{3}
+\]
+which means that $\cfrac{2}{3}$ of the time, there is no job left in the buffer. And hence the 
+printer only work $\cfrac{1}{3}$ of the time. Hence, the expected total time left is $500 \cdot 3 = 1500$
+\end{document}
