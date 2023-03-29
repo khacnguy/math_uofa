@@ -19,10 +19,15 @@
 \pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
 \begin{document}
 \section*{1.}
+As the convention is reversed
+\[
+    a_0 = P(0 \to 1) = p_A(1-p_S)     
+\]
+Hence,
 \begin{equation*}
     \begin{aligned}
         \pi(0) 
-        &= \left(1 + \frac{a_1}{s_1} +  \frac{a_1 a_2}{s_1 s_2} + \ldots \right)^{-1} \\
+        &= \left(1 + \frac{a_0}{s_1} +  \frac{a_0 a_1}{s_1 s_2} + \ldots \right)^{-1} \\
         &= \left(\sum_{i=0}^\infty \left(\frac{1/9}{4/9}\right)^i \right)^{-1} \\
         &= \frac{3}{4}
     \end{aligned}
