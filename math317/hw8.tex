@@ -1,0 +1,116 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+\subsection*{a.}
+Consider $a_k = \left|\frac{1}{k} - \frac{(-1)^k}{\sqrt{k}}\right|$. Then
+\[
+    \lim_{k \to \infty} a_k = \lim_{k \to \infty} \left|\frac{1}{k} - \frac{(-1)^k}{\sqrt{k}}\right| = 0
+\]
+as 
+\[
+    \lim_{k \to \infty} \frac{1}{k}= 0 \text{ and } \lim_{k \to \infty} -\frac{(-1)^k}{\sqrt{k}} = 0
+\]
+For odd $k$, $(-1)^k a_k = -\frac{1}{k} - \frac{1}{\sqrt{k}}$. \\
+For even $k$, $(-1)^k a_k = - \frac{1}{k} + \frac{1}{\sqrt{k}}$ \\
+Hence, 
+\[
+    \sum_{k=1}^\infty (-1)^k a_k = \sum_{k=1}^\infty -\frac{1}{k} + \frac{(-1)^k}{\sqrt{k}} < \sum_{k=1}^\infty -\frac{1}{k}  = -\infty
+\]
+as for every natural number $n_0$, if $n_0$ is even
+\[
+    \sum_{k=1}^{n_0} \frac{(-1)^k}{\sqrt{k}} = \sum_{k=1}^{n_0/2} \underbrace{-\frac{1}{\sqrt{2k-1}} + \frac{1}{\sqrt{2k}}}_{<0} < 0
+\]
+if $n_0$ is odd then 
+\[
+    \sum_{k=1}^{n_0} \frac{(-1)^k}{\sqrt{k}} = -\frac{1}{\sqrt{n_0}} + \sum_{k=1}^{(n_0-1)/2 } \underbrace{-\frac{1}{\sqrt{2k-1}} + \frac{1}{\sqrt{2k}}}_{<0} < 0
+\]
+\pagebreak
+\section*{2.}
+If $\sum_{k=1}^\infty 2^k a_{2^k}$ converges then for any $t$ and $N$ such that $2^N > t$, we have that 
+\[
+    \sum_{k=1}^t a_k \le \sum_{k=2}^{2^N-1} a_k = \sum_{k=1}^N \sum_{j=2^k}^{2^{k+1}-1} a_j \le \sum_{k=1}^N 2^k a_{2^k} \le \sum_{k=1}^\infty 2^k a_{2^k} 
+\]
+Hence, as $s_t = \sum_{k=1}^t a_k$ is non-decreasing and is bounded, $\sum_{k=1}^\infty a_k$ converges. On the other hand,
+if $\sum_{k=1}^\infty a_k$ converges then
+\[
+    \frac{\sum_{k=1}^t 2^k a_{2^k}}{2} \le \sum_{k=1}^t \sum_{j=2^{k-1}+1}^{2^k} a_j = \sum_{k=1}^t a_k \le \sum_{k=1}^\infty a_k     
+\]
+which means that $p_t = \sum_{k=1}^t 2^k a_{2^k}$ is non-decreasing and is bounded, hence $\sum_{k=1}^\infty 2^k a_{2^k}$ converges.
+As $\sum_{k=1}^\infty 2^k \frac{1}{(2^k)^p} = \sum_{k=1}^\infty \left(\left(\frac{1}{2}\right)^{p-1}\right)^k$. $\sum_{k=1}^\infty \frac{1}{k^p}$
+converges if and only if $\left|\frac{1}{2^{p-1}}\right| <1 \implies p>1$
+\pagebreak
+\section*{3.}
+Consider $b_k = \frac{1}{\sqrt{k}}$, then $a_k = (-1)^k b_k$ is convergent as the sequence $(b_k)_{k=1}^\infty$ clearly decreases monotonically to 0.
+We have that for all naturnal number $N$
+\begin{equation*}
+    \begin{aligned}
+        c_n &= \sum_{k=0}^n a_{n-k}a_k = \sum_{k=0}^n \frac{(-1)^n}{\sqrt{(k+1)(n-k+1)}} \\
+        & = (-1)^n \sum_{k=0}^n \frac{1}{\sqrt{(k+1)(n-k+1)}} \\
+        & \ge \frac{(-1)^n2(n+1)}{n+2}
+    \end{aligned}
+\end{equation*}
+which converges to 2 as $n \to \infty$ and hence $\sum_{n=0}^\infty c_n$ diverges.
+\pagebreak
+\section*{4.}
+Since $f$ is Riemann integrable over $[a,b]$, $f$ is bounded over $[a,b]$. \\
+Let $M = \max\{|f(x)|: x \in [a,b]\}$, then for all $\epsilon >0$, 
+there exists $\delta = \frac{\epsilon}{M}$ such that 
+\[
+    \left|\int_a^{b} f(x) dx - \int_a^{b - \delta} f(x) dx \right| \le \left|\int_{b-\delta}^b f(x) dx \right| \le M \cdot \frac{\epsilon}{M} = \epsilon 
+\]
+\pagebreak
+\section*{5.}
+For all $x \in [0,1]$
+\[
+    \lim_{n \to \infty} f_n(x) = \lim_{n \to \infty} nxe^{-nx^2} = \lim_{n \to \infty} \frac{nx}{e^{nx^2}} = \lim_{n \to \infty} \frac{x}{x^2 e^{nx^2}} = 0
+\]
+For all $n \in N$, $\exists x_0 = \frac{1}{n} \le 1$ such that 
+\[
+    \lim_{n \to \infty} f_n(x_0) = \lim_{n \to \infty} n \cdot \frac{1}{n} e^{-n \cdot \frac{1}{n^2}} = \lim_{n \to \infty} e^{-1/n} = 1
+\]
+\pagebreak
+\section*{6.}
+\subsection*{a.}
+\[
+    \lim_{t \to \infty} e^{-t} t^{x+1} = \lim_{t \to \infty} \frac{t^{x+1}}{e^t} = \lim_{t \to \infty} \frac{(x+1)!}{e^t} = 0   
+\]
+We also have this simlarly for $e^{-t}t^x$. Hence, $\exists t_0$ such that for all $t > t_0: e^{-t}t^{x+1} < 1 \implies t^{x-1} e^{-t} < \frac{1}{t^2}$
+Therefore, 
+\[
+    \int_0^\infty t^{x-1}e^{-t}dt = \int_0^{t_0} t^{x-1}e^{-t}dt + \int_{t_0}^\infty t^{x-1}e^{-t} dt < \underbrace{\int_0^{t_0}  t^{x-1}e^{-t}dt}_{\text{bounded}} + \underbrace{\int_{t_0}^\infty \frac{1}{t^2}}_{\text{bounded}}
+\]
+exists.
+\subsection*{b.} 
+\begin{equation*}
+    \begin{aligned}
+        \Gamma(x+1) &= \int_0^\infty t^xe^{-t} dt \\
+        &= \left.t^x \cdot (-e^{-t}) \right|_0^\infty + x \int_0^\infty t^{x-1} e^{-t} dt \\
+        &= x \Gamma(x)
+    \end{aligned}
+\end{equation*}
+\subsection*{c.}
+Using induction, we have the base case 
+\[
+    \Gamma(1) = \int_0^\infty e^{-t} dt = 1 = 0!
+\]
+For the inductive steps and from part b, if $\Gamma(n+1) = n!$ then $\Gamma(n+2) = (n+1) \cdot \Gamma(n+1) = (n+1)!$.
+
+\end{document}
