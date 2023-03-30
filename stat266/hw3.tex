@@ -1,0 +1,135 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+\subsection*{a.}
+Since $y> \theta$, we assume $z > \theta$ and hence
+\begin{equation*}
+    \begin{aligned}
+        F_{Y_{(1)}}(z) &= P(Y_{(1)} < z) = 1 - P(Y_{(1)} > z) = 1 - \left(P(Y > z)\right)^n \\
+        &= 1 - \left( \int_z^\infty \frac{2\theta^2}{y^3} dy \right)^n \\
+        &= 1 - \left( \left. -\frac{\theta^2}{y^2} \right|_{y=z}^\infty \right)^n \\
+        &= 1 - \left(\frac{\theta^2}{z^2} \right)^n
+    \end{aligned}
+\end{equation*}
+Hence, 
+\[
+    f_{Y_{1}}(y) = - n \cdot \left( \frac{\theta^2}{y^2} \right)^{n-1} \cdot \left(-\frac{2\theta^2}{y^3} \right) = \frac{2n}{y} \left( \frac{\theta^2}{y^2} \right)^n    
+\]
+We have 
+\[
+    y_{(1)} =h^{-1}(u) = \theta \cdot u \implies \frac{d}{du}h^{-1}(u) = \theta
+\]
+Therefore, 
+\[
+    f_U(u) = f_{Y_{(1)}}(\theta \cdot u) \cdot \theta = \frac{2n}{\theta \cdot u} \left(\frac{1}{u^2}\right)^n \cdot \theta = \frac{2n}{u^{2n+1}}
+\]
+Hence, $U$ is a pivotal quantity.
+\subsection*{b.}
+We have for $1<u$,
+\[
+    F_U(u) = 1 - \frac{1}{u^{2n}}    
+\]
+Hence, 
+\[
+    P(U < a) = F_U(a) =  1 - \frac{1}{a^{2n}} \implies a = \sqrt[2n]{\frac{2}{2-\alpha}} 
+\]
+\[
+    P(U > b) = 1 - F_U(b) = 1 - \left(1-\frac{1}{b^{2n}}\right) = \frac{1}{b^{2n}} \implies b = \sqrt[2n]{\frac{2}{\alpha}}   
+\]
+\[
+    P(a<U<b) = P\left(a < \frac{Y_{(1)}}{\theta} < b\right) = P\left(\frac{Y_{(1)}}{b} < \theta < \frac{Y_{(1)}}{a} \right) = 1- \alpha    
+\]
+Hence, the $(1-\alpha)100\%$ CI for $\theta$ is $\left( \frac{Y_{(1)}}{\sqrt[2n]{\frac{2}{\alpha}}} < \theta < \frac{Y_{(1)}}{\sqrt[2n]{\frac{2}{2-\alpha}} } \right)$
+\subsection*{c.}
+The $99\%$ CI for $\theta$ is 
+\[
+    \left( \frac{10.55}{\sqrt[50]{\frac{2}{2-0.01}} } < \theta < \frac{10.55}{\sqrt[50]{\frac{2}{0.01}}} \right) = \left(9.48925, 10.5489 \right) 
+\]
+\subsection*{d.}
+Since p-value = 0.095, $\alpha = 0.01$ for the two-sided confidence interval which means that 
+\[
+    \frac{y_{(1)}}{\sqrt[40]{\frac{2}{2-0.01}}} = 5  \implies y_{(1)} \simeq 5
+\]
+\subsection*{e.}
+\pagebreak
+\section*{2.}
+\subsection*{a.}
+\begin{equation*}
+    \begin{aligned}
+        F_{Y_{(n)}}(z) &= P(Y_{(n)} < z) = P(Y_{(n)} < z) = \left(P(Y < z)\right)^n \\
+        &= \left( \int_0^z \frac{2y}{\theta^2} dy \right)^n \\
+        &= \left( \left. \frac{y^2}{\theta^2} \right|_{y=0}^z \right)^n \\
+        &= \left(\frac{z^2}{\theta^2} \right)^n
+    \end{aligned}
+\end{equation*}
+Hence, 
+\[
+    f_{Y_{1}}(y) = \frac{2n \cdot z^{2n-1}}{\theta^{2n}}
+\]
+We have 
+\[
+    y_{(1)} =h^{-1}(u) = \theta \cdot u \implies \frac{d}{du}h^{-1}(u) = \theta
+\]
+Therefore, 
+\[
+    f_U(u) = f_{Y_{(n)}}(\theta \cdot u) \cdot \theta = \frac{2n \cdot (\theta \cdot u)^{2n-1}}{\theta^{2n}} \cdot \theta = 2n \cdot u^{2n-1}
+\]
+Hence, $U$ is a pivotal quantity.
+\subsection*{b.}
+We have for $0<u<1$,
+\[
+    F_U(u) = u^{2n}  
+\]
+Hence, 
+\[
+    P(U < a) = F_U(a) =  a^{2n} \implies a = \sqrt[2n]{\frac{\alpha}{2}} 
+\]
+\[
+    P(U > b) = 1 - F_U(b) = 1 - \left(b^{2n}\right) \implies b = \sqrt[2n]{\frac{2-\alpha}{2}}   
+\]
+\[
+    P(a<U<b) = P\left(a < \frac{Y_{(n)}}{\theta} < b\right) = P\left(\frac{Y_{(n)}}{b} < \theta < \frac{Y_{(n)}}{a} \right) = 1- \alpha    
+\]
+Hence, the $(1-\alpha)100\%$ CI for $\theta$ is $\left(\frac{Y_{(n)}}{\sqrt[2n]{\frac{2-\alpha}{2}}}, \frac{Y_{(n)}}{\sqrt[2n]{\frac{\alpha}{2}}}\right)$
+\subsection*{c.}
+The $95\%$ CI for $\theta$ is 
+\[
+    \left(\frac{6.5}{\sqrt[30]{\frac{2-0.05}{2}}}, \frac{6.5}{\sqrt[30]{\frac{0.05}{2}}}\right) = (6.50549, 7.35047)
+\]
+\subsection*{d.}
+\pagebreak
+\section*{3.}
+We know that $\overline{Y} \sim $ Gamma$(cn, \beta/n )$, which means that 
+\[
+    f_{\overline{Y}}(y) = \frac{y^{cn-1} e^{-yn/\beta}}{\Gamma(cn) {(\beta/n)^{cn}}} = \frac{n}{\beta \Gamma(cn)} \cdot \left(\frac{yn}{\beta} \right)^{cn-1} e^{-yn/\beta}
+\]
+Consider $T = \frac{\overline{Y}}{\beta}$, then as $\overline{y} = h^{-1}(t) = \beta \cdot t \implies \frac{d}{dt} h^{-1}(t) = \beta$
+\[
+    f_T(t) =  f_{\overline{Y}}(\beta \cdot t) \cdot \beta = \frac{n}{\beta \Gamma(cn)} \cdot (tn)^{cn-1} \cdot e^{-tn} \cdot \beta = \frac{n (tn)^{cn-1}}{\Gamma(cn) e^{tn}}
+\]
+which is independent of $\beta$ hence is a pivotal quantity.
+Therefore, 
+\[
+    P(T<a) = \int_0^a \frac{n (tn)^{cn-1}}{\Gamma(cn) e^{tn}} dt = \frac{n^{cn}}{\Gamma(cn)} \int_0^a t^{cn-1}e^{-tn} dt
+\]
+
+
+\end{document}
