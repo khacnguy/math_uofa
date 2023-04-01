@@ -64,10 +64,13 @@ We have that for all naturnal number $N$
     \begin{aligned}
         c_n &= \sum_{k=0}^n a_{n-k}a_k = \sum_{k=0}^n \frac{(-1)^n}{\sqrt{(k+1)(n-k+1)}} \\
         & = (-1)^n \sum_{k=0}^n \frac{1}{\sqrt{(k+1)(n-k+1)}} \\
-        & \ge \frac{(-1)^n2(n+1)}{n+2}
     \end{aligned}
 \end{equation*}
-which converges to 2 as $n \to \infty$ and hence $\sum_{n=0}^\infty c_n$ diverges.
+Hence, applying Cauchy 
+\[
+    |c_n| \ge \frac{2(n+1)}{n+2}  = 2 - \frac{2}{n+2} > 1 
+\]
+Thus $\sum_{n=0}^\infty c_n$ diverges.
 \pagebreak
 \section*{4.}
 Since $f$ is Riemann integrable over $[a,b]$, $f$ is bounded over $[a,b]$. \\
