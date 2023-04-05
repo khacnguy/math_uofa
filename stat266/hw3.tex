@@ -125,11 +125,26 @@ Consider $T = \frac{\overline{Y}}{\beta}$, then as $\overline{y} = h^{-1}(t) = \
 \[
     f_T(t) =  f_{\overline{Y}}(\beta \cdot t) \cdot \beta = \frac{n}{\beta \Gamma(cn)} \cdot (tn)^{cn-1} \cdot e^{-tn} \cdot \beta = \frac{n (tn)^{cn-1}}{\Gamma(cn) e^{tn}}
 \]
-which is independent of $\beta$ hence is a pivotal quantity.
-Therefore, 
+which is independent of $\beta$ hence is a pivotal quantity. \\
+We have that $T = \frac{\overline{Y}}{\beta} \sim $ Gamma(cn, 1/n) $\sim \frac{1}{2n}$ Gamma(cn,2) $\sim \frac{1}{2n}\chi_{2cn}^2$ \\
+Hence, $U = \frac{2n \overline{Y}}{\beta} \sim \chi_{2cn}^2$ is also a pivotal quantity. \\
+\begin{equation*}
+    \begin{aligned}
+        1- \alpha &= P(a<U<b) \\
+        &= P(a < \frac{2n \overline{Y}}{\beta} < b) \\
+        &= P\left(\frac{2n\overline{Y}}{b} < \beta < \frac{2n\overline{Y}}{a}\right) \\
+    \end{aligned}
+\end{equation*}
+Hence, a $(1-\alpha)100\%$ CI is 
 \[
-    P(T<a) = \int_0^a \frac{n (tn)^{cn-1}}{\Gamma(cn) e^{tn}} dt = \frac{n^{cn}}{\Gamma(cn)} \int_0^a t^{cn-1}e^{-tn} dt
+    \left(\frac{2n \overline{Y}}{\chi_{2cn,\alpha/2}^{2^\ast}}, \frac{2n \overline{Y}}{\chi_{2cn,1-\alpha/2}^{2^\ast}} \right)
 \]
+\subsection*{b.}
+\begin{equation*}
+    \begin{aligned}
+        P(-z_{\alpha/2}^\ast < Z < -z_{\alpha/2}^\ast)
+    \end{aligned}
+\end{equation*}
 
 
 \end{document}
