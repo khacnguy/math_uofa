@@ -1,0 +1,67 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepackage{hyperref}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\tableofcontents
+\pagebreak
+\section{8/9}
+\subsection{intuitive counting formula}
+Let $N$ be a $\lambda$-Poisson process and $f$ be any continuous function in $\mathbb{R}$. 
+
+We will prove that 
+Note: $f(0) = f(N_0)$.
+We have, 
+\[
+    f(N_1) - f(0) = \sum_{i=1}^{N_1} \left(f(i)-f(i-1) \right)
+\]
+By right contiuity of the poisson process 
+\[
+    \int_0^1 \left(f(N_{s^-} + 1) - f(N_{s^-})\right) dN_s = \lim_{M \to \infty} \left(f\left(N_{\frac{j-1}{M}}+1\right) - f\left(N_{\frac{j-1}{M}}\right) \right) \left(N_{\frac{j}{M}} - N_{\frac{j-1}{M}}\right)
+\]
+For large $M$, we have that 
+\[
+    N_{\frac{j}{M}} - N_{\frac{j-1}{M}} = 
+    \begin{cases}
+        1, \text{at the jump where $N$ increases} \\
+        0, \text{otherwise}
+    \end{cases}  
+\] 
+Hence, 
+\[
+    \int_0^1 \left(f(N_{s^-} + 1) - f(N_{s^-})\right) dN_s = \sum_{i=1}^{N_1} \left(f(i)-f(i-1) \right) = f(N_1) - f(0)
+\]
+\newpage
+\subsection{problem}
+\href{https://sbsprobability.com/b/43432?context=%5B"25842"%2C"m8"%2C"m8_1"%2C"43241"%5D}{problem link} \\
+Guess
+\[
+    a_t = a_0 \exp \left({\int_0^1 f_s ds}\right)
+\]
+which starts right. The exponential rule gives 
+\[
+    \frac{d}{dt} a_t = f_t a_t    
+\]
+Unique? Consider second solution satisfies $\frac{d}{dt} \alpha_t = f_t \alpha_t$ such that $\alpha_0 = a_0$. 
+Set $e_t = \frac{\alpha_t}{a_t}$, then $e_0 = \frac{a_0}{\alpha_0} = 1$ hence by product rule
+\[
+    \frac{d}{dt} e^t = \frac{f_t \alpha_t}{a_t} - \frac{\alpha_1 f_t \exp \left({-\int_0^1 f_s ds}\right)}{a_0} = 0
+\]
+Hence, $e_t = 1$, hence $\alpha_t = a_t$ for all $t$.
+\end{document}
