@@ -1,0 +1,63 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+Without loss of generality, we can assume dim(Image$(g)) = 1$.
+Assume that $g$ is only defined in the set $[-N,N] \times [-M,M]$ where $N,M$ are arbitary. \\
+We have that 
+\[
+    \int_{[-N,N] \times [-M,M]} g(x,y) dF(x,y) = \lim_{n,m \to \infty} \sum_{i=1}^n \sum_{j=1}^m g(x^*, y^*) \Delta F_{i,j}
+\]
+where with $x_i = \frac{-(n-i)N + iN}{n} = \frac{2iN - nN}{n}$, $y_i = \frac{-(m-i)M + iM}{m} = \frac{2iM - mM}{m}$, we have
+\begin{equation*}
+    \begin{aligned}
+        \Delta F_{i,j} &= F(x_i, y_j) - F(x_{i-1}, y_j) - F(x_i, y_{j-1}) + F(x_{i-1}, y_{j-1}) \\
+        &= \int_{x_{i-1}}^{x_i} \int_{y_{j-1}}^{y_j} f(x,y) dxdy
+    \end{aligned}
+\end{equation*}
+Hence, 
+\[
+    \int_{[-N,N] \times [-M,M]} g(x,y) dF(x,y) = \lim_{n,m \to \infty} \sum_{i=1}^n \sum_{j=1}^m g(x^*, y^*) \int_{x_{i-1}}^{x_i} \int_{y_{j-1}}^{y_j} f(x,y) dxdy
+\]
+\begin{equation*}
+    \begin{aligned}
+        E[g(X,Y)] &= \int_{[-N,N] \times [-M,M]} g(x,y) f(x,y) dxdy \\
+        &=  \lim_{n,m \to \infty} \sum_{i=1}^n \sum_{j=1}^m \int_{x_{i-1}}^{x_i} \int_{y_{j-1}}^{y_j} g(x, y) f(x,y) dxdy 
+    \end{aligned}
+\end{equation*}
+We know that $g$ is uniformly continuous as it is continuous in a compact set, we have that with large enough n,m
+\[
+    | g(x,y) - g(x^*, y^*) | < \epsilon
+\]
+Hence, 
+\begin{equation*}
+    \begin{aligned}
+        & \left| \int_{[-N,N] \times [-M,M]} g(x,y) dF(x,y)  - E[g(X,Y)] \right| \\
+        =&  \left| \lim_{n,m \to \infty} \sum_{i=1}^n \sum_{j=1}^m  \int_{x_{i-1}}^{x_i} \int_{y_{j-1}}^{y_j} (g(x, y) - g(x^*,y^*)) f(x,y)  dxdy \right| \\
+        <& \left| \lim_{n,m \to \infty} \sum_{i=1}^n \sum_{j=1}^m  \int_{x_{i-1}}^{x_i} \int_{y_{j-1}}^{y_j} \epsilon f(x,y)  dxdy \right| \\
+        =& \epsilon \left|\lim_{n,m \to \infty} \sum_{i=1}^n \sum_{j=1}^m  \int_{x_{i-1}}^{x_i} \int_{y_{j-1}}^{y_j} f(x,y)  dxdy \right| \\
+        =& \epsilon
+    \end{aligned}
+\end{equation*}
+Since, $\epsilon$ is arbitary, $\int_{[-N,N] \times [-M,M]} g(x,y) dF(x,y)  = E[g(X,Y)]$, and since $N,M$ are arbitary,
+\[
+    \int_{\mathbb{R}^2} g(x,y) dF(x,y)  = E[g(X,Y)]
+\]
+\end{document}
