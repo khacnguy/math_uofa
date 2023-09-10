@@ -1,0 +1,209 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+\subsection*{1.}
+Let $u = \sin t$, then $du = \cos t dt$, hence the integral becomes
+\[
+    \int \frac{du}{(1+u)^{1/2}} = 2\sqrt{1+u} = 2\sqrt(1+\sin t)
+\]
+\subsection*{2.}
+Let $u = \ln x$, then $du = \frac{dx}{x}$, hence the integral becomes
+\[
+    \int \frac{dx}{x\ln x} = \int \frac{du}{u} = \ln u = \ln\ln x    
+\]
+\subsection*{3.}
+With $t=y-2$ hence $dt = dy$, we have
+\[
+    \int \frac{dy}{y^2-4y+8} = \int \frac{dy}{(y-2)^2 +4} = \int \frac{dt}{t^2+4} = 2\cdot \frac{1}{4} \int \frac{d(t/2)}{\left(\frac{t}{2}\right)^2 + 1} =\frac{\arctan(\frac{y-2}{2})}{2}
+\]
+\subsection*{4.}
+Let $u = \sqrt{x-1}$, then $du = \frac{1}{2\sqrt{x-1}} dx$
+\[
+    \int \frac{dx}{(x-1)\sqrt{x^2-x}} = \int \frac{2du}{u^2 \cdot \sqrt{u^2+1}}
+\]
+Let $u=\tan(t)$, then $du = \cfrac{1}{\cos^2(t)}dt$, the integral becomes
+\[
+    \int \frac{2dt}{\tan^2(t) \cdot \sqrt{\tan^2(t)+1}} \cdot \frac{1}{\cos^2(t)} = \int \frac{\cos(t)}{\sin^2(t)}dt 
+\]
+Let $y = \sin(t)$, $dy = \cos(t) dt$
+\[
+    \int \frac{1}{y^2} dy = -\frac{1}{y} = - \frac{1}{\sin(t)} = -\frac{1}{\sin(\arctan(u))} = -\frac{1}{\sin(\arctan(\sqrt{x-1}))} = - \frac{\sqrt{x}}{\sqrt{x-1}}
+\]
+\subsection*{5.}
+\[
+    \int \sin^2(x) dx = \int \frac{1-\cos(2x)}{2} dx = \frac{x}{2} - \frac{\sin(2x)}{4}
+\]
+\subsection*{6.}
+\[
+    \int x^2\ln x dx = \frac{x^3 \ln x}{3} - \int \frac{x^3}{3} \cdot \frac{1}{x} dx = \frac{x^3 \ln x}{3} - \frac{x^3}{9}
+\]
+\subsection*{7.}
+Let $I = \int e^{2x} \sin x dx$ 
+\begin{equation*}
+    \begin{aligned}
+        I &= \int e^{2x} \sin x dx = \frac{e^{2x} \sin x}{2} - \int \frac{e^{2x} \cos x}{2} dx \\
+        &= \frac{e^{2x}\sin x}{2} - \frac{e^{2x} \cos x}{4} + \frac{I}{4} \\
+        \implies & I = \frac{4}{3} \left(\frac{2e^{2x}\sin x - e^{2x} \cos x}{4}\right) 
+    \end{aligned}
+\end{equation*}
+\subsection*{8.}
+\begin{equation*}
+    \begin{aligned}
+        \int \frac{3x^2+4x+4}{x^3+x} dx &= \int \left(\frac{-x+4}{x^2+1} + \frac{4}{x} \right)dx \\
+        &= \int \left(-\frac{x}{x^2+1} + \frac{4}{x^2+1} + \frac{4}{x}\right)dx \\
+        &= - \frac{\ln (x^2+1)}{2}+ 4 \ln(|x|) + 4 \arctan(x) + C
+    \end{aligned}
+\end{equation*}
+\subsection*{9.}
+Let $u = \cos x$, then $du = - \sin x dx$
+\begin{equation*}
+    \begin{aligned}
+        \int \sin^3x\cos^4x dx 
+        &=  \int (1-\cos^2x)\cos^4x \sin x dx \\
+        &= -\int (1-u^2)u^4 du \\
+        &= \frac{u^7}{7} - \frac{u^5}{5} \\
+        &= \frac{\cos^7x}{7}- \frac{\cos^5x}{x}
+    \end{aligned}
+\end{equation*}
+\subsection*{10.}
+Let $u = \sqrt{e^{2x}-1}$, hence $du = \cfrac{e^{2x}dx}{\sqrt{e^{2x}-1}}$ and $u^2+1 = e^{2x}$
+\[
+    \int \frac{dx}{\sqrt{e^{2x}-1}} = \int \frac{1}{u^2+1} du = \arctan(u^2+1) = \arctan(e^{2x})
+\]
+\pagebreak
+\section*{2.}
+\subsection*{A}
+Let $\lambda$ be an eigenvalue, then 
+\begin{equation*}
+    \begin{aligned}
+        &\det (A - \lambda I) = 0 \\
+        &(2-\lambda)^2 + 1 = 0 \\
+        &\lambda^2 -4\lambda + 5 = 0 \\
+        &\lambda = 2 \pm i
+    \end{aligned}
+\end{equation*}
+For $\lambda = 2+i$, let 
+$
+v= 
+\begin{pmatrix}
+v_1 \\
+v_2    
+\end{pmatrix}$ be its eigenvector, then
+\begin{equation*}
+    \begin{aligned}
+        A \cdot v = \lambda \cdot v \\
+        \begin{pmatrix}
+            -i & -1 \\
+            1 & -i
+        \end{pmatrix}
+        \cdot v = 0 \\
+        \begin{pmatrix}
+            -i \cdot v_1 - 1 \cdot v_2 \\
+            v_1  -i \cdot v_2
+        \end{pmatrix} \cdot v
+        =0 
+    \end{aligned}
+\end{equation*}
+Hence, $v_1 = i\cdot v_2$, thus $v = \lambda_1 \begin{pmatrix}
+    i \\
+    1
+\end{pmatrix}
+$
+is an eigenvector for all $\lambda_1 \in \mathbb{R}$
+For $\lambda = 2-i$, let 
+$
+v= 
+\begin{pmatrix}
+v_1 \\
+v_2    
+\end{pmatrix}$ be its eigenvector, then
+\begin{equation*}
+    \begin{aligned}
+        A \cdot v = \lambda \cdot v \\
+        \begin{pmatrix}
+            i & -1 \\
+            1 & i
+        \end{pmatrix}
+        \cdot v = 0 \\
+        \begin{pmatrix}
+            i \cdot v_1 - 1 \cdot v_2 \\
+            v_1  +i \cdot v_2
+        \end{pmatrix} \cdot v
+        =0 
+    \end{aligned}
+\end{equation*}
+Hence, $v_2 = i\cdot v_1$, thus $v = \lambda_2 \begin{pmatrix}
+    1 \\
+    i
+\end{pmatrix}
+$
+is an eigenvector for all $\lambda_2 \in \mathbb{R}$
+Clearly, The geometric multiplicity of both eigenvalue
+is 1
+since the geometric multiplicity cannot be 0
+and cannot exceed the algebraic multiplity of the eigenvalue
+, which is 1
+. The geometric multiplicity of both eigenvalue are 1 as the dimension of both eigenspace are 1. Hence, it is diagonalizable
+as the algebraic multiplicity of both eigenvalue
+is equal to the geometric multiplicity of itself
+.
+\subsection*{B}
+Let $\lambda$ be an eigenvalue, then 
+\begin{equation*}
+    \begin{aligned}
+        &\det (B - \lambda I) = 0 \\
+        &(-1-\lambda)^3 = 0 \\
+        &\lambda = -1
+    \end{aligned}
+\end{equation*}
+Let $v = \begin{pmatrix}
+    v_1 \\
+    v_2 \\
+    v_3
+\end{pmatrix}
+$ be an eigenvector. Then 
+\begin{equation*}
+    \begin{aligned}
+        (A +1) \cdot v = 0 \\
+        \begin{pmatrix}
+            0 & 0 & 0 \\
+            2 & 0 & -1 \\
+            0 & 0 & 0
+        \end{pmatrix}
+        \cdot v = 0 \\
+    \end{aligned}
+\end{equation*}
+Hence, $v_1 = v_3 = 0$, which means that $v = \lambda^* \begin{pmatrix}
+    0 \\
+    1 \\
+    0
+\end{pmatrix}$ is an eigenvector for all $\lambda^* \in \mathbb{R}$. Notice that 
+$A - \lambda$ has nullity 2 hence the geometric multiplicity is 2 but the algebraic multiplicity is 3. 
+Therefore, $b$ is not diagonalizable.
+\newpage
+\section*{3.}
+\subsection*{11.j} 
+\subsection*{12.c}
+\subsection*{13.g}
+\subsection*{14.b}
+\subsection*{15.h}
+\subsection*{16.e}
+\end{document}
