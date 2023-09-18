@@ -208,6 +208,7 @@ Substitute in the 2 equations in the first equation $h(z)\overline{h(z)} = z \ov
 \]
 Hence, $h(z) = z$, which means $g\circ f$ is the identity map. \\
 $f$ is injective as $|f(z_1) - f(z_2)| = 0 \implies |z_1 - z_2|=0$. \\
-Now suppose $f$ is not bijective. Then we can find some $z \notin \text{Img}(f)$, choose $0< \epsilon < \inf \{|z-z^*| : z^* \in \text{Img}(f) \}$, which is not $0$ as $f(C)$ is compact. 
-hence $f(z + \epsilon) \notin \text{Img}(f)$ which is a contradiction. Hence, $f$ is bijective, and thus $f$, the inverse of $g$ is also linear.
+Consider $B_r$ where $r$ is the radius. Suppose $f$ is not bijective. Then we can find some $z \in B_r \backslash f(B_r)$. Then the sequence $z_0 = z,z_1 = f(z_0),z_2 = f(z_1), \hdots$ has a convergent subsequence. However, we can choose $0< \epsilon < \inf \{|z-z^*| : z^* \in \text{Img}(f) \}$. 
+so that $|f(z_n)-f(z_m)| = |f(z_0) - f(z_{m-n})| \ge \epsilon$ for $m>n$, which means that there is no convergent subsequence and therefore a contradiction. 
+Hence, $f$ is bijective, and thus $f$, the inverse of $g$ is also linear.
 \end{document}
