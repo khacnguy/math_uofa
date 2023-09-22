@@ -20,9 +20,6 @@
 \pgfplotsset{compat = newest}
 \pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
 \begin{document}
-\tableofcontents
-\newpage
-\chapter{HW1}
 \section{}
 Without loss of generality, we can assume dim(Image$(g)) = 1$.
 Assume that $g$ is only defined in the set $[-N,N] \times [-M,M]$ where $N,M$ are arbitary. \\
@@ -111,7 +108,7 @@ Hence, we can calculate
 \end{equation*}
 \newpage
 \section{}
-Let $\{Y_i\}_{i=1}^N$ be geometric distributions, which is also a filtration. We will use the geometric distributions to estimate $\sin(X \ln(X))$, 
+Let $\{Y_i\}_{i=1}^N$ be geometric distributions, then $\mathcal{F}_n = \sigma(Y_1, Y_2, \hdots, Y_n)$ is a filtration. We will use the geometric distributions to estimate $\sin(X \ln(X))$, 
 where $X$ is a $(2,1/2)$-negative binomial.  
 \[
     \alpha_i = \frac{p(Y_i)}{q(Y_i)} = \frac{\begin{pmatrix} Y_i+1 \\ Y_i \end{pmatrix} \left(\frac{1}{2}\right)^2 \left( \frac{1}{2}\right)^{Y_i-2}}{\frac{1}{2} \left( \frac{1}{2}\right)^{Y_i-1}} = Y_i + 1
@@ -136,6 +133,13 @@ Therefore, to estimate $E[\sin(X\ln(X))]$, calculate
 \[
     g(X_1, X_2, \hdots, X_n) = \prod_{i=1}^n (Y_i+1) g(Y_1, Y_2, \hdots, Y_n)
 \]
-where $g(X_1, X_2, \hdots, X_n) = \frac{1}{N} \sum_{m=1}^N \sin(X_m \ln(X_m))$.
+where $g(X_1, X_2, \hdots, X_n) = \frac{1}{N} \sum_{m=1}^N \sin(X_m \ln(X_m))$ as $n \to \infty$, we have
+\[
+    g(X_1, X_2, \hdots, X_n) = E[g(X_1, X_2, \hdots, X_n)]
+\]
+and 
+\[
+    g(Y_1, Y_2, \hdots, Y_n) = E[g(Y_1, Y_2, \hdots, Y_n)]
+\]
 
 \end{document}
