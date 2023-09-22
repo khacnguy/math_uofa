@@ -111,30 +111,31 @@ Hence, we can calculate
 \end{equation*}
 \newpage
 \section{}
-Let $\{X_i\}_{i=1}^N$ be geometric distributions, which is also a filtration. We will use the geometric distributions to estimate $a$, 
+Let $\{Y_i\}_{i=1}^N$ be geometric distributions, which is also a filtration. We will use the geometric distributions to estimate $\sin(X \ln(X))$, 
 where $X$ is a $(2,1/2)$-negative binomial.  
 \[
-    \alpha_i = \frac{p(X_i)}{q(X_i)} = \frac{\begin{pmatrix} X_i+1 \\ X_i \end{pmatrix} \left(\frac{1}{2}\right)^2 \left( \frac{1}{2}\right)^{X_i-2}}{\frac{1}{2} \left( \frac{1}{2}\right)^{X_i-1}} = X_i + 1
+    \alpha_i = \frac{p(Y_i)}{q(Y_i)} = \frac{\begin{pmatrix} Y_i+1 \\ Y_i \end{pmatrix} \left(\frac{1}{2}\right)^2 \left( \frac{1}{2}\right)^{Y_i-2}}{\frac{1}{2} \left( \frac{1}{2}\right)^{Y_i-1}} = Y_i + 1
 \]
 and with
 \[
-    L_n = \prod_{i=1}^n \alpha_i = \prod_{i=1}^n (X_i + 1)
+    L_n = \prod_{i=1}^n \alpha_i = \prod_{i=1}^n (Y_i + 1)
 \]
 We have
 \begin{equation*}
     \begin{aligned}
-        &E[L_n g(X_1,X_2, \hdots, X_n)] \\
-        =& E[ E[L_n | \mathcal{F}_n] g(X_1, X_2, \hdots, X_n)] \\
-        =& E\left[\prod_{i=1}^n \frac{p(X_i)}{q(X_i)} g(X_1,X_2, \hdots, X_n) \right] \\
+        &E[L_n g(Y_1,Y_2, \hdots, Y_n)] \\
+        =& E[ E[L_n | \mathcal{F}_n] g(Y_1, Y_2, \hdots, Y_n)] \\
+        =& E\left[\prod_{i=1}^n \frac{p(Y_i)}{q(Y_i)} g(Y_1,Y_2, \hdots, Y_n) \right] \\
         =& \sum_{j_1, j_2, \hdots, j_n = 1}^\infty \prod_{i=1}^n \frac{p(j_i)}{q(j_i)} g(j_1, j_2, \hdots, j_n) q(j_1) q(j_2) \hdots q(j_n) \\
         =& \sum_{j_1, j_2, \hdots, j_n = 1}^\infty g(j_1, j_2, \hdots, j_n) p(j_1)p(j_2)\hdots p(j_n) \\
-        =& E[g(Y_1, Y_2, \hdots, Y_n)]
+        =& E[g(X_1, X_2, \hdots, X_n)]
     \end{aligned}
 \end{equation*}
-where $Y_i$ is a $(2,1/2)$-negative binomial.
-Therefore, to estimate $E[\sin(X\ln(X))]$, we calculate
+where $X_i$ is a $(2,1/2)$-negative binomial.
+Therefore, to estimate $E[\sin(X\ln(X))]$, let 
 \[
-    g(Y_1, Y_2, \hdots, Y_n) = \frac{1}{N} \sum_{m=1}^N \sin(Y_m \ln(Y_m)) = \frac{1}{N} \prod_{i=1}^n (X_i+1)  \sum_{m=1}^N \sin(X_m \ln(X_m)) 
+    E[\sin(X\ln(X))] = g(X_1, X_2, \hdots, X_n) = \prod_{i=1}^n (Y_i+1) g(Y_1, Y_2, \hdots, Y_n)
 \]
+where $g(X_1, X_2, \hdots, X_n) = \frac{1}{N} \sum_{m=1}^N \sin(X_m \ln(X_m))$.
 
 \end{document}
