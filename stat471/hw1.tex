@@ -111,11 +111,11 @@ Hence, we can calculate
 Let $\{Y_i\}_{i=1}^N$ be geometric distributions, then $\mathcal{F}_n = \sigma(Y_1, Y_2, \hdots, Y_n)$ is a filtration. We will use the geometric distributions to estimate $\sin(X \ln(X))$, 
 where $X$ is a $(2,1/2)$-negative binomial.  
 \[
-    \alpha_i = \frac{p(Y_i)}{q(Y_i)} = \frac{\begin{pmatrix} Y_i+1 \\ Y_i \end{pmatrix} \left(\frac{1}{2}\right)^2 \left( \frac{1}{2}\right)^{Y_i-2}}{\frac{1}{2} \left( \frac{1}{2}\right)^{Y_i-1}} = Y_i + 1
+    \alpha_i = \frac{p(Y_i)}{q(Y_i)} = \frac{\begin{pmatrix} Y_i-1 \\ 1 \end{pmatrix} \left(\frac{1}{2}\right)^2 \left( \frac{1}{2}\right)^{Y_i-2}}{\frac{1}{2} \left( \frac{1}{2}\right)^{Y_i-1}} = Y_i - 1
 \]
 and with
 \[
-    L_n = \prod_{i=1}^n \alpha_i = \prod_{i=1}^n (Y_i + 1)
+    L_n = \prod_{i=1}^n \alpha_i = \prod_{i=1}^n (Y_i - 1)
 \]
 We have
 \begin{equation*}
@@ -131,7 +131,7 @@ We have
 where $X_i$ is a $(2,1/2)$-negative binomial.
 Therefore, to estimate $E[\sin(X\ln(X))]$, calculate
 \[
-    g(X_1, X_2, \hdots, X_n) = \prod_{i=1}^n (Y_i+1) g(Y_1, Y_2, \hdots, Y_n)
+    g(X_1, X_2, \hdots, X_n) = \prod_{i=1}^n (Y_i-1) g(Y_1, Y_2, \hdots, Y_n)
 \]
 where $g(X_1, X_2, \hdots, X_n) = \frac{1}{n} \sum_{m=1}^n \sin(X_m \ln(X_m))$ because as $n \to \infty$, we have
 \[
