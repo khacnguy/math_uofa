@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}
+\documentclass[11pt]{report}
     \title{\textbf{Math 217 Homework I}}
     \author{Khac Nguyen Nguyen}
     \date{}
@@ -13,6 +13,7 @@
 \usepackage{pgfplots}
 \usepackage{xfrac}
 \usepackage{hyperref}
+
 \usepgfplotslibrary{polar}
 \usepgflibrary{shapes.geometric}
 \usetikzlibrary{calc}
@@ -20,7 +21,8 @@
 \pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
 \begin{document}
 \tableofcontents
-\pagebreak
+\newpage
+\chapter{HW1}
 \section{}
 Without loss of generality, we can assume dim(Image$(g)) = 1$.
 Assume that $g$ is only defined in the set $[-N,N] \times [-M,M]$ where $N,M$ are arbitary. \\
@@ -81,4 +83,58 @@ Hence, we can calculate
 \[
     \pi(i) = \pi(0) \frac{a_0 a_1 \hdots a_{i-1}}{s_1 s_2 \hdots s_i} = \frac{1}{2} \cdot \frac{2 \cdot i!}{(i+2)!} = \frac{1}{(i+1)(i+2)}
 \]
+\newpage
+\section{}
+\subsection{}
+\[
+    f^{-1}(\varnothing) = \{x\in S: f(x) \in \varnothing\} = \varnothing
+\]
+\subsection{}
+\[
+    f^{-1}(B^C) = \{x\in S: f(x) \notin B\} = S \backslash \{x\in S: f(x) \in B\} = S \backslash (f^{-1}(B)) = f^{-1}(B)^C
+\]
+\subsection{}
+\begin{equation*}
+    \begin{aligned}
+        f^{-1} \left(\bigcap_\beta B_\beta \right) &= \{x \in S: f(x) \in \bigcap_\beta B_\beta \} \\
+        &= \bigcap_\beta \{x \in S: f(x) \in B_\beta\} \\
+        &= \bigcap_\beta f^{-1}(B_\beta)
+    \end{aligned}
+\end{equation*}
+\subsection{}
+\begin{equation*}
+    \begin{aligned}
+        f^{-1} \left(\bigcup_\beta B_\beta \right) &= \{x \in S: f(x) \in \bigcup_\beta B_\beta \} \\
+        &= \bigcup_\beta \{x \in S: f(x) \in B_\beta\} \\
+        &= \bigcup_\beta f^{-1}(B_\beta) 
+    \end{aligned}
+\end{equation*}
+\newpage
+\section{}
+Let $\{X_i\}_{i=1}^N$ be geometric distributions, which is also a filtration. We will use the geometric distributions to estimate $a$, 
+where $X$ is a $(2,1/2)$-negative binomial.  
+\[
+    \alpha_i = \frac{p(X_i)}{q(X_i)} = \frac{\begin{pmatrix} X_i+1 \\ X_i \end{pmatrix} \left(\frac{1}{2}\right)^2 \left( \frac{1}{2}\right)^{X_i-2}}{\frac{1}{2} \left( \frac{1}{2}\right)^{X_i-1}} = X_i + 1
+\]
+and with
+\[
+    L_n = \prod_{i=1}^n \alpha_i = \prod_{i=1}^n (X_i + 1)
+\]
+We have
+\begin{equation*}
+    \begin{aligned}
+        &E[L_n g(X_1,X_2, \hdots, X_n)] \\
+        =& E[ E[L_n | \mathcal{F}_n] g(X_1, X_2, \hdots, X_n)] \\
+        =& E\left[\prod_{i=1}^n \frac{p(X_i)}{q(X_i)} g(X_1,X_2, \hdots, X_n) \right] \\
+        =& \sum_{j_1, j_2, \hdots, j_n = 1}^\infty \prod_{i=1}^n \frac{p(j_i)}{q(j_i)} g(j_1, j_2, \hdots, j_n) q(j_1) q(j_2) \hdots q(j_n) \\
+        =& \sum_{j_1, j_2, \hdots, j_n = 1}^\infty g(j_1, j_2, \hdots, j_n) p(j_1)p(j_2)\hdots p(j_n) \\
+        =& E[g(Y_1, Y_2, \hdots, Y_n)]
+    \end{aligned}
+\end{equation*}
+where $Y_i$ is a $(2,1/2)$-negative binomial.
+Therefore, to estimate $E[\sin(X\ln(X))]$, we calculate
+\[
+    g(Y_1, Y_2, \hdots, Y_n) = \frac{1}{N} \sum_{m=1}^N \sin(Y_m \ln(Y_m)) = \frac{1}{N} \prod_{i=1}^n (X_i+1)  \sum_{m=1}^N \sin(X_m \ln(X_m)) 
+\]
+
 \end{document}
