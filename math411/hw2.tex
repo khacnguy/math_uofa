@@ -1,0 +1,167 @@
+\documentclass[11pt]{report}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepackage{hyperref}
+
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{A2.1}
+\subsection*{a. $\Rightarrow$}
+If $f$ is anti-holomorphic at $z_0 = x_0 + iy_0$ then consider the function $g = \overline{f}$, we know that
+\[
+    \lim_{z \to z_0} \frac{f(z)-f(z_0)}{\overline{z-z_0}}
+\]
+exists. Hence,
+\[
+    \lim_{z \to z_0} \frac{g(z) - g(z_0)}{z-z_0}
+\]
+also exists. Therefore, $g$ is complex differentiable at $z_0$. And hence $f$ is complex differentiable at $z_0$. Therefore,
+\[
+    \frac{\partial u}{\partial x} = -\frac{\partial v}{\partial y}  \indent \frac{\partial u}{\partial y} = \frac{\partial v}{\partial x}
+\]
+Hence at $z_0$,
+\[
+    \frac{\partial f}{\partial x} = \frac{\partial u}{\partial x} + i\frac{\partial v}{\partial x}
+    = - \frac{\partial v}{\partial y} + i \frac{\partial u}{\partial y}
+    = i \left( \frac{\partial u}{\partial y} +i \frac{\partial v}{\partial y} \right)
+    = \frac{\partial f}{\partial y}
+\]
+Define
+\[
+    T: \mathbb{C} \to \mathbb{C}, \indent z \to \overline{ z g'(z_0)}
+\]
+\[
+    \frac{|f(z) - f(z_0) - T(z-z_0)|}{|z-z_0|} = \left| \frac{f(z) - f(z_0)}{\overline{z-z_0}} - \overline{g'(z_0)}\right| \to 0
+\]
+as $z\to z_0$. Therefore, $f$ is totally differentiable.
+\subsection*{b. $\Leftarrow$}
+We know that $g = \overline{f}$ is totally differentiable at $z_0$ as $f$ is totally differentiable at $z_0$ and since
+\[
+    \frac{\partial f}{\partial x} = i \frac{\partial f}{\partial y} \implies \frac{\partial g}{\partial x} = -i \frac{\partial g}{\partial y}
+\]
+We know that $g$ is complex differentiable at $z_0$ and hence
+\[
+    \lim_{z \to z_0} \frac{g(z) - g(z_0)}{z-z_0}
+\]
+exists which means that
+\[
+    \lim_{z \to z_0} \frac{f(z)-f(z_0)}{\overline{z-z_0}}
+\]
+exists. Thus, $f$ is anti-holomorphic.
+
+
+\newpage
+\section*{A2.2}
+\subsection*{a.}
+\begin{equation*}
+    \begin{aligned}
+        \lim_{z \to z_0} \frac{f(z) - f(z_0)}{z-z_0}
+        &= \lim_{z \to z_0} \frac{a(z^2 - z_0^2) + b(z\overline{z} - z_0 \overline{z_0}) + c(\overline{z}^2-\overline{z_0}^2)}{z-z_0}  \\
+        &= 2az_0 + \lim_{z \to z_0} \frac{b(z\overline{z} - z_0 \overline{z_0}) + c(\overline{z}^2-\overline{z_0}^2)}{z-z_0} \\
+        &= 2az_0 + \lim_{z \to z_0} \frac{ bz\overline{z} -b\overline{z}z_0 + b\overline{z}z_0 -bz_0\overline{z_0} + c (\overline{z}^2 - \overline{z_0}^2)}{z-z_0} \\
+        &= 2az_0 +b\overline{z} + \lim_{z \to z_0} \frac{bz_0(\overline{z} - \overline{z_0}) + c(\overline{z}-\overline{z_0})(\overline{z} + \overline{z_0})}{z-z_0} \\
+        &= 2az_0 +b\overline{z} + \lim_{z \to z_0} \frac{(\overline{z} - \overline{z_0})(bz_0 + c(\overline{z} + \overline{z_0}))}{z-z_0} \\
+        &= 2az_0 +b\overline{z} + \lim_{z \to z_0} \frac{(\overline{z} - \overline{z_0})(bz_0 + c(\overline{z} + \overline{z_0}))}{z-z_0} \\
+    \end{aligned}
+\end{equation*}
+Since the map $z \to \overline{z}$ is not complex differentiable, $\lim_{z \to z_0} \frac{f(z) - f(z_0)}{z-z_0}$ exists iff
+$\lim_{z \to z_0} \frac{(\overline{z} - \overline{z_0})(bz_0 + c(\overline{z} + \overline{z_0}))}{z-z_0}$ iff $bz_0 + 2c(\overline{z_0}) = 0$ \\
+\subsection*{b.}
+Let $z_0 = x_0 + iy_0$, then $f$ is differentiable at $z_0$ if
+\[
+    bx_0 + 2cx_0 = 0 \indent by_0 - 2cy_0 = 0
+\]
+If $b = -2c, bx_0 + 2cx_0 = 0$ is true for all $x_0$. However, $by_0 - 2cy_0 = 2by_0 = 0 \implies y_0=0$. \\
+If $b = 2c, by_0 - 2cy_0 = 0$ is true for all $y_0$. However, $bx_0 + 2cx_0 = 2bx_0 =0 \implies x_0 = 0$. \\
+In other cases, $x_0 = y_0 = 0$ must be satisfied so that $f$ is differentiable at $z_0$.
+\newpage
+\section*{A2.3}
+$g(z) = zf(z)$ is analytic in $D$, hence for all $z \in D$
+\[
+    \frac{\partial g}{\partial x} = -i \frac{\partial g}{\partial y}
+\]
+We also have
+\[
+    \frac{\partial g}{\partial x} = \frac{\partial z}{\partial x}f(z) + \frac{\partial f}{\partial x} z = f(z) + \frac{\partial f}{\partial x} z
+\]
+\[
+    -i\frac{\partial g}{\partial y} = -i \left( \frac{\partial z}{\partial y}f(z) + \frac{\partial f}{\partial y}z \right) = -i \left(if(z) + \frac{\partial f}{\partial y}z\right) = f(z) - i\frac{\partial f}{\partial y}z
+\]
+Therefore,
+\[
+    \frac{\partial f}{\partial x} z = -i\frac{\partial f}{\partial y}z
+\]
+However, $\overline{f(z)}$ is analytic in $D$, hence for all $z \in D$
+\[
+    \frac{\partial f}{\partial x} = \frac{\partial f}{\partial y} = 0
+\]
+Thus $f$ is constant on $D$.
+\newpage
+\section*{A2.4}
+Since $f$ and $g$ are anti-holomorphic at $z_0$ and $g(z_0)$, they are totally differentiable at $z_0$ and $g(z_0)$,
+hence $f \circ g$ is also totally differentiable. We have
+\begin{equation*}
+    \begin{aligned}
+        J_{f\circ g}(x_0) &= J_f(g(z_0))J_g(x_0) \\
+        &=
+        \begin{bmatrix}
+            \frac{\partial u_f}{\partial x}(g(z_0)) & \frac{\partial u_f}{\partial y}(g(z_0)) \\
+            \frac{\partial v_f}{\partial x}(g(z_0)) & \frac{\partial v_f}{\partial y}(g(z_0))
+        \end{bmatrix}
+        \begin{bmatrix}
+            \frac{\partial u_g}{\partial x}(z_0) & \frac{\partial u_g}{\partial y}(z_0) \\
+            \frac{\partial v_g}{\partial x}(z_0) & \frac{\partial v_g}{\partial y}(z_0)
+        \end{bmatrix} \\
+    \end{aligned}
+\end{equation*}
+\[
+    \frac{\partial u_{f \circ g}}{\partial x} = \frac{\partial u_f}{\partial x}(g(z_0)) \frac{\partial u_g}{\partial x}(z_0) + \frac{\partial u_f}{\partial y}(g(z_0)) \frac{\partial v_g}{\partial x}(z_0) 
+\]
+\[
+    \frac{\partial u_{f \circ g}}{\partial y} = \frac{\partial u_f}{\partial x}(g(z_0)) \frac{\partial u_g}{\partial y}(z_0) + \frac{\partial u_f}{\partial y}(g(z_0)) \frac{\partial v_g}{\partial y}(z_0) 
+\]
+\[
+    \frac{\partial v_{f \circ g}}{\partial x} = \frac{\partial v_f}{\partial x}(g(z_0)) \frac{\partial u_g}{\partial x}(z_0) + \frac{\partial v_f}{\partial y}(g(z_0)) \frac{\partial v_g}{\partial x}(z_0) 
+\]
+\[
+    \frac{\partial v_{f \circ g}}{\partial y} = \frac{\partial v_f}{\partial x}(g(z_0)) \frac{\partial u_g}{\partial y}(z_0) + \frac{\partial v_f}{\partial y}(g(z_0)) \frac{\partial v_g}{\partial y}(z_0) 
+\]
+Since $f$ and $g$ are anti-holomorphic, we have that 
+\[
+    \frac{\partial u}{\partial x} = -\frac{\partial v}{\partial y}, \indent \frac{\partial u}{\partial y} = \frac{\partial v}{\partial x}
+\]
+for both function at $z_0$ and $g(z_0)$ respectively. Hence, 
+\[
+    \frac{\partial u_{f \circ g}}{\partial x} = \frac{\partial v_{f \circ g}}{\partial y}, \indent \frac{\partial u_{f \circ g}}{\partial y} = -\frac{\partial v_{f \circ g}}{\partial x}    
+\]
+Therefore, $f \circ g$ is complex differentiable.
+\newpage
+\section*{A2.5}
+We have that 
+\[
+    \frac{\partial g}{\partial x}(z) = \frac{\partial }{\partial x} \int_0^1 f(t,z) dt = \int_0^1 \frac{df}{dx}(t,z) dt
+\]
+And since $\frac{\partial f}{\partial x}$ exists and are continuous on $[0,1]\times D$ for $z = x+iy$, 
+$\frac{\partial g}{\partial x}$ and similarly $\frac{\partial g}{\partial y}$ exists and are continuous on $[0,1] \times D$. \\
+Therefore, $g$ is totally differentiable.
+Notice that 
+\[
+    \frac{\partial g}{\partial x}(z) = \int_0^1 \frac{df}{dx}(t,z) dt = \int_0^1  -i\frac{df}{dy}(t,z) dt  = -i \int_0^1 \frac{df}{dy}(t,z) dt = -i\frac{\partial g}{\partial y}
+\]
+which confirms that $g$ is indeed complex differentiable.
+\end{document}
