@@ -1,0 +1,186 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\long\def\comment#1{}
+
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+\subsection*{a.}
+We have that 
+\[
+    \sqrt[n]{5^n} = 5
+\]
+and 
+\[
+    \lim \frac{(n+1)^5}{n^5} = 1
+\]
+Hence, 
+\[
+    \sum_{n=0}^\infty 5^n z^n    
+\]
+converges with $R = \frac{1}{5}$ and 
+\[
+    \sum_{n=0}^\infty n^5 z^n    
+\]
+converges with $R = 1$. 
+Hence, the radius of convergence of the original power series is $\frac{1}{5}$.
+\subsection*{b.}
+We have that 
+\[
+    \lim \left(\left( 1- \frac{1}{n} \right)^{n^2} \right)^{1/n} = \lim \left(1- \frac{1}{n} \right)^n = \lim_{x \to 0}(1+x)^{-1/x} = \frac{1}{e}
+\]
+Hence, the radius of convergence is $e$.
+\subsection*{c.}
+Let $a_n = 0$ if n is odd and $a_n = 2^{n/2}$ if n is even. Then 
+\[
+    \sum_{n=0}^\infty 2^n z^{2n} = \sum_{n=0}^\infty a_n z^n     
+\]
+Then 
+\[
+    R = \frac{1}{\limsup |a_n|^{1/n}} = \left(\frac{1}{\limsup |2^n|^{1/n}} \right)^{1/2} = \frac{1}{\sqrt{2}}    
+\]
+\subsection*{d.}
+Let $a_n = 0$ if $n$ is not a power of 2, $a_n = 2 \log_2(n)$ otherwise. Then 
+\[
+    \sum_{n=0}^\infty 2n z^{2^n} = \sum_{n=0}^\infty a_n z^n
+\]
+Then 
+\[
+    R = \frac{1}{\limsup |a_n|^{1/n}} = \frac{1}{\limsup|2\log_2(n)|^{1/n}} =  \frac{1}{\limsup|2^{\frac{1}{n}}2^{\frac{1}{n} \log_2(\log_2(n))}| } = 1   
+\]
+\section*{2.}
+Let $f(z) = \sum_{n=0}^\infty a_n z^n$, then 
+\[
+    f'(z) = \sum_{n=2}^\infty na_nz^{n-1} + a_1
+\]
+As $a_1 \ne 0, f'(0) = a_1 \ne 0$, hence we can find $r_1> 0$ such that $f'(z) \ne 0$ in $\{ |z|< r_1\}$.
+Thus from the inverse function theorem, $f$ is injective in $\{ |z|< r_1\}$. Hence, choose $r = \min(R, r_1)$, we have that $f$ is 
+bijective on $\{ |z|< r\}$.
+\comment{We know that $f(z)$ is surjective in $B_r(0)$ if $r < R$. \\
+If  $f(z_1) = f(z_2)$, then 
+\[
+    \sum_{n=0}^\infty a_n (z_1^n - z_2^n) = (z_1 - z_2) \left(a_1 + \sum_{n=2}^\infty a_n (z_1^{n-1} + \hdots + z_2^{n-1})\right) = 0     
+\]
+Hence, either $z_1 = z_2$ or $\sum_{n=1}^\infty a_n (z_1^{n-1} + \hdots + z_2^{n-1}) = 0$
+Therefore, we want to prove that there is $r < R$ such that $|z_1| < r, |z_2|< r$ satisfies 
+\[
+    a_1 + \sum_{n=2}^\infty a_n (z_1^{n-1} + \hdots + z_2^{n-1}) \ne 0
+\]
+\begin{equation*}
+    \begin{aligned}
+        \left| \sum_{n=2}^\infty a_n(z_1^{n-1} + \hdots + z_2^{n-1}) \right| 
+        &\le \sum_{n=2}^\infty |a_n||z_1^{n-1} + \hdots + z_2^{n-1}| \\
+        &< \sum_{n=2}^\infty n|a_n|r^{n-1} \\
+    \end{aligned}
+\end{equation*}}
+\newpage
+\section*{3.}
+\begin{equation*}
+    \begin{aligned}
+        \cos(\overline{z})&= \sum_{n = 0}^\infty (-1)^n \frac{\overline{z}^{2n}}{2n!} \\
+        &= \overline{\sum_{n = 0}^\infty (-1)^n \frac{z^{2n}}{2n!}} \\
+        &= \overline{\cos(z)}
+    \end{aligned}
+\end{equation*}
+Hence, 
+\begin{equation*}
+    \begin{aligned}
+        &|\cos(z)|^2 \\
+        =& (\cos(x+iy))(\cos(x-iy)) \\
+        =& (\cos(x) \cos(iy) - \sin(x)\sin(iy)) (\cos(x) \cos(iy) + \sin(x)\sin(iy)) \\
+        =& (\cos(x))^2(\cosh(y))^2 + (\sin(x))^2 (\sinh(y))^2 \\
+        =& (\cos(x))^2(1 + \sinh(y))^2 + (\sin(x))^2 (\sinh(y))^2 \\
+        =& (\cos(x))^2 + (\sinh(y))^2
+    \end{aligned}
+\end{equation*}
+because of $\cos(iy) = \cosh(y)$ and $\sin(iy) = i \sinh(y)$. Similarly, 
+\begin{equation*}
+    \begin{aligned}
+        \sin(\overline{z})&= \sum_{n = 0}^\infty (-1)^n \frac{\overline{z}^{2n+1}}{(2n+1)!} \\
+        &= \overline{\sum_{n = 0}^\infty (-1)^n \frac{z^{2n+1}}{(2n+1)!}} \\
+        &= \overline{\sin(z)}
+    \end{aligned}
+\end{equation*}
+Hence, 
+\begin{equation*}
+    \begin{aligned}
+        &|\sin(z)|^2 \\
+        =& (\sin(x+iy))(\sin(x-iy)) \\
+        =& (\sin(x) \cos(iy) + \cos(x)\sin(iy)) (\sin(x) \cos(iy) - \cos(x)\sin(iy)) \\
+        =& (\sin(x))^2(\cosh(y))^2 + (\cos(x))^2 (\sinh(y))^2 \\
+        =& (\sin(x))^2(1 + \sinh(y))^2 + (\cos(x))^2 (\sinh(y))^2 \\
+        =& (\sin(x))^2 + (\sinh(y))^2
+    \end{aligned}
+\end{equation*}
+
+
+\newpage
+\section*{4.}
+\subsection*{a.}
+We have that $|a_n| \le p_n, |b_n| \le q_n$. Therefore, 
+\[
+    |a_n \pm b_n| \le |a_n| + |b_n| \le p_n + q_n      
+\]
+and hence 
+\[
+    \sum_{n=0}^\infty a_n z^n \pm \sum_{n=0}^\infty b_n z^n \prec \sum_{n=0}^\infty p_n z^n + \sum_{n=0}^\infty q_n z^n     
+\]
+We have that 
+\[
+    \left|\sum_{l=0}^k a_l b_{k-l} \right| \le \sum_{l=0}^k |a_l| |b_{k-l}| \le \sum_{l=0}^k p_l q_{k-l} 
+\]
+Hence, 
+\[
+    \left(\sum_{n=0}^\infty a_n z^n \right) \left( \sum_{n=0}^\infty b_n z^n \right) \prec \left(\sum_{n=0}^\infty p_n z^n\right) + \left(\sum_{n=0}^\infty q_n z^n\right)     
+\]
+\subsection*{b.}
+\[
+    \frac{M}{r - z} = \frac{M/r}{1 - z/r} = \sum_{n=0}^\infty \frac{M}{r} \left(\frac{z}{r}\right)^n = \sum_{n=0}^\infty \frac{M}{r^{n+1}} z^n
+\]
+We know that for every $r \in [0,R)$, 
+\[
+    \limsup \sqrt[n]{|a_n|} = \frac{1}{R} < \frac{1}{r} 
+\]
+Therefore, there exists $n_0 \in \mathbb{N}$ such that $|a_n| < \left( \frac{1}{r} \right)^n$,
+and hence we can choose $M \ge r$ such that $|a_n| < \frac{M}{r^{n+1}}$. Thus, 
+\[
+    \sum_{n=0}^\infty a_n z^n \prec \frac{M}{r-z}    
+\]
+\newpage
+\section*{5.}
+From A3.4, we know that there exists $M>0$ such that 
+\[
+    \sum_{m=1}^\infty a_m z^m \prec \frac{M}{r - z}    
+\]
+Hence, 
+\[
+    \left|\frac{1}{f(z)} \right| = \left| \sum_{n=0}^\infty \frac{(-1)^n}{a_0^{n+1}} \left( \sum_{m=1}^\infty a_m z^m \right)^n \right| < \sum_{n=0}^\infty \frac{1}{\left| a_0^{n+1} \right|} \left| \frac{M}{r-z} \right|^n
+\]
+which means that
+\[
+    \left| \frac{1}{f((r+M)/z)} \right| < \sum_{n=0}^\infty \frac{1}{\left| a_0^{n+1} \right|} |z|^n
+\]
+However, 
+\[
+    \left| \frac{\cfrac{1}{a_0^{n+1}}}{\cfrac{1}{a_0^{n+2}}} \right| = |a_0|    
+\]
+which means $1/f((r+M)/z)$ has a positive radius of convergence, thus also $1/f(z)$
+\end{document}
