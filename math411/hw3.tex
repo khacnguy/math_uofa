@@ -172,15 +172,15 @@ From A3.4, we know that there exists $M>0$ such that
 \]
 Hence, 
 \[
-    \left|\frac{1}{f(z)} \right| = \left| \sum_{n=0}^\infty \frac{(-1)^n}{a_0^{n+1}} \left( \sum_{m=1}^\infty a_m z^m \right)^n \right| < \sum_{n=0}^\infty \frac{1}{\left| a_0^{n+1} \right|} \left| \frac{M}{r-z} \right|^n
+    \left|\frac{1}{f(z)} \right| = \left| \sum_{n=0}^\infty \frac{(-1)^n}{a_0^{n+1}} \left( \sum_{m=1}^\infty a_m z^m \right)^n \right| \le \sum_{n=0}^\infty \frac{1}{\left| a_0^{n+1} \right|} \left| \frac{M}{r-z} \right|^n
 \]
 which means that
 \[
-    \left| \frac{1}{f((r+M)/z)} \right| < \sum_{n=0}^\infty \frac{1}{\left| a_0^{n+1} \right|} |z|^n
+    \left| \frac{1}{f((rz+M)/z)} \right| \le \sum_{n=0}^\infty \frac{1}{\left| a_0^{n+1} \right|} |z|^n
 \]
 However, 
 \[
     \left| \frac{\cfrac{1}{a_0^{n+1}}}{\cfrac{1}{a_0^{n+2}}} \right| = |a_0|    
 \]
-which means $1/f((r+M)/z)$ has a positive radius of convergence, thus also $1/f(z)$
+which means $1/f((rz+M)/z)$ has a positive radius of convergence, thus also $1/f(z)$
 \end{document}
