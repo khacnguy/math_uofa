@@ -1,0 +1,233 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepackage{hyperref}
+\usepackage{graphicx}
+
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1 p.122}
+For $t \in (-\infty, \infty)$
+\[
+    W(t) = 
+    \begin{vmatrix}
+    e^{2t} & e^{-3t/2} \\
+    2e^{2t} &-\frac{3}{2}e^{-3t/2}
+    \end{vmatrix} 
+    = -\frac{3}{2} e^{t/2} - 2e^{t/2} \ne 0
+\]
+Hence, they are linearly independent on $(-\infty, \infty)$.
+\newpage
+\section*{2 p.122}
+For $t \in (-\infty, \infty)$
+\[
+    W(t) = 
+    \begin{vmatrix}
+    \cos(t) & \sin(t) \\
+    -\sin(t) & \cos(t)
+    \end{vmatrix} 
+    = 1
+\]
+Hence, they are linearly independent on $(-\infty, \infty)$.
+\newpage
+\section*{3 p.122}
+For $t \in (-\infty, \infty)$
+\[
+    W(t) = 
+    \begin{vmatrix}
+    e^{-2t} & te^{-2t} \\
+    -2e^{-2t} & -\left(2t-1\right)\mathrm{e}^{-2t}
+    \end{vmatrix} 
+    = e^{-4t}(-2t-1) + 2te^{-4t} = -e^{-4t} \ne 0
+\]
+Hence, they are linearly independent on $(-\infty, \infty)$.
+\newpage
+\section*{4 p.122}
+For $t \in (-\infty, \infty)$
+\[
+    W(t) = 
+    \begin{vmatrix}
+    e^t \sin(t) & e^t \cos(t) \\
+    e^t (\sin(t) + \cos(t)) & e^t(\cos(t) - \sin(t))
+    \end{vmatrix} 
+    = -e^{2t} \ne 0
+\]
+Hence, they are linearly independent on $(-\infty, \infty)$.
+\newpage
+\section*{1 p.128}
+\[
+    \exp(2-3i) = e^2 \cos(-3) + ie^2 \sin(-3)
+\]
+\newpage
+\section*{2 p.128}
+\[
+    e^{i\pi} = \cos(\pi) + i\sin(\pi) = -1    
+\]
+\newpage
+\section*{3 p.128}
+\[
+    e^{2-\pi i/2} = e^2 \cos(-\pi/2) + ie^2\sin(-\pi/2) = -ie^2
+\]
+\newpage
+\section*{4 p.128}
+\[
+    2^{1-i} = 2 \cos(-1) + 2i\sin(-1)    
+\]
+\newpage
+\section*{12 p.128}
+\begin{equation*}
+    \begin{aligned}
+        &y'' - 4y = 0 \\
+        \implies &r^2 e^{rt} - 4e^{rt} = 0 \\
+        \implies &r \in \{2,-2\} 
+    \end{aligned}
+\end{equation*}
+Hence, two exponential solutions are 
+\[
+    y_1 = e^{2t} \text{ and } y_2 = e^{-2t}    
+\]
+As 
+\[ 
+    W(t) = 
+    \begin{vmatrix}
+        e^{2t} & e^{-2t} \\
+        2e^{2t} & -2e^{-2t} 
+    \end{vmatrix}
+    = -2-2 = -4
+\]
+$y_1,y_2$ are linearly independent, and hence are a fundamental set of solutions. We have that 
+\[
+    y(0) = c_1+ c_2 = 0 \text{ and } y'(0) = 2c_1 - 2c_2 = 1
+\]
+Therefore, we can find $c_1, c_2$ and 
+\[
+    y(t) = \frac{1}{4} e^{2t} - \frac{1}{4}e^{-2t}    
+\]
+Therefore, as $t \to \infty$, $y(t) \to \infty$
+\newpage
+\section*{13 p.128}
+\begin{equation*}
+    \begin{aligned}
+        &y'' -2y' +5y = 0 \\
+        \implies &r^2 e^{rt} - 2re^{rt} + 5e^{rt} = 0 \\
+        \implies &r \in \{1-2i,1+2i\} 
+    \end{aligned}
+\end{equation*}
+Hence, two exponential solutions are 
+\[
+    y_1 = e^{(1-2i)t} \text{ and } y_2 = e^{(1+2i)t}    
+\]
+As 
+\[ 
+    W(t) = 
+    \begin{vmatrix}
+        e^{(1-2i)t} & e^{(1+2i)t} \\
+        (1-2i)e^{(1-2i)t} & (1+2i)e^{(1+2i)t} 
+    \end{vmatrix}
+    = e^{2t} (1+2i - 1+2i) \ne 0
+\]
+$y_1,y_2$ are linearly independent, and hence are a fundamental set of solutions. We have that 
+\[
+    y(\pi/2) = c_1e^{(1-2i)\pi/2} + c_2e^{(1+2i)\pi/2} = 0 \text{ and } y'(\pi/2) =(1-2i)c_1e^{(1-2i)\pi/2} + (1+2i)c_2e^{(1+2i)\pi/2} = 2
+\]
+Therefore, we can find $c_1, c_2$ and 
+\[
+    y(t) = \frac{-1}{2}ie^{-\pi/2} e^{(1-2i)t} + \frac{1}{2}ie^{-\pi/2}e^{(1+2i)t}
+\]
+\newpage
+\section*{1 p.135}
+\begin{equation*}
+    \begin{aligned}
+        &y'' - 2y' + y= 0 \\
+        \implies &r^2 e^{rt} - 2re^{rt} + e^{rt} = 0 \\
+        \implies &r = 1
+    \end{aligned}
+\end{equation*}
+Therefore, 
+\[
+    y(t) =ce^{t}    
+\]
+is a solution to the DE.
+\newpage
+\section*{3 p.135}
+\begin{equation*}
+    \begin{aligned}
+        &4y'' - 4y' - 3 = 0 \\
+        \implies &4r^2 e^{rt} - 4re^{rt} - 3e^{rt} = 0 \\
+        \implies &r \in \left\{\frac{3}{2},-\frac{1}{2}\right\} 
+    \end{aligned}
+\end{equation*}
+Hence, two exponential solutions are 
+\[
+    y_1 = e^{\frac{3t}{2}} \text{ and } y_2 = e^{-\frac{t}{2}}    
+\]
+As 
+\[ 
+    W(t) = 
+    \begin{vmatrix}
+        e^{3t/2} & e^{-t/2} \\
+        3/2e^{3t/2} & -1/2e^{-t/2} 
+    \end{vmatrix}
+    = -1/2 e^t - 3/2e^t = -2e^t \ne 0
+\]
+$y_1,y_2$ are linearly independent, and hence are a fundamental set of solutions. 
+Therefore,
+\[
+    y(t) = c_1e^{3t/2} + c_2e^{-t/2}    
+\]
+\newpage
+\section*{10 p.135}
+\begin{equation*}
+    \begin{aligned}
+        &y'' - 6y' + 9 = 0 \\
+        \implies &r^2 e^{rt} - 6re^{rt} + 9e^{rt}= 0 \\
+        \implies &r = 3
+    \end{aligned}
+\end{equation*}
+Hence, the solution is 
+\[
+    y(t) = c_1 e^{3t} + c_2 te^{3t}    
+\]
+\[
+    y(0) = c_1  = 0 \text{ and } y'(0) = 3c_1 + c_2= 2
+\]
+Hence, the solution is 
+\[
+    y(t) =  2te^{3t}    
+\]
+\newpage
+\section*{11 p.135}
+\begin{equation*}
+    \begin{aligned}
+        &y'' + 4y' + 4y = 0 \\
+        \implies &r^2 e^{rt} + 4re^{rt} + 4e^{rt} = 0 \\
+        \implies &r = -2
+    \end{aligned}
+\end{equation*}
+Hence, the solution is 
+\[
+    y(t) = c_1 e^{-2t} + c_2 te^{-2t}    
+\]
+\[
+    y(-1) = c_1 e^2 - c_2e^2  = 2 \text{ and } y'(-1) = -2c_1e^2 + 3c_2e^2 = 1
+\]
+Hence, the solution is 
+\[
+    y(t) = \frac{7}{e^2}e^{-2t} + \frac{5}{e^2}te^{-2t}
+\]
+\end{document}
