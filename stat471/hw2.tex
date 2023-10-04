@@ -1,0 +1,141 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\long\def\comment#1{}
+
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+Let $(\Omega, \mathcal{F}, P)$ be a probability space. As $\mathcal{G}_u \subseteq \mathcal{G}_t$, we have that 
+\begin{equation*}
+    \begin{aligned}
+        E[E[X_t | \mathcal{G}_t] | \mathcal{G}_u] 
+        &= \int_{G_u} E[X_t | \mathcal{G}_t] dP(\mathcal{G}_u)\\
+        &= \int_{G_u} \int_{G_t} X dP(\mathcal{G}_t) dP(\mathcal{G}_u) \\
+        &= \int_{G_t} \int_{G_u} X dP(\mathcal{G}_u) dP(\mathcal{G}_t) \\
+        &= E[X_t | \mathcal{G}_u]
+    \end{aligned}
+\end{equation*}
+Similarly, 
+\begin{equation*}
+    \begin{aligned}
+        E\left[ \left. \int_0^t E\left[ \left. Y_s \right|\mathcal{G}_s \right] ds\right| \mathcal{G}_u \right]        
+        &= E\left[ \left. \int_0^t \int_{G_s} Y dP(G_s) ds\right| \mathcal{G}_u \right] \\
+        &= \int_{G_u} \int_0^t \int_{G_s} Y dP(G_s) ds dP(G_u) \\
+        &= \int_0^t \int_{G_u} \int_{G_s} Y dP(G_s) dP(G_u) ds \\
+        &= \int_0^t E[Y_s | \mathcal{G}_u] ds
+    \end{aligned}
+\end{equation*}
+We also know that 
+\begin{equation*}
+    \begin{aligned}
+        \max \left( \int_{G_t} X_+ dP(G_t), \int_{G_t} X_- dP(G_t) \right) 
+        &\le \max \left( \int_\Omega X_+ dP, \int_\Omega X_- dP \right) \\
+        &= \max(E[X_+], E[X_-]) < \infty
+    \end{aligned}
+\end{equation*}
+Therefore, $E[|X_t|| G_t] < \infty$. Similarly, using Fubini and the steps above, 
+we can also show that 
+\[
+    \int_0^t E[|Y_s| | \mathcal{G}_s] ds < \infty    
+\]
+Therefore, 
+\begin{equation*}
+    \begin{aligned}
+        & E[E[X_t | \mathcal{G}_t] | \mathcal{G}_u] -  E\left[ \left. \int_0^t E\left[ \left. Y_s \right|\mathcal{G}_s \right] ds\right| \mathcal{G}_u \right] \\
+        =& E[X_t | \mathcal{G}_u] - \int_0^t E[Y_s | \mathcal{G}_u] ds
+    \end{aligned}
+\end{equation*}
+which confirms it is indeed a martingale.
+\newpage
+\section*{2.}
+To match the state equations, we have that 
+\[
+    a_{i,j}^1 =  iK^1, \indent s_{i,j}^1 = i^2
+\]
+and 
+\[
+    a_{i,j}^2 = rj , \indent s_{i,j}^2 = \frac{r}{K^2}(j^2 + \alpha_{21}ij)
+\]
+and 
+\begin{equation*}
+    \begin{aligned}
+        Lf(i,j) &= a_{i, j}^1 [f(i+1,j) - f(i)] + a_{i, j}^2 [f(i,j+1) - f(i)] \\
+        &+ s_{i, j}^1 [f(i-1,j) - f(i)] + s_{i, j}^2 [f(i,j-1) - f(i)] 
+    \end{aligned}
+\end{equation*}
+Then the 2 state equations are consistent with the martingale problem:
+\[
+    f(X_t^1, X_t^2) - f(X_0^1, X_t^2) - \int_0^t Lf(X_u^1, X_u^2) du    
+\]
+which is a $\sigma(X^1_s, X^2_s, s \le t)$-martingale.
+\newpage
+\section*{3.}
+We know that 
+\[
+    F_{X_1 \vee X_2}(x) = \left(F_{X_i}(x) \right)^2     
+\]
+Hence, 
+\begin{equation*}
+    \begin{aligned}
+        f_{X_1 \vee X_2}(x) &= 2 F_{X_i}(x) f_{X_i}(x) \\
+        &= 2 \frac{e^{- \frac{x^2}{2}}}{\sqrt{2\pi}} \frac{1}{\sqrt{2\pi}} \int_{-\infty}^x e^{-\frac{u^2}{2}}du  \\
+        &= \frac{e^{- \frac{x^2}{2}}}{\pi}  \int_{-\infty}^x e^{-\frac{u^2}{2}}du  \\
+    \end{aligned}
+\end{equation*}
+Therefore, we can calculate 
+\[
+    f_{X_1 \vee X_2}(0) = \frac{1}{\pi} \underbrace{\int_{-\infty}^0 e^{-\frac{u^2}{2}}du}_{\sqrt{\pi/2}} = \frac{1}{\sqrt{2\pi}}
+\]
+\begin{equation*}
+    \begin{aligned}
+        &\int_0^1 f_{X_1 \vee X_2}(x) dx\\
+        =& F_{X_1 \vee X_2}(1) - F_{X_1 \vee X_2}(0) \\
+        =& \frac{1}{2\pi} \left(\left( \int_{-\infty }^1 e^{-u^2/2} du \right)^2 - \left( \int_{-\infty}^0 e^{-u^2/2} du\right)^2 \right) \\
+        =& \frac{1}{2\pi} \left( \int_0^1 e^{-u^2/2} du+ \int_{-\infty}^\infty e^{-u^2/2}du\right) \left( \int_0^1 e^{-u^2/2} du \right) 
+    \end{aligned}
+\end{equation*}
+\newpage
+\section*{4.}
+Note that 
+\[
+    \frac{\partial}{\partial x} f \circ e^{\frac{\sigma^2 x}{2}} = \frac{\sigma^2}{2} e^{\frac{\sigma^2 x}{2}} \left( f' \circ e^{\frac{\sigma^2 x}{2}} \right)
+\]
+Suppose $X_t = \exp\left(\frac{\sigma^2 B_t}{2}\right)$. Then by the martingale problem for $B$, we have some martingale 
+$M^f$ that 
+\begin{equation*}
+    \begin{aligned}
+        f(X_t) - f(X_0) &= \int_0^t \text{div} f\left(\exp\left(\frac{\sigma^2 B_u}{2}\right)\right) du  + M_t^f \\
+        &= \frac{\sigma^2}{2} \int_0^t \exp\left(\frac{\sigma^2 B_u}{2}\right)  \text{div} f\left(\exp\left(\frac{\sigma^2 B_u}{2}\right)\right) du + M_t^f \\
+        &= \frac{\sigma^2}{2} \int_0^t \exp(X_u) \text{div}f(X_u) du + M_t^f
+    \end{aligned}
+\end{equation*}
+which means the martingale problem for $X$
+\[
+    f(X_t) - f(X_0) - \int_0^t Lf(X_u) du    
+\]
+is a martingale for all $f \in D$, is in terms of the operator 
+\[
+    Lf(x) = \frac{\sigma^2 x}{2}f'(x)    
+\]
+Notice that for the $(L, D)$-martingale problem. $X_t$ is uniquely determined as $f, \sigma$ are arbitary. Hence, it is unique from the theorem.
+    
+
+\end{document}
