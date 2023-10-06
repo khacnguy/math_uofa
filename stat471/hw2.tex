@@ -77,13 +77,13 @@ and
 and 
 \begin{equation*}
     \begin{aligned}
-        Lf(i,j) &= a_{i, j}^1 [f(i+1,j) - f(i)] + a_{i, j}^2 [f(i,j+1) - f(i)] \\
-        &+ s_{i, j}^1 [f(i-1,j) - f(i)] + s_{i, j}^2 [f(i,j-1) - f(i)] 
+        Lf(i,j) &= a_{i, j}^1 [f(i+1,j) - f(i,j)] + a_{i, j}^2 [f(i,j+1) - f(i,j)] \\
+        &+ s_{i, j}^1 [f(i-1,j) - f(i,j)] + s_{i, j}^2 [f(i,j-1) - f(i,j)] 
     \end{aligned}
 \end{equation*}
 Then the 2 state equations are consistent with the martingale problem:
 \[
-    f(X_t^1, X_t^2) - f(X_0^1, X_t^2) - \int_0^t Lf(X_u^1, X_u^2) du    
+    f(X_t^1, X_t^2) - f(X_0^1, X_0^2) - \int_0^t Lf(X_u^1, X_u^2) du    
 \]
 which is a $\sigma(X^1_s, X^2_s, s \le t)$-martingale.
 \newpage
@@ -108,34 +108,38 @@ Therefore, we can calculate
     \begin{aligned}
         &\int_0^1 f_{X_1 \vee X_2}(x) dx\\
         =& F_{X_1 \vee X_2}(1) - F_{X_1 \vee X_2}(0) \\
-        =& \frac{1}{2\pi} \left(\left( \int_{-\infty }^1 e^{-u^2/2} du \right)^2 - \left( \int_{-\infty}^0 e^{-u^2/2} du\right)^2 \right) \\
-        =& \frac{1}{2\pi} \left( \int_0^1 e^{-u^2/2} du+ \int_{-\infty}^\infty e^{-u^2/2}du\right) \left( \int_0^1 e^{-u^2/2} du \right) 
+        =& F_{X_i}(1)^2 - F_{X_i}(0)^2 \\
+        =& 0.84134475^2 - 0.5^2 \\
+        =& 0.45786098835\\ 
     \end{aligned}
 \end{equation*}
 \newpage
 \section*{4.}
-Note that 
+Let $g(B_t,t) = f\left( \frac{\sigma^2}{2}t \right)$, hence we have that 
 \[
-    \frac{\partial}{\partial x} f \circ e^{\frac{\sigma^2 x}{2}} = \frac{\sigma^2}{2} e^{\frac{\sigma^2 x}{2}} \left( f' \circ e^{\frac{\sigma^2 x}{2}} \right)
+    \frac{\partial}{\partial x} g(B,x) = \frac{\sigma^2}{2} e^{\frac{\sigma^2 x}{2}} \left(f' \circ e^{\frac{\sigma^2 x}{2}} \right)
 \]
-Suppose $X_t = \exp\left(\frac{\sigma^2 B_t}{2}\right)$. Then by the martingale problem for $B$, we have some martingale 
-$M^f$ that 
-\begin{equation*}
-    \begin{aligned}
-        f(X_t) - f(X_0) &= \int_0^t \text{div} f\left(\exp\left(\frac{\sigma^2 B_u}{2}\right)\right) du  + M_t^f \\
-        &= \frac{\sigma^2}{2} \int_0^t \exp\left(\frac{\sigma^2 B_u}{2}\right)  \text{div} f\left(\exp\left(\frac{\sigma^2 B_u}{2}\right)\right) du + M_t^f \\
-        &= \frac{\sigma^2}{2} \int_0^t \exp(X_u) \text{div}f(X_u) du + M_t^f
-    \end{aligned}
-\end{equation*}
-which means the martingale problem for $X$
 \[
-    f(X_t) - f(X_0) - \int_0^t Lf(X_u) du    
+    \frac{\Delta}{2}g(B,s) = 0
 \]
-is a martingale for all $f \in D$, is in terms of the operator 
+and that 
 \[
-    Lf(x) = \frac{\sigma^2 x}{2}f'(x)    
+    g(B_t,t) - g(0,0) - \int_0^t \frac{\Delta}{2} g(B_s,s) + \frac{\partial }{\partial s}g(B_s,s) ds   
 \]
-Notice that for the $(L, D)$-martingale problem. $X_t$ is uniquely determined as $f, \sigma$ are arbitary. Hence, it is unique from the theorem.
-    
+is a $\sigma(B_u, u \le t)$-martingale problem.
+However, we have that 
+\[
+    \frac{\Delta}{2}g(B_s,s) + \frac{\partial }{\partial s}g(B_s,s) = \frac{\sigma^2}{2}\exp\left( \frac{\sigma^2s}{2} \right) f' \left( \exp\left( \frac{\sigma^2 s }{2} \right)\right)    
+\]
+Hence, if we let $X_t = \exp\left(\frac{\sigma^2}{2}t\right)$, then we get 
+\[
+    f(X_t) - f(X_0) - \int_0^t  \frac{\sigma^2 X_u}{2}f'(X_u)  du    
+\]
+is a martingale. If there is another solution $Y_t$ that has $Y_0 = X_0$. Let $f(x) = \ln(x)$ so that 
+$f'(x) = \frac{1}{x}$ and therefore, $X_u f'(X_u) = 1$. Thus, 
+\[
+    \ln(X_t) - \ln(X_0) - \int_0^t \frac{\sigma^2}{2} du = \ln(Y_t) - \ln(Y_0) - \int_0^t \frac{\sigma^2}{2} du     
+\]
+and hence $\ln(X_t) = \ln(Y_t) \implies X_t = Y_t$ for all $t$ which proves its uniqueness.
 
 \end{document}
