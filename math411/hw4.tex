@@ -1,0 +1,194 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\long\def\comment#1{}
+
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+\subsection*{a.}
+\begin{equation*}
+    \begin{aligned}
+        &- \sum_{i=1}^n \int_{a_j}^{a_{j+1}} \frac{f((g(\gamma(t)))^{-1})}{(g(\gamma(t)))^2} g'(\gamma(t)) \gamma'(t) dt \\
+        =& - \sum_{i=1}^n \int_{a_j}^{a_{j+1}} \frac{f(\gamma(t))}{(g(\gamma(t)))^2} g'(\gamma(t)) \gamma'(t) dt\\
+        =& \sum_{j=1}^n \int_{b_j}^{b_{j+1}} f(u)du
+    \end{aligned}
+\end{equation*}
+$u = \frac{1}{g(\gamma(t))} = \gamma(t)$, $du = \frac{1}{(g(\gamma(t)))^2} g'(\gamma(t)) \gamma'(t)$
+\subsection*{b.}
+For any $z$ that satisfies $|z| = 1$, we have that 
+\[
+    \frac{1}{z} = \frac{\overline{z}}{z\overline{z}} = \frac{\overline{z}}{|z|^2} = \overline{z}
+\]
+Let 
+\[
+    \gamma: [0,2\pi] \to \mathbb{C}, \indent t \to e^{it}    
+\]
+Then 
+\[
+    g \circ \gamma = e^{-it}
+\]
+which means that 
+\[
+    \frac{d}{dt}(g \circ \gamma)(t) = - \frac{d}{dt} \gamma(t)
+\]
+Therefore, 
+\begin{equation*}
+    \begin{aligned}
+        &\int_{\gamma} f(z) dz \\
+        =& - \int_{g \circ \gamma} \frac{f(z^{-1})}{z^2} dz \\
+        =& - \int_{2\pi}^0 \frac{f(z^{-1})}{z^2}  dz \\
+        =& \int_0^{2\pi} \frac{f(z^{-1})}{z^2} dz \\
+        =& \int_\gamma \frac{f(z^{-1})}{z^2} dz
+    \end{aligned}
+\end{equation*}
+\newpage
+\section*{2.}
+For any point $z_0= x+iy$, we have that
+\begin{equation*}
+    \begin{aligned}
+        &z_0 \exp(\overline{z_0}) \\
+        =& (x+iy)\exp(x+iy) \\
+        =& (x+iy)e^x e^{iy}
+    \end{aligned}
+\end{equation*}
+Define 
+\[
+    \gamma_1: [0,1] \to \mathbb{C}, \indent t \to t    
+\]
+\[
+    \gamma_2: [0,1] \to \mathbb{C}, \indent t \to 1 + ti  
+\]
+\[
+    \gamma_3: [0,1] \to \mathbb{C}, \indent t \to (1-t)(1+i)    
+\]
+Then 
+\[
+    \int_0^1 f(\gamma_1(t)) \gamma_1'(t) dt = \int_0^1 t\exp(t) dt = (t-1)e^t |_{t=0}^1 = 1
+\]
+Similarly,
+\begin{equation*}
+    \begin{aligned}
+        \int_0^1 f(\gamma_2(t)) \gamma_2'(t) dt &= \int_0^1 (1+ti)e^{1 -it} idt = -\left(\mathrm{i}t+2\right)\mathrm{e}^{1-\mathrm{i}t} |_{t=0}^1 \\
+        &= \mathrm{e}\mathrm{i}\cdot\left(\left(\mathrm{i}+2\right)\sin\left(1\right)+\left(2\mathrm{i}-1\right)\cos\left(1\right)-2\mathrm{i}\right)
+    \end{aligned}
+\end{equation*}
+\begin{equation*}
+    \begin{aligned}
+        \int_0^1 f(\gamma_3(t)) \gamma_3'(t) dt =& \int_0^1 (1-t)(1+i)e^{(1-t)(1-i)} (-(1+i)) dt \\
+        =& -\mathrm{e}\sin\left(1\right)-\mathrm{e}\mathrm{i}\cos\left(1\right)+1
+    \end{aligned}
+\end{equation*}
+Hence, the result is 
+\[
+    2 + 2e + \sin(1)(-2e+ 2ie )    - \cos(1) (2ie + 2e)
+\]
+\newpage
+\section*{3.}
+We want to prove that 
+\[
+    \left| \lim_{R \to \infty} \int_{L_R} \frac{dz}{z f(\exp(-iz))} \right| = 0    
+\]
+As $f$ is a complex polynomial with degree larger than 1. $|f(\exp(-iz))| = |\exp$ . Thus we have that 
+\[
+    \left| \lim_{R \to \infty} \int_{L_R} \frac{dz}{z f(\exp(-iz))} \right| \le \lim_{R \to \infty} \int_{L_R} \frac{dz}{ |z| |f(\exp(-iz))|} \le \lim_{R \to \infty} \int_{L_R} \frac{dz}{|z \exp(-iz)|}
+\]
+However, we can prove that 
+\begin{equation*}
+    \begin{aligned}
+        \lim_{R \to \infty} \int_{L_R} \frac{dz}{|z \exp(-iz)|}  &= \lim_{R \to \infty} \int_0^\pi \left| \frac{e^{iRe^{i\theta}}}{Re^{i\theta}} iRe^{i\theta} \right| d\theta \\
+        &= \lim_{R \to \infty} \int_0^\pi |e^{iRe^{i\theta}} | d\theta \\
+        &= \lim_{R \to \infty} \int_0^\pi |e^{iR\cos(\theta) - R\sin(\theta)} | d\theta \\
+        &= \lim_{R \to \infty} \int_0^\pi |e^{iR\cos(\theta)}| |e^{-R\sin(\theta)} | d\theta \\
+        &= \lim_{R \to \infty} \int_0^\pi |e^{-R \sin(\theta)} |  d\theta \\
+        &= 2\lim_{R \to \infty} \int_0^{\pi/2} |e^{-R\sin(\theta)}| d\theta \\
+        &\le 2\lim_{R \to \infty} \int_0^{\pi/2} |e^{-\frac{2\pi}{R}\theta}| d\theta \\
+        &= \lim_{R \to \infty} - \frac{\pi}{R} (e^{-R} - 1) = 0
+    \end{aligned}
+\end{equation*}
+As $\sin(\theta) \ge \frac{2\theta}{\pi}$ for $\theta \in [0,\pi/2]$
+\newpage
+\section*{4.}
+\subsection*{a}
+Consider any point in $\{z: |z|<2\} \cup \{z: |z-3| <2\}$. It is the center of the star shaped domain $D$ as a ball is star shaped.
+\subsection*{b.}
+Consider any point in $\{z: |z|<2\} \cup \{z: |z-3| <2\}$. It is the center of the star shaped domain $D$ as a ball is star shaped.
+\subsection*{c.}
+Consider the point $x_R = (0,R)$. 
+Then for any point $z_0 = (x_0, y_0)$ where $x_0 \ne 0$ and $x_0^2 + y_0^2 > 1$. , we have the line go through $x_R, z_0$ being $y = \frac{y_0 - R}{x_0}x + R$. \\
+Consider every point $(x',y')$ satisfies the line equation and
+$-x_0 < x' < x_0$
+\begin{equation*}
+    \begin{aligned}
+        & x'^2+y'^2 \\
+        =& x'^2 + \left( \frac{y_0 - R}{x_0}x' + R \right)^2 \\
+        =& x'^2 + \frac{y_0^2 + 2y_0R + R^2}{x_0^2}x'^2 + 2\frac{R(y_0-R)}{x_0}x' + R^2 \\
+        =& R^2 \left( \left( \frac{x'}{x_0} \right)^2 - \frac{2x'}{x_0} + 1 \right) + h \\
+        =& R^2 \left( \frac{x'}{x_0} - 1\right)^2 + h \to \infty \text{ as } R \to \infty
+    \end{aligned}
+\end{equation*}
+where $h$ is a function where degree of $R$ is less than 2. Hence, for every point $(x_0,y_0) \in D^+$, we can find $(0,R)$ such that $(0,R)$ is the center of the 
+star shaped domain
+$D^+ \cap \{(x,y): y \ge \frac{y_0 - R}{x_0}x + R \}$.  Hence, every analytic has a complex antiderivative on $D^+$.
+We also have that for every closed curve $\gamma$
+\[
+    \int_{\overline{\gamma}} f(z) dz = \int_\gamma f(z) \overline{dz} = \overline{\int_\gamma \overline{f}(z) dz} = 0
+\]
+Which means every anayltic function has a complex antiderivative on $D$. 
+For every closed curves in $D$,the curve is bounded and hence we can find $R$ such that 
+we can find a star shaped with center $(0,R)$ contained the close curves which means its integral is 0.
+\subsection*{d.}
+Consider the point $(0,0)$. Then for every point $(x_0,y_0) \in D$. The line between the two points
+\[
+    \gamma: [0,1] \to \mathbb{C}, \indent t \to tx_0 + ity_0
+\]
+is completely contained inside $D$ as $|x_0 - y_0| < 1 \le \frac{1}{t}$ oc  $|x_0 + y_0| < 1 \le \frac{1}{t}$
+\newpage
+\section*{5.}
+Consider 
+\[
+    D_1 = \{ y > x, x \le 0 \} \cup \{y > -x, 0\le x\le 1\} \cup \{y>x-2, 1\le x\le 2\} \cup \{y>2-x, x\ge 2\}
+\]
+and 
+\[
+    D_2 = \{y < -x, x\le 0\} \cup \{y < x, 0\le x\le 1\} \cup \{y< 2-x, 1 \le x\le 2\} \cup \{y<x-2, x\ge 2\}    
+\]
+so that $\mathbb{C} \backslash \{0,2\} = D_1 \cup D_2$.  \\
+Also, let 
+\[
+    G_1 = D_1 \cap D_2 \cap \{x \le 0\}    
+\]
+\[
+    G_2 = D_1 \cap D_2 \cap \{0\le x \le 2\}    
+\]
+\[
+    G_3 = D_1 \cap D_2 \cap \{x \ge 2\}    
+\]
+so that $G_1 \cup G_2 \cup G_3 = D_1 \cap D_2$.
+Since $D_1$ and $D_2$ are star shaped and open, there exists antiderivative $F_1, F_2$ of $f$ on $D_1$ and $D_2$ respectively
+However, 
+\[
+    \int_{|z| = 1} f(z)dz = \int_{\gamma_1 \oplus \gamma_2 \oplus \gamma_3 \oplus \gamma_4} f(z) dz = 0    
+\]
+where $\gamma_1$ be the path of $|z| = 1$ in $D_1\backslash D_2$, $\gamma_2$ be the path of that in $G_2$, $\gamma_3$ be the path of that in $D_2 \backslash D_1$, $\gamma_4$ be the path of that in $G_1$.
+Hence, $F_1=F_2$ on $G_1$ and $G_2$. Doing similarly for the integral along $|z| = 3$, we have that $F_1 = F_2$ on $G_1$ and $G_3$. \\
+Therefore, $F_1 = F_2$ on $D_1 \cup D_2$ and hence there exists antiderivative on $\mathbb{C} \backslash \{0,2\}$. \\
+If there is antiderivative, the line integral along closed path must be 0 hence proved.
+\end{document}
