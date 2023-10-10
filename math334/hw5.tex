@@ -141,6 +141,37 @@ Hence, the solution is
     y(t) = c_1e^{3t} + c_2e^{2t} + e^t
 \]
 \newpage
+\section*{4 p.149}
+Consider the characteristic equation $r^2+1= 0$. The characteristic root are $\pm i$.
+Hence, a fundamental sets of solution is $y_1 = \sin(t) , y_2 = \cos(t)$. 
+Consider 
+\[
+    y_c = c_1\sin(t) + c_2\cos(t)  
+\]
+Let 
+\[
+    y_p(t) = u_1(t)y_1(t) + u_2(t)y_2(t)   
+\]
+Then as 
+\[
+    W(y_1,y_2)(t) = 
+    \begin{vmatrix}
+        \sin(t) & \cos(t) \\
+        \cos(t) & -\sin(t)
+    \end{vmatrix} = -1
+\]
+Hence, 
+\[
+    u_1 = \int \frac{-\cos(t) \tan(t)}{-1} dt = \int \sin(t)dt =    -\cos(t)
+\]
+\[
+    u_2 = \int \frac{\sin(t) \tan(t)}{-1} dt = \dfrac{\ln\left(\sin\left(x\right)+1\right)}{2}-\dfrac{\ln\left(1-\sin\left(x\right)\right)}{2}-\sin\left(x\right)
+\]
+Hence, 
+\[
+    y(t) = c_1e^{-2t} + c_2te^{-2t} - \cos(t)\sin(t) + \cos(t)\left(\dfrac{\ln\left(\sin\left(t\right)+1\right)}{2}-\dfrac{\ln\left(1-\sin\left(t\right)\right)}{2}-\sin\left(t\right)\right)
+\]
+\newpage
 \section*{6 p.149}
 Consider the characteristic equation $r^2+4r+4= (r+2)^2 = 0$. The characteristic root is $2$.
 Hence, a fundamental sets of solution is $y_1 = e^{-2t}, y_2 = te^{-2t}$. 
