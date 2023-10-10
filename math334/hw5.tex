@@ -1,0 +1,251 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\long\def\comment#1{}
+
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1 p.144}
+Consider the characteristic equation $r^2-2r-3=(r-3)(r+1)=0$. The characteristic roots are $3,1$.
+Hence, a fundamental sets of solution is $y_1 = e^{-t}, y_2 = e^{3t}$.
+\begin{equation*}
+    \begin{aligned}
+        & y'' -2y'-3y = 3e^{2t} \\
+        \iff &  4Ae^{2t} - 4Ae^{2t} - 3Ae^{2t} = 3e^{2t} \\
+        \iff & A = -1
+    \end{aligned}
+\end{equation*}
+Hence, the solution is 
+\[
+    c_1e^{-t} + c_2e^{3t} - e^{2t}    
+\]
+\newpage
+\section*{2 p.144}
+Consider the characteristic equation $r^2-r-2=(r-2)(r+1)=0$. The characteristic roots are $3,1$.
+Hence, a fundamental sets of solution is $y_1 = e^{-t}, y_2 = e^{2t}$.
+\begin{equation*}
+    \begin{aligned}
+        & y'' -y'-2y = -2t+4t^2 \\
+        \iff &  (A_1t^2 + A_2t + A_3)'' - (A_1t^2 + A_2t + A_3)' - 2(A_1t^2 + A_2t + A_3) = -2t+4t^2 \\
+        \iff & -2A_1t^2 + (-2A_1 - 2A_2)t + 2A_1 - A_2 -2A_3 = -2t + 4t^2 \\
+        \iff & (A_1, A_2, A_3) = (-2, 3, -7/2)
+    \end{aligned}
+\end{equation*}
+Hence, the solution is 
+\[
+    c_1e^{-t} + c_2e^{2t} -2t^2 + 3t - \frac{7}{2}   
+\]
+\newpage
+\section*{7 p.144}
+Consider the characteristic equation $r^2+1=0$. The characteristic roots are $i,-i$.
+Hence, a fundamental sets of solution is $y_1 = \sin(t), y_2 = \cos(t)$.
+\begin{equation*}
+    \begin{aligned}
+        & y'' +y  = 3\sin(2t) + t\cos(2t) \\
+        \iff &  (A_1t\cos(2t) + A_2\sin(2t))'' + A_1t\cos(2t)+A_2\sin(2t) = 3\sin(2t) + t\cos(2t) \\
+        \iff & (-2A_1t\sin(2t) + A_1\cos(2t) +2A_2\cos(2t))' + A_1t\cos(2t) + A_2\sin(2t) = 3\sin(2t) + t\cos(2t) \\
+        \iff & -2A_1\sin(2t) - 4A_1t\cos(2t) -2A_1\sin(2t) - 4A_2\sin(2t) + A_1t\cos(2t) + A_2\sin(2t) \\
+        &= 3\sin(2t) + t\cos(2t) \\
+        \iff & -4A_1\sin(2t) - 3A_2\sin(2t) -3A_1t\cos(2t) =  3\sin(2t) + t\cos(2t) \\
+        \iff & (A_1, A_2) = (-1/3, -5/9)
+    \end{aligned}
+\end{equation*}
+Hence, the solution is 
+\[
+    c_1\sin(t)+ c_2\cos(t) -\frac{1}{3}t\cos(2t) - \frac{5}{9}\sin(2t)  
+\]
+\newpage
+\section*{11 p.144}
+Consider the characteristic equation $r^2+r-2=(r+2)(r-1)=0$. The characteristic roots are $-2,1$.
+Hence, a fundamental sets of solution is $y_1 = e^{t}, y_2 = e^{-2t}$.
+\begin{equation*}
+    \begin{aligned}
+        & y''+y'-2y = 2t\\
+        \iff & (A_1t + A_2)'' + (A_1t + A_2)' + 2(A_1t + A_2) = 2t \\
+        \iff & A_1 + 2A_1t + A_2 = 2t\\
+        \iff & (A_1,A_2) = (1,-1)
+    \end{aligned}
+\end{equation*}
+Hence, 
+\[
+    y(t) = c_1e^{t} + c_2e^{-2t} +t -1  
+\]
+\[
+    y(0) = c_1 + c_2 - 1 = 0    
+\]
+\[
+    y'(0) = c_1 - 2c_2 + 1 = 1    
+\]
+which means the solution is then 
+\[
+    \frac{2}{3}e^t + \frac{1}{3}e^{-2t} + t-1    
+\]
+\newpage
+\section*{1 p.149}
+Consider the characteristic equation $r^2-5r+6= (r-3)(r-2)= 0$. The characteristic roots are $3,2$.
+Hence, a fundamental sets of solution is $y_1 = e^{3t}, y_2 = e^{2t}$. 
+Consider 
+\[
+    y_c = c_1e^{3t} + c_2e^{2t}    
+\]
+Let 
+\[
+    y_p(t) = u_1(t)y_1(t) + u_2(t)y_2(t) = u_1(t) e^{3t} + u_2(t)e^{2t}    
+\]
+Then as 
+\[
+    W(y_1,y_2)(t) = 
+    \begin{vmatrix}
+        e^{3t} & e^{2t} \\
+        3e^{3t} & 2e^{2t}
+    \end{vmatrix} = -e^{5t}
+\]
+Hence, 
+\[
+    u_1 = \int \frac{-e^{2t}2e^{t}}{-e^{5t}} dt = \int 2e^{-2t} dt = -e^{-2t}    
+\]
+\[
+    u_2 = \int \frac{e^{3t}2e^t}{-e^{5t}} dt = \int -2e^{-t} = 2e^{-t}
+\]
+Hence, 
+\[
+    y_p(t) = -e^{-2t}e^{3t} + 2e^{-t}e^{2t} = e^t    
+\]
+\begin{equation*}
+    \begin{aligned}
+        & y'' -y'-2y = -2t+4t^2 \\
+        \iff &  Ae^t - 5Ae^t +6Ae^t = 2e^t \\
+        \iff & A = 1
+    \end{aligned}
+\end{equation*}
+which agrees with the other method. 
+Hence, the solution is 
+\[
+    y(t) = c_1e^{3t} + c_2e^{2t} + e^t
+\]
+\newpage
+\section*{6 p.149}
+Consider the characteristic equation $r^2+4r+4= (r+2)^2 = 0$. The characteristic root is $2$.
+Hence, a fundamental sets of solution is $y_1 = e^{-2t}, y_2 = te^{-2t}$. 
+Consider 
+\[
+    y_c = c_1e^{-2t} + c_2te^{-2t}    
+\]
+Let 
+\[
+    y_p(t) = u_1(t)y_1(t) + u_2(t)y_2(t) = u_1(t) e^{-2t} + u_2(t)te^{-2t}    
+\]
+Then as 
+\[
+    W(y_1,y_2)(t) = 
+    \begin{vmatrix}
+        e^{-2t} & te^{-2t} \\
+        -2e^{2t} & e^{-2t} - 2te^{2t}
+    \end{vmatrix} = e^{-4t}
+\]
+Hence, 
+\[
+    u_1 = \int \frac{-te^{-2t} t^{-2}e^{-2t}}{e^{-4t}} dt = \int -t^{-1} dt =    -\ln(t)
+\]
+\[
+    u_2 = \int \frac{e^{-2t} t^{-2}e^{-2t}}{e^{-4t}} dt = \int t^{-2} dt = -t^{-1}
+\]
+Hence, 
+\[
+    y(t) = c_1e^{-2t} + c_2te^{-2t} -\ln(t)e^{-2t} - e^{-2t}
+\]
+\newpage
+\section*{12 p.149}
+We have 
+\[
+    y_c(t) = c_1(1+t) + c_2e^t    
+\]
+Plugging that in 
+\begin{equation*}
+    \begin{aligned}
+        ty'' - (1+t)y' + y &= t(c_2e^t) -(1+t)(c_1 + c_2e^t) + c_1(1+t)+c_2e^t \\
+        &= 0 
+    \end{aligned}
+\end{equation*}
+Since $t>0$, we need to solve the equation 
+\[
+    y'' - \frac{1+t}{t}y' + \frac{1}{t}y = te^{2t}    
+\]
+Consider 
+\[y_p(t) = u_1(t) y_1(t) + u_2(t)y_2(t)\]
+Then as 
+\[
+    W(y_1,y_2)(t) = 
+    \begin{vmatrix}
+        1+t & e^t \\
+        1 & e^t
+    \end{vmatrix} = te^t > 0
+\]
+Hence, 
+\[
+    u_1 = \int \frac{-e^t te^{2t}}{te^t} dt = \int dt =  t
+\]
+\[
+    u_2 = \int \frac{(1+t) te^{2t}}{te^t} dt = \int (1+t)e^t dt = te^t
+\]
+Therefore, the solution is 
+\[
+    y(t) =  c_1(1+t) + c_2e^t + t(1+t) + te^{2t}
+\]
+\newpage
+\section*{13 p.149}
+We have 
+\[
+    y_c(x) = c_1x^2 + c_2x^2\ln(x)   
+\]
+Plugging that in 
+\begin{equation*}
+    \begin{aligned}
+        &x^2y'' -3xy' + 4y \\
+        =& x^2(2c_2\ln\left(x\right)+3c_2+2c_1) - 3x(x\left(2c_2\ln\left(x\right)+c_2+2c_1\right)) + 4(c_1x^2 + c_2x^2\ln(x)) \\
+        =& 0
+    \end{aligned}
+\end{equation*}
+Since $t>0$, we need to solve the equation 
+\[
+    y'' - \frac{3}{x}y' + \frac{4}{x^2}y = \ln(x)   
+\]
+Consider 
+\[y_p(t) = u_1(t) y_1(t) + u_2(t)y_2(t)\]
+Then as 
+\[
+    W(y_1,y_2)(t) = 
+    \begin{vmatrix}
+        x^2 & x^2\ln(x) \\
+        2x & 2x\ln(x) + x
+    \end{vmatrix} = x^3 + 2x^3\ln(x) - 2x^3\ln(x) = x^3 >0
+\]
+Hence, 
+\[
+    u_1 = \int \frac{-x^2\ln(x) \ln(x)}{x^3} dx = \int -\frac{\ln^2(x)}{x}= -\frac{\ln^3(x)}{3}
+\]
+\[
+    u_2 = \int \frac{x^2 \ln(x)}{x^3} dx = \int \frac{\ln(x)}{x} dx = \frac{\ln^2(x)}{2}
+\]
+Therefore, the solution is 
+\[
+    y(t) =  c_1x^2 + c_2x^2\ln(x) + \frac{x^2\ln^3(x)}{6} 
+\]
+\end{document}
