@@ -1,0 +1,123 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\long\def\comment#1{}
+
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+\subsection*{a.}
+Consider the function $f(z) = \sin(z)$
+\begin{equation*}
+    \begin{aligned}
+        \int_{|z|=2} \frac{\sin(z)}{z^2+1} dz 
+        &= \int_{|z|=2} \frac{1}{2i}\left(\frac{\sin(z)}{z-i} - \frac{\sin(z)}{z+i}\right) dz \\
+        &= \frac{1}{2i} \left(\int_{|z|=2}\frac{\sin(z)}{z-i}dz - \int_{|z|=2} \frac{\sin(z)}{z+i}dz\right) \\
+        &= \frac{1}{2i} \left(\sin(i) - \sin(-i)\right) \\
+        &= \frac{1}{i} \sin(i)
+    \end{aligned}
+\end{equation*} 
+\subsection*{b.}
+Consider the constant function $f(z) = 1$, then
+\begin{equation*}
+    \begin{aligned}
+        &\int_\gamma \frac{z}{z^3-1} dz \\
+        =& \int_\gamma \left( \frac{\frac{1}{3}}{z-1} + \frac{-\frac{1}{6} + \frac{i}{2\sqrt{3}}}{z - \left(-\frac{1}{2}-\frac{\sqrt{3}}{2}i\right)} + \frac{-\frac{1}{6} - \frac{i}{2\sqrt{3}}}{z - \left(-\frac{1}{2} +\frac{\sqrt{3}}{2}i\right)} \right) dz \\
+        =& 2\pi i \left(\frac{1}{3} - \frac{1}{6} + \frac{i}{2\sqrt{3}} - \frac{1}{6} - \frac{i}{2\sqrt{3}} \right) \\
+        =& 0
+    \end{aligned}
+\end{equation*}
+\newpage
+\section*{2.}
+\[
+    \cot(z) = \cos(z) / \sin(z)    
+\]
+and since $\sin(z) \ne 0 \iff z = n\pi$ for some $n \in \mathbb{Z}$. 
+$\cot(z)$ has a complex antiderivative on $D$ as $D$ is starshaped with center $\pi/2$.
+We know that 
+\[
+    f(\pi / 2) = \ln|\sin(\pi/2) | + C = 0 \implies C = 0    
+\]
+Hence, 
+\[
+    f(i) = \ln|sin(i)|    
+\]
+\newpage
+\section*{3.}
+We have that 
+\begin{equation*}
+    \begin{aligned}
+        &\frac{1}{2\pi i} \int_{|z|=R} \frac{z^mf'(z)}{f(z)} dz \\
+        =& \frac{1}{2\pi i} \int_{|z| = R} \sum_{i=1}^n \frac{z^m}{z-r_1} dz \\
+        =&  \sum_{i=1}^n \frac{1}{2\pi i} \int_{|z| = R} \frac{z^m}{z-r_1} dz \\
+        =& \sum_{i=1}^n z_i^m = b_m
+    \end{aligned}
+\end{equation*}
+and 
+\begin{equation*}
+    \begin{aligned}
+        &b_{m+n} + a_1 b_{m+n-1} + \hdots + a_n b_m \\
+        =& \sum_{i=1}^n r_i^{m+n} + a_1 \sum_{i=1}^n r_i^{m+n-1} + \hdots + a_n \sum_{i=1}^n r_i^m \\
+        =& \sum_{i=1}^n r_i^{m+n} + a_1 r_i^{m+n-1} + \hdots + a_n r_i^m \\
+        =& \sum_{i=1}^n r_i^m (r_i^n + a_1 r_i^{n-1} + \hdots + a_n)\\ 
+        =& 0
+    \end{aligned}
+\end{equation*}
+\newpage
+\section*{4.}
+Let 
+\[
+    h(z) = f(\exp(z)) = g(\exp(iz))    
+\]
+It is obvious that 
+\[
+    f(\exp(z+i2\pi)) = f(\exp(z)) \text{ and } g(\exp(iz)) =    g(\exp(i(z+2\pi)))
+\]
+which means that 
+\[
+    h(z) = h(z+2\pi) = h(z+2\pi i)    
+\]
+Consider $D = \{ x+iy: 0\le x\le 2\pi, 0 \le y \le 2\pi\}$. Then there exists $M$ such that 
+\[
+    |h(z)| \le M \text{ for every } z \in D  
+\]
+Then for every $z \in \mathbb{C}$, there is a $z_0 \in D$ such that $h(z) = h(z_0)$ and hence $h$ is bounded. 
+Therefore, $h$ is constant.
+\newpage
+\section*{5.}
+Let $f(z) = u(z) + iv(z)$, then $f^2 = u^2-v^2+2uvi$. We have that 
+\[
+    \frac{\partial }{\partial x}(u^2-v^2) = \frac{\partial }{\partial y}(2uv)    
+\]
+and 
+\[
+    \frac{\partial }{\partial y}(u^2-v^2) = -\frac{\partial }{\partial x}(2uv)
+\]
+Therefore, we can get the system of equations
+\[
+\begin{cases}
+    u \left(\frac{\partial u}{\partial x} -  \frac{\partial v}{\partial y}\right) - v \left(\frac{\partial u}{\partial y} +  \frac{\partial v}{\partial x}\right) = 0 \\
+    u \left(\frac{\partial u}{\partial y} +  \frac{\partial v}{\partial x}\right) + v \left(\frac{\partial u}{\partial x} -  \frac{\partial v}{\partial y}\right) = 0 \\
+\end{cases}
+\]
+Hence if $u \ne 0$ or $v\ne 0$, $\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}$ and $\frac{\partial u}{\partial y} = - \frac{\partial v}{\partial x}$, which means $f$ is analytic.
+If $u = v =0$, then if $f^{(n)}(z) = 0$ for all $n$, $f \equiv 0$ in any ball around it.
+In the other case, $f'(z)$ does not vanish. Hence, we can find $r$ such that $f(z) \ne 0$ for $0<|z-z_0| < r$, which means that the Morera condition holds (Lemma 5.1).
+\end{document}
