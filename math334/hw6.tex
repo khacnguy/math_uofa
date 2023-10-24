@@ -1,0 +1,217 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Stat 265 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{dcolumn}
+\newcolumntype{2}{D{.}{}{2.0}}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1 p.160}
+Let 
+\[
+    \phi = \tan^{-1}\left( \frac{c_2}{c_1} \right) 
+\]
+\begin{equation*}
+    \begin{aligned}
+        u &= 3\cos(2t) + 4\sin(2t) \\
+        &= \sqrt{3^2+4^2} \cos\left(2t - \tan^{-1}\left(\frac{4}{3}\right)\right) \\
+        &= 5\cos\left(2t - \tan^{-1}\left(\frac{4}{3}\right)\right)
+    \end{aligned}
+\end{equation*}
+\newpage
+\section*{12 p.160}
+Substitute $u = v+w$ in the DE,
+\begin{equation*}
+    \begin{aligned}
+        &m(v+w)'' + \gamma(v+w)' + k(v+w) = 0 \\
+        &(mv'' + \gamma v' + kv) + (mw'' + \gamma w' + kw) = 0
+    \end{aligned}
+\end{equation*}
+If we set $mv'' + \gamma v' + kv = 0$ which means $v$ is a solution of the original DE,
+then $w$ is also a solution from the equation above. Setting 
+\begin{itemize}
+    \item $v(t_0) = u_0 $
+    \item $v'(t_0) = 0 $
+    \item $w(t_0) = 0$
+    \item $w'(t_0) = u_0'$
+\end{itemize}
+We can find a solution to $v and w$ and hence 
+\[
+    u(t_0) = v(t_0) + w(t_0) = u_0 \text{ and } u(t_0) = v'(t_0) + w'(t_0)    
+\]
+\newpage
+\section*{13 p.160}
+If the system is critically damped, the general solution is 
+\[
+    c_1 e^{-ct/2m} + c_2 te^{-ct/2m}    
+\]
+At the equilibrium point, $c_1 e^{-ct/2m} + c_2 te^{-ct/2m} = 0$ which means that $c_1 + c_2t = 0$. 
+Therefore, $t = \frac{-c_1}{c_2}$ is the time if $c_2 \ne 0$. 
+If $c_2=0$ and $c_1 \ne 0$ then it never pass the equilibrium point 
+and if $c_2 = c_1 = 0$,  it always at equilibrium point.
+If the system is overdamped the general solution is 
+\[
+    c_1 \exp\left({\frac{-c + \sqrt{c^2-4km}}{2m}t} \right) + c_2 \exp\left({\frac{-c - \sqrt{c^2-4km}}{2m}t} \right)    
+\]
+At the equilibrium point 
+\begin{equation*}
+    \begin{aligned}
+        &c_1 \exp\left(\frac{-c + \sqrt{c^2-4km}}{2m}t \right) + c_2 \exp\left(\frac{-c - \sqrt{c^2-4km}}{2m}t \right) = 0\\
+        \implies &c_1 + c_2 \exp \left(\frac{-c - \sqrt{c^2-4km}}{2m}t - \frac{-c + \sqrt{c^2-4km}}{2m}t \right) = 0\\
+        \implies &c_1 + c_2 \exp \left(-\frac{\sqrt{c^2-4km}}{m} t \right) = 0
+    \end{aligned}
+\end{equation*}
+Hence, if $c_1 = 0, c_2=0$, it is always at equilibrium point. If $c_1 c_2 > 0$ or either $c_1, c_2$ are 0, it never reaches equilibrium point 
+and if $c_1c_2<0, t = \frac{m}{\sqrt{c^2-4km}} \ln\left( \frac{-c_2}{c_1}\right)$
+\newpage
+\section*{11 p.170}
+First, let establish that 
+\[
+    u_c = c_1 \cos(t) + c_2 \sin(t)    
+\]
+Then we have that 
+\[
+    u(0) = u_c(0) + u_p(0) = c_1 + u_p(0) = 0 \implies c_1 = -u_p(0) 
+\]
+and 
+\[
+    u'(0) = u_c'(0) + u_p'(0) = c_2 + u_p'(0) = 0 \implies c_2 = -u_p'(0)
+\]
+Now consider 
+\[
+    u'' + u = F(t)    
+\]
+Let $u_p(t) = u_1(t)v_1(t) + u_2(t)v_2(t)$, then 
+\[
+    W = 
+    \begin{pmatrix}
+        \cos(t) & \sin(t) \\
+        -\sin(t) & \cos(t)    
+    \end{pmatrix} 
+    = 1 \ne 0 
+\]
+\[
+    v_1 = - \int \frac{-\sin(t)F(t)}{1} dt = \int \sin(t) F(t) dt
+\]
+and 
+\[
+    v_2 = - \int \frac{\cos(t)F(t)}{1} dt = -\int \cos(t) F(t) dt
+\]
+When $0\le t \le \pi$, 
+\[
+    v_1 = \int \sin(t) F_0 t dt = F_0(\sin(t) - t\cos(t))
+\]
+\[
+    v_2 = -\int \cos(t) F_0 t dt = -F_0(\cos(t) + t\sin(t))
+\]
+and thus 
+\begin{equation*}
+    \begin{aligned}
+        u_p(t) &= \cos(t) F_0 (\sin(t) - t\cos(t)) - \sin(t) F_0 (\cos(t) + t\sin(t)) \\
+        &= -F_0 t
+    \end{aligned}
+\end{equation*}
+Hence, 
+\[
+    c_1 = 0 \text{ and } c_2 = -F_0    
+\]
+and therefore 
+\[
+    u(t) = -F_0\sin(t) + F_0t    
+\]
+When $\pi < t \le 2\pi$, 
+\[
+    v_1 = \int \sin(t) F_0 (2\pi- t)dt = F_0 ((t-2{\pi})\cos(t)-\sin(t))
+\]
+\[
+    v_2 = -\int \cos(t) F_0 (2\pi-t) dt =  F_0 ((t-2{\pi})\sin(t)+ \cos(t))
+\]
+and thus 
+\begin{equation*}
+    \begin{aligned}
+        u_p(t) &= \cos(t) F_0((t-2{\pi})\cos(t)-\sin(t)) + \sin(t) F_0 ((t-2{\pi})\sin(t)+ \cos(t)) \\
+        &= F_0 ((t-2\pi)\cos^2(t) - \sin(t)\cos(t) + (t-2\pi)\sin^2(t) + \sin(t)\cos(t)) \\
+        &= F_0(t-2\pi)
+    \end{aligned}
+\end{equation*}
+Hence, 
+\[
+    c_1 = -2\pi F_0 \text{ and } c_2 = -F_0
+\]
+and therefore, 
+\[
+    u(t) = -2\pi F_0 \cos(t) - F_0 \sin(t) + F_0(t-2\pi)    
+\]
+When $t > 2\pi$, 
+\[
+    u = 0
+\]
+Hence, 
+\[
+    u(t) = 
+    \begin{cases}
+        -F_0\sin(t) + F_0t   , &\text{ if } 0 \le t \le \pi \\
+        -2\pi F_0 \cos(t) - F_0 \sin(t) + F_0(t-2\pi), &\text{ if } \pi \le t \le 2\pi \\
+        0, &\text{ if } t > 2\pi \\
+    \end{cases}    
+\]
+and 
+\[
+    u'(t) = 
+    \begin{cases}
+        -F_0 \cos(t) + F_0, &\text{ if } 0 \le t \le \pi \\
+        2\pi F_0 \sin(t) - F_0 \cos(t) + F_0, &\text{ if } \pi \le t \le 2\pi \\
+        0, &\text{ if } t > 2\pi \\
+    \end{cases}    
+\]
+and hence $u, u'$ are continuous. 
+\newpage
+\section*{12 p.170}
+We have that $C = 0.25 \cdot 10^{-6} F$, $R = 5000 \Omega$, $L = 1H$, $E(t) = 12V$
+Hence, 
+\[
+    Q'' + 5000Q' + 4 \cdot 10^6 Q = 12    
+\]
+Hence, 
+\[
+    Q_c(t) = c_1e^{-1000t} + c_2e^{-4000t}  
+\]
+Obviously, $Q_p(t) = 12$. Therefore, 
+\[
+    Q(t) = c_1e^{-1000t} + c_2e^{-4000t} + 12
+\]
+\[
+    Q(0) = c_1 + c_2 + 12 = 0    
+\]
+\[
+    Q'(0) = -1000c_1 -4000c_2 = \frac{12}{5000}
+\]
+Hence, 
+\[
+    c_1 = -16 \text{ and } c_2 = 4    
+\]
+Thus 
+\[
+    Q(t) = -16e^{-1000t} + 4e^{-4000t} + 12    
+\]
+\[
+    Q(0.001) = -16e^{-1} + 4e^{-4} + 12    
+\]
+and 
+\[
+    Q(0.01) = -16e^{-10} + 4e^{-40} + 12   
+\] 
+\end{document}
