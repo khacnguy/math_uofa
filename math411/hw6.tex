@@ -1,0 +1,122 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Stat 265 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{dcolumn}
+\newcolumntype{2}{D{.}{}{2.0}}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+\subsection*{a.}
+Let $M = \sup\{|z|: z \in B_\epsilon(z_0)\}$. Then for every $z \in B_\epsilon(z_0)$, for $n\ge M+1$, we have that  
+\[
+    \left|\frac{z^n}{n^n} \right| \le \frac{M^n}{(M+1)^n}
+\]
+and since
+\[
+    \frac{M}{M+1} < 1    
+\]
+$f_n(z)$ converges compactly.
+\subsection*{b.}
+For every $z_0 \in \mathbb{C}$, we can choose any $\epsilon >0$, then let $M = \sup\{|z|: z \in B_\epsilon(z_0)\}$. Then for every $z \in B_\epsilon(z_0)$, we have that  
+\[
+    \left|\frac{1}{m^2} \exp\left(\frac{z}{m} \right) \right| \le \frac{1}{m^2} \exp\left(\frac{M}{m} \right) 
+\]
+and since
+\[
+    \int_0^\infty \frac{1}{m^2} \exp\left( \frac{M}{m} \right) = \left.-\frac{1}{M}e^{-\frac{M}{m}} \right|_0^\infty = \frac{1}{M}
+\]
+$f_n(z)$ converges compactly.
+\newpage
+\section*{2.}
+We have that 
+\begin{equation*}
+    \begin{aligned}
+        \sum_{n=1}^\infty f\left(\frac{z}{n} \right) &= \sum_{n=1}^\infty \sum_{k=2}^\infty a_k \left( \frac{z}{n}\right)^k \\
+        &= \sum_{k=2}^\infty \left(a_k \sum_{n=1}^\infty \frac{1}{n^k}\right)  z^k \\
+        &\le \left(\sum_{n=2}^\infty \frac{1}{n^2}\right)\left(\sum_{k=2}^\infty a_k   z^k\right)
+    \end{aligned}
+\end{equation*}
+which converges. Hence, the series converges compactly on $D$. \\
+If $f(0) \ne 0$ then there exists some $\delta, \epsilon > 0$ such that $|f(z)| > \epsilon$ for $|z|<\delta$, let $n_0 = |z|/\delta$, we have 
+\[
+    \left|\sum_{n=1}^\infty f\left(\frac{z}{n}\right)\right| \le  \left|\sum_{n=1}^{n_0} f\left(\frac{z}{n} \right) \right| + \sum_{n=n_0}^{\infty} \epsilon
+\]
+diverges. If $f(0) = 0$ and $f'(0) \ne 0$ then there exists $\delta, \epsilon >0$ such that $|f'(z)| > \epsilon$ for $|z|< \delta$,  
+\[
+    \left|f\left(\frac{z}{n}\right)\right| = \left|f\left(\frac{z}{n}\right)-f(0)\right| > \epsilon \left|\frac{z}{n}\right|    
+\]
+and hence let $n_0 = |z|/\delta$, we have 
+\[
+    \left|\sum_{n=1}^\infty f\left(\frac{z}{n}\right)\right| \le \left| \sum_{n=1}^{n_0} f\left(\frac{z}{n} \right)\right| + \sum_{n=n_0}^\infty \epsilon \left|\frac{z}{n}\right| 
+\]
+diverges. Hence, if the summation converges compactly, $f(0) = f'(0) = 0$.
+\newpage
+\section*{3.}
+Let deg$f(z) = n > 1$,
+\[
+    \lim_{z\to \infty} \frac{f(z)}{z^n} = c \ne 0    
+\]
+Hence, for all $\epsilon > 0 $, there exists $R$ such that 
+\[
+    |c|-\epsilon \le \frac{|f(z)|}{|z|^n} \le |c|+\epsilon    
+\]
+for $|z|>R$. Fix $0<\epsilon <|c|$, we have 
+\[
+    c_1|z|^n - M_1 \le |f(z)| \le c_2|z|^n + M_2    
+\]
+for all $z$, where $c_1 = |c|-\epsilon , c_2 = |c|+ \epsilon, M_1 = c_1R^n, M_2 = \max_{|z|\le R} |h(z)|$.
+By the fundamental theorem of algebra, for every $w_0 \in \mathbb{C}$, there exists $z_0 \in \mathbb{C}$ such that 
+\[
+    g(w_0) = z_0 
+\]
+Then there exists $a,b,c$ and $d$, 
+\[
+    f(z_0) = f(g(w_0)) \le a|w_0|^m + b    
+\]
+\[
+    f(z_0) \ge c|z_0|^n + d    
+\]
+\[
+    |g(w_0)| = |z_0| \le \left(\frac{f(z_0) - d}{c}\right)^{1/n} \le \left(\frac{a|w_0|^m + b-d}{c} \right)^{1/n} 
+\]
+By generalized cauchy integral formula
+\[
+    g^{(k)}(0) =\frac{k!}{2\pi i} \int_{|z|=R} \frac{g(z)}{z^{k+1}} dz    
+\]
+then 
+\[
+    |g^{(k)}(0)| \le k! \frac{\left(\frac{aR^m + b-d}{c} \right)^{1/n} }{R^k}
+\]
+so for all $k>n/m$, 
+\[
+    \lim_{R \to \infty} |g^{(k)}(0)| = 0 
+\]
+Therefore, 
+\[
+    g(z) = \sum_{0 \le k \le n/m} \frac{f^{(k)}(0)}{k!}z^k
+\]
+is a polynomial
+\newpage
+\section*{4.}
+Let $Z$ be the set of zeroes of $g$. If $Z$ has an accumulation point, then by the identity theorem $f = g = 0$. Otherwise, 
+$D \backslash Z$ is an open connected set. Hence, we can define
+\[
+    h: D \backslash Z \to \mathbb{C}, \indent z \to \frac{f(z)}{g(z)}    
+\]
+$(h(z))^n = 1$ for each $z \in D\backslash Z$, $h(z) \subset \{\text{nth root of 1} \}$ but $h(D \backslash Z)$ is open and connected which means there exists a constant $k$ such that 
+$h(z) = k$ for all $z \in D \backslash Z$. Thus, $f \equiv kg$ 
+\end{document}
