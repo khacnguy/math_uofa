@@ -1,0 +1,187 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Stat 265 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{dcolumn}
+\newcolumntype{2}{D{.}{}{2.0}}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1 p.188}
+\[
+    y'''-y''-y'+y = 2e^{-t} + 3    
+\]
+Then as 
+\[
+    r^3 - r^2-r+1= (r-1)^2(r+1)=0  \iff r\in \{1,-1\}
+\]
+we have that 
+\[
+    y_c(t) = c_1 e^t + c_2 te^t + c_3 e^{-t}    
+\]
+as 
+\[  W(0) = 
+    \left.
+    \begin{vmatrix}
+        e^t & e^{-t} & te^t \\
+        e^t & -e^{-t} & e^t + te^t\\
+        e^t & e^{-t} & 2e^t + te^t
+    \end{vmatrix} \right._{t=0}
+    = 
+    \begin{vmatrix}
+        1 & 1 & 0 \\
+        1 & -1 & 1\\
+        1 & 1 & 2
+    \end{vmatrix}
+    = -4 \ne 0
+\]
+Let 
+\[
+    y_p(t) = Ate^{-t} + B
+\]
+Then 
+\begin{equation*}
+    \begin{aligned}
+        y' &= Ae^{-t} - Ate^{-t} \\
+        y''&= -2Ae^{-t} + Ate^{-t} \\
+        y''' &= 3Ae^{-t} - Ate^{-t}
+    \end{aligned}
+\end{equation*}
+Hence, 
+\[
+    y''' - y'' - y' + y = 4Ae^{-t} + B = 2e^{-t} + 3
+\]
+Hence, 
+\[
+    y(t) = \frac{1}{2}te^{-t} + 3 + c_1 e^t + c_2 te^t + c_3 e^{-t} 
+\]
+\newpage
+\section*{6 p.188}
+\[
+    y^{(6)} + y''' = t    
+\]
+Then as 
+\[
+    r^6 + r^3 = r^3 (r+1)(r^2-r+1)
+\]
+Hence, 
+\[
+    y_c(t) = c_1 + c_2t + c_3t^2 + c_4e^{-t} + c_5 e^{t/2}\sin(\sqrt{3}t/2) + c_6 e^{t/2}\cos(\sqrt{3}t/2)     
+\]
+Then let 
+\[
+    y = At^4
+\]
+We have that 
+\[
+    y''' = 24At
+\]
+and 
+\[
+    y^{(6)} = 0
+\]
+which means that $A = 1/24$ and hence 
+\[
+    y(t) = \frac{1}{24}t^4  c_1 + c_2t + c_3t^2 + c_4e^{-t} + c_5 e^{t/2}\sin(\sqrt{3}t/2) + c_6 e^{t/2}\cos(\sqrt{3}t/2)     
+\]
+\newpage
+\section*{2 p.192}
+\[
+    y'''-y' =t    
+\]
+Then as 
+\[
+    r^3-r = r(r-1)(r+1)     
+\]
+we have that 
+\[
+    y_c(t) = c_1 + c_2e^t + c_3e^{-t}
+\]
+Then we can calculate
+\[
+    W(t) = 
+    \begin{vmatrix}
+        1 & e^t & e^{-t} \\
+        0 & e^t & -e^{-t} \\
+        0 & e^t & e^{-t}     
+    \end{vmatrix} 
+    = 2 \ne 0
+\]
+\[
+    W^{(1)}(t) = 
+    \begin{vmatrix}
+        0 & e^t & e^{-t} \\
+        0 & e^t & -e^{-t} \\
+        t & e^t & e^{-t}     
+    \end{vmatrix} 
+    = -2t
+\]
+\[
+    W^{(2)}(t) = 
+    \begin{vmatrix}
+        1 & 0 & e^{-t} \\
+        0 & 0 & -e^{-t} \\
+        0 & t & e^{-t} 
+    \end{vmatrix} 
+    = te^{-t}
+\]
+\[
+    W^{(3)}(t) = 
+    \begin{vmatrix}
+        1 & e^t & 0  \\
+        0 & e^t & 0 \\
+        0 & e^t & t     
+    \end{vmatrix} 
+    = te^t
+\]
+and then 
+\[
+    u_1(t) = \int \frac{-2t}{2} dt = -t^2/2
+\]
+\[
+    u_2(t) = \int \frac{te^{-t}}{2} dt = -\frac{te^{-t} + e^{-t}}{2} 
+\]
+\[
+    u_3(t) = \int \frac{te^t}{2} dt = \frac{te^t - e^t}{2}
+\]
+and therefore
+\[
+    y_p(t) = - \frac{t^2}{2} - \frac{te^{-t} + e^{-t}}{2} e^t + \frac{te^t -e^t}{2} \cdot e^{-t} = \frac{-t^2}{2} + 1    
+\]
+and hence
+\[
+    y(t) = -t^2/2 + c_1 + c_2e^t + c_3e^{-t}
+\]
+\newpage
+\section*{2 p.192}
+We have that $a_n = \frac{n}{2^n}$. Then as 
+\[
+    \left| \frac{a_n}{a_{n+1}} \right| =\left| \frac{2n}{(n+1)}\right|  
+\]
+which converges to $2$ as $n \to \infty$. Hence, $R=2$
+\section*{4 p.192}
+We have that $a_n = 2^n$. Then as 
+\[
+    \left| \frac{a_n}{a_{n+1}} \right| =\left| \frac{1}{2}\right|  
+\]
+which converges to $1/2$ as $n \to \infty$. Hence, $R=1/2$
+\section*{6 p.192}
+We have that $a_n = \frac{(-1)^n n^2}{3^n}$. 
+Then as 
+\[
+    \left| \frac{a_n}{a_{n+1}} \right| =\left| \frac{3n^2}{(n+1)^2}\right|  
+\]
+which converges to $3$ as $n \to \infty$. Hence, $R=3$
+\end{document}
