@@ -1,0 +1,135 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\long\def\comment#1{}
+
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+\subsection*{a.}
+Let $y = 2\pi m+n$, where $0\le n<2\pi$
+\[
+    \exp(x +iy) = \exp(x) (\cos(n) + i\sin(n)) 
+\]
+Hence, $f(D) = B_{\exp(1)}(0) \backslash B_{\exp(-1)}(0)$
+\subsection*{b.}
+Since $(x+iy)^3 = x^3 +3ix^2y - 3xy^2 - iy^3 = x(x^2-3y^2) + iy(3x^2 - y^2)$.
+Then for every $m = tn \in \mathbb{R}$, consider the system of equations
+\[
+    \begin{cases}
+        x^3 - 3xy^2 = m\\
+        3x^2y-y^3= n
+    \end{cases}    
+\]
+Then if $x=ky$ where $k \in \mathbb{R}_{>0}$, we have that 
+\[
+    \begin{cases}
+        k^3 - 3k = \cfrac{m}{y^3} \\
+        3k^2 - 1 = \cfrac{n}{y^3} 
+    \end{cases}
+\]
+We have that for every $a,b \in \mathbb{R}$, we can find $y$ such that $a = tb = \cfrac{m}{y^3} = \cfrac{tn}{y^3} =\cfrac{n}{y^3}$
+and hence
+\[
+    \begin{cases}
+        k^3 - 3k - a = 0\\
+        3k^2 - 1 - b = 0
+    \end{cases}
+\]
+And hence we can find $a,b$ satisfies the system of equations above. Since $m,n$ is arbitary. $f(D) = \mathbb{C}$
+\subsection*{c.}
+Consider the equations $z^{2018} + z + 1 = c$, where $c \in \mathbb{C}$. By FTA, the equations always has roots and hence $f(D) = \mathbb{C}$.
+\subsection*{d.}
+We have that 
+\[
+    \frac{1}{z} = \frac{\overline{z}}{|z|^2}    
+\]
+and 
+\[
+    \left| \frac{1}{z} \right| = \frac{1}{|z|}
+\]
+which means that $f(D) = \mathbb{C} \backslash B_{1/2}(0)$. 
+\section*{2.}
+\subsection*{a.}
+The function 
+\[
+    f: \mathbb{C} \to \mathbb{C}, \indent z \to z^2-z+1    
+\]
+is holomorphic. Hence, $|f|$ maximum is attained in $\partial G$. we know that 
+\[
+    \partial G = [0,1] \times \{0,1\} \cup \{0,1\} \times [0,1]     
+\]
+In cases $z = t$, where $0\le t\le 1$ 
+\[
+    |z^2-z+1| = t^2-t+1 = \left(t - \frac{1}{2}\right)^2 + \frac{3}{4}
+\]
+
+In cases $z = ti$, where $0\le t\le 1$ 
+\[
+    |z^2-z+1| = |-t^2-ti +1| = \sqrt{(t^2-1)^2 + t^2} = \sqrt{t^4 - t^2  + 1} = \sqrt{\left(t^2-\frac{1}{2}\right)^2 + \frac{3}{4}}    
+\]
+In cases $z = i + t$, where $0\le t\le 1$ 
+\begin{equation*}
+    \begin{aligned}
+        |z^2-z+1| &= |t^2+2it-1 - i -t +1| = |t^2-t + i(2t-1)| = \sqrt{(t^2-t)^2 + (2t-1)^2} \\
+        &= \sqrt{t^4 -2t^3 +5t^2-4t+1}  
+    \end{aligned}
+\end{equation*}
+Consider $4t^3-6t^2 +10t-4 = 2(2x-1)(x^2-x+2)$, which means that $t^4-2t^3+5t^2-4t+1$ has 1 minima at $\frac{1}{2}$. 
+In cases $z = 1+ti$, where $0\le t \le 1$, 
+\begin{equation*}
+    \begin{aligned}
+        |z^2-z+1| &= |-t^2-2ti+1-1-ti+1| = |-t^2+1 + i(-3t)| = \sqrt{(t^2-1)^2 + (3t)^2} \\
+        &= \sqrt{t^4 +7t^2 +1} = \sqrt{\left(t^2+\frac{7}{2}\right)^2 - \frac{45}{4}}  
+    \end{aligned}
+\end{equation*}
+Hence, the maximum is attained in $0, i,1,1+i$. \\
+At $0$, $|z^2-z+1| = 1$. \\
+At $1$, $|z^2-z+1| = 1$. \\
+At $i$, $|z^2-z+1| = 1$. \\
+At $1+i$, $|z^2-z+1| = 1$. \\
+Thus the maximum is $1$.
+\newpage
+\subsection*{b.}
+We have that 
+\[
+    |\cos z| = \sqrt{(\cos x)^2 + (\sinh y)^2}
+\]
+Notice that the function $\cos(x)$ monotone decreasing in $[0,1]$ and $\sinh(y)$ monotone increasing in $[0,1]$. We also know that the maximum is obtained in the boundary. 
+Thus the maximum of $|\cos z|$ is $\sqrt{1 + \left(\frac{e-e^{-1}}{2}\right)^2}$ at $z=i$
+\newpage
+\section*{3.}
+Suppose $f$ is not constant and there is a local maximum. Let $z_0 \in D$ such that $|u|+|v|$ attains its local maximum at $z_0$. 
+That is there exists an $\epsilon >0$ such that $B_\epsilon(z_0) \subset D$ and $|u(x_0,y_0)| + |v(x_0,y_0)| > |u(x,y)|+|v(x,y)|$ for all $z = x+iy \in B_\epsilon(z_0)$. 
+However, $f(B_\epsilon(z_0))$ is open and connected. Therefore, there is a point $z' \in B_\epsilon(z_0)$ such that $|u(x',y')| + |v(x',y')| > |u(x_0,y_0)| + |v(x_0,y_0)|$, which is a contradiction.
+\newpage
+\section*{4.}
+If $f_1$ and $f_2$ are non constant, then $f_1(f_2(D_2))$ is open and connected, which means that it cannot be constant. 
+\newpage
+\section*{5.}
+If $|f|+|g|$ has local maximum at $z_0$, then we can find constant $a,b \in \mathbb{C}$ with norm 1 such that $|f(z_0)| = af(z_0), |g(z_0)| = bg(z_0)$. Since $f,g$ are continuous,
+$\left|f + \frac{b}{a}g\right|$ also has a local maximum at $z_0$. Therefore, $\left| f + \frac{b}{a} g\right|$ and $f+ \frac{b}{a}g$ are constant, 
+which means that $f \equiv c -\frac{b}{a}g$ for some $c \in \mathbb{C}$. 
+We also have that $c = |f(z_0)| + \frac{b}{a}|g(z_0)| \ge |c - \frac{b}{a}g(z)| + \frac{b}{a}|g(z)|$ for some neighborhood around $z_0$. However, by the triangle equality, 
+\[
+    |c - \frac{b}{a}g(z)| + \frac{b}{a}|g(z)| \ge c    
+\]
+and hence $c = \frac{b}{a}|g(z)| + \left| c -\frac{b}{a}g(z)\right|$ which is only true when $\frac{b}{a}g(z)$ is non-negative and real. Thus $g$ is constant and so does $f$.
+\end{document}
