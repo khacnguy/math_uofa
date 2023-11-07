@@ -1,0 +1,111 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\long\def\comment#1{}
+
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1 p.208}
+\begin{equation*}
+    \begin{aligned}
+        &y''-y=0 \\
+        \implies &\sum_{k=2}^\infty k(k-1)a_kx^{k-2} - \sum_{k=0}^\infty a_kx^k = 0 \\
+        \implies &\sum_{k=0}^\infty (k+1)(k+2)a_{k+2}x^k  - a_kx^k = 0 \\
+        \implies &(k+1)(k+2)a_{k+2}-a_k = 0 \\
+        \implies &a_{k+2} = \frac{a_k}{(k+1)(k+2)}
+    \end{aligned}
+\end{equation*}
+and hence 
+\[
+    a_{2k} = a_0 \frac{1}{(2k)!} \text{ and } a_{2k+1} = a_1 \frac{1}{(2k+1)!}
+\]
+and hence 
+\[
+    y(x) = a_0 \underbrace{\sum_{k=0}^\infty \frac{1}{(2k)!}x^{2k}}_{y_1} + a_1 \underbrace{\sum_{k=0}^\infty \frac{1}{(2k+1)!}x^{2k+1}}_{y_2}
+\]
+Hence, 
+\[
+    W(y_1, y_2, 0) = 
+    \begin{vmatrix}
+        1 & 0 \\
+        0 & 1
+    \end{vmatrix} = 1
+\]
+\newpage
+\section*{3 p.208}
+\begin{equation*}
+    \begin{aligned}
+        & y''-xy' -y = 0 \\
+        \implies & \sum_{k=0}^\infty (k+1)(k+2)a_{k+2}x^k - x \sum_{k=0}^\infty (k+1)a_{k+1}x^k - \sum_{k=0}^\infty a_k x^k = 0 \\
+        \implies & \sum_{k=0}^\infty (k+1)(k+2)a_{k+2}x^k -  \sum_{k=1}^\infty ka_kx^k - \sum_{k=0}^\infty a_k x^k = 0 \\
+        \implies & 2a_2 - a_0 + \sum_{k=1}^\infty ((k+1)(k+2)a_{k+2} - ka_k - a_k)x^k = 0 \\
+        \implies & 
+        \begin{cases}
+            a_0 = 2a_2 \\
+            (k+1)(k+2)a_{k+2} - ka_k - a_k = 0 \forall k > 0
+        \end{cases} \\
+        \implies & 
+        \begin{cases}
+            a_0 = 2a_2 \\
+            a_{k+2} = \cfrac{a_k}{k+2} \forall k > 0
+        \end{cases}
+    \end{aligned}
+\end{equation*}
+Hence, 
+\[
+    a_{2k} = \frac{a_{2k-2}}{2k} = \frac{a_2}{2^{k-1} \cdot k!} = \frac{a_0}{2^k \cdot k!}
+\]
+for $k >0$, note that it also works for $k=1$. 
+\[
+    a_{2k+1} = \frac{a_1}{(2k+1)(2k-1)\hdots 1} = \frac{a_1 \prod_{i=1}^k 2i}{\prod_{i=0}^k (2i+1) \prod_{i=1}^k 2i} = \frac{a_1 2^{k+1} k!}{(2k+1)!} 
+\]
+Hence, 
+\[
+    y(x) = a_0 \sum_{k=0}^\infty \frac{1}{2^k \cdot k!} x^k + a_1 \sum_{k=1} \frac{2^{k+1}k!}{(2k+1)!}x^k     
+\]
+\newpage
+\section*{4 p.214}
+There is no singularity hence the radius of convergence is $\infty$.
+\newpage
+\section*{5 p.214}
+We can rewrite the equations as 
+\[
+    y'' + \frac{x}{x^2-2x-3}y' + \frac{4}{x^2-2x-3}y = 0     
+\]
+The singularities are $3.-1$. Hence, the radius of convergence is 
+\[
+    R = 
+    \begin{cases}
+        1, \text{ if } x_0 = 4 \\
+        3, \text{ if } x_0 = -4 \\
+        1, \text{ if } x_0 = 0 \\
+    \end{cases}    
+\]
+\section*{6 p.214}
+We can rewrite the equation as 
+\[
+    y'' + \frac{4x}{1+x^3}y' + \frac{1}{1+x^3} y = 0   
+\]
+and hence the singularities can be found by letting $1+x^3=0$ which yields $x = -1, e^{i\pi/3}, e^{2i\pi/3}$, which are the three points dividing the unit circle into 3 equal sections. Hence, for $x_0=0$, the radius of convergence is $1$.
+For $x_0 = 2$, the radius of convergence will be 
+\[
+    \left| 2 - \left(\frac{1}{2} + i\frac{\sqrt{3}}{2}\right)\right| = \sqrt{3}   
+\] 
+\end{document}
