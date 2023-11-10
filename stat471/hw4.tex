@@ -1,0 +1,84 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\long\def\comment#1{}
+
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+From the Classical Girsanov Theorem, we have that 
+\[
+    dA_t = -X_tA_tdB_t    
+\]
+with $A_0 = 1$ is the likelihood martingale that change the standard brownian motion into the Ornstein-Uhlenbeck process.
+\newpage
+\section*{2.}
+We have that 
+\[
+    \pi(i) = 
+    \begin{pmatrix}
+        n \\
+        i
+    \end{pmatrix}
+    p^i (1-p)^{n-i} 
+    = \frac{n!}{i!(n-i)!}
+    p^i (1-p)^{n-i}
+\]
+Also
+\[
+    \frac{\pi(i)}{\pi(0)} = \frac{a_{i-1}a_{i-2}\hdots a_0}{s_i s_{i-1} \hdots s_1} = \frac{n!}{i!(n-i)!}p^i(1-p)^{-i}     
+\]
+However, 
+\[
+    s_i s_{i-1} \hdots s_1 = i! (1-p)^i    
+\]
+Hence, 
+\[
+    a_{i-1}a_{i-2} \hdots a_0 = \frac{n!}{(n-i)!}p^i    
+\]
+Hence, we can speculate 
+\[
+    a_i = p (n-i) 
+\]
+Since $\pi(i) = 0$ for $i > n$, $a(i) = 0$ for $i>=n$.
+\newpage
+\section*{3.}
+We have that 
+\[
+    S_{100} - 30 \to \sqrt{0.3 \cdot 0.7} \cdot 10 B^1
+\]
+Also
+\[
+    S_{200} - S_{100} - 30 \to \sqrt{0.3 \cdot 0.7} \cdot 10 (B^2 - B^1)
+\]
+We also have that 
+Thus 
+\[
+    P((S_{100}-30)^2 + (S_{200} - S_{100} -30)^2) = P((B^1)^2 + (B^2-B^1)^2 > 20/21) 
+\]
+$B^1, B^2-B^1$ are the standard normal distributions. Hence, the sum of those squared is the exponential distribution with mean 2.
+Hence, the probability is 
+\[
+    1-e^{-2\frac{20}{21}} = 1-e^{-40/21}     
+\]
+
+\newpage
+\section*{4.}
+\end{document}
