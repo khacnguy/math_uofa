@@ -1,0 +1,146 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\long\def\comment#1{}
+
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{4 p.223}
+$x=0$ is the singular point, hence let $y = x^r$, we have that 
+\begin{equation*}
+    \begin{aligned}
+        &x^2y'' -xy' + y = 0  \\
+        \implies & r(r-1)x^r - rx^r + x^r = 0 \\
+        \implies & r^2x^r - 2rx^r + x^r = 0 \\
+        \implies & x^r(r^2-2r+1) = 0 \\
+        \implies & r = 1
+    \end{aligned}
+\end{equation*}
+Hence, the solution is 
+\[
+    y = c_1x + c_2x \ln(x)    
+\]
+for $x>0$
+\newpage
+\section*{6 p.223}
+$x=0$ is the singular point, hence let $y = x^r$, we have that 
+\begin{equation*}
+    \begin{aligned}
+        &2x^2y'' -4xy' + 6y = 0  \\
+        \implies & 2r(r-1)x^r - 4rx^r + 6x^r = 0 \\
+        \implies & 2r^2x^r - 6rx^r + 6x^r = 0 \\
+        \implies & x^r(2r^2-6r+6) = 0 \\
+        \implies &r = \frac{6 \pm \sqrt{6^2-4\cdot 2 \cdot 6}}{4} = \frac{3 \pm i\sqrt{3}}{2}
+    \end{aligned}
+\end{equation*}
+Hence, the solution is 
+\[
+    y = c_1x^{3/2}\cos\left(\frac{\sqrt{3}}{2}\ln(x)\right) + c_2x^{3/2}\sin\left(\frac{\sqrt{3}}{2}\ln(x)\right)   
+\]
+\newpage
+\section*{10 p.223}
+$x=0$ is the singular point, hence let $y = x^r$, we have that 
+\begin{equation*}
+    \begin{aligned}
+        & 4x^2y'' + 8xy' + 17y = 0  \\
+        \implies & 4r(r-1)x^r + 8rx^r + 17x^r = 0 \\
+        \implies & 4r^2x^r + 4rx^r + 17x^r = 0 \\
+        \implies & x^r(4r^2+4r+17) = 0 \\
+        \implies &r = \frac{-4 \pm \sqrt{4^2-4\cdot 4 \cdot 17}}{4} =  -1 \pm 4i
+    \end{aligned}
+\end{equation*}
+Hence, the solution is 
+\[
+    y = c_1\frac{1}{x}\cos\left(4\ln(x)\right) + c_2\frac{1}{x}\sin\left(4\ln(x)\right)   
+\]
+Then we know that 
+\[
+    y(1) = c_1 = 2
+\] 
+and 
+\[
+    y'(1) = \left. c_1 \frac{-1}{x^2}\cos(4\ln(x)) + c_2 \frac{1}{x} \cos(4\ln(x)) \cdot \frac{4}{x} \right|_{x=1} = -c_1 + 4c_2 = -3    
+\]
+Solving the equations we have that 
+\[
+    y = \frac{2}{x}\cos\left(4\ln(x)\right) -\frac{1}{4x}\sin\left(4\ln(x)\right)   
+\]
+As $x\to 0$, $y(x)$ fluctuates around 0 where the oscillation diverges to 0. 
+\newpage
+\section*{1 p.228}
+we have that 
+\[
+    \lim_{x\to 0} x\frac{1}{2x} = \frac{1}{2}     
+\]
+and 
+\[
+    \lim_{x\to 0} x\frac{x}{2x} = 0    
+\]
+Hence, $x=0$ is a regular singular point.
+Assume $y(x) = \sum_{n=0}^\infty a_nx^{n+r}$. Then 
+\begin{equation*}
+    \begin{aligned}
+        &2xy'' + y' + xy = 0 \\
+        \implies &  \sum_{n=0}^\infty 2a_n(r+n)(r+n-1)x^{n+r-1} + a_n (r+n)x^{r+n-1} +  a_nx^{r+n+1} = 0 \\
+        \implies &  \sum_{n=0}^\infty 2a_n(r+n)(r+n-1)x^{n+r-1} + a_n (r+n)x^{r+n-1} +  \sum_{n=2}^\infty a_{n-2}x^{r+n-1} = 0 \\
+    \end{aligned}
+\end{equation*}
+Therefore, 
+\[
+    2a_0 r(r-1)x^{r-1} + a_0 rx^{r-1} + 2a_1(r+1)rx^r + a_1(r+1)x^r = 0  
+\]
+which can be simplify to
+\[
+    a_0x^{r-1}(2r^2 - r) + a_1x^r(2r^2 + 3r + 1) = 0    
+\]
+Hence, the indicial equation is
+\[
+    2r^2-r=0
+\]
+Thus $r=1/2$ is the larger root and the smaller root is $0$.
+Hence, $a_1 = 0$ and for $n\ge 2$, the recurrence relation is 
+\[
+    2a_n(r+n)(r+n-1) + a_n(r+n) = a_n(1+2n)n= -a_{n-2}
+\]
+which means that 
+\[
+    a_n = \frac{-1}{n(2n+1)}a_{n-2}    
+\]
+Thus, for every $n$, 
+\[
+    a_{2n} = a_0  \frac{(-1)^n}{ \prod_{i=1}^n 2i (4i + 1)}    
+\]
+and $a_{2n+1} = 0$
+so we can write the power series based on $a_n$. \\
+If we choose $r = 0$, we have that $a_1 = 0$ and the recurrente relation is 
+\[
+    2a_n(r+n)(r+n-1) + a_n(r+n) = a_n n(2n-1)= -a_{n-2}
+\]
+which means that 
+\[
+    a_n = \frac{-1}{n(2n-1)}a_{n-2}    
+\]
+Thus, for every $n$, 
+\[
+    a_{2n} = a_0  \frac{(-1)^n}{ \prod_{i=1}^n 2i (4i - 1)}    
+\]
+and $a_{2n+1} = 0$
+so we can write the power series based on $a_n$.
+\end{document}
