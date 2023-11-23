@@ -1,0 +1,129 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\long\def\comment#1{}
+
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+\subsection*{a.}
+\begin{equation*}
+    \begin{aligned}
+        \frac{z}{z^3-z^2-z+1} 
+        &= -\frac{1}{4(z+1)} + \frac{1}{4(z-1)} + \frac{1}{2(z-1)^2} \\
+        &= - \frac{1}{4} \frac{1}{1-(-z)} - \frac{1}{4} \frac{1}{1-z} + \frac{1}{2} \left(\frac{1}{1-z}\right)'\\
+        &= \sum_{n=0}^\infty - \frac{1}{4} (-z)^n - \frac{1}{4} z^n + \frac{1}{2} \left(\sum_{n=0}^\infty z^n\right)' \\
+        &= \sum_{n=0}^\infty \left(- \frac{1}{4}(-1)^n - \frac{1}{4} \right)z^n + \frac{1}{2} \left(\sum_{n=0}^\infty (n+1)z^{n}\right)
+    \end{aligned}
+\end{equation*}
+\subsection*{b.}
+\begin{equation*}
+    \begin{aligned}
+        \frac{z}{z^3-z^2-z+1} 
+        &= -\frac{1}{4(z+1)} + \frac{1}{4(z-1)} + \frac{1}{2(z-1)^2} \\
+        &= -\frac{1}{4z(1 + 1/z)}+ \frac{1}{4z(1-1/z)}- \frac{1}{2}\left(\frac{1}{z(1-1/z)} \right)' \\
+        &=  \sum_{n=0}^\infty -\frac{1}{4z}\left(-\frac{1}{z}\right)^n + \frac{1}{4z} \left( \frac{1}{z}\right)^n - \frac{1}{2} \left(\frac{1}{z} \sum_{n=0}^\infty \left(\frac{1}{z}\right)^n \right)' \\
+        &= \sum_{n=0}^\infty - \frac{1}{4} (-1)^n z^{-n-1} + \frac{1}{4} z^{-n-1} - \frac{1}{2} \left(\sum_{n=0}^\infty z^{n-1} \right)' \\
+        &= \sum_{n=0}^\infty - \frac{1}{4} (-1)^n z^{-n-1} + \frac{1}{4} z^{-n-1} - \frac{1}{2} \left(- \frac{1}{z^2} + \sum_{n=0}^\infty (n+1)z^n \right) \\
+    \end{aligned}
+\end{equation*}
+\subsection*{c.}
+\begin{equation*}
+    \begin{aligned}
+        \frac{z}{z^3-z^2-z+1} 
+        &= -\frac{1}{4(1+z)} + \frac{1}{4(z-1)} + \frac{1}{2(z-1)^2} \\
+        &= -\frac{1}{4(z-2)} \frac{1}{1 + \frac{3}{z-2}}+ \frac{1}{4(1 + (z-2))} + \frac{1}{2}\left(\frac{1}{z-1}\right)' \\
+        &= -\frac{1}{4(z-2)} \sum_{n=0}^\infty \left(-\frac{3}{z-2}\right)^n + \frac{1}{4} \sum_{n=0}^\infty (-(z-2))^n + \frac{1}{2} \left(\sum_{n=0}^\infty (-(z-2))^n \right)' \\
+        &= \sum_{n=-1}^\infty -\frac{(-3)^{n+1}}{4} \left(\frac{1}{z-2}\right)^n +  \sum_{n=0}^\infty \frac{(-1)^n}{4}(z-2)^n + \frac{1}{2}\sum_{n=0}^\infty (n+1)(-1)^n(z-2)^n  \\
+    \end{aligned}
+\end{equation*}
+\subsection*{d.}
+\begin{equation*}
+    \begin{aligned}
+        \frac{z}{z^3-z^2-z+1} 
+        &= -\frac{1}{4(1+z)} + \frac{1}{4(z-1)} + \frac{1}{2(z-1)^2} \\
+        &= -\frac{1}{4}(z+1)^{-1}+ \frac{1}{4(z+1)} \frac{1}{1 - \frac{2}{z+1}} + \frac{1}{2} \left(\frac{1}{z-1}\right)' \\
+        &= -\frac{1}{4}(z+1)^{-1} + \frac{1}{4(z+1)} \sum_{n=0}^\infty \frac{2^n}{(z+1)^n} + \frac{1}{2} \left( \frac{1}{z+1} \sum_{n=0}^\infty \frac{2^n}{(z+1)^n} \right)' \\
+        &= -\frac{1}{4}(z+1)^{-1} + \frac{1}{4} \sum_{n=0}^\infty \frac{2^n}{(z+1)^{n+1}} + \frac{1}{2} \left(\sum_{n=2}^\infty \frac{(-n+1)2^n}{(z+1)^n} \right)
+    \end{aligned}
+\end{equation*}
+\newpage
+\section*{2.}
+\subsection*{a.}
+We have that $\lim_{z \to 0} |\cos(z)| = \infty$ and $\lim_{z \to 0} |z^2-z| = 0$. 
+Hence, $0$ is a pole. 
+\subsection*{b.} 
+We have that $\lim_{\substack{x \to 0 \\ y =0}} \cos\left(\frac{z+1}{z} \right)$ does not exists. Hence, it is essential.
+\newpage
+\section*{3.}
+Consider 
+\[
+    g(z) = \frac{z+a}{1+\overline{a}z} \text{ and } h(w) = \frac{w-b}{1-\overline{b}w}    
+\]
+Then $f,g,h$ are biholomorphic maps and so $h \circ f \circ g$ is a biholomorphic map such that $(h\circ f \circ g)(0) = 0$. Thus
+\[
+    |(h \circ f \circ g)(0)| = 1    
+\]
+and hence schwarz's lemma implies that 
+\[
+    |f'(a)| =  \frac{1}{|h'(b)| \circ |g'(0)|} = \frac{1-|b|^2}{1-|a|^2}
+\]
+\newpage
+\section*{4.}
+Every biholomorphic maps from the upper half plane to the unit disc has the form 
+\[
+    e^{i\theta} \frac{z-\beta}{z - \overline{\beta}}
+\]
+for some $\theta \in \mathbb{R}$ and $\beta$ in the upper half plane. Then, 
+\[
+    e^{(i\theta - i\pi/2)/2}|z|
+\]
+maps the upper half plane to $D$. Hence, biholomorphic maps mapping $D$ to the unit disc also has the form 
+\[
+    e^{i\theta} \frac{z-w}{z-\overline{w}}    
+\]
+for some $w \in D$. We also know that biholomorphic mapping between the unit disc is of that form. Hence, all biholomorphic maps $D \to D$ is of this form as well.
+\newpage
+\section*{5.}
+\subsection*{a.}
+If both $f,g$ has pole at $0$. Then $\lim |f(z)g(z)| = \infty$, which means that $fg$ also has pole at $0$.
+\subsection*{b.}
+$fg$ can be removable at 0, but $f$ can be not removable at $0$. Let $g = 0$. Then $fg = g = 0$ but $f$ can be anything at $0$ including essential or pole.
+\subsection*{c.}
+Consider 
+\[
+    f = 
+    \begin{cases} 
+        e^{iz}, &\text{ Re(z)} \ge 0  \\
+        1, &\text{ otherwise}
+    \end{cases}
+\]
+and 
+\[
+    g = 
+    \begin{cases} 
+        e^{-iz}, &\text{ Re(z)} < 0 \\
+        1, &\text{ otherwise}
+    \end{cases}
+\]
+Then $fg$ has a pole at $0$ but both $f,g$ has essential singularity at $0$. 
+\subsection*{d.}
+If neither $f$ and $g$ has an essential singularity at $0$, that is $a_n, b_n \ne 0$ for finitely many $n<0$, then $a_n b_k \ne 0$ for finitely many $n+k<0$, and hence $fg$ does not have an essential singularity at $0$.
+\end{document}
