@@ -1,0 +1,124 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\long\def\comment#1{}
+
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1 p.261}
+\[
+    \mathcal{L}(\sin(2t)) = \cfrac{2}{s^2+4}
+\]
+Hence, 
+\[
+    \mathcal{L}^{-1}\left(\frac{3}{s^2+4}\right) = \frac{3}{2}\sin(2t)    
+\]
+\newpage
+\section*{3 p.261}
+\[
+    \mathcal{L}(\frac{1}{s-a}) = e^{at}
+\]
+Hence, 
+\[
+    \mathcal{L}^{-1}\left(\frac{2}{s^2+3s-4}\right) = \frac{2}{5}\mathcal{L}^{-1}\left( \frac{1}{s-1} - \frac{1}{s+4} \right) = \frac{2}{5}e^t - \frac{2}{5}e^{-4t}
+\]
+\newpage
+\section*{5 p.261}
+\[
+    \mathcal{L}(\frac{1}{s-a}) = e^{at}
+\]
+Hence, 
+\[
+    \mathcal{L}^{-1}\left(\frac{2s-3}{s^2-4}\right) = \mathcal{L}^{-1}\left( \frac{1}{4(s-2)} + \frac{7}{4(s+2)} \right) = \frac{1}{4}e^{2t} + \frac{7}{4}e^{-2t}   
+\]
+\newpage
+\section*{7 p.261}
+\[
+    \mathcal{L}^{-1}\left(\frac{1-2s}{s^2+4s+5} \right) = \mathcal{L}^{-1} \left(\frac{-2(s+2) + 5}{(s+2)^2 + 1} \right) = e^{-2t} \mathcal{L}^{-1} \left( \frac{-2s+5}{s^2+1} \right) = e^{-2t} \left(-2 \cos(t) + 5\sin(t)\right)
+\]
+\newpage
+\section*{8 p.261}
+Let $Y(s) = \mathcal{L}[y(t)]$. Then 
+\begin{equation*}
+    \begin{aligned}
+        &y'' - y' -6y = 0\\
+        \implies &s^2 Y(s) - sy(0) - 6y'(0) - (sY(s) - y(0)) - 6Y(s)  = 0 \\
+        \implies &s^2 Y(s) - s +6 - sY(s) +1 -6Y(s) = 0 \\
+        \implies &Y(s) = \frac{s-7}{s^2-s-6} = \frac{9}{5(s+2)} - \frac{4}{5(s-3)}
+    \end{aligned}
+\end{equation*}
+Hence, the unique solution is 
+\[
+    y(t) = \frac{9}{5}e^{-2t} - \frac{4}{5}e^{3t}    
+\]
+\newpage
+\section*{10 p.261}
+Let $Y(s) = \mathcal{L}[y(t)]$. Then 
+\begin{equation*}
+    \begin{aligned}
+        &y'' - 2y' +2y = 0\\
+        \implies &s^2 Y(s) - sy(0) - 6y'(0) - 2(sY(s) - y(0)) + 2Y(s)  = 0 \\
+        \implies &s^2 Y(s)  - 6 - 2sY(s) + 2Y(s) = 0 \\
+        \implies &Y(s) = \frac{6}{s^2-s+2} = \frac{6}{(s-1/2)^2 +7/4}
+    \end{aligned}
+\end{equation*}
+Hence, the unique solution is 
+\[
+    y(t) = 6e^{t/2} \sin(\sqrt{7}t/2) \frac{2}{\sqrt{7}} = \frac{12\sqrt{7}}{7} e^{t/2} \sin\left( \frac{\sqrt{7}t}{2}\right)
+\]
+\newpage
+\section*{20a p.261}
+\begin{equation*}
+    \begin{aligned}
+        \mathcal{L}(\sin(t)) 
+        &= \mathcal{L}\left(\sum_{n=0}^\infty \frac{(-1)^n t^{2n+1}}{(2n+1)!}\right)  \\
+        &= \sum_{n=0}^\infty \mathcal{L}\left(\frac{(-1)^n t^{2n+1}}{(2n+1)!}\right)  \\
+        &= \sum_{n=0}^\infty \int_0^\infty e^{-st} \frac{(-1)^n t^{2n+1}}{(2n+1)!} dt \\
+        &= \sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!} \int_0^\infty e^{-st} t^{2n+1} dt \\
+        &= \sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!} \mathcal{L}(t^{2n+1}) \\
+        &= \sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!} \frac{(2n+1)!}{s^{2n+2}} \\
+        &= \sum_{n=0}^\infty \frac{(-1)^n}{s^{2n+2}} \\
+        &= \frac{1}{s^2} \sum_{n=0}^\infty \frac{(-1)^n}{(s^2)^n} \\
+        &= \frac{1}{s^2} \frac{1}{1-\frac{-1}{s^2}} \\
+        &= \frac{1}{s^2+1}
+    \end{aligned}
+\end{equation*}
+\newpage
+\section*{21a p.262}
+\begin{equation*}
+    \begin{aligned}
+        F(s) &= \int_0^\infty e^{-st} f(t) dt \\
+        \implies F'(s) &= \int_0^\infty \frac{\partial}{\partial s} (e^{-st} f(t)) \\
+        &= \int_0^\infty -te^{-st}f(t)dt \\
+        &= \mathcal{L}(-tf(t))
+    \end{aligned}
+\end{equation*}
+\newpage
+\section*{23 p.262}
+Let $g(t) = \sin(bt)$ 
+\[
+    F(s) = \mathcal{L}(g(t)) = \frac{b}{s^2+b^2}
+\]
+Hence, 
+\[
+    F''(s) = \mathcal{L}(t^2g(t)) = \mathcal{L}(f(t)) = \frac{\partial^2}{\partial^2 s}\frac{b}{s^2+b^2} = \dfrac{2b\left(3s^2-b^2\right)}{\left(s^2+b^2\right)^3}   
+\]
+
+\end{document}
