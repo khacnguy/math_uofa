@@ -1,0 +1,205 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepackage{hyperref}
+
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+We have that 
+\[
+    L^* = 
+    \begin{pmatrix}
+        -\lambda_{1 \to} & \lambda_{2 \to 1} \\
+        \lambda_{1 \to} & -\lambda_{2 \to}
+    \end{pmatrix}
+    = 
+    \begin{pmatrix}
+        -1 & 2 \\
+        1 & -2
+    \end{pmatrix}
+\]
+Hence, we have 
+\[
+    \begin{pmatrix}
+        -1 & 2 \\
+        1 & 1
+    \end{pmatrix}
+    \begin{pmatrix}
+        \pi(0) \\
+        \pi(1)
+    \end{pmatrix}
+    = 
+    \begin{pmatrix}
+        0 \\
+        1 
+    \end{pmatrix}
+\]
+which can be solved to $\pi(0) = \frac{2}{3}$ and $\pi(1) = \frac{1}{3}$. We also know that 
+\[
+    P_t(1 \to 1) = \frac{2}{3} + \frac{1}{3}e^{-3t}
+\]
+\[
+    P_t(2 \to 1) = \frac{2}{3} - \frac{2}{3}e^{-3t}
+\]
+\[
+    P_t(1 \to 2) = \frac{1}{3} - \frac{1}{3}e^{-3t}
+\]
+\[
+    P_t(2 \to 2) = \frac{1}{3} + \frac{2}{3}e^{-3t}
+\]
+and thus 
+\[
+    \lim_{t \to \infty} P_t(1 \to 1) = \frac{2}{3} 
+\]
+\[
+    \lim_{t \to \infty} P_t(2 \to 1) = \frac{2}{3} 
+\]
+\[
+    \lim_{t \to \infty} P_t(1 \to 2) = \frac{1}{3}
+\]
+\[
+    \lim_{t \to \infty} P_t(2 \to 2) = \frac{1}{3}
+\]
+\newpage
+\section*{2.}
+First, define a markov chain $A(t) = \begin{pmatrix} X(t) \\ \lambda(t) \end{pmatrix}$. Then let's redefine the states 
+\[
+    \begin{pmatrix} 0 \\ 0 \end{pmatrix} \text{ is state 0}
+\]
+\[
+    \begin{pmatrix} 0 \\ 1 \end{pmatrix} \text{ is state 1}
+\]
+\[
+    \begin{pmatrix} 1 \\ 0 \end{pmatrix} \text{ is state 2}
+\]
+\[
+    \begin{pmatrix} 1 \\ 1 \end{pmatrix} \text{ is state 3}
+\]
+\[
+    L^*_A/\Delta = 
+    \begin{pmatrix}
+        \Delta^2 - 2\Delta & 2\Delta - 2\Delta^2 & 0 & 8\Delta^2 \\
+        \Delta - \Delta^2 & 2\Delta^2 - 3\Delta & 0 & 4\Delta - 8\Delta^2 \\
+        \Delta - \Delta^2 & 2\Delta^2 & - \Delta & 2\Delta - 8\Delta^2 \\
+        \hdots
+    \end{pmatrix}
+    \cdot \frac{1}{\Delta}
+    \to
+    \begin{pmatrix}
+        -2 & 2 & 0 & 0 \\
+        1 & -3 & 0 & 4 \\
+        1 & 0 & -1 & 2 \\
+        \hdots
+    \end{pmatrix}
+\]
+as $\Delta \to 0$.
+Hence, we have that 
+\[
+    \begin{pmatrix}
+        -2 & 2 & 0 & 0 \\
+        1 & -3 & 0 & 4 \\
+        1 & 0 & -1 & 2 \\
+        1 & 1 & 1 & 1
+    \end{pmatrix}
+    \begin{pmatrix}
+        \pi(0) \\
+        \pi(1) \\
+        \pi(2) \\
+        \pi(3)
+    \end{pmatrix}
+    = 
+    \begin{pmatrix}
+        0 \\
+        0 \\
+        0 \\
+        1
+    \end{pmatrix}
+\]
+which can be solved 
+\[
+    \begin{pmatrix}
+        \pi(0) \\
+        \pi(1) \\
+        \pi(2) \\
+        \pi(3) 
+    \end{pmatrix}
+    = 
+    \begin{pmatrix}
+        \cfrac{2}{9}\\
+        \cfrac{2}{9}\\
+        \cfrac{4}{9}\\
+        \cfrac{1}{9}
+    \end{pmatrix}
+\]
+Thus $\pi(X = 0) = \frac{4}{9}$ and $\pi(X = 1) = \frac{5}{9}$
+\newpage
+\section*{3.}
+First, we have that 
+\[
+    \gamma_{X_u\to j}(u) = \frac{\lambda^2_{X_u\to j} u }{1 + \lambda_{X_u \to j} u}
+\]
+Then we can define 
+\[
+    m(X_u, j, u) = \frac{\gamma_{X_u \to j}}{\lambda_{X_u \to j}}-1 = \frac{\lambda_{X_u \to j}u}{1 + \lambda_{X_u \to j} u} - 1 = - \frac{1}{1 + \lambda_{X_u \to j}u}
+\]
+and 
+\[
+    l(X_u, u) = \lambda_{X_u \to} - \gamma_{X_u \to}(u) = \sum_{j \ne X_u} \lambda_{X_u \to j} - \frac{\lambda^2_{X_u \to j}u}{1+\lambda_{X_u \to j}u} = \sum_{j \ne X_u} \frac{\lambda_{X_u\to j}}{1 + \lambda_{X_u \to j}u}
+\]
+Thus we can find
+\[
+    dA_t = A_{t^-} m(X_t^-, X_t, t)dN_t + A_t l(X_t,t)dt
+\]
+And hence 
+\begin{align*}
+    A_t &= \exp\left(\int_0^t l(X_s, s) ds \right) \prod_{0 < s \le t} \left(1 + m(X_t^-, X_t, t)\Delta N_s \right) \\
+        &= \exp\left(\int_0^t \sum_{j \ne X_s} \frac{\lambda_{X_s\to j}}{1 + \lambda_{X_s \to j}s} ds \right) \prod_{0 < s \le t} \left(1 - \frac{\Delta N_s}{1 + \lambda_{X_{s-} \to X_s}s}\right) \\
+        &= \exp\left(\sum_{X_t \ne j} \ln(1 + \lambda_{X_t \to j}t)\right)  \prod_{0 < s \le t} \left(1 - \frac{\Delta N_s}{1 + \lambda_{X_{s-} \to X_s}s}\right) \\
+        &= \prod_{X_t \ne j} (1 + \lambda_{X_t \to j} t)\prod_{0 < s \le t} \left(1 - \frac{\Delta N_s}{1 + \lambda_{X_{s-} \to X_s}s}\right) \\
+\end{align*}
+so that 
+\[
+    E^Q[A_tf(X_t)|\mathcal{F}_s] - A_s f(X_s) - \int_s^t E^Q[A_u L_uf(X_u)|\mathcal{F}_s] du = 0
+\]
+\newpage
+\section*{4.}
+We have that 
+\begin{align*}
+    E^Q[E^P[Z_t | \mathcal{G}_s] A_s 1_G] 
+    &= E^Q[E^Q[A_sE^P[Z_t | \mathcal{G}_s] 1_G |\mathcal{G}_s]] \\
+    &= E^Q[E^Q[A_T|\mathcal{G}_s]E^P[Z_t|\mathcal{G}_s]1_G] \\
+    &= E^Q[E^Q[A_TE^P[Z_t|\mathcal{G}_s]1_G|\mathcal{G}_s]] \\
+    &= E^Q[A_TE^P[Z_t|\mathcal{G}_s] 1_G] \\
+    &= E^P[E^P[Z_t|\mathcal{G}_s] 1_G] \\
+    &= E^P[E^P[Z_t 1_G | \mathcal{G}_s]] \\
+    &= E^P[Z_t 1_G] \\
+    &= E^Q[A_t Z_t 1_G]
+\end{align*}
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
