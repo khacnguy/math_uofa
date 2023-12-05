@@ -1,0 +1,106 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\long\def\comment#1{}
+
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1}
+Suppose $\exp(f(z))$ has a pole at 0 , then for all $M > 0$, there is some $\epsilon>0$ such that $|\exp(f(z))| = \exp(Re(f(z)))> M$ for all $|z|<\epsilon$. 
+But that means that $0$ is not essential and hence is a pole. But if $0$ is a pole at 0 for $\exp(f(z))$, $0$ is removeable for $\exp(-f(z))$ and hence $0$ is removable for $-f$ and hence $f$. 
+If $0$ is a removeable singularity for $f$ then it is also a removable for $\exp(f)$.
+\newpage
+\section*{2.}
+If $f(z)$ has an essential singularity at $0$, then there is a closed neighborhood $B_\epsilon$ around 0  such that $f(B_\epsilon)$ is dense in $C$ but then there is $z \in D$ such that $f(z) > 1$ which is a contradiction as $f$ is 1-to-1
+\newpage
+\section*{3.}
+If all of $f_k$ are polynomials, then obviously $f_1 \circ f_2 \circ \hdots f_n$ is a polynomial. \\ 
+Consider a non-constant polynomial $f\circ g$, then $(f \circ g)(1/z)$ does not have essential singularity at 0.
+Thus there is a $U = \{z \in \mathbb{C}: |z| > r\}$ such that $(f \circ g)(U)$ is not dense in $\mathbb{C}$. 
+Hence, there is a disk $B_{\epsilon}(z_0) \not\subset (f\circ g)(U)$\\
+If $g(\mathbb{C})$ is dense in $\mathbb{C}$, then $B_\epsilon(z_0) \not\subset f(\mathbb{C})$ 
+which means that $\frac{1}{f(z) -z_0}$ is bounded and entire thus $f$ and consequently $f \circ g$ are constant. 
+Therefore, $g(\mathbb{C})$ is not dense in $\mathbb{C}$ and hence $g(1/z)$ does not have a essential singularity at 0 
+and hence $g$ is a non-constant polynomial. Thus, there is $g(U) =  \mathbb{C} \backslash B_{r'}(0)$ and since $(f\circ g)(U)$ is not dense 
+$f(1/z)$ has no essential singularity at $0$ and thus is also a non-constant polynomial.
+\section*{4.}
+Consider the family of closed smooth curve
+\[
+    \gamma_n: [0,2\pi] \to \mathbb{C}, \indent t \to cos(t)/n + 1 - 1/n + isin(t)/n
+\]
+which is $D_n := \partial B_{1/n}(1-1/n)$ when materialized. Then we can see that $D_1 \supset D_2 \supset \hdots$. \\
+Note that $\gamma := \gamma_1 \oplus \gamma_2 \oplus \hdots \gamma_{2022}$ is a a piecewise smooth curve.  \\
+Then, as for all $z \in D_n$, if $i\le n$
+\[
+    \frac{1}{2\pi i}\int_{\gamma_i} \frac{1}{\zeta - z} d\zeta = 1 
+\]
+and $0$ if $i > n$. We have that for all $z \in D_n$
+\begin{align*}
+    \frac{1}{2\pi i}\int_\gamma \frac{1}{\zeta - z} d\zeta 
+    &= \frac{1}{2\pi i}\int_{\gamma_1 \oplus \gamma_2 \oplus \hdots \oplus \gamma_{2022}} \frac{1}{\zeta - z} d\zeta \\
+    &= \frac{1}{2\pi i}\sum_{i = 1}^{2022} \int_{\gamma_i} \frac{1}{\zeta - z} d\zeta \\
+    &= n
+\end{align*}
+If $z \notin B_1(0)$ then $\nu(\gamma, z) = 0$. 
+\newpage
+\section*{5.}
+\subsection*{a.}
+We have that $q(z) = z^2 + 2z +2 = 0 \iff z = -1 \pm i$, and 
+\[
+    \text{res}\left(\frac{e^{iz}}{z^2+2z+2}, -1 + i\right) = \lim_{z \to -1+i} \frac{e^{iz}}{z+1+i} = \frac{e^{-1-i}}{2i}
+\]
+Thus 
+\begin{align*}
+    \int_{-\infty}^\infty \frac{\cos(x)}{x^2+2x+2} dx 
+    &= \text{Re}\left( \int_{-\infty}^\infty \frac{e^{ix}}{x^2+2x+2} dx \right) \\
+    &= \text{Re}\left(2\pi i \text{res}\left( \frac{e^{iz}}{q}, -1+i \right) \right)\\
+    &= \text{Re}(\pi e^{-1-i}) \\
+    &= \pi e^{-1}\cos(-1)
+\end{align*}
+\subsection*{b.}
+Let 
+\[
+    \gamma_1: [0,2\pi/2023] \to \mathbb{C}, \indent t \to Re^{it}
+\]
+and 
+\[
+    \gamma_2: [0, R] \to \mathbb{C}, \indent t \to te^{i2\pi /2023}
+\]
+We have simple pole at $z_0 = e^{i2\pi /2023}$. Hence, 
+\[
+    \int_{\gamma_1} f(z)dz - \int_{\gamma_2} f(z) dz + \int_0^\infty \frac{x}{x^{2023} +1} dx =  2\pi i \text{res}(f, z_0) = - \frac{2\pi i}{2023} e^{2i\pi/2023}
+\]
+We have that 
+\[
+    \left|\int_{\gamma_1} f(z) dz \right| \le \frac{R}{R^{2023}+1} \cdot \frac{2\pi}{2023} \to 0
+\]
+as $R \to 0$, and by letting $z = x e^{i2\pi /2023}$
+\[
+    \int_{\gamma_2} f(z) dz = e^{4\pi i/2023} I
+\]
+Then 
+\[
+    I - e^{4\pi i/2023}I = -\frac{2\pi i}{2023} e^{2i \pi/2023}
+\]
+Hence, 
+\[
+    I = \frac{2\pi i}{2023(e^{2\pi i/2023} + e^{-2\pi i/2023})} = \frac{\pi}{2023 \sin(2\pi/2023)}
+\]
+\end{document}
