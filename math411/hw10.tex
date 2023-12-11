@@ -1,0 +1,103 @@
+ \documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepackage{hyperref}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\pgfplotsset{compat = newest}
+\pgfplotsset{my style/.append style = {axis x line = middle, axis y line = middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+\begin{document}
+\section*{1.}
+We have that 
+\[
+    \frac{n^2+a^2}{(n^2-a^2)^2} = \frac{1}{2(n+a)^2} + \frac{1}{2(n-a)^2}
+\]
+Let $f = \cfrac{1}{(z+a\pi)^2 \tan(z)}$. Then $f$ has a simple pole at $-a\pi$ and $N\pi$ for all $N \in \mathbb{Z}$. 
+We have 
+\[
+    \text{Res}(f, N\pi) = \lim_{z \to N\pi} (z-N\pi) f(z) = \frac{1}{(N+a)^2 \pi^2} \lim_{z \to N\pi} \frac{z-N\pi}{\tan(z)} = \frac{1}{(N+a)^2 \pi^2}
+\]
+and 
+\[
+    \text{Res}(f, -a\pi) = \frac{d}{dz} \left((z+a\pi)^2 f(z)\right)_{z=-a\pi} = -\frac{1}{\sin^2(-a\pi)} 
+\]
+We also have that 
+\begin{align*}
+    \lim_{n \to \infty} \left|\int_{\partial D_n} \frac{dz}{(z+a\pi)^2 \tan(z)}\right| = 0 
+\end{align*}
+as the circumference of a square is $4 (N\pi + \pi/2)$ and for $z = x +iy$, we have 
+\[
+    \lim_{x \to \pm \infty} |(z+a\pi)^2| = \infty (\text{"with degree 2"}) \text{ and } \lim_{x \to \pi/2} |\tan(z)| = \infty (\text{"with degree 1"})
+\]
+and similarly for $y$. \\
+Thus 
+\begin{align*}
+    - \frac{1}{\sin^2(-a\pi)} + \sum_{N = -\infty}^\infty \frac{1}{(N+a)^2 \pi^2} = 0
+\end{align*}
+Thus 
+\[
+    \sum_{N = 1}^\infty \frac{1}{\pi^2}\left(\frac{1}{(N+a)^2} + \frac{1}{(N-a)^2}\right) + \frac{1}{a^2\pi^2} = \frac{1}{\sin^2(a\pi)}
+\]
+and hence
+\[
+    \sum_{n=1}^\infty \frac{n^2+a^2}{(n^2-a^2)^2} = \frac{1}{2} \left(\frac{1}{\sin^2(a\pi)} - \frac{1}{a^2\pi^2}\right) \pi^2 = \frac{\pi^2}{2}\left(\frac{1}{\sin^2(a\pi)} - \frac{1}{a^2\pi^2}\right)
+\]
+\newpage
+\section*{2.}
+Suppose that $f(z)$ has an essential singularity at 0. Then by open mapping theorem, there exists $r>0$ such that 
+\[
+    f(B) \supset D \text{ for } B = \left\{ \left|z-\frac{1}{2}\right| < \frac{1}{4} \right\} \text{ and } D = \left\{\left|w - f\left(\frac{1}{2}\right)\right| < r \right\}
+\]
+Let $U = \{0 < |z|<1/4\}$. Since $B \cap U = \varnothing$ and $f$ is 1-to-1, 
+\[
+    f(B) \cup f(U) = \varnothing
+\]
+and hence
+\[
+    f(U) \subset \mathbb{C} \backslash f(B) \subset \mathbb{C} \backslash D
+\]
+and 
+\[
+    \overline{f(U)} \subset \overline{\mathbb{C} \backslash D} = \mathbb{C} \backslash D
+\]
+But by Casorati-Weierstrass, $\overline{f(U)} = \mathbb{C}$ which is a contradiction.
+\newpage
+\section*{3.}
+If $f/g \circ \gamma$ is positive and real at $z_0$ then we have that $f/g(z_0) = c$
+\[
+    |a_1f(z) + b_1g(z)| + |a_2f(z) + b_2g(z)| = |f(z)|(|a_1 + b_1c + a_2 + b_2c|) = |(a_1 + a_2)f(z) + (b_1 + b_2)g(z)|
+\]
+which is a contradiction, hence $f/g \circ \gamma$ is contained in $\mathbb{C} \backslash [0, \infty)$.
+Then applying the argument principle to $f/g$ on the curve $\gamma$, we have that 
+\[
+    \sum_{p \in Z_f} \nu(\gamma, p) \text{mult}_p f = \sum_{p \in Z_g} \nu(\gamma, p) \text{mult}_p g
+\]
+\newpage
+\section*{4.}
+Let $h = 1 + \frac{f}{g}$, hence $h(D) \subseteq \{z: \text{Re}(z)> 0\}$. Thus by the argument principle, the zeros of $f+g$ is the same as the zeros of $g$. 
+Therefore, $f = 0$ whenever $g=0$ which implies that $g \ne 0$ in $\partial D$. Then $|f/g|$ is holomorphic on $D$ thus attain a local maximum on $\partial D$ which is less than 1, which confirms that $|f|<|g|$
+\newpage
+\section*{5.}
+First, we can rewrite $f'(z) = n a_n(z-z_1)(z-z_2)\hdots(z-z_{n-1})$ and since $f'(z) \ne 0 \forall z \in D$, we have that $|z_k|\ge1$, 
+then $f'(0) = n a_n(-z_1)(-z-2)\hdots (-z_{n-1}) = 1$ thus $|a_n| < \frac{1}{n}$. \\
+On the other hand 
+\[
+    f''(z) = \sum_{k=1}^{n-1} \frac{f'(z)}{z-z_k}
+\]
+and hence 
+\[
+    2|a_2| = |f''(0)| = \left|\sum_{k=1}^{n-1} \frac{1}{-z_k} \right| \le n-1 \implies |a_2| \le \frac{n-1}{2}
+\]
+\end{document}
