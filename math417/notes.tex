@@ -40,9 +40,10 @@
 \subsection{Countable sets}
 \begin{itemize}
   \item Bernstein's theorem: if $\text{card}(X) \le \text{card}(Y)$ and $\text{card}(Y) \le \text{card}(X)$ then $\text{card}(X) = \text{card}(Y)$
-  \item \text{card}(\mathcal{P}(\mathbb{N})) = \text{card}(\mathbb{R})
+  \item $\text{card}(\mathcal{P}(\mathbb{N})) = \text{card}(\mathbb{R})$
 \end{itemize}
-\subsection{Properties of the real line \textorpdfstring{$\mathbb{R}$}}
+iii
+\subsection{Properties of the real line $\protect\mathbb{R}$}
 \begin{definition}
   The set of extended real $\overline{\mathbb{R}}:=  \mathbb{R} \cup \{-\infty, \infty\}$. \\
   For $x \in \mathbb{R}, x \pm \infty = \pm \infty$ and 
@@ -53,15 +54,14 @@
       -\infty, & \text{if } x < 0 \\
       0, & \text{if } x = 0
     \end{cases}
-    But $\infty - \infty$ is undefined.
   \end{displaymath} 
+    But $\infty - \infty$ is undefined.
 \end{definition}
-\begin{theorem}[Representation of open sets in $\mathbb{R}$]
+\begin{theorem}[Representation of open sets in $\protect\mathbb{R}$]
   Every nonempty open set $\mathcal{O}$ in $\mathbb{R}$ can be written as at most countable union of pairwise disjoin open intervals. That is $\mathcal{O} = \sqcup_{j=1}^\infty (a_j, b_j)$ such that $(a_i, b_i) \cap (a_j, b_j) = \varnothing$ for all $i \ne j$ (some of the intervals may be empty. If such are ignored, the representation is unique).
 \end{theorem}
 \begin{exmp}
-  Let $f: \mathbb{R} \to \mathbb{R}$ be an increasing function. Let $D$ denote the set of all points $x \in \mathbb{R}$ such that $f$ is not continuous at $x$, that is $D = \{x \in \mathbb{R}: f(x-) \ne f(x+)}$. Then $D$ is countable.
+  Let $f: \mathbb{R} \to \mathbb{R}$ be an increasing function. Let $D$ denote the set of all points $x \in \mathbb{R}$ such that $f$ is not continuous at $x$, that is $D = \{x \in \mathbb{R}: f(x-) \ne f(x+)\}$. Then $D$ is countable.
 \end{exmp}
-
-
 \end{document}
+
