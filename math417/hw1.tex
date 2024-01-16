@@ -1,0 +1,133 @@
+
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepackage{hyperref}
+
+
+
+\newtheorem{definition}{Definition}[section]
+\newtheoremstyle{mystyle}%                % Name
+  {}%                                     % Space above
+  {}%                                     % Space below
+  {\itshape}%                                     % Body font
+  {}%                                     % Indent amount
+  {\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  { }%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+
+\theoremstyle{mystyle}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem*{exmp}{Example}
+\begin{document}
+\section*{1.}
+\subsection*{1.}
+If $x \in \liminf_{n\to \infty} E_n$ then, there exists $j \in \mathbb{N}$ such that $\forall k \ge j, x \in E_k$ which means that $x \in \cup_{k=j}^\infty E_k \subseteq \cup_{k=j-1}^\infty E_k \subseteq \hdots \subseteq \cup_{k=1}^\infty E_k$i thus $x \in \cap_{j=1}^\infty \cup_{k=j}^\infty E_k =: \limsup_{n \to \infty} E_n$.
+\subsection*{2.}
+$x \in \liminf_{n \to \infty}(E_n \cap F_n)$ 
+$\iff$ there exists $j \in \mathbb{N}$ such that $\forall k \ge j, x \in E_k \cap F_k$ which is equivalent to $x \in E_k$ and $x \in F_k$ 
+$\iff$ $x \in \liminf_{n\to \infty} E_n$ and $x \in \liminf_{n \to \infty} F_n$ 
+$\iff$ $x \in \liminf_{n\to \infty} E_n \cap \liminf_{n \to \infty} F_n$ 
+\subsection*{3.}
+Base case: n=1
+\[
+  \cup_{j=1}^1 E_j := E_1 = E_1 \backslash \underbrace{\cup_{k=1}^0 E_k}_{\varnothing} := F_1 
+\]
+Inductive steps: if the equation holds for $n$ then it also holds for $n+1$.
+\[
+  \cup_{j=1}^{n+1} E_j = \cup_{j=1}^n E_j \cup E_{n+1} = \cup_{j=1}^n F_j \cup E_{n+1} \stackrel{\text{(1)}}{=} \cup_{j=1}^n F_j \cup \underbrace{E_{n+1} \backslash (\cup_{k=1}^n E_k)}_{F_{n+1}} = \cup_{j=1}^{n+1} F_j  
+\]
+as $\cup_{k=1}^n E_k = \cup_{k=1}^n F_k \implies E_{n+1} \backslash (\cup_{k=1}^n E_k) = F_{n+1}$.
+\newpage
+\section*{2.}
+Assume $X$ is non-empty, then there exists $z_0 \in X$, thus fixing $z_0 = (x_0,y_0)$, we can define an equivalence class, $\xi_r$ as follows: 
+$p$ is in the class $\xi_r$ if 
+\[
+  |p-x_0| = r
+\]
+where $r$ is some rational number so that the set containing all classes $\xi_r$ is countable. Next, define the function 
+\[
+  f_r: [0, 2\pi] \to \mathbb{R}^2, \indent t \to (x_0 + r\cos(t), x_0 + r\sin(t))
+\]
+such that $\xi_r \subseteq \text{Img}(f_r)$. 
+
+WLOG, assume that $f_r(0) \in X$, then 
+as the function \\ 
+$g(\theta) =  |f_r(\theta) - f_r(0)|$ is a continuous function that strictly increasing on $[0, \pi]$ from $0$ to $2r$ and then strictly decreasing on $[\pi,2\pi]$ back to 0, there is a bijective function that maps $[0,\pi] \to [0, 2r]$ and $[\pi, 2\pi] \to [0,2r]$. Thus, the set of all points in each $\xi_r$ is countable because $\mathbb{Q}_{[0,2r]}$ is countable. And since the set containing all classes $\xi_r$ is also countable, $X$ is countable.
+\newpage
+\section*{3.}
+\subsection*{1.}
+Since $A \subseteq A \cup B$, $\text{card} (A) \le \text{card}(A \cup B)$. Now suppose $A$ is countable, then we can write $A$ and $B$ as $\{a_1, a_2, \hdots\}$ and $\{b_1, b_2, \hdots\}$. Therefore, it is possible to construct a bijection function between $A$ and $A\cup B$
+\[
+  \phi(a_i) = 
+  \begin{cases}
+    b_{i/2}, & \text{ if } i \text{ is even} \\ 
+    a_{(i+1)/2}, & \text{ if } i \text{ is odd} \\ 
+  \end{cases}
+\]
+and thus having the same cardinality. We can extend that to the case where $A$ is not countableas there is an infinite countable subset $\{a_1, a_2, \hdots \} = \tilde{A} \subset A$ and therefore we can construct a bijection between $A$ and $A \cup B$ based on the previous bijection.
+\[
+  \psi(a) = 
+  \begin{cases}
+    \phi(a), & \text{ if } a \in \tilde{A} \\
+    a, & \text{ if } a \in A \backslash \tilde{A}
+  \end{cases}
+\]
+where in the case $a \in \tilde{A}$, there is $a_i$ such that $a = a_i$
+\[
+  \phi(a) = \phi(a_i) = \begin{cases}
+    b_{i/2}, & \text{ if } i \text{ is even} \\ 
+    a_{(i+1)/2}, & \text{ if } i \text{ is odd} \\ 
+  \end{cases}
+\]
+\subsection*{2.}
+For every $x \in E$, there exists $\delta_x > 0 $ such that $(x-\delta_x, x) \cap B = \varnothing$, and since $\mathbb{Q}$ is dense, 
+we can create a function $f$ that maps $x$ to a rational number in $(x-\delta_x, x)$. We claim that $f$ is injective. \\
+For any $x_1 \ne x_2 \in E$, if $f(x_1) = f(x_2)$, then $f(x_1) \in (x_1-\delta_{x_1}, x_1)$ and $f(x_2) \in (x_2 - \delta_{x_2}, x_2)$. 
+But we have $(x_1 - \delta_{x_1}, x_1) \cap (x_2 - \delta_{x_2}, x_2) = \varnothing$ else $B \ni x_1 \in (x_2 - \delta_{x_2}, x_2)$ or $B \ni x_2 \in (x_1 - \delta_{x_1}, x_1)$. Therefore, $f(x_1) \ne f(x_2)$ and hence a contradiction. 
+Thus $f$ is injective.
+\newpage
+\section*{4.}
+\subsection*{a.}
+For any set $E_k = \{x \in E: x \ge \frac{1}{k} \}$, we can see that $\sum_{x \in E}x \ge \sum_{x \in E_k} x \ge \frac{j}{k}$ where $j$ is the number of elements in $E_k$. Thus as $\sum_{x \in E} x < \infty$, there is finite countable elements in $E_k$. We also have that 
+\[
+  E = \bigcup_{k \in N} E_k
+\]
+Thus $E$ is at most countable.
+\subsection*{b.}
+Let $E_k = \{x_i: i \le k\}$ and since every element in $E$ is positive, the series strictly increasing and $\lim_{n \to \infty} \sum_{i=1}^n x_i = \infty$ or $\lim_{n \to \infty} \sum_{i=1}^n x_i = L$ for some $L >0 \in \mathbb{R}$. 
+
+If $\lim_{n \to \infty} \sum_{i=1}^n x_i = \infty$, then for every $M > 0$, there exists $k_0$ such that for every $k>k_0$, $\sum_{x \in E_k} x= \sum_{i=1}^k x_i > M$ thus $\sup_{F \in \mathcal{F}} s_F = \sum_{x \in E} x = \infty = \lim_{n \to \infty} \sum_{i=1}^n x_i$.
+
+If $\lim_{n \to \infty} \sum_{i=1}^n x_i = L$, then we consider two cases 
+\begin{itemize}
+  \item If $\sup_{F \in \mathcal{F}} s_F > L$, then there is a subset $F$ such that $s_F \ge L$ and since $E$ is infinitely countable, we can let $F' = F \cup \{x_0\}$ so that $s_{F'} > L$. Since $F'$ is finite, and the mapping which we called $f$ is bijective. We can find the largest index $k = \max\{f^{-1}(x): x \in F' \}$, and thus $\lim_{n \to \infty} \sum_{i=1}^n x_i > \sum_{i=1}^k x_i > s_{F'} > L$ which is a contradiction.
+  \item If $\sup_{F \in \mathcal{F}} s_F < L$, then there exists an $\epsilon >0$ so that for every $F \in \mathcal{F}$, $L - s_F > \epsilon$ but this contradicts with $\lim_{n\to \infty} \sum_{i=1}^n x_i = L$ as for every $\epsilon >0$ there exists $k_0$ such that for every $k>k_0$, $L - \underbrace{\sum_{i=1}^k x_i}_{s_{E_k}}< \epsilon$. 
+    Therefore, $\sup_{F \in \mathcal{F}} s_F = L = \lim_{n \to \infty} \sum_{i=1}^n x_i$
+\end{itemize}
+
+
+
+\newpage
+\section*{5.}
+1. $\varnothing$ is countable. \\
+2. If $E \subseteq S$, then either $E$ or $E^c$ is countable, therefore $E^c \subseteq S$. \\
+3. If $E_k \subseteq S$ are all countable then $\bigcup_{n=1}^\infty E_n \in S$. If one or more of $E_k$ are not countable then $\bigcap_{n=1}^\infty E_n$ is countable thus $\bigcup_{n=1}^\infty E_n \in S$
+Therefore, $S$ is a $\sigma$-algebra.
+Every singleton is contained in $S$. 
+
+
+\end{document}
