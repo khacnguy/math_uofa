@@ -125,9 +125,17 @@ If $\lim_{n \to \infty} \sum_{i=1}^n x_i = L$, then we consider two cases
 \section*{5.}
 1. $\varnothing$ is countable. \\
 2. If $E \subseteq S$, then either $E$ or $E^c$ is countable, therefore $E^c \subseteq S$. \\
-3. If $E_k \subseteq S$ are all countable then $\bigcup_{n=1}^\infty E_n \in S$. If one or more of $E_k$ are not countable then $\bigcap_{n=1}^\infty E_n$ is countable thus $\bigcup_{n=1}^\infty E_n \in S$
-Therefore, $S$ is a $\sigma$-algebra.
-Every singleton is contained in $S$. 
+3. If $E_k \subseteq S$ are all countable then $\bigcup_{n=1}^\infty E_n \in S$. If one or more of $E_k$ are not countable then $\bigcap_{n=1}^\infty E_n$ is countable thus $\bigcup_{n=1}^\infty E_n \in S$ \\
+Therefore, $S$ is a $\sigma$-algebra. \\
+Since every singleton is contained in $S$ as it is countable and every countable set in $S$ is a union of singleton, $\sigma(P) \subseteq S$ and every countable set is in $\sigma(P)$. \\
+Therefore, for every $E \in S$, 
+\begin{itemize}
+  \item if $E$ is countable then $E \in \sigma(P)$. 
+  \item if $E^c$ is countable, then $X \backslash E^c = E \in \sigma(P)$
+\end{itemize}
+Thus, $S \subseteq \sigma(P)$ and therefore $S = \sigma(P)$
+
+
 
 
 \end{document}
