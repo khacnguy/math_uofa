@@ -1,0 +1,220 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepackage{hyperref}
+
+
+
+\newtheorem{definition}{Definition}[section]
+\newtheoremstyle{mystyle}%                % Name
+  {}%                                     % Space above
+  {}%                                     % Space below
+  {\itshape}%                                     % Body font
+  {}%                                     % Indent amount
+  {\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  { }%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+
+\theoremstyle{mystyle}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem*{exmp}{Example}
+\begin{document}
+\section*{1.}
+\subsection*{1.}
+For any $\varepsilon = (\varepsilon_n) \ne \tilde{\varepsilon} = (\tilde{\varepsilon}_n)$, there is a $N \in \mathbb{N}$ such that $\varepsilon_n = \tilde{\varepsilon}_n$ for all $n < N$ and $\varepsilon_N \ne \tilde{\varepsilon}_N$. WLOG, let $\varepsilon_N = 2$ and $\tilde{\varepsilon}_N = 0$. Thus we have 
+\[
+  g(\varepsilon) = \sum_{n=1}^\infty \frac{\varepsilon_n}{3^n} \ge \sum_{n=1}^{N-1} \frac{\varepsilon_n}{3^n} + \displaystyle\frac{2}{3^N}
+\]
+and 
+\[
+  g(\tilde{\varepsilon}) 
+  = \sum_{n=1}^\infty \displaystyle\frac{\tilde{\varepsilon}_n}{3^n} 
+  \le \sum_{n=1}^{N-1} \displaystyle\frac{\tilde{\varepsilon}_n}{3^n} + \sum_{n=N+1}^\infty \displaystyle\frac{2}{3^n}
+  = \sum_{n=1}^{N-1} \displaystyle\frac{\varepsilon_n}{3^n} + \underbrace{\displaystyle\frac{2}{3^{N+1}} \cdot \frac{1}{1-1/3}}_{\frac{1}{3^N}}
+\]
+Thus $g(\varepsilon) > g(\tilde{\varepsilon})$ and therefore $g$ is injective.
+\subsection*{2.}
+Consider the function 
+\[
+  p: \{0,1\}^\mathbb{N} \to [0,1], \indent (\epsilon_n)_{n=1}^\infty \to \sum_{n=1}^\infty \displaystyle\frac{\epsilon_n}{2^n}  
+\]
+Since there is a natural bijection $h: \{0,1\}^\mathbb{N} \to \{0,2\}^\mathbb{N}$, $p = p \circ h^{-1} \circ h = g \circ h$ is injective. We claim that $p$ is also surjective. For every $x \in [0,1]$, there exists a sequence $\varepsilon =  (\varepsilon_n)_{n=1}^\infty$ such that $g(\varepsilon) = x$ 
+\[
+  \left|\sum_{n=1}^N \frac{\varepsilon_n}{2^n} - x \right| < \epsilon
+\]
+To construct the sequence $\varepsilon$, start from $n=0$, 
+\begin{itemize}
+  \item if $\sum_{i=1}^n + \displaystyle\frac{1}{2^{n+1}} < x$, then let $\varepsilon_{n+1} = 1$
+  \item if $\sum_{i=1}^n + \displaystyle\frac{1}{2^{n+1}} > x$, then let $\varepsilon_{n+1} = 0$ 
+  \item if $\sum_{i=1}^n + \displaystyle\frac{1}{2^{n+1}} = x$, then let $\varepsilon_{n+1} = 1$ and $\varepsilon_{i} = 0$ for all $i>n+1$ then stop the process
+\end{itemize}
+Increase $n$ by 1 and start the process again. \\
+Since $\displaystyle\frac{1}{2^n} \to 0$ as $n \to \infty$ and $\sum_{i=1}^n \frac{1}{2^i} \le x$ for all $n \in \mathbb{N}$. Thus for every $\varepsilon >0$, there exists $n_0 \in N$ such that for every $n>n_0$, $0 \le x - \sum_{i=1}^n \frac{1}{2^i}< \epsilon$, and therefore $p(\varepsilon) = \sum_{n=1}^\infty \frac{1}{2^n} = x$. Thus, $p$ is bijective. 
+Now consider the function 
+\[
+  k: (0,1) \to \mathbb{R}, \indent x \to \tan\left(2 x \pi - \pi \right)
+\]
+We have that $k$ is bijective thus $(0,1) \sim \mathbb{R}$. $(0,1) \sim [0,1]$ as the map
+\[
+  \phi(x) = 
+  \begin{cases}
+    \frac{1}{n+1} & \text{, if } x = \frac{1}{n} \text{ for some } n \in \mathbb{N} \\
+    1 & \text{, if } x = 0 \\
+    x & \text{, otherwise }
+  \end{cases}
+\]
+is bijective and thus $\{0,1 \}^\mathbb{N} \sim \mathbb{R}$.  
+\subsection*{3.}
+$\{0,2\}^\mathbb{N} \sim \{0,1\}^\mathbb{N}$, thus $\{0,2\}^\mathbb{N} \sim \mathbb{R}$ and $\mathbb{R} \sim C$. 
+\subsection*{4.}
+Also, if $N_x$ is finite, we set $a_{n, x} = 0$ for all $n>N_x$ so that $\sum_{n=1}^\infty \frac{a_{n,x}}{3^n} = x$ regardless of $N_x$. \\   
+For any $x \ne y$, that is $\sum_{n=1}^{N_x} \frac{a_{n,x}}{3^n} \ne  \sum_{n=1}^{N_y} \frac{a_{n,y}}{3^n}$, then as we know the function from subquestion 1 is injective, we have that $(a_{n,x}) \ne (a_{n,y})$, that is there exists $N \in \mathbb{N}$ such that for all $n<N, a_{n,x} = a_{n,y}$ and $a_{N,x} \ne a_{N,y}$. 
+\begin{itemize}
+  \item In case $N_x > N, N_y > N$, $a_{N,x} > a_{N,y} \implies x>y$ as \\
+    \[
+      \sum_{n=1}^{\infty} \frac{a_{n,x}}{3^n} - \frac{a_{n,y}}{3^n} 
+      = \frac{2}{3^N} + \sum_{n=N+1}^\infty \frac{a_{n,x} - a_{n,y}}{3^n} \\
+      \ge \frac{2}{3^N} - \underbrace{\sum_{n=N+1}^\infty \frac{2}{3^n}}_{1/3^N} 
+      > 0
+    \]
+    and thus because of $a_{N,x} \ne a_{N,y}, x \ne y$ by assumption and WLOG, we have $a_{N,x} < a_{N,y} \iff x < y$. 
+  \item In case $N_y > N, N_x \le N$ which is $N_x = N$ then $a_{N,x} = 1$. If $a_{N,y} = 2$ then obviously $x<y$, if $a_{N,y} = 0$ then since $x \ne y$, there is $n_0$ such that $a_{n_0,y} - a_{n_0,x} < 2$ and hence 
+    \begin{align*}
+       \sum_{n=1}^\infty \frac{a_{n,y} - a_{n,x}}{3^n} 
+       &= -\frac{1}{3^N} + \sum_{n=N+1}^\infty \frac{a_{n,y}- a_{n,x}}{3^n} \\ 
+       &= -\frac{1}{3^N} + \sum_{\substack{n=N+1 \\ n\ne n_0}}^\infty \frac{a_{n,y} - a_{n,x}}{3^n} + \frac{a_{n_0,y} - a_{n_0,x}}{3^{n_0}} \\
+       &<   -\frac{1}{3^N} + \sum_{n=N+1}^\infty \frac{2}{3^n} \\ 
+       &= 0
+    \end{align*}
+\end{itemize}
+Finally, we can conclude that if $x<y$, then there exists $N \in \mathbb{N}$ such that for all $n<N$, $a_{n,x} = a_{n,y}$ and there is three cases 
+\begin{itemize}
+  \item $a_{N,x} = 0, a_{N,y} = 2$, thus $b_{N,x} = 0 , b_{N,y} = 1$ 
+    \begin{align*}
+      f(y) - f(x) 
+      &= \sum_{n=1}^\infty \frac{b_{n,y} - b_{n,x}}{2^n} \\
+      &= \frac{1}{2^N}+\sum_{n=N+1}^\infty \frac{b_{n,y} - b_{n,x}}{2^n} \\
+      &\ge \frac{1}{2^N} + \sum_{n=N+1}^\infty \frac{-1}{2^n} \\
+      &= \frac{1}{2^N} - \frac{1}{2^N} = 0  
+    \end{align*}
+  \item $a_{N,x} = 1, a_{N,y} = 2$, thus $b_{N,x} = b_{N,y} = 1$ 
+    \begin{align*}
+      f(y) - f(x) 
+      &= \sum_{n=1}^\infty \frac{b_{n,y} - b_{n,x}}{2^n} \\
+      &= \sum_{n=N+1}^\infty \frac{b_{n,y} - b_{n,x}}{2^n} \\
+      &= \sum_{n=N+1}^\infty \frac{b_{n,y}}{2^n} \ge 0
+    \end{align*}
+  \item $a_{N,x} = 0$, thus $b_{N,x} = 0, b_{N,y} = 1$. 
+    \begin{align*}
+      f(y) - f(x) 
+      &= \sum_{n=1}^\infty \frac{b_{n,y} - b_{n,x}}{2^n} \\
+      &= \frac{1}{2^N}+\sum_{n=N+1}^\infty \frac{- b_{n,x}}{2^n} \\
+      &\ge \frac{1}{2^N} - \sum_{n=N+1}^\infty \frac{1}{2^n} \\
+      &= 0 \text{ (could be prove strictly larger but not neccessary here)}
+    \end{align*}
+\end{itemize}
+\subsection*{5.}
+We know that $C \sim \{0,2\}^\mathbb{N} \sim \{0,1\}^\mathbb{N} \sim \mathbb{R}$ therefore $C \sim \mathbb{R}$. 
+\newpage
+\section*{2.}
+For any pairwise disjoint $E_i \in \mathcal{M}$, let $A_n = \sqcup_{i=1}^n E_i$ then we have that 
+\[
+  \mu(\sqcup_{i=1}^\infty E_i) = \mu(\cup_{i=1}^\infty A_n) = \lim_{n \to \infty}\mu(A_n) = \lim_{n \to \infty} \mu(\sqcup_{i=1}^n E_i) = \sum_{i=1}^\infty \mu(E_i) 
+\]
+as $A_n \subseteq A_{n+1}$ for all $n \in \mathbb{N}$. 
+\newpage
+\section*{3.}
+\subsection*{a.}
+If $E_j \in \mathcal{M}$ for all $j \in \mathbb{N}$ then $E = \cup_{j=1}^\infty E_j \in \mathcal{M}$ and therefore $E \backslash E_j \in \mathcal{M}$. Thus, $\cup_{j=1}^\infty (E \backslash E_j) = E \backslash (\cap_{j=1}^\infty E_j) \in \mathcal{M}$ which means that $\cap_{j=1}^\infty E_j = E \backslash (E \backslash (\cap_{j=1}^\infty E_j)) \in \mathcal{M}$. 
+\subsection*{b.}
+We know that $\mathcal{M}$ being a $\sigma$-algebra implies that $X \in \mathcal{M}$. \\
+If $X \in \mathcal{M}$, then for every $A \in \mathcal{M}$, $X \backslash A = A^c \in \mathcal{M}$. 
+\subsection*{c.}
+If $A \in \mathcal{S}$, then $A \in \mathcal{M}$ or $A^c \in \mathcal{M}$. In both case $A^c \in \mathcal{S}$ as $(A^c)^c \in \mathcal{M}$ or $A \in \mathcal{M}$. \\
+If $A_j \in \mathcal{S}$ for all $j \in \mathbb{N}$ then $A_j \in \mathcal{M}$ or $A_j^c \in \mathcal{M}$. Let $A_{j_1}, A_{j_2}$ be subsequence of $A$ such that $A_{j_1} \in \mathcal{M}$ and $A_{j_2}^c \in \mathcal{M}$. Then we know that $P:= \cap_{j_1 = 1}^\infty A_{j_1} \in \mathcal{M}$ and since $Q := \cup_{j_2=1}^\infty A_{j_2}^c = (\cap_{j_2=1}^\infty A_{j_2})^c \in \mathcal{M}$ and thus $P\backslash Q = \cap_{j_1=1}^\infty A_{j_1} \cap \cap_{j_2=1}^\infty A_{j_2} = \cap_{j=1}^\infty A_j \in \mathcal{M} \subseteq \mathcal{S}$. 
+\newpage
+\section*{4.}
+\subsection*{a.}
+If $E \in \mathcal{M}$, then $E \cap X_\lambda \in \mathcal{M}_\lambda$ for all $\lambda \in \Lambda$, \\
+then $X_\lambda \backslash (E \cap X_\lambda) = X\backslash (E \cap X_\lambda) = (X\backslash E)\cap X_\lambda  \in \mathcal{M}_\lambda$ and thus $E^c \in \mathcal{M}$. \\ 
+If $E_i \in \mathcal{M}$ for $i \in \mathbb{N}$, then $E_i \cap X_\lambda \in \mathcal{M}_\lambda$, and thus $(\cup_{i=1}^\infty E_i )\cap X_\lambda \in \mathcal{M}_\lambda$ for all $\lambda \in \Lambda$ and thus $\cup_{i=1}^\infty E_i \in \mathcal{M}$. 
+\subsection*{b.}
+\[ 
+  \mu(\varnothing) = \sum_{\lambda \in \Lambda} \mu_\lambda(\varnothing \cap X_\lambda) = \sum_{\lambda \in \Lambda} \underbrace{\mu_\lambda(\varnothing)}_{0} = 0 
+\]
+For any $E_j \in \mathcal{M}$ for all $j \in \mathbb{N}$ such that $E_j$ are pairwise disjoint, we have that 
+\begin{align*}
+  \mu(\sqcup_{j=1}^\infty E_j) 
+  &= \sum_{\lambda \in \Lambda} u_\lambda (\sqcup_{j=1}^\infty E_j \cap X_\lambda) \\
+  &= \sum_{\lambda \in \Lambda} \sum_{j=1}^\infty u_\lambda(E_j \cap X_\lambda) \\ 
+  &= \sum_{j=1}^\infty \sum_{\lambda \in \Lambda} \mu_\lambda (E_j \cap X_\lambda) \\
+  &= \sum_{j=1}^\infty \mu(E_j)
+\end{align*}
+\subsection*{c.}
+If all but a countable number of measure $u_\lambda$ has $u_\lambda(X_\lambda) = 0$ and the remainder are $\sigma$-finite, then let $\Lambda'$ be the set of all number that satisfies $\mu_{\lambda \in \Lambda'} (X_\lambda) = 0$. Then for every $\lambda \in \Lambda'$, there is $X_{n, \lambda} \in \mathcal{M}_\lambda$ such that $X_{n, \lambda} \subseteq X_{n+1, \lambda}$ and $\mu(A_{n, \lambda}) < \infty$. And thus let $X_n = \sqcup_{\lambda \in \Lambda} X_{n, \lambda}$ such that $X_n \subseteq X_{n+1}$
+\begin{align*}
+  \mu(X_n) 
+  &= \mu(\sqcup_{\lambda \in \Lambda} X_{n, \lambda}) \\
+  &= \mu(\sqcup_{\lambda \in \Lambda'} X_{n, \lambda}) \\
+  &= \sum_{\lambda \in \Lambda'} \underbrace{\mu(X_{n, \lambda})}_{<\infty} \\
+  &< \infty 
+\end{align*}
+\newpage
+\section*{5.}
+We have that the definition of the outer measure for both parts a and b
+\[
+  \mu^*(A) := \inf \left\{\sum_{j=1}^\infty \rho(E_j): A \subseteq \cup_{j=1}^\infty E_j, E_j \in \mathcal{S} \right\}
+\]
+\subsection*{a.}
+Then for any nonempty set $A \subseteq \mathcal{S}$, we have that if $\mu^*(A) = 0$ then $\sum_{j=1}^\infty \rho(E_j) = 0$ and thus $\rho(E_j) = 0$ for every $j \in \mathbb{N}$ and thus $E_j = \varnothing$ and $\cup_{j=1}^\infty E_j = \varnothing$. Therefore, $A = \varnothing$ and thus a contradiction. Therefore, $\mu^*(\varnothing) = 0$ and $\inf \mu^*(A) > 0$. But since $\sum_{j=1}^\infty \rho(E_j)$ is either an integer or infinity, $X \subseteq X \cup (\cup_{j=2}^\infty \varnothing)$ and 
+\[
+  \rho(X) + \sum_{j=2}^\infty \rho(\varnothing) = 1
+\]
+we have that $\mu^*(X) = 1$. 
+\subsection*{b.}
+From definition, we have that for any set $A$ such that $\mu^*(A) \ge \rho(A)$. \\ 
+If $\rho(A) = N$ for some $N \in \mathbb{N}$ or $N = \infty$ , then we can let 
+\[
+  K = \{k \in A: \text{k is an integer} \}
+\]
+Then $A \subseteq \cup_{j=0}^\infty E_j$ where 
+\[
+  E_j = 
+  \begin{cases}
+    \left(\frac{j}{2},\frac{j}{2} + 1\right), \indent &\text{ if } 2|j \text{ and } \frac{j}{2} \notin K\\
+    \left(-\frac{j-1}{2} -1,-\frac{j-1}{2}/2\right), \indent &\text{ if } 2\nmid j \text{ and } -\frac{j-1}{2} \notin K \\
+    \left[\frac{j}{2},\frac{j}{2} + 1\right), \indent &\text{ if } 2|j \text{ and } \frac{j}{2} \in K \\
+    \left(-\frac{j-1}{2} -1,-\frac{j-1}{2}/2\right], \indent &\text{ if } 2\nmid j \text{ and } -\frac{j-1}{2} \in K \\
+  \end{cases}
+\]
+so that 
+\[
+  \rho(E_j) = 
+  \begin{cases}
+    1, &\text{ if } \frac{j}{2} \in K \text{ or } -\frac{j-1}{2} \in K \\
+    0, &\text{ otherwise}
+  \end{cases}
+\]
+and thus there is $N$ interval $E_j$ such that $\rho(E_j) = 1$. Therefore,
+\begin{align*}  
+  \mu^*(A) 
+  &\le \sum_{j=0}^\infty \rho(E_j) \\
+  &=  \sum_{\substack{j=0 \\ j/2 \in K \text{ or } \\ -(j-1)/2 \in K}}^\infty \rho(E_j) 
+  +  \sum_{\substack{j=0 \\ j/2 \notin K \text{ and } \\ -(j-1)/2 \notin K}}^\infty \rho(E_j) \\
+  &= N + 0 = N = \rho(A) 
+\end{align*}
+which concludes that $\mu^*(A) = \rho(A)$. 
+\end{document}
