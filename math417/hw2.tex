@@ -138,7 +138,7 @@ as $A_n \subseteq A_{n+1}$ for all $n \in \mathbb{N}$.
 \newpage
 \section*{3.}
 \subsection*{a.}
-If $E_j \in \mathcal{M}$ for all $j \in \mathbb{N}$ then $E = \cup_{j=1}^\infty E_j \in \mathcal{M}$ and therefore $E \backslash E_j \in \mathcal{M}$. Thus, $\cup_{j=1}^\infty (E \backslash E_j) = E \backslash (\cap_{j=1}^\infty E_j) \in \mathcal{M}$ which means that $\cap_{j=1}^\infty E_j = E \backslash (E \backslash (\cap_{j=1}^\infty E_j)) \in \mathcal{M}$. 
+If $E_j \in \mathcal{M}$ for all $j \in \mathbb{N}$ then $E_1 \backslash E_n \in \mathcal{M}$ for all $n \in \mathbb{N}$ and thus $\cup_{n=2}^\infty (E_1 \backslash E_n) \in \mathcal{M}$, then $E_1 \backslash (\cup_{n=2}^\infty E_1 \backslash E_n) = E_1 \backslash (E_1 \backslash \cap_{n=2}^\infty E_n) =\\ E_1 \cap (\cap_{n=2}^\infty A_n) = \cap_{n=1}^\infty A_n \in \mathcal{M}$
 \subsection*{b.}
 We know that $\mathcal{M}$ being a $\sigma$-algebra implies that $X \in \mathcal{M}$. \\
 If $X \in \mathcal{M}$, then for every $A \in \mathcal{M}$, $X \backslash A = A^c \in \mathcal{M}$. 
@@ -164,14 +164,19 @@ For any $E_j \in \mathcal{M}$ for all $j \in \mathbb{N}$ such that $E_j$ are pai
   &= \sum_{j=1}^\infty \mu(E_j)
 \end{align*}
 \subsection*{c.}
-If all but a countable number of measure $u_\lambda$ has $u_\lambda(X_\lambda) = 0$ and the remainder are $\sigma$-finite, then let $\Lambda'$ be the set of all number that satisfies $\mu_{\lambda \in \Lambda'} (X_\lambda) = 0$. Then for every $\lambda \in \Lambda'$, there is $X_{n, \lambda} \in \mathcal{M}_\lambda$ such that $X_{n, \lambda} \subseteq X_{n+1, \lambda}$ and $\mu(A_{n, \lambda}) < \infty$. And thus let $X_n = \sqcup_{\lambda \in \Lambda} X_{n, \lambda}$ such that $X_n \subseteq X_{n+1}$
-\begin{align*}
-  \mu(X_n) 
-  &= \mu(\sqcup_{\lambda \in \Lambda} X_{n, \lambda}) \\
-  &= \mu(\sqcup_{\lambda \in \Lambda'} X_{n, \lambda}) \\
-  &= \sum_{\lambda \in \Lambda'} \underbrace{\mu(X_{n, \lambda})}_{<\infty} \\
-  &< \infty 
-\end{align*}
+If $\mu$ is $\sigma$-finite, then there exists $X_n \subseteq X_{n+1} \in \mathcal{M}$ such that $\cup_{n=1}^\infty X_n = X$ and $\mu(X_n) < \infty$ for all $n \in \mathbb{N}$. Thus if we let $X_{n, \lambda} = X_n \cap X_\lambda$, we have that $X_{n, \lambda} \subseteq X_{n+1, \lambda}$, $X_{n, \lambda} \in \mathcal{M}_\lambda$,  
+\[
+  \mu(X_n \cap X_\lambda) = \mu(X_{n, \lambda}) < \infty 
+\]
+and 
+\[
+  X_\lambda = X \cap X_\lambda = \left(\cup_{n=1}^\infty X_n \right) \cap X_\lambda = \cup_{n=1}^\infty (X_n \cap X_\lambda) = \cup_{n=1}^\infty X_{n, \lambda} 
+\]
+for all $n \in \mathbb{N}$, which means that all but a countable measure $\mu_\lambda$ have $\mu_\lambda(X_\lambda) = 0$ and the rest are $\sigma$-finite. \\
+Now suppose all but a countable measure $\mu_\lambda$ have $\mu_\lambda(X_\lambda) = 0$ and the rest are $\sigma$-finite, then for every $\lambda \in \Lambda$, there exists $X_{n, \lambda} \in \mathcal{M}_\lambda$ such that $X_{n, \lambda} \subseteq X_{n+1, \lambda}$, $\cup_{n=1}^\infty X_{n, \lambda} = X_\lambda$ and $\mu_\lambda(X_{n, \lambda}) < \infty$ for every $n \in \mathbb{N}$. Since $\Lambda$ is a collection of measure, there is a bijection $\mathbb{N} \sim \Lambda$   
+\begin{itemize}
+  \item $X = \cup_{\lambda \in \Lambda} X_\lambda = \cup_{\lambda \in \Lambda} \cup_{n=1}^\infty X_{n, \lambda} = \cup_{\substack{n=1 \\}} $  
+\end{itemize}
 \newpage
 \section*{5.}
 We have that the definition of the outer measure for both parts a and b
