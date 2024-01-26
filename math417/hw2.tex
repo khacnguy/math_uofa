@@ -117,13 +117,13 @@ Finally, we can conclude that if $x<y$, then there exists $N \in \mathbb{N}$ suc
       &= \sum_{n=N+1}^\infty \frac{b_{n,y} - b_{n,x}}{2^n} \\
       &= \sum_{n=N+1}^\infty \frac{b_{n,y}}{2^n} \ge 0
     \end{align*}
-  \item $a_{N,x} = 0$, thus $b_{N,x} = 0, b_{N,y} = 1$. 
+  \item $a_{N,x} = 0, a_{N,y} = 1$, thus $b_{N,x} = 0, b_{N,y} = 1$. 
     \begin{align*}
       f(y) - f(x) 
       &= \sum_{n=1}^\infty \frac{b_{n,y} - b_{n,x}}{2^n} \\
       &= \frac{1}{2^N}+\sum_{n=N+1}^\infty \frac{- b_{n,x}}{2^n} \\
       &\ge \frac{1}{2^N} - \sum_{n=N+1}^\infty \frac{1}{2^n} \\
-      &= 0 \text{ (could be prove strictly larger but not neccessary here)}
+      &= 0
     \end{align*}
 \end{itemize}
 \subsection*{5.}
@@ -184,11 +184,11 @@ We have that the definition of the outer measure for both parts a and b
   \mu^*(A) := \inf \left\{\sum_{j=1}^\infty \rho(E_j): A \subseteq \cup_{j=1}^\infty E_j, E_j \in \mathcal{S} \right\}
 \]
 \subsection*{a.}
-Then for any nonempty set $A \subseteq \mathcal{S}$, we have that if $\mu^*(A) = 0$ then $\sum_{j=1}^\infty \rho(E_j) = 0$ and thus $\rho(E_j) = 0$ for every $j \in \mathbb{N}$ and thus $E_j = \varnothing$ and $\cup_{j=1}^\infty E_j = \varnothing$. Therefore, $A = \varnothing$ and thus a contradiction. Therefore, $\mu^*(\varnothing) = 0$ and $\inf \mu^*(A) > 0$. But since $\sum_{j=1}^\infty \rho(E_j)$ is either an integer or infinity, $X \subseteq X \cup (\cup_{j=2}^\infty \varnothing)$ and 
+Then for any nonempty set $A \subseteq \mathcal{S}$, we have that if $\mu^*(A) = 0$ then $\sum_{j=1}^\infty \rho(E_j) = 0$ and thus $\rho(E_j) = 0$ for every $j \in \mathbb{N}$ and thus $E_j = \varnothing$ and $\cup_{j=1}^\infty E_j = \varnothing$. Therefore, $A = \varnothing$ and thus a contradiction. Therefore, $\mu^*(\varnothing) = 0$ and $ \mu^*(A) > 0$. But since $\sum_{j=1}^\infty \rho(E_j)$ is either an integer or infinity, $A \subseteq X \cup (\cup_{j=2}^\infty \varnothing)$ and 
 \[
   \rho(X) + \sum_{j=2}^\infty \rho(\varnothing) = 1
 \]
-we have that $\mu^*(X) = 1$. 
+we have that $\mu^*(A) = 1$ and $\mu^*(\varnothing) = 0$. 
 \subsection*{b.}
 From definition, we have that for any set $A$ such that $\mu^*(A) \ge \rho(A)$. \\ 
 If $\rho(A) = N$ for some $N \in \mathbb{N}$ or $N = \infty$ , then we can let 
