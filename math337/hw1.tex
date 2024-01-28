@@ -1,0 +1,299 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepackage{hyperref}
+\usepackage{wasysym}
+
+\newtheorem{definition}{Definition}[section]
+\newtheoremstyle{mystyle}%                % Name
+  {}%                                     % Space above
+  {}%                                     % Space below
+  {\itshape}%                                     % Body font
+  {}%                                     % Indent amount
+  {\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  { }%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+
+\theoremstyle{mystyle}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem*{exmp}{Example}
+\begin{document}
+\section*{1.}
+We first have that 
+\[
+  u_t = ku_{xx}
+\]
+where $k = \frac{K}{cp}$. Then because it is an equilibrium temperature distribution 
+\[
+  u_{xx} = 0
+\]
+which implies that 
+\[
+  u_x = C_1
+\]
+and 
+\[
+  u(x) = C_1 x + C_2
+\]
+Plugging in $u(0) = T$ and $u_x(L) = \alpha$, we have that 
+\[
+  u(x) = \alpha x + T
+\]
+\newpage
+\section*{2.}
+We have the heat equation 
+\[
+  cpu_t = K_0 u_{xx} + K_0 = K_0 (u_{xx} + 1)
+\]
+and thus 
+\[
+  \frac{cp}{K}u_t = u_{xx} + 1
+\]
+Since $u_t = 0$, we have that $u_{xx} = -1$, therefore 
+\[
+  u_{x}(x) = -x + C_1
+\]
+and 
+\[
+  u(x) = -\displaystyle\frac{x^2}{2} + C_1 x + C_2
+\]
+Thus, we have the system of equations
+\[
+  \begin{cases}
+    u(0) = C_2 = T_1 \\
+    u(L) = \displaystyle\frac{-L^2}{2} + C_1 L + C_2 = T_2
+  \end{cases}
+\]
+Hence, 
+\[
+  \begin{cases}
+    C_1 = \displaystyle\frac{1}{L}\left(T_2 - T_1 + \displaystyle\frac{L^2}{2} \right)\\
+    C_2 = T_1
+  \end{cases}
+\]
+and we obtain the solution 
+\[
+  u(x) = -\displaystyle\frac{x^2}{2} + \displaystyle\frac{x}{L}\left(T_1 - T_1 + \displaystyle\frac{L^2}{2} \right) + T_1
+\]
+\newpage
+\section*{3.}
+We have that 
+\[
+  K_0 u_{xx} + x^2 K_0 = K_0(u_{xx} + x^2) = 0 \implies u_{xx} = -x^2
+\]
+Thus $u_{x}(x) = -\displaystyle\frac{x^3}{3} + C_1$ where $C_1 = -\displaystyle\frac{L^3}{3}$ as $u_x(L) = 0$. Therefore, we have 
+\[
+  u(x) = -\displaystyle\frac{x^4}{12}  - \displaystyle\frac{L^3}{3}x + \underbrace{T_2}_{C_2}
+\]
+as $u(0) = T_2$
+\newpage
+\section*{4.}
+We have that 
+\[
+  u_{xx} = 0
+\]
+Therefore, since $u_x(L) = \alpha$, $u_x = \alpha$, and thus we get 
+\[
+  \alpha - [u(0)-T] = 0 \implies u(0) = \alpha + T
+\]
+and 
+\[
+  u(x) = \alpha x + C 
+\]
+where $u(0) = \alpha + T$ thus 
+\[
+  u(x) = \alpha x + \alpha + T
+\]
+\newpage
+\section*{5.}
+\subsection*{a.}
+Assuming there is a equilibrium, all the environment variables must be constant therefore 
+\[
+  u_{xx} = -\frac{Q_0}{K_0}
+\]
+Thus 
+\[
+  u_x(x) = -\frac{Q_0}{K_0}x + C_1
+\]
+Therefore, $u_x(0) = C_1 = 0$ and $u_x(L) = \underbrace{-\frac{Q_0}{K_0}L}_{\ne 0} + C_1 = 0$ which is a contradiction. Therefore, there is no equilibrium when the environmen has constant physical properties and both sides of the rod are insulated. 
+\subsection*{b.}
+First, notice that 
+\[
+  \frac{d}{dt} \int_V e dV = \int_V \displaystyle\frac{\partial e}{\partial t} dV = \int_0^L \displaystyle\frac{\partial e}{\partial t} A dx
+\]
+where $A$ is the area of the rod at the end. \\
+We know that 
+\[
+  \displaystyle\frac{\partial e}{\partial t} = \displaystyle\frac{\partial (c\rho u)}{\partial t} = K_0 \displaystyle\frac{\partial^2 u}{\partial x^2} + Q_0
+\]
+and therefore, 
+\begin{align*}
+  \displaystyle\frac{d}{dt} \int_V edV 
+  &= \int_0^L \left(K_0 \displaystyle\frac{\partial^2 u }{\partial x^2} + Q_0 \right) A dx \\
+  &= A \left. \left(K_0 \displaystyle\frac{\partial u}{\partial x}(x,t) + Q_0x \right) \right|_0^L\\
+  &= AK_0 \left(u_x(L, t) - u_x(0, t) \right) + AQ_0L \\
+  &= AQ_0 L
+\end{align*}
+as both ends are insulated thus $u_x(L, t) = u_x(0,t) = 0$.
+Thus we get
+\[
+  \int_V edV = AQ_0L t + C_2
+\]
+Thus, 
+\[
+  \rho c A \int_0^L u(x,0) dx = AQ_0L0 + C_2 = C_2
+\]
+\newpage
+\section*{6.}
+\subsection*{a.}
+\begin{align*}
+  \displaystyle\frac{d}{dt}\int_V e dV 
+  &= \int_0^L A \rho c u_t(x,t) dx \\
+  &= \int_0^L A \rho c (u_{xx}(x,t) + x ) dx\\
+  &= A \rho c \left. \left( u_x(x,t) + \displaystyle\frac{x^2}{2} \right) \right|_0^L \\
+  &= A \rho c \left(7 - \beta + \displaystyle\frac{L^2}{2}\right) 
+\end{align*}
+Thus, 
+\[
+  \int_V edV = A\rho c \left(7 - \beta + \displaystyle\frac{L^2}{2} \right) t + C
+\]
+where 
+\[
+  C = \int_0^L A\rho c \underbrace{u(x,0)}_{f(x)} dx
+\]
+\subsection*{b.}
+Since $u_t = 0$, $\int_0^L \displaystyle\frac{\partial u}{\partial t} dx = 0$ and thus 
+\begin{align*}
+  \frac{d}{dt} \int_0^L u(x,t) dx = \underbrace{\int_0^L \frac{\partial u}{\partial t} dx}
+  _{0}
+  &= \int_0^L \frac{\partial^2 u}{\partial x^2} + x dx \\
+  &= \left. \frac{\partial u}{\partial x} \right|_0^L + \frac{L^2}{2} \\
+  &= 7 - \beta + \frac{L^2}{2} \\  
+\end{align*}
+Therefore, $\beta = 7 + \frac{L^2}{2}$ and $\int_0^L u(x,t) dx$ is constant over time which means that  
+\[
+  \lim_{t \to \infty} \int_0^L u(x,t) dx = \int_0^L u(x,0) dx = \int_0^L f(x) dx  
+\]
+We also have that $u_{xx} = -x$ thus $u_x = -\frac{x^2}{2} + 7 + \frac{L^2}{2}$ and hence
+\[
+  u(x) = -\frac{x^3}{6} + 7x + \frac{L^2x}{2} + C
+\]
+where
+\[    
+  C = \frac{1}{L} \left(\frac{L^4}{24} - \frac{7L^2}{2} - \frac{L^4}{4} + \int_0^L f(x)dx \right) 
+\]
+as
+\[
+  \int_0^L f(x) dx = \int_0^L \left(-\frac{x^3}{6} + 7x + \frac{L^2x}{2} + C\right) dx
+\]
+\newpage
+\section*{7.}
+\subsection*{a.}
+Since there is no source, 
+\[
+  \displaystyle\frac{d}{dt} \int_0^L e(x,t) A dx = A [\phi(0, t) - \phi(L, t)] = A[\alpha - \beta]
+\]
+\subsection*{b.}
+Thus, we have that the total amount of chemical based on time is 
+\[
+  \int_0^L c \rho u(x,t) A dx = A(\alpha - \beta) t + C
+\]
+where $C = \int_0^L c\rho f(x) A dx$ after substituting $t = 0$ in the equation. 
+\subsection*{c.}
+If there is an equilibrium then the total amount of chemical must be a constant thus from part a, $\alpha = \beta$. 
+\newpage
+\section*{8.}
+\begin{align*}
+  & \nabla^2 u = 0 \\
+  \implies & \iiint_\mathbb{R} \nabla \cdot \nabla u = 0 \\
+  \implies & \oiint \nabla u \cdot \hat{n} dS = 0\\
+  \implies & \oiint \underbrace{-K_0 \nabla u}_{\phi} \cdot \hat{n} dS = 0\\
+\end{align*}
+Thus there is no heat flow through any surface in the object. 
+\newpage
+\section*{9.}
+Assuming the angle does not affect the temperature, that is $u_{\theta} = 0 $, thus 
+\[
+  \frac{\partial}{\partial r} \left(r \frac{\partial u}{\partial r}\right) = 0
+\]
+and hence 
+\[
+  \frac{\partial u}{\partial r} = \frac{C_1}{r} 
+\]
+\subsection*{a.}
+\[
+  u(r) = C_1 \ln(r) + C_2
+\]
+\[
+  \begin{cases}
+    C_1 \ln(r_1) + C_2 = T_1 \\
+    C_1 \ln(r_2) + C_2 = T_2 
+  \end{cases}
+\]
+Thus 
+\[
+  \begin{cases}
+    C_1 = \frac{T_1 - T_2}{\ln(r_1/r_2)} \\
+    C_2 = T_1 - C_1 \ln(r_1)
+  \end{cases}
+\]
+and therefore, 
+\[
+  u(r) = T_1 + (T_2 - T_1) \displaystyle\frac{\ln \displaystyle\frac{r}{r_1}}{\ln \displaystyle\frac{r_2}{r_1}} 
+\]
+\subsection*{b.}
+Following the same steps as part a, since the outer radius is insulated, we get that 
+\[
+  \displaystyle\frac{\partial u}{\partial r} = 0
+\]
+Thus 
+\[
+  u(r) = C_3 
+\]
+where $C_3 =T_1$ as $u(r_1) = T_1$ thus 
+\[
+  u(r) = T_1
+\]
+\newpage
+\section*{10.}
+Since there is no source, we have that 
+\[
+  0 = \nabla^2 u = \frac{1}{r} \frac{\partial}{\partial r} \left( r \frac{\partial u}{\partial r} \right) + \frac{1}{r^2} \frac{\partial^2 u}{\partial \theta^2}
+\]
+But it is axially symmetric, and therefore, 
+\[
+  \frac{1}{r} \frac{\partial}{\partial r} \left( r \frac{\partial u}{\partial r} \right) = 0
+\]
+and thus
+\[
+  r \displaystyle\frac{\partial u}{\partial r} = C_1
+\]
+for some constant $C_1$, and therefore
+\[
+  r_1 \displaystyle\frac{\partial u}{\partial r}(r_1) = 0 = C_1
+\]
+and thus $C_1 = 0$. \\
+Therefore, 
+\[
+  u(r, \theta) = u(r) = C_2 = T_0
+\]
+as $u(r_0) = T_0$
+
+
+
+
+
+\end{document}
