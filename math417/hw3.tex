@@ -53,9 +53,25 @@ From definition, for any $E \in \mathcal{B}(\overline{\mathbb{R}})$, $E$ can be 
 \newpage
 \section*{2.}
 \subsection*{a.}
-For any open sets $G = (a,b) \in \mathbb{R}$, we have that 
+For any open sets $G = (a,b) \in \mathbb{R}$, let
 \[
-  (a,b) = \cup_{n=1}^\infty \left[a + \displaystyle\frac{1}{n}, b - \displaystyle\frac{1}{n}\right]
+  a_n = 
+  \begin{cases}
+    a+\displaystyle\frac{1}{n}, \indent \text{ if } a \ne -\infty \\
+    C-n, \indent \text{ if } a = -\infty \\
+  \end{cases}
+\]
+and similarly
+\[
+  b_n = 
+  \begin{cases}
+    b-\displaystyle\frac{1}{n}, \indent \text{ if } b \ne \infty \\
+    C+n, \indent \text{ if } b = \infty \\
+  \end{cases}
+\]
+where $C$ is some constant in $\mathbb{R}$. Then we have that 
+\[
+  (a,b) = \cup_{n=1}^\infty \left[a_n, b_n]
 \]
 \subsection*{b.}
 For each $x \in \mathbb{R} \backslash E$, $f$ is continuous at $x$ thus for all $n \in \mathbb{N}$, there is $\delta_{x, n}$ such that $\left| f(y) - f(x)\right| < \displaystyle\frac{1}{n}$ for all $y \in (x-\delta_{x,n}, x+\delta_{x,n})$. Thus let 
