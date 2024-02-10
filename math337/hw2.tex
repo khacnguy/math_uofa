@@ -1,0 +1,595 @@
+
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepackage{hyperref}
+\usepackage{wasysym}
+
+\newtheorem{definition}{Definition}[section]
+\newtheoremstyle{mystyle}%                % Name
+  {}%                                     % Space above
+  {}%                                     % Space below
+  {\itshape}%                                     % Body font
+  {}%                                     % Indent amount
+  {\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  { }%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+
+\theoremstyle{mystyle}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem*{exmp}{Example}
+\begin{document}
+\section*{1.}
+\subsection*{a.}
+For any constant $c_1, c_2$ and $u_1, u_2$, we have that 
+\begin{align*}
+  L(c_1u_1 + c_2 u_2) &= \displaystyle\frac{\partial }{\partial x} \left[K_0(x) \displaystyle\frac{\partial (c_1u_1 + c_2 u_2)}{\partial x}\right] \\
+  &= \displaystyle\frac{\partial }{\partial x}\left[K_0(x) c_1 \displaystyle\frac{\partial u_1}{\partial x} + K_0(x) c_2 \displaystyle\frac{\partial u_2}{\partial x}\right] \\
+  &= c_1\displaystyle\frac{\partial }{\partial x}\left[K_0(x)  \displaystyle\frac{\partial u_1}{\partial x} \right] + c_2 \displaystyle\frac{\partial }{\partial x} \left[K_0(x) \displaystyle\frac{\partial u_2}{\partial x}\right] \\ 
+  &= c_1 L(u_1) + c_2L(u_2)
+\end{align*}
+\subsection*{b.}
+Similarly, we have that 
+\[
+  L(u) = c_1\displaystyle\frac{\partial }{\partial x}\left[K_0(x, c_1u_1 + c_2u_2)  \displaystyle\frac{\partial u_1}{\partial x} \right] + c_2 \displaystyle\frac{\partial }{\partial x} \left[K_0(x, c_1 u_1 + c_2u_2) \displaystyle\frac{\partial u_2}{\partial x}\right] \\ 
+\]
+which is different from $c_1L(u_1) + c_2 L(u_2)$, thus not a linear operator. 
+\newpage
+\section*{2.}
+\subsection*{a.}
+\begin{align*}
+  L(u_p + c_1 u_1 + c_2 u_2) = L(u_p) + c_1L(u_1) + c_2L(u_2) = f
+\end{align*}
+\subsection*{b.}
+Since we have that $L(u_{p_1}) = f_1$ and $L(u_{p_2}) = f_2$,
+\[
+  L(u_{p_1} + u_{p_2}) = f_1 + f_2
+\]
+Thus $u_{p_1} + u_{p_2}$ is a solution. 
+\newpage
+\section*{3.}
+\subsection*{a.}
+\begin{align*}
+  u_t(r,t)  &= \displaystyle\frac{k}{r} \displaystyle\frac{\partial}{\partial r} \left( r \displaystyle\frac{\partial u}{\partial r}\right)\\
+  R(r)\displaystyle\frac{\partial T(t)}{\partial t} &= \displaystyle\frac{k}{r} \displaystyle\frac{\partial }{\partial r} (r R'(r) T(t)) \\
+  \displaystyle\frac{T'(t)}{kT(t)} &= \displaystyle\frac{1}{rR(r)} \displaystyle\frac{d}{dr}(rR'(r)) = \lambda
+\end{align*}
+\subsection*{b.}
+\begin{align*}
+  \displaystyle\frac{\partial u}{\partial t} &= k \displaystyle\frac{\partial^2 u}{\partial x^2} - v_0 \displaystyle\frac{\partial u}{\partial x} \\
+  X(x) T'(t) &= k T(t) X''(x) - v_0 T(t) X'(x) \\
+  \displaystyle\frac{T'(t)}{T(t)} &= \displaystyle\frac{k X''(x) - v_0X'(x)}{X(x)} = \lambda
+\end{align*}
+\subsection*{c.}
+\begin{align*}
+  \displaystyle\frac{\partial^2}{\partial x^2}(u(x,y)) + \displaystyle\frac{\partial^2}{\partial y^2}(u(x,y)) &= 0\\
+  X''(x)Y(y) + X(x)Y''(y)&= 0 \\
+  \displaystyle\frac{X''(x)}{X(x)} = - \displaystyle\frac{Y''(y)}{Y(y)} = \lambda
+\end{align*}
+\subsection*{d.}
+\begin{align*}
+  \displaystyle\frac{\partial u}{\partial t} &= \displaystyle\frac{k}{r^2} \displaystyle\frac{\partial }{\partial r} \left( r^2 \displaystyle\frac{\partial u}{\partial r}\right) \\
+  R(r)T'(t) &= \displaystyle\frac{kT(t)}{r^2} \displaystyle\frac{\partial }{\partial r} \left(r^2 R'(r)\right) \\
+  \displaystyle\frac{T'(t)}{kT(t)} &= \displaystyle\frac{1}{r^2R(r)} \displaystyle\frac{d}{dr}(r^2 R'(r))
+\end{align*}
+\subsection*{e.}
+\begin{align*}
+  \displaystyle\frac{\partial u}{\partial t} &= k \displaystyle\frac{\partial^4 u}{\partial x^4}\\
+  X(x)T'(t) &= k X''''(x)T(t) \\
+  \displaystyle\frac{X(x)}{X''''(x)} &= \displaystyle\frac{T'(t)}{kT(t)} = \lambda
+\end{align*}
+\subsection*{f.}
+\begin{align*}
+  \displaystyle\frac{\partial^2 u}{\partial t^2} &= c^2 \displaystyle\frac{\partial^2 u}{\partial t^2} \\
+  X(x)T''(t) &= c^2X''(x)T(t) \\
+  \displaystyle\frac{X(x)}{X''(x)} &= c^2 \displaystyle\frac{T(t)}{T''(t)} = \lambda
+\end{align*}
+\newpage
+\section*{4.}
+There is three cases for $\lambda$ 
+\begin{itemize}
+  \item $\lambda > 0$ \\
+    From 
+    \[
+      \displaystyle\frac{d^2 \phi}{dx^2} + \lambda \phi = 0
+    \] general solution can be written 
+    \[
+      \phi(x) = C_1 \cos(\sqrt{\lambda}x) + C_2 \sin(\sqrt{\lambda}x)
+    \]
+    Thus 
+    \[
+      \phi'(x) = \sqrt{\lambda} (-C_1\sin(\sqrt{\lambda}x) + C_2 \cos(\sqrt{\lambda}x))
+    \]
+    Plugging in the $\phi(0) = 0$ and $\phi'(L) = 0$, we have that $C_1 = 0$ and 
+    \[
+      \phi'(L) = C_2 \sqrt{\lambda} \cos(\sqrt{\lambda}L) = 0
+    \]
+    Thus let $C_2 \ne 0$, we have that 
+    \[
+      \cos(\sqrt{\lambda}L) = 0 
+    \]
+    Therefore,
+    \[
+      \sqrt{\lambda} L = \displaystyle\frac{(2n-1)\pi}{2}
+    \]
+    where $n \in \mathbb{N}$, 
+    and 
+    \[
+      \lambda_n = \displaystyle\frac{(2n-1)^2 \pi^2}{4L^2}
+    \]
+    where the eigenfunctions are 
+    \[
+      \phi_n(x) = \sin \left( \displaystyle\frac{(2n-1)\pi}{2L} \right)
+    \]
+  \item $\lambda = 0$, then 
+    \[
+      \displaystyle\frac{d^2 \phi}{dx^2} = 0
+    \]
+    Thus as $\phi'(L) = 0$, 
+    \[
+      \displaystyle\frac{d \phi}{dx} = 0
+    \]
+    and similarly as $\phi(0) = 0$, 
+    \[
+      \phi = 0
+    \]
+    which is a trivial solution and thus 0 is not an eigenvalue.
+  \item $\lambda < 0$, then similarly to the case $\lambda > 0$, we have that 
+    \[
+      \displaystyle\frac{d^2 \phi}{dx^2} + \lambda \phi = 0
+    \] general solution can be written 
+    \[
+      \phi(x) = C_1 \cosh(\sqrt{-\lambda}x) + C_2 \sinh(\sqrt{-\lambda}x)
+    \]
+    Thus 
+    \[
+      \phi'(x) = \sqrt{-\lambda} (C_1\sinh(\sqrt{-\lambda}x) + C_2 \cosh(\sqrt{-\lambda}x))
+    \]
+    Plugging in the $\phi(0) = 0$ and $\phi'(L) = 0$, we have that $C_1 = 0$ and 
+    \[
+      \phi'(L) = C_2 \sqrt{-\lambda} \cosh(\sqrt{-\lambda}L) = 0
+    \]
+    which means 
+    \[
+      \cosh(\sqrt{-\lambda}L) = 0
+    \]
+    which has no real solution thus $\lambda$ cannot have negative values. 
+\end{itemize}
+\newpage
+\section*{5.}
+The solution is 
+\[
+  u(x,t) = \sum_{n=1}^\infty B_n \exp\left(- \displaystyle\frac{kn^2\pi^2}{L^2}t\right) \sin\left( \displaystyle\frac{nx\pi}{t}\right)
+\]
+where $B_n$ can be determined using the initial condition where
+\[
+  u(x,0) = f(x) = \sum_{n=1}^\infty B_n \sin\left( \displaystyle\frac{n\pi x}{L} \right)
+\]
+\subsection*{a.}
+\[
+  \sum_{n=1}^\infty B_n \sin\left( \displaystyle\frac{n\pi x}{L} \right) = 6\sin\left( \displaystyle\frac{9\pi x}{L}\right) 
+\]
+Thus, let $B_9 = 6$ and $B_n = 0$ for all $n \ne 9$. 
+Therefore, 
+\[
+  u(x,t) = 6 \exp \left(-\displaystyle\frac{81\pi^2kt}{L^2}\right) \sin\left( \displaystyle\frac{9\pi x}{L}\right)
+\]
+\subsection*{b.}
+\[
+  \sum_{n=1}^\infty B_n \sin\left( \displaystyle\frac{n\pi x}{L} \right) = 3\sin\left( \displaystyle\frac{\pi x}{L}\right) - \sin\left( \displaystyle\frac{3\pi x}{L}\right) 
+\]
+Thus, let $B_1 = 3, B_3 = -1$ and $B_n = 0$ for all $n \notin \{1,3\}$. Therefore, 
+\[
+  u(x,t) = 3 \exp \left(-\displaystyle\frac{\pi^2kt}{L^2}\right) \sin\left( \displaystyle\frac{\pi x}{L}\right) - \exp \left(-\displaystyle\frac{9\pi^2kt}{L^2}\right) \sin\left( \displaystyle\frac{3\pi x}{L}\right)
+\]
+\subsection*{c.}
+We have that 
+\[
+  \sum_{n=1}^\infty B_n \sin\left( \displaystyle\frac{n\pi x}{L} \right) = 2 \cos \left( \displaystyle\frac{3\pi x}{L} \right) 
+\]
+Thus 
+\[
+  \int_0^L \sum_{n=1}^\infty B_n \sin\left( \displaystyle\frac{n\pi x}{L} \right) \sin\left( \displaystyle\frac{m\pi x}{L} \right) dx= 2  \int_0^L \cos \left( \displaystyle\frac{3\pi x}{L} \right) \sin\left( \displaystyle\frac{n\pi x}{L} \right) dx
+\]
+From question 6, we get 
+\begin{align*}  
+  B_m \displaystyle\frac{L}{2} 
+  &= \int_0^L B_m \sin^2 \left(\displaystyle\frac{m\pi x}{L}\right) dx = 2 \int_0^L \cos\left(\displaystyle\frac{3\pi x}{L} \right) \sin \left(\displaystyle\frac{m \pi x}{L}\right) dx \\
+  &= \int_0^L \left[\sin\left(\displaystyle\frac{(m+3)\pi x}{L}\right)- \sin\left(\displaystyle\frac{(-m+3)\pi x}{L}\right)\right] \\
+  &= \displaystyle\frac{2mL}{(m^2-9)\pi} (1+ (-1)^m)
+\end{align*}
+Thus 
+\[
+  B_m =
+  \begin{cases}
+    0, \indent &\text{ if n is odd} \\
+    \displaystyle\frac{8m}{(m^2-9)\pi}, \indent &\text{ if n is even}
+  \end{cases}
+\]
+Thus we can get a general solution, 
+\[
+  u(x,t) = \sum_{n=1}^\infty B_n \exp\left(-\displaystyle\frac{kn^2\pi^2 t}{L^2}\right) \sin\left(\displaystyle\frac{n\pi x}{L}\right) = \sum_{n=1}^\infty \displaystyle\frac{16n}{(4n^2-9)\pi} \exp \left( -\displaystyle\frac{k4n^2\pi^2 t}{L^2}\right) \sin\left(\displaystyle\frac{2n\pi x}{L}\right)
+\]
+\subsection*{d.}
+Similar to part c, we have that 
+\begin{align*}
+  B_m \displaystyle\frac{L}{2} &= \int_0^{L/2} \sin\left(\displaystyle\frac{n\pi x }{L} \right) dx + \int_{L/2}^L 2\sin\left(\displaystyle\frac{n\pi x }{L} \right) dx \\
+  &= \displaystyle\frac{2L}{n\pi} \sin^2 \left( \displaystyle\frac{n\pi}{4}\right) + \displaystyle\frac{2L}{n\pi} \left[\cos\left( \displaystyle\frac{n\pi}{2}\right) - (-1)^n\right]
+\end{align*}
+Thus, 
+\[
+  B_n = \displaystyle\frac{4}{n\pi} \left(\sin^2\left(\displaystyle\frac{n\pi}{4}\right) + \cos\left(\displaystyle\frac{n\pi}{2}\right) -(-1)^n \right)
+\]
+plugging that in the supposed solution for $u(x,t)$ will give us the final answer.
+\newpage
+\section*{6.}
+In case $n\ne m$, 
+\begin{align*}
+  &\int_0^L \sin\left(\displaystyle\frac{n\pi x}{L}\right)
+  \sin\left(\displaystyle\frac{m\pi x}{L}\right) dx \\
+  =& \displaystyle\frac{1}{2} \int_0^L \left[\cos\left(\displaystyle\frac{(n-m)\pi x}{L} \right) - \cos\left(\displaystyle\frac{(n+m)\pi x}{L} \right) \right] dx \\
+  =& \displaystyle\frac{1}{2} \left. \left[\displaystyle\frac{L}{(n-m)\pi} \sin\left(\displaystyle\frac{(n-m)\pi x}{L} \right) - \displaystyle\frac{L}{(n+m)\pi}\sin\left(\displaystyle\frac{(n+m)\pi x}{L} \right) \right] \right|_{x=0}^L \\
+  =& \displaystyle\frac{L}{2\pi} \left[\displaystyle\frac{\sin(n\pi - m\pi)}{n-m}- \displaystyle\frac{\sin(n\pi + m\pi)}{n+m}\right] \\
+  =& 0 
+\end{align*}
+as $n, m$ are integers. If $n = m$, then 
+\begin{align*}
+  &\int_0^L \sin\left(\displaystyle\frac{n\pi x}{L}\right) 
+  \sin\left(\displaystyle\frac{m\pi x}{L}\right) dx \\
+  =& \int_0^L \displaystyle\frac{1}{2} \left(1 - \cos \displaystyle\frac{2n\pi x}{L} \right) dx\\
+  =& \displaystyle\frac{1}{2} \left(L - \displaystyle\frac{L}{2n\pi} (\sin(2n\pi) - \sin(0))\right) \\
+  =& \displaystyle\frac{L}{2}
+\end{align*}
+\newpage
+\section*{7.}
+In case $n\ne m$, 
+\begin{align*}
+  &\int_0^L \cos\left(\displaystyle\frac{n\pi x}{L}\right)
+  \cos\left(\displaystyle\frac{m\pi x}{L}\right) dx \\
+  =& \displaystyle\frac{1}{2} \int_0^L \left[\cos\left(\displaystyle\frac{(n-m)\pi x}{L} \right) + \cos\left(\displaystyle\frac{(n+m)\pi x}{L} \right) \right] dx \\
+  =& \displaystyle\frac{1}{2} \left. \left[\displaystyle\frac{L}{(n-m)\pi} \sin\left(\displaystyle\frac{(n-m)\pi x}{L} \right) + \displaystyle\frac{L}{(n+m)\pi}\sin\left(\displaystyle\frac{(n+m)\pi x}{L} \right) \right] \right|_{x=0}^L \\
+  =& \displaystyle\frac{L}{2\pi} \left[\displaystyle\frac{\sin(n\pi - m\pi)}{n-m} + \displaystyle\frac{\sin(n\pi + m\pi)}{n+m}\right] \\
+  =& 0 
+\end{align*}
+as $n, m$ are integers. If $n = m$, then 
+\begin{align*}
+  &\int_0^L \cos\left(\displaystyle\frac{n\pi x}{L}\right) 
+  \cos\left(\displaystyle\frac{m\pi x}{L}\right) dx \\
+  =& \int_0^L \displaystyle\frac{1}{2} \left(1 + \cos \displaystyle\frac{2n\pi x}{L} \right) dx\\
+  =& \displaystyle\frac{1}{2} \left(L + \displaystyle\frac{L}{2n\pi} (\sin(2n\pi) - \sin(0))\right) \\
+  =& \displaystyle\frac{L}{2}
+\end{align*}
+\newpage
+\section*{8.}
+Let $u(x,y) = X(x)Y(y)$, then 
+We have
+\[
+  \begin{cases}
+    u_x(0,y) = X'(0) Y(y) = 0 \implies X'(0) = 0 \\
+    u_x(L,y) = X'(L) Y(y) = 0 \implies X'(L) = 0 \\
+    u(x,0) = X(x) Y(0) = 0 \implies Y(0) = 0
+  \end{cases}
+\]
+From the laplace equation, we know that 
+\[
+  \displaystyle\frac{1}{X} \displaystyle\frac{d^2X}{dx^2} = - \displaystyle\frac{1}{Y} \displaystyle\frac{d^2Y}{dy^2} = \lambda
+\]
+for some $\lambda$. 
+\begin{itemize}
+  \item if $\lambda >0$, then as $X'' = \lambda X$, 
+    \[
+      X(x) = C_1 \cosh(\sqrt{\lambda}x) + C_2 \sinh(\sqrt{\lambda}x)
+    \]
+    thus 
+    \[
+      X'(x) = C_1 \sqrt{\lambda} \sinh(\sqrt{\lambda}x) + C_2 \sqrt{\lambda} \cosh(\sqrt{\lambda}x)
+    \]
+    which we plugging in $X'(0) = 0$ and $X'(L) = 0$ gives us $C_2 = 0$ and 
+    \[
+      C_1 \sqrt{\lambda} \sinh(\sqrt{\lambda}L) = 0
+    \]
+    which has no solution thus $\lambda$ cannot be positive. 
+  \item if $\lambda = 0$ then as $X'' = 0$, and $X'(0) = X'(L) = 0$,
+    \[
+      X(x) = C_3
+    \]
+    Similarly, $Y'' = 0$, then 
+    \[
+      Y(y) = C_4y + C_5
+    \]
+    which we will get $C_5 = 0$ as $Y(0) = 0$, thus 
+    \[
+      Y(y) = C_4y
+    \]
+  \item if $\lambda < 0$, then 
+    \[
+      X(x) = C_6 \cos(\sqrt{-\lambda}x) + C_7 \sin(\sqrt{-\lambda}x)
+    \]
+    thus 
+    \[
+      X'(x) = - C_6 \sqrt{-\lambda} \sin(\sqrt{-\lambda}x) + C_7 \sqrt{-\lambda} \cos(\sqrt{-\lambda}x)
+    \]
+    which we will get $C_7 = 0$ and 
+    \[
+      X'(L) = -C_6 \sqrt{-\lambda} \sin(\sqrt{-\lambda}L) = 0
+    \]
+    Let $C_6 \ne 0$, we have that 
+    $\sqrt{-\lambda} L = n\pi$ for all $n \in \mathbb{N}$. Therefore, 
+    \[
+      \lambda_n = -\displaystyle\frac{n^2\pi^2}{L^2}
+    \]
+    Thus 
+    \[
+      Y'' = \displaystyle\frac{n^2\pi^2}{L^2}Y
+    \]
+    and 
+    \[
+      Y = C_8 \cosh \left( \displaystyle\frac{n\pi y}{L}\right) + C_9 \sinh \left(\displaystyle\frac{n\pi y}{L} \right)
+    \]
+    Plugging in $Y(0) = 0$, we have $C_8 = 0$ and 
+    \[
+      Y = C_9 \sinh\left(\displaystyle\frac{n \pi y}{L}\right)
+    \]
+\end{itemize}
+Thus we have the solution, 
+\[
+  u(x,y) = A_0y + \sum_{n=1}^\infty A_n \cos \displaystyle\frac{n\pi x}{L} \sin \displaystyle\frac{n\pi y}{L} 
+\]
+Plugging in $y = H$, we get 
+\[
+  u(x,H) = A_0H + \sum_{n=1}^\infty A_n \cos \displaystyle\frac{n\pi x}{L} \sin \displaystyle\frac{n\pi H}{L} = f(x) 
+\]
+Integrating both sides, 
+\[
+  \int_0^L A_0H + \sum_{n=1}^\infty A_n \int_0^L \cos \displaystyle\frac{n\pi x}{L} dx \sin \displaystyle\frac{n\pi H}{L} = \int_0^L f(x) dx
+\]
+and hence 
+\[
+  A_0 = \displaystyle\frac{1}{HL} \int_0^L f(x) dx
+\]
+We can also get 
+\[
+  \int_0^L \cos \displaystyle\frac{m\pi x}{L}A_0H + \sum_{n=1}^\infty A_n \cos \displaystyle\frac{m\pi x}{L} \cos \displaystyle\frac{n\pi x}{L} \sin \displaystyle\frac{n\pi H}{L} dx= f(x) \cos \displaystyle\frac{m\pi x}{L} dx 
+\]
+which thus gives us 
+\[
+  A_n \sinh \displaystyle\frac{n\pi H}{L} \int_0^L \cos^2 \displaystyle\frac{n\pi x }{L} dx = \int_0^L f(x) \cos\displaystyle\frac{n\pi x }{L} dx 
+\]
+and 
+\[
+  A_n = \displaystyle\frac{2}{L \sinh \displaystyle\frac{n\pi H}{L}} \int_0^L f(x) \cos \displaystyle\frac{n\pi x }{L} dx 
+\]
+\newpage
+\section*{9.}
+Let $u(x,y) = X(x)Y(y)$, then 
+We have
+\[
+  \begin{cases}
+    u_x(L,y) = X'(L) Y(y) = 0 \implies X'(L) = 0 \\
+    u(x,0) = X(x) Y(0) = 0 \implies Y(0) = 0 \\ 
+    u(x,H) = X(x) Y(H) = 0 \implies Y(H) = 0 
+  \end{cases}
+\]
+From the laplace equation, we know that 
+\[
+  \displaystyle\frac{1}{X} \displaystyle\frac{d^2X}{dx^2} = - \displaystyle\frac{1}{Y} \displaystyle\frac{d^2Y}{dy^2} = \lambda
+\]
+for some $\lambda$. 
+\begin{itemize}
+  \item if $\lambda > 0$, then 
+    \[
+      Y(y) = C_1 \cos(\sqrt{\lambda}y) + C_2 \sin(\sqrt{\lambda}y)
+    \]
+    Then as $Y(0) = Y(H) = 0$, we get $C_1 = 0$ and  
+    \[
+      C_2 \sin(\sqrt{\lambda}H) = 0
+    \]
+    
+    Let $C_2 \ne 0$, we have that 
+    $\sqrt{\lambda} L = n\pi$ for all $n \in \mathbb{N}$. Therefore, 
+    \[
+      \lambda_n = \displaystyle\frac{n^2\pi^2}{H^2}
+    \]
+    Thus 
+    \[
+      X'' = \displaystyle\frac{n^2\pi^2}{H^2}X
+    \]
+    and 
+    \[
+      X(x) = C_3 \cosh \left( \displaystyle\frac{n\pi x}{H}\right) + C_4 \sinh \left(\displaystyle\frac{n\pi x}{H} \right)
+    \]
+    Thus 
+    \[
+      X'(x) = \displaystyle\frac{n\pi}{H} \left(C_3 \sinh \left( \displaystyle\frac{n\pi x}{H}\right) + C_4 \cosh \left(\displaystyle\frac{n\pi x}{H} \right)\right)
+    \]
+    Since $X'(L) = 0$, plugging in we can get 
+    \[
+      C_4 = -C_3 \displaystyle\frac{\sinh \displaystyle\frac{n\pi L}{H}}{\cosh \displaystyle\frac{n\pi L}{H}}
+    \]
+    and thus 
+    \[
+      X(x) = \displaystyle\frac{C_3}{\cosh \displaystyle\frac{n\pi L}{H}} \left( \displaystyle\frac{n\pi}{H}(x-L)\right)
+    \]
+    and 
+    \[
+      X_n(x) = \cosh \left( \displaystyle\frac{n\pi}{H}(x-L)\right)
+    \]
+  \item if $\lambda = 0$, then 
+    $Y'' = 0$ and $Y(0) = 0$, $Y(H) = 0$ implies that 
+    \[
+      Y(y) = C_5y + C_6
+    \]
+    where there is a system of equations and we can solve for $C_5 = C_6 = 0$, which is a trivial solution thus there is no zero eigenvalue. 
+  \item if $\lambda < 0$, then as 
+    \[
+      Y'' = -\lambda Y
+    \]
+    \[
+      Y(y) = C_7 \cosh(\sqrt{-\lambda}y) + C_8 \sinh(\sqrt{-\lambda}y)
+    \]
+    then as $Y(0) = Y(H) = 0$, we can get that $C_7 = 0$ and 
+    \[
+      C_8 \sinh(\sqrt{-\lambda}H) = 0
+    \]
+    which is only true when $C_8 = 0$ which leads to a trivial solution. Thus there is no solution in this case. 
+\end{itemize}
+Thus we have the solution, 
+\[
+  u(x,y) = \sum_{n=1}^\infty A_n \cosh \left( \displaystyle\frac{n\pi (x-L)}{H} \right) \sin \displaystyle\frac{n\pi y}{L} 
+\]
+and 
+\[
+  u_x(x,y) = \sum_{n=1}^\infty A_n \displaystyle\frac{n\pi}{H}\cosh \left( \displaystyle\frac{n\pi (x-L)}{H} \right) \sin \displaystyle\frac{n\pi y}{L} 
+\]
+therefore, 
+\[
+  u_x(0,y) = \sum_{n=1}^\infty A_n \displaystyle\frac{n\pi}{H} \sinh \left(\displaystyle\frac{n\pi}{H} (-L) \right)\sin \displaystyle\frac{n\pi y}{H} = g(y)
+\]
+Afterwards, we can get 
+\[ 
+  \sum_{n=1}^\infty -A_n \displaystyle\frac{n\pi}{H} \sinh \left(\displaystyle\frac{n\pi L}{H} \right) \int_0^H \sin \displaystyle\frac{n\pi y}{H} \sin \displaystyle\frac{m\pi y}{H} dy= \int_0^H g(y) \sin \displaystyle\frac{m\pi y}{H} dy 
+\]
+which we can solve for 
+\[
+  A_n = -\displaystyle\frac{2}{n\pi \sinh \displaystyle\frac{n\pi L}{H}} \int_0^H g(y) \sin \displaystyle\frac{n\pi y}{H} dy
+\]
+\newpage
+\section*{10.}
+We first use seperation of variables, let $u(r, \theta) = \phi(\theta) R(r)$, thus 
+\[
+  \begin{cases}
+    \phi(0) R(0) \text{ is bounded} \implies R(0) \text{ is bounded} \\
+    \phi(-\pi)R(r) = \phi(\pi) R(r) \implies \phi(\pi) = \phi(-\pi) \\ 
+    \phi'(-\pi)R(r) = \phi'(\pi) R(r) \implies \phi'(\pi) = \phi'(-\pi)
+  \end{cases}
+\]
+We also have that 
+\[
+  \displaystyle\frac{r}{R(r)} \displaystyle\frac{\partial }{\partial r}(r R'(r)) = -\displaystyle\frac{\phi''(\theta)}{\phi(\theta)} = \lambda
+\]
+\begin{itemize}
+  \item if $\lambda = \alpha^2 > 0$, where $\alpha \in \mathbb{N}$, then 
+    \[
+      \phi(\theta) = C_1 \cos(\alpha \theta) + C_2 \sin(\alpha \theta)
+    \]
+    and 
+    \[
+      \phi'(\theta) = -C_1 \alpha \sin(\alpha \theta) + C_2\alpha  \cos(\alpha \theta)
+    \]
+    Thus we have the system of equations from $\phi(\pi) = \phi(-\pi)$ and $\phi'(\pi) = \phi'(-\pi)$. 
+    \[
+      \begin{cases}
+        C_1 \cos(\pi \alpha) + C_2 \sin(\alpha \pi) = C_1 \cos(-\pi \alpha) + C_2 \sin(-\alpha \pi)\\
+        -C_1 \sin(\pi \alpha) + C_2 \cos(\alpha \pi) = -C_1 \sin(-\pi \alpha) + C_2 \cos(-\alpha \pi)
+      \end{cases}
+    \]
+    and in the first equation,  
+    \[
+      C_2 \sin(\alpha \pi) = C_2 \sin(-\alpha \pi) \implies \sin(\alpha \pi) = 0 \implies \alpha \in \mathbb{N}
+    \]
+    we get the similar result from the second equation. Thus 
+    \[
+      \phi_n(\theta) = C_1 \cos(n\theta) + C_2 \sin(n\theta)
+    \]
+    Then we have that 
+    \[
+      \displaystyle\frac{r}{R} \displaystyle\frac{d}{dr} \left(r \displaystyle\frac{dR}{dr}\right) = n^2
+    \]
+    Let $R(r) = r^k$, we have that 
+    \[
+      k(k-1)r^k + kr^k - n^2r^k = 0
+    \]
+    \[
+      k(k-1) +k -n^2 = 0
+    \]
+    Thus 
+    \[
+      k = \pm n
+    \]
+    and 
+    \[
+      R(r) = C_3 r^n + C_4 r^{-n}
+    \]
+    which is bounded thus $C_3 = 0$ and 
+    \[
+      R(r) = C_4 r^{-n}
+    \]
+  \item if $\lambda = 0$, then 
+    \[
+      \phi'' = 0
+    \]
+    Thus 
+    \[
+      \phi(\theta) = C_5 y + C_6
+    \]
+    Then similar to when $\lambda>0$, we get 
+    \[
+      \begin{cases}
+        C_5 \pi + C_6 = C_5(-\pi) + C_6 \\ 
+        C_5 = C_5
+      \end{cases}
+    \]
+    Thus $C_5 = 0$ and $C_6$ is arbitary. Then 
+    \[
+      \phi(\theta) = C_6
+    \]
+    thus the function is $\phi_0(\theta) = 1$. Now 
+    \[
+      \displaystyle\frac{d}{dr} \left(r \displaystyle\frac{dR}{dr}\right) = 0
+    \] 
+    which leads to 
+    \[
+      R(r) = C_7 \ln(r) + C_8 = C_8
+    \]
+    as $R$ is bounded. 
+  \item if $\lambda = - \alpha^2 <0$, then 
+    \[
+      \phi(\theta) = C_9 \cosh(\alpha \theta) + C_{10} \sinh(\alpha \theta)
+    \]
+    and 
+    \[
+      \phi'(\theta) = C_9\alpha \sinh(\alpha \theta) + C_{10}\alpha \cosh(\alpha \theta)
+    \]
+    Then we get 
+    \[
+      \begin{cases}
+        C_9 \cosh(\alpha \pi) + C_{10} \sinh(\alpha \pi) = C_9 \cosh(-\alpha \pi) + C_{10} \sinh(-\alpha \pi) \\
+        C_9\alpha \sinh(\alpha \pi) + C_{10}\alpha \cosh(\alpha \pi) = C_9\alpha \sinh(-\alpha \theta) + C_{10}\alpha \cosh(-\alpha \theta)
+      \end{cases}
+    \]
+    Thus $C_9 = C_{10} = 0$ and $\phi(\theta) = 0$ which is trivial thus no negative eignevalues. 
+\end{itemize}
+Therefore, we get the solution 
+\[
+  u(r, \theta) = A_0 + \sum_{n=1}^\infty r^{-n} (A_n \cos(n\theta) + B_n \sin(n\theta))
+\]
+Then we have that 
+\[
+  u(a, \theta) = A_0 + \sum_{n=1}^\infty r^{-n} (A_n \cos(n\theta) + B_n \sin(n\theta)) = f(\theta)
+\]
+The part after this was done in class. Integrating on $[-\pi, \pi]$, 
+\[
+  A_0 2\pi = \int_{-\pi}^\pi f(\theta) d\theta \implies A_0 = \displaystyle\frac{1}{2\pi} \int_{-\pi}^\pi f(\theta) d\theta 
+\]
+Multiply by $\cos(m\theta)$ and integrating on $[-\pi, \pi]$, we have that 
+\[
+  A_m = \displaystyle\frac{1}{a^m\pi} \int_{-\pi}^\pi f(\theta) \cos(m\theta)d\theta
+\]
+Multiply by $\sin(m\theta)$ and integrating on $[-\pi, \pi]$, we have that 
+\[
+  B_m = \displaystyle\frac{1}{a^m\pi} \int_{-\pi}^\pi f(\theta) \sin(m\theta)d\theta
+\]
+\end{document}
