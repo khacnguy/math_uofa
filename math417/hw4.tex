@@ -1,0 +1,146 @@
+
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}  
+\usepackage{hyperref}
+
+
+
+\newtheorem{definition}{Definition}[section]
+\newtheoremstyle{mystyle}%                % Name
+  {}%                                     % Space above
+  {}%                                     % Space below
+  {\itshape}%                                     % Body font
+  {}%                                     % Indent amount
+  {\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  { }%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+
+\theoremstyle{mystyle}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem*{exmp}{Example}
+\begin{document}
+\section*{1.}
+\subsection*{a.}
+From definition, 
+\[
+  \liminf_{n\to \infty}\mu(E_n) = \lim_{n\to \infty} (\inf_{m\ge n} \mu(E_m)) = \sup_{n\ge 0} \inf_{m\ge n} \mu(E_m) 
+\]
+\[
+  \mu(\liminf_{n \to \infty} E_n) = \mu(\cup_{n=1}^\infty \cap_{j=n}^\infty E_j)  
+\]
+Also, notice that $\cap_{j = n}^\infty E_n \subseteq \cap_{j=n+1}^\infty E_n$ for all $n \in \mathbb{N}$ thus 
+\[
+  \mu(\liminf_{n \to \infty} E_n) = \mu(\lim_{n \to \infty} \cap_{j=n}^\infty E_j) = \lim_{n \to \infty} \mu(\cap_{j=n}^\infty E_j)
+\]
+We also have that $\mu(\cap_{j=n}^\infty E_n) \le \inf_{m\ge n} \mu(E_m)$, therefore 
+\[
+  \mu(\liminf_{n \to \infty} E_n) = \lim_{n \to \infty} \mu(\cap_{j=n}^\infty E_j) \le \liminf_{n \to \infty} \mu(E_n) 
+\]
+\subsection*{b.}
+From definition, 
+\[
+  \limsup_{n\to \infty}\mu(E_n) = \lim_{n\to \infty} (\sup_{m\ge n} \mu(E_m)) = \inf_{n\ge 0} \sup_{m\ge n} \mu(E_m) 
+\]
+\[
+  \mu(\limsup_{n \to \infty} E_n) = \mu(\cap_{n=1}^\infty \cup_{j=n}^\infty E_n)  
+\]
+Also, notice that $\cup_{j = n}^\infty E_n \supseteq \cup_{j=n+1}^\infty E_n$ for all $n \in \mathbb{N}$ thus 
+\[
+  \mu(\limsup_{n \to \infty} E_n) = \mu(\lim_{n \to \infty} \cup_{j=n}^\infty E_j) = \lim_{n \to \infty} \mu(\cup_{j=n}^\infty E_j)
+\]
+We also have that $\mu(\cup_{j=n}^\infty E_n) \ge \sup_{m\ge n} \mu(E_m)$, therefore 
+\[
+  \mu(\limsup_{n \to \infty} E_n) = \lim_{n \to \infty} \mu(\cup_{j=n}^\infty E_n) \ge \limsup_{n \to \infty} \mu(E_n) 
+\]
+\newpage
+\section*{2.}
+\subsection*{a.}
+From definition, it is obvious that $E \subset O_n$ for all $n \in \mathbb{N}$, thus we have that 
+\[
+  m(E) \le \lim_{n \to \infty} m(O_n)
+\]
+Now, for every $x \in \mathbb{R}^d$, if $x \in \bigcap_{n=1}^\infty O_n$, then for every $n \in \mathbb{N}$, $\text{dist}(x,E) = 0$ as if $\text{dist}(x,E) = \varepsilon$ for some $\varepsilon >0$ then there exists $n_0$ such that for all $n>n_0$, $1/n < \varepsilon$ and $x \notin O_{n}$. Thus $x \in E$ as $E$ is closed and therefore $\cap_{n=1}^\infty O_n \subseteq E$. Finally, as $O_n \supseteq O_{n+1}$,
+\[
+  m(\cap_{n=1}^\infty O_n) = \lim_{n \to \infty} m(O_n) \le m(E)
+\]
+\subsection*{b.}
+We have 
+\begin{align*}  
+  m(E) &= m(\cup_{j=1} (r_j - 4^{-j}, r_j + 4^{-j})) \\
+  &\le \sum_{j=1}^\infty m(r_j - 4^{-j}, r_j + 4^{-j}) \\
+  &= \sum_{j=1}^\infty 2 \cdot 4^{-j} \\
+  &= \displaystyle\frac{2}{3}
+\end{align*}
+However, for every $n \in \mathbb{N}$, since rationals are dense, we can find a partition $\{r_{x_0}, r_{x_1}, \hdots, r_{x_{2n}}\}$ of $[0,1]$ from the sequence $(r_n)$ such that $r_{x_0} = 0, r_{x_{2n}} = 1$ and $0< r_{x_{n+1}} - r_{x_n} < \displaystyle\frac{1}{n}$. \\
+Thus for every $x \in [0,1]$, there exists $n_0$ such that $x \in [r_{x_n}, r_{x_{n+1}}]$, thus  $|r_{x_{n_0}} - x|<\displaystyle\frac{1}{n}$ and thus $x \in O_n$, which means that $m(O_n) \ge 1$ and $m(O_n) > 1$ if we extend the interval $[0,1]$ to $[0,1 + \displaystyle\frac{1}{n}]$. \\
+Therefore, $\lim_{n \to \infty} m(O_n) \ge 1 > m(E)$.  
+\newpage
+\section*{3.}
+First, let 
+\[
+  S_{n, \varepsilon} = \{x \in E: \sup_{k \ge n} |f_k(x) - f(x)| \ge \epsilon\}
+\]
+since $\sup_{k \ge n} |f_k(x) - f(x)| \ge \sup_{k \ge n+1} |f_k(x)-f(x)|$, if $x \in S_{n+1, \varepsilon}$ then $x \in S_{n, \varepsilon}$. Thus $S_{n, \varepsilon} \supseteq S_{n+1, \varepsilon}$ for all $n \in \mathbb{N}$, and 
+\[
+  \lim_{n \to \infty} m(S_{n, \epsilon}) = m(\cap_{j=1}^\infty S_{j, \varepsilon}) 
+\]
+Suppose that 
+\[
+  \lim_{n \to \infty} f_n(x) = f(x), \indent \text{a.e. } x \in E
+\]
+Then there is a null set $E_0 \subset E$ such that $m(E_0) = 0$ and $\lim_{n \to \infty} f_n(x) = f(x)$ on $E \backslash E_0$. Then for every $x \in E \backslash E_0$, for every $\varepsilon >0$, there is $n_0$ such that for $n>n_0$, 
+\[
+  |f_n(x) - f(x) | <\frac{\varepsilon}{2}
+\]
+which means that  
+\[
+  \sup_{k \ge n} |f_n(x) - f(x)| < \varepsilon
+\]
+and 
+\[
+  \lim_{n \to \infty} \sup_{k \ge n} |f_n(x) - f(x) | < \varepsilon
+\]
+But, if $x \in \cap_{j=1}^n S_{n, \epsilon}$ then $x \in S_{n, \varepsilon}$ for all $n \in \mathbb{N}$, thus $\sup_{k \ge n} |f_k(x) - f(x)| \ge \varepsilon$ for all $n \in \mathbb{N}$ and consequently $x \in E \backslash (E \backslash E_0) = E_0$. Thus $\cap_{j=1}^n S_{n, \varepsilon} \subseteq E_0$ and 
+\[
+  \lim_{n \to \infty} m(S_{n, \varepsilon}) = m(\cap_{j=1}^\infty S_{j, \varepsilon}) \le m(E_0) = 0 
+\]
+Suppose that for every $\varepsilon > 0$,  
+\[
+  m(\cap_{j=1}^\infty S_{j, \varepsilon}) = 0
+\]
+then let denote $E_0:= \cap_{j=1}^\infty S_{j, \varepsilon}$, if $x \notin E_0$ then there is $n_0 \in \mathbb{N}$ such that $x \notin S_{n_0, \varepsilon}$ but $S_{n_0, \varepsilon} \supseteq S_{n_0+1, \varepsilon}$ for all $n_0 \in \mathbb{N}$, thus $x \notin S_{n, \varepsilon}$ for all $n \ge n_0$. \\ 
+Therefore, we can conclude that if $x \notin E_0$ then there is $n_0 \in \mathbb{N}$ such that for all $n \ge n_0$, $\sup_{k \ge n} |f_k(x) - f(x)| < \varepsilon$ which implies $|f_n(x) - f(x) | < \varepsilon$ and $\lim_{n \to \infty} f_n(x) = f(x)$ for $x \notin E_0$. Since $m(E_0) = 0$, 
+\[
+  \lim_{n \to \infty} f_n(x) = f(x), \indent \text{a.e. } x \in E
+\]
+\newpage
+\section*{4.}
+\subsection*{1.}
+For all $a \in \mathbb{R}$, let S = $\{f>a\}$ then if $x \in S$, then $y \in S$ whenever $y > x$. Thus we can rewrite $S$ is $\varnothing, \mathbb{R}, [\inf S, \infty)$ or $(\inf S, \infty)$which are all $\mathcal{B}(\mathbb{R})$-measurable. Thus $f$ is Borel measurable. 
+\subsection*{2.}
+In the case where $E$ is a measure zero set. For all $\varepsilon > 0 $, $|f|\le M$ except on a set of measure less than $\varepsilon >0$ is already satisfied. \\ 
+In case where $E$ is not a measure zero set. Then for every $\varepsilon > 0$ if for all $M>0$, $m(\{|f|>M\}) \ge \varepsilon$ then $m\{|f|=\infty\} \ge \varepsilon$ which is a contradiction. Thus there must exists some $M>0$ such that $m\{|f| >M\} < \varepsilon$.  
+\subsection*{3.}
+Suppose there is a a function $f$ such that $f(x) = \xi_{(a,b)}(x)$ a.e. $x \in \mathbb{R}$. Then for every $\varepsilon >0$ there is $x_1 \in [b, b+\varepsilon/2)$ such that $f(x_1) = 0$ and $x_2 \in (b-\varepsilon/2, b)$ such that $f(x_2) = 1$. Thus for every $\varepsilon>0$ there is $x_1, x_2$ such that $f(x_2) - f(x_1) = 1$ but $x_2 - x_1 < \varepsilon$.
+\newpage
+\section*{5.}
+Let $X_f, X_g$ be the set of points that is finite in $f$ and $g$ so that $X_f \cap X_g = X_0$. Then as $X, X_f, X_g \in \mathcal{M}$, we have that $X_0 \in \mathcal{M}$ and thus $X \backslash X_0 \in \mathcal{M}$. We also have that $X_f^c, X_g^c$ are null sets thus  
+\[ 
+  \mu(X \backslash X_0) = \mu(X \cap (X_f^c \cup X_g^c)) = \mu(X_f^c \cup X_g^c) \le \mu(X_f^c) + \mu(X_g^c) = 0 
+\]
+and therefore $\mu(X \backslash X_0) = 0$. 
+\end{document}
