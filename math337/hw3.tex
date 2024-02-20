@@ -1,0 +1,210 @@
+
+
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}  
+\usepackage{hyperref}
+\usepackage{xcolor}
+\definecolor{Mybackground}{RGB}{40,49,51}
+\pagecolor{Mybackground}
+\color{white}
+
+
+\newtheorem{definition}{Definition}[section]
+\newtheoremstyle{mystyle}%                % Name
+  {}%                                     % Space above
+  {}%                                     % Space below
+  {\itshape}%                                     % Body font
+  {}%                                     % Indent amount
+  {\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  { }%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+
+\theoremstyle{mystyle}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem*{exmp}{Example}
+\begin{document}
+\section*{1.}
+Apply speration of variables, $u(x,t) = X(x) T(t)$, we have 
+\begin{align*}
+  &\rho_0 X(x) T''(t) = T_0 X''(x)T(t) - \beta X(x)T'(t) \\ 
+  \implies & X(x) (\rho_u T''(t) + \beta T'(t)) = T_0 X''(x)T(t) \\
+  \implies & \displaystyle\frac{\rho_u T''(t) + \beta T'(t)}{T_0 T(t)} = \displaystyle\frac{X''(x)}{X(x)} = - \lambda
+\end{align*}
+and 
+\[
+  \begin{cases}
+    u(0,t) = 0 \implies X(0) = 0 \\
+    u(L,t) = 0 \implies X(L) = 0
+  \end{cases}
+\]
+Thus for every integer $n\ge 1$,  
+\[
+  X_n(x) = \sin \displaystyle\frac{n\pi x}{L}
+\]
+and 
+\[
+  \lambda_n = \displaystyle\frac{n^2\pi^2}{L^2}
+\]
+Now we need to solve for 
+\[
+  \rho_u T''(t) + \beta T'(t) + T_0 \displaystyle\frac{n^2 \pi^2}{L^2} T(t) = 0
+\]
+which has no solution as 
+\[
+ \beta^2 - 4 \rho_u \displaystyle\frac{T_0 n^2 \pi^2}{L^2} < \beta^2 -\displaystyle\frac{4 \rho_u \pi^2 T_0}{L^2} < 0 
+\]
+\newpage
+\section*{2.}
+Apply speration of variables, $u(x,t) = X(x) T(t)$, we have  \\
+\[
+  \begin{cases}
+    u(0,t) = 0 \implies X(0) = 0 \\
+    u(L,t) = 0 \implies X(L) = 0 \\
+    u_t(x,0) = 0 \implies T'(0) = 0 \\
+  \end{cases}
+\]
+and 
+\begin{align*}
+  &X(x) T''(t) = c^2 X''(x)T(t) \\
+  \implies & \displaystyle\frac{T''(t)}{T(t)} = c^2 \displaystyle\frac{X''(x)}{X(x)} = -\lambda
+\end{align*}
+and
+Thus for every integer $n\ge 1$,  
+\[
+  X_n(x) = \sin \displaystyle\frac{n\pi x}{L}
+\]
+and 
+\[
+  \lambda_n =  \displaystyle\frac{c^2 n^2\pi^2}{L^2}
+\]
+and thus 
+\[
+  T''(t) + \lambda T(t) = 0 
+\]
+and 
+\[
+  T(t) = c_1 \cos \displaystyle\frac{cn\pi t}{L} + c_2 \sin \displaystyle\frac{cn \pi t}{L}
+\]
+\[
+  T'(t) = \displaystyle\frac{cn\pi}{L} \left( - c_1 \sin \displaystyle\frac{cn\pi t}{L} + c_2 \cos \displaystyle\frac{cn \pi t}{L} \right)
+\]
+Therefore, 
+\[
+  T'(0) = \displaystyle\frac{cn\pi }{L} c_2 \cos \displaystyle\frac{cn\pi 0}{L} = \displaystyle\frac{cn \pi c_2}{L} = 0 \implies c_2 = 0
+\]
+Thus $c_1 \ne 0$ to avoid trivial solution
+\[
+  T_n(t) = \cos \displaystyle\frac{cn\pi t}{L} 
+\]
+and 
+\begin{align*}
+  u(x,t) &= \sum_{n=1}^\infty A_n \sin \displaystyle\frac{n\pi x}{L} \cos \displaystyle\frac{cn\pi t}{L} \\
+  &= \sum_{n=1}^\infty \displaystyle\frac{A_n}{2} \left(\sin \displaystyle\frac{n\pi(x+ct)}{L} + \sin \displaystyle\frac{n\pi(x-ct)}{L} \right) \\
+  &= \displaystyle\frac{F(x+ct) - F(x-ct)}{2} 
+\end{align*}
+As 
+\[
+  A_n = \displaystyle\frac{2}{L} \int_0^L f(x) \sin \displaystyle\frac{n\pi x}{L} dx 
+\]
+from 
+\[
+  u(x,0) = \sum_{n=1}^\infty A_n \sin \displaystyle\frac{n\pi x}{L} = f(x)
+\]
+\newpage
+\section*{3.}
+Apply speration of variables, $u(x,t) = X(x) T(t)$, we have  \\
+\[
+  \begin{cases}
+    u(0,t) = 0 \implies X(0) = 0 \\
+    u(L,t) = 0 \implies X(L) = 0 \\
+    u(x,0) = 0 \implies T(0) = 0 \\
+  \end{cases}
+\]
+and 
+\begin{align*}
+  &X(x) T''(t) = c^2 X''(x)T(t) \\
+  \implies & \displaystyle\frac{T''(t)}{T(t)} = c^2 \displaystyle\frac{X''(x)}{X(x)} = -\lambda
+\end{align*}
+and
+Thus for every integer $n\ge 1$,  
+\[
+  X_n(x) = \sin \displaystyle\frac{n\pi x}{L}
+\]
+and 
+\[
+  \lambda_n =  \displaystyle\frac{c^2 n^2\pi^2}{L^2}
+\]
+and thus 
+\[
+  T''(t) + \lambda T(t) = 0 
+\]
+and 
+\[
+  T(t) = c_1 \cos \displaystyle\frac{cn\pi t}{L} + c_2 \sin \displaystyle\frac{cn \pi t}{L}
+\]
+Therefore, 
+\[
+  T(0) = c_1 \cos \displaystyle\frac{cn\pi 0}{L} = 0 \implies c_1 = 0
+\]
+Thus $c_2 \ne 0$ to avoid trivial solution
+\[
+  T_n(t) = \sin \displaystyle\frac{cn\pi t}{L} 
+\]
+and 
+\begin{align*}
+  u(x,t) &= \sum_{n=1}^\infty A_n \sin \displaystyle\frac{n\pi x}{L} \sin \displaystyle\frac{cn\pi t}{L} \\
+  &= \sum_{n=1}^\infty \displaystyle\frac{A_n}{2} \left( \cos \displaystyle\frac{n\pi(x-ct)}{L} - \cos \displaystyle\frac{n\pi (x+ct)}{L} \right) \\ 
+  &= \sum_{n=1}^\infty \displaystyle\frac{A_n}{2} \left. \cos \displaystyle\frac{n\pi \overline{x}}{L} \right|_{x+ct}^{x-ct} \\
+  &= \sum_{n=1}^\infty \displaystyle\frac{A_n}{2} \int_{x-ct}^{x+ct} \displaystyle\frac{n\pi}{L}\sin \displaystyle\frac{n\pi \overline{x}}{L} d \overline{x} \\
+  &= \displaystyle\frac{1}{2c} \int_{x-ct}^{x+ct} \underbrace{\sum_{n=1}^\infty A_n \displaystyle\frac{n\pi c}{L} \sin \displaystyle\frac{n\pi \overline{x}}{L}}_{G(\overline{x})} d\overline{x}
+\end{align*}
+as we can get $A_n$ to match 
+\[
+  u_t(x,t) = \sum_{n=1}^\infty \displaystyle\frac{cn\pi}{L} A_n \sin \displaystyle\frac{n\pi x}{L} \cos \displaystyle\frac{cn\pi t}{L} d\overline{x}
+\]
+Thus as $u_t(x,0) = f(x)$, we have  
+\[
+  \displaystyle\frac{n \pi c}{L}A_n = \displaystyle\frac{2}{L} \int_0^L f(x) \sin \displaystyle\frac{n\pi x}{L} dx 
+\]
+\newpage
+\section*{4.}
+\subsection*{1.}
+\begin{align*}
+  E(t) &= \displaystyle\frac{1}{2} \int_0^L u_t^2(x,t)dx + \displaystyle\frac{c^2}{2} \int_0^L u_x^2(x,t) dx \\
+  &= \displaystyle\frac{1}{2} \int_0^L u_t^2(x,t) + c^2 u_x^2(x,t)dx \\
+\end{align*}
+Thus 
+\begin{align*} 
+  E'(t) &= \displaystyle\frac{1}{2} \int_0^L 2u_t u_{tt} + 2c^2 u_x u_{xt} dx \\
+  &= c^2 \int_0^L u_t u_{xx} + u_x u_{xt} dx \\
+  &= c^2 \left. \left( u_x u_t \right)\right|_0^L
+\end{align*}
+\subsection*{2.}
+\subsubsection*{a.}
+\[
+  E'(t) = 0
+\]
+Thus energy is conserved
+\subsubsection*{b.}
+\[
+  E'(t) = 0
+\]
+Thus energy is conserved
+\subsubsection*{c.}
+
+\subsubsection*{d.}
+\end{document}
