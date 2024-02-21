@@ -38,7 +38,7 @@
 \newtheorem*{exmp}{Example}
 \begin{document}
 \section*{1.}
-Apply speration of variables, $u(x,t) = X(x) T(t)$, we have 
+Apply seperation of variables, $u(x,t) = X(x) T(t)$, we have 
 \begin{align*}
   &\rho_0 X(x) T''(t) = T_0 X''(x)T(t) - \beta X(x)T'(t) \\ 
   \implies & X(x) (\rho_u T''(t) + \beta T'(t)) = T_0 X''(x)T(t) \\
@@ -69,7 +69,7 @@ which has no solution as
 \]
 \newpage
 \section*{2.}
-Apply speration of variables, $u(x,t) = X(x) T(t)$, we have  \\
+Apply seperation of variables, $u(x,t) = X(x) T(t)$, we have  \\
 \[
   \begin{cases}
     u(0,t) = 0 \implies X(0) = 0 \\
@@ -126,7 +126,7 @@ from
 \]
 \newpage
 \section*{3.}
-Apply speration of variables, $u(x,t) = X(x) T(t)$, we have  \\
+Apply seperation of variables, $u(x,t) = X(x) T(t)$, we have  \\
 \[
   \begin{cases}
     u(0,t) = 0 \implies X(0) = 0 \\
@@ -281,6 +281,18 @@ But since the eigenfunction starts at $n=0$, we have that this is the $n+1$-th e
 \subsection*{c.}
 Since, the domain is $0<x<L$, every function $f(x)$ can be represented by the Fourier cosine series thus the eigenfunctions are complete. It is also obivously orthogonal from the material in class. 
 \subsection*{d.}
+Since $\phi'(0) = \phi'(L) = 0$, and we can see that 
+\[
+  p(x) = 1, \indent q(x) = 0, \indent \sigma(x) = 1
+\]
+Thus the Rayleigh quotient is 
+\[
+  \lambda = \displaystyle\frac{\int_0^L \phi'(x)^2 dx}{\int_0^L \phi(x)^2 dx} \ge 0
+\]
+$0$ can be an eigenvalue as else $\phi''(x) = \phi'(x) = 0$ for all $x \in (0,L)$ and therefore $\phi(x) = C$ for some constant $C$ since this satisfies the equation 
+\[
+  \phi''(x) = - \lambda \phi(x)
+\]
 \newpage
 \section*{7.}
 This is a Sturm-Liouville problem where
@@ -424,5 +436,64 @@ Thus
 \]
 \newpage
 \section*{10.}
-
+Apply seperation of varibles $u(x,t) = X(x) T(t)$, we have that 
+\[
+  \begin{cases}
+    u(0,t) = 0 \implies X(0) = 0 \\
+    u(L,t) = 0 \implies X(L) = 0 \\
+    u(x,0) = f(x) \implies X(x)T(0) = f(x) \\
+    u_t(x,0) = g(x) \implies X(x)T'(0) = g(x)
+  \end{cases}
+\]
+and 
+\begin{align*}
+  &\rho X(x)T''(t) = T_0 X''(x)T(t) + \alpha X(x)T(t) \\ 
+  \implies & \displaystyle\frac{T''(t)}{T(t)} = \displaystyle\frac{T_0 X''(x) + \alpha X(x)}{\rho X(x)} = -\lambda 
+\end{align*}
+Let's first rewrite the equation for $x$, 
+\[
+  T_0 X''(x) + X(x) (\alpha + \lambda \rho) = 0
+\]
+Thus is a Sturm-Liouville equation with 
+\[
+  p(x) = T_0, \indent q(x) = \alpha, \indent \sigma(x) = \rho
+\]
+As $X(0) = X(L) = 0$, the Rayleigh quotient will then be 
+\[
+  \lambda = \displaystyle\frac{\int_0^L T_0 X'(x)^2 - \alpha X(x)^2 dx}{\int_0^L X(x)^2 \rho dx} \ge 0
+\]
+as $\alpha < 0, \rho >0$ and the assumption we made $T_0 > 0$. Also note that if $0$ is an eigenvalue then $X'(x) = X(x) = 0$ and thus is $0$ is not an eigenvalue. \\ 
+Since $\lambda > 0$, 
+\[
+  T(t) = c_1 \sin(\sqrt{\lambda}t) + c_2 \cos(\sqrt{\lambda}t)
+\]
+Thus 
+\[
+  u(x,t) = \sum_{n=1}^\infty A_n X_n(x) \sin(\sqrt{\lambda_n}t) + \sum_{n=1}^\infty B_n X_n(x) \cos(\sqrt{\lambda_n}t) 
+\]
+and 
+\[
+  u_t(x,t) = \sum_{n=1}^\infty A_n X_n(x) \sqrt{\lambda_n} \cos(\sqrt{\lambda_n}t) - \sum_{n=1}^\infty B_n X_n(x) \sqrt{\lambda_n} \sin(\sqrt{\lambda_n}t) 
+\]
+Now, we need to solve for $A_n, B_n$
+\[
+  \begin{cases}
+    u(x,0) = f(x) = \sum_{n=1}^\infty B_n X_n(x) \\
+    u_t(x,0) = g(x) = \sum_{n=1}^\infty A_n X_n(x) \sqrt{\lambda_n}
+  \end{cases}
+\]
+Thus we get 
+\[
+  \begin{cases}
+    \int_0^L f(x)X_m(x) \rho(x) dx = \sum_{n=1}^\infty B_n \int_0^L X_n(x) X_m(x) \rho(x)dx \\
+    \int_0^L g(x)X_m(x) \rho(x) dx = \sum_{n=1}^\infty A_n \sqrt{\lambda_n} \int_0^L X_n(x) X_m(x) \rho(x)dx \\
+  \end{cases}
+\]
+and therefore, 
+\[
+  \begin{cases}
+    A_n = \displaystyle\frac{\int_0^L g(x) X_n(x) \rho(x) dx}{\sqrt{\lambda_n} \int_0^L X_n(x)^2 \rho(x) dx} \\
+    B_n = \displaystyle\frac{\int_0^L f(x) X_n(x) \rho(x) dx}{\int_0^L X_n(x)^2 \rho(x) dx}
+  \end{cases}
+\]
 \end{document}
