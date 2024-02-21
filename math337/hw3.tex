@@ -195,16 +195,234 @@ Thus
 \end{align*}
 \subsection*{2.}
 \subsubsection*{a.}
+Since $u(0,t) = u(L,t) = 0$, $u_t(0,t) = u_t(L,t) = 0$
 \[
-  E'(t) = 0
+  E'(t) = c^2 u_x(L,t)u_t(L,t) - c^2u_x(0,t)u_t(0,t) = 0
 \]
-Thus energy is conserved
+Thus energy is conserved.
 \subsubsection*{b.}
+Since $u(L,t) = 0$, $u_t(L,t) = 0$
 \[
-  E'(t) = 0
+  E'(t) = c^2 u_x(L,t)u_t(L,t) - c^2u_x(0,t)u_t(0,t) = 0
 \]
-Thus energy is conserved
-\subsubsection*{c.}
+Thus energy is conserved.
+\subsubsection*{c, d.}
+Since $u(0,t) = 0$, $u_t(0,t) = 0$
+\[
+  E'(t) = -c^2 \gamma u(L,t) u_t(L,t) = -\displaystyle\frac{c^2\gamma}{2} \displaystyle\frac{d}{dt} u_t^2(L,t)
+\]
+Thus integrating
+\[
+  E(t) - E(0) =  -\displaystyle\frac{\gamma c^2}{2} u^2(L,t')|_{t' = 0}^t
+\]
+and therefore
+\[
+  E(t) = E(0) + \displaystyle\frac{\gamma c^2}{2} (u^2(L,0) - u^2(L,t))
+\]
+If $\gamma > 0$, we have that $E$ increase at time $t$ if $u(L,0) > u(L,t)$ and decrease if $u(L,0) < u(L,t)$. Similarly, for $\gamma <0$, $E$ decrease at time $t$ if $u(L,0) > u(L,t)$ and increase if $u(L,0) < u(L,t)$. 
+\newpage
+\section*{5.}
+We have that 
+\[
+  H \phi'' + \alpha H \phi' + (H \lambda \beta+ H\gamma) \phi = 0
+\]
+We want to find $H$ so that the DE is of the form 
+\[
+  p'(x)\phi'(x) + p(x) \phi''(x) + (\lambda \sigma + q)\phi = 0 
+\]
+Thus we have the conditions
+\[
+  \begin{cases}
+    p' = \alpha H \\
+    p = H \\
+    H \lambda \beta = \lambda \sigma \\
+    H \gamma = q
+  \end{cases}
+\]
+The first 2 equations give us 
+\[
+  H'(x) = \alpha(x) H(x)
+\]
+Thus 
+\[
+  H(x) = \exp \left(\int \alpha(x) dx \right)
+\]
+and 
+\[
+  p(x) = \exp \left(\int \alpha(x) \right), q(x) = \gamma(x) \exp \left(\int \alpha(x) \right), \sigma(x) = \beta(x) \exp \left(\int \alpha(x) \right) 
+\]
+\newpage
+\section*{6.}
+\subsection*{a.}
+We know that the eigenfunction and eigenvalue are 
+\[
+  \phi_n(x) = \cos \displaystyle\frac{n\pi x}{L}
+\]
+\[
+  \lambda_n = \left( \displaystyle\frac{n\pi}{L}\right)^2
+\]
+Thus the smallest eigenvalue is $\lambda_0 = 0$ and there is no largest eigenvalue as 
+\[
+  \lim_{n \to \infty} \lambda_n = \infty
+\]
+\subsection*{b.}
+\[
+  \cos \displaystyle\frac{n\pi x}{L} = 0 \implies \displaystyle\frac{n\pi x}{L} = \displaystyle\frac{\pi}{2} + k\pi
+\]
+where $k \in \mathbb{Z}$. Thus 
+\[
+  x = \left(\displaystyle\frac{\pi}{2} + k\pi\right) \displaystyle\frac{L}{n\pi} = \displaystyle\frac{L}{2n} + \displaystyle\frac{kL}{n} = L \left( \displaystyle\frac{1+2k}{2n}\right)
+\]
+which means that as $0<x<L$, 
+\[
+  0<\displaystyle\frac{1+2k}{2n} < 1 \implies 0 \le k \le n-1 
+\]
+But since the eigenfunction starts at $n=0$, we have that this is the $n+1$-th eigenfunction which has $n$ zeros.
+\subsection*{c.}
+Since, the domain is $0<x<L$, every function $f(x)$ can be represented by the Fourier cosine series thus the eigenfunctions are complete. It is also obivously orthogonal from the material in class. 
+\subsection*{d.}
+\newpage
+\section*{7.}
+This is a Sturm-Liouville problem where
+\[
+  p(x) = 1, \indent q(x) = -x^2, \indent \sigma(x) = 1
+\]
+Thus we have the Rayleigh quotient
+\[
+  \displaystyle\frac{- \phi(x) \phi'(x) |^1_0 + \int_0^1 \phi'(x)^2 +x^2 \phi^2(x) dx}{\int_0^1 \phi^2(x) dx} = \displaystyle\frac{\int_0^1 \phi'(x)^2 + x^2 \phi^2(x)dx}{\int_0^1 \phi^2(x) dx}
+\]
+If the quotient = 0 then $\phi'(x)^2 + x^2 \phi^2(x) = 0$ a.e. in (0,1), which means that $\phi'(x) = \phi(x) = 0$ in (0,1) as $\phi(x)$ and $\phi'(x)$ is continuous. But that is a trivial solution thus 0 is not an eigenvalue.
+\newpage
+\section*{8.}
+\subsection*{a.}
+Multiplying, we have 
+\[
+  x \phi''(x) + \phi'(x) + \displaystyle\frac{\lambda}{x}\phi(x) = (\phi'(x)x)' + \displaystyle\frac{\lambda}{x}\phi(x) = 0
+\]
+is indeed a Sturm-Liouville with 
+\[
+  p(x) = x, \indent q(x) = 0, \indent \sigma(x) = \displaystyle\frac{1}{x}
+\]
+\subsection*{b.}
+The Rayleigh quotient thus is 
+\[ 
+  \displaystyle\frac{-x \phi(x) \phi'(x) |^b_1 + \int_1^b x\phi'(x)^2 dx}{\int_1^b \phi^2(x) \displaystyle\frac{1}{x} dx} = \displaystyle\frac{\int_1^b x\phi'(x)^2 dx}{\int_1^b \phi^2(x)\displaystyle\frac{1}{x} dx}
+\]
+We have that for all $1<x<b$
+\[
+  x > 0, \phi'(x)^2 \ge 0, \phi^2(x) \ge 0, \displaystyle\frac{1}{x} > 0
+\]
+thus 
+\[
+ \displaystyle\frac{\int_1^b x\phi'(x)^2 dx}{\int_1^b \phi^2(x)\displaystyle\frac{1}{x} dx} \ge 0 
+\]
+\subsection*{c.}
+If 0 is an eigenvalue then there is $\phi(x)$ such that $\phi'(x) = 0$ for all $x \in (1,b)$ but since $\phi(1) = \phi(b) = 0$. This means that $\phi(x) = 0$ and is a trivial solution thus 0 is not an eigenvalue. 
+Since it is equidimensional, let $\phi(x) = x^r$. Plugging in we have that
+\[
+  x^2 r(r-1)x^{r-2} + xrx^{r-1} + \lambda x^r = x^r (r(r-1) + r + \lambda)) = 0  
+\]
+which has the characterisic function 
+\[
+  r^2 + \lambda = 0
+\]
+Thus 
+\[
+  r = \pm i\sqrt{\lambda}
+\]
+Since $\lambda > 0$, we have that 
+\[
+  \phi(x) = x^{\pm i \sqrt{\lambda}} = \exp(\pm i\sqrt{\lambda}\ln(x))
+\]
+The solution is thus 
+\[
+  \phi(x) = c_1 \cos(\sqrt{\lambda} \ln x) + c_2 \sin(\sqrt{\lambda} \ln x)
+\]
+Applying the boundary conditions, we have $c_1 = 0$ and 
+\[
+  \sin(\sqrt{\lambda} \ln(b)) = 0
+\]
+Therefore, for all $n\ge 1$,  
+\[
+  \lambda_n = \left( \displaystyle\frac{n\pi}{\ln b} \right)^2 
+\]
+and 
+\[
+  \phi_n(x) = \sin \left(\displaystyle\frac{n\pi}{\ln b} \ln x\right)
+\]
+\subsection*{d.}
+The weight is found to be 
+\[
+  \sigma(x) = \displaystyle\frac{1}{x}
+\]
+And let $y = \ln x$, we have $dy = \displaystyle\frac{1}{x} dx$ and thus  
+\begin{align*}
+  &\int_1^b \phi_n(x) \phi_m(x) \sigma(x) dx \\
+  =& \int_1^b \sin\left(\displaystyle\frac{n\pi}{\ln b} \ln x\right) \sin\left(\displaystyle\frac{m\pi}{\ln b} \ln x\right) \displaystyle\frac{1}{x} dx \\
+  =& \int_0^{\ln b} \sin\left(\displaystyle\frac{n\pi}{\ln b} y\right) \sin\left(\displaystyle\frac{m\pi}{\ln b} y\right) dy \\
+  =& 0 
+\end{align*}
+if $n \ne m$. 
+\subsection*{e.}
+Let the $n$-th eigenfunction be 0
+\[
+  \phi_n(x) = \sin \left(\displaystyle\frac{n\pi}{\ln b} \ln x\right) = 0
+\]
+We have 
+\[
+  \displaystyle\frac{n \pi}{\ln b} \ln x = k \pi \implies x = \exp\left(\displaystyle\frac{k\ln b}{n}\right) = b^{k/n}
+\]
+where $k \in \mathbb{Z}$. Since $1<x<b$, we have that 
+\[
+  0< \displaystyle\frac{k}{n} < 1
+\]
+and 
+\[
+  1 \le k \le n-1
+\]
+Thus $n-1$ zeros.
+\newpage
+\section*{9.}
+\subsection*{a.}
+Assume solution of the form $u(x,t) = X(x) T(t)$ then 
+\[
+  c \rho X T' = (K_0 X')' T + \alpha X T \implies \displaystyle\frac{(K_0 X')'}{c\rho X} + \displaystyle\frac{\alpha}{c \rho} = \displaystyle\frac{T'}{T} = -\lambda
+\]
+Thus we have the ODE for $X$ to be 
+\[
+  (K_0X')' + (c\rho \lambda + \alpha)X=0 
+\]
+which is a Sturm-Liouville with 
+\[
+  p(x) = K_0, \indent q(x) = \alpha, \indent \sigma(x) = c\rho
+\]
+Thus, the Rayleigh quotient is 
+\[
+  \lambda = \displaystyle\frac{-K_0 \phi(x) \phi'(x) |^L_0 + \int_0^L K_0 \phi'(x)^2 - \alpha \phi(x)^2 dx}{\int_0^L \phi(x)^2 \rho c dx} = \displaystyle\frac{\int_0^L K_0 \phi'(x)^2 - \alpha \phi(x)^2 dx}{\int_0^L \phi(x)^2 \rho c dx}  
+\]
+which is $\ge 0$ if $\alpha < 0$. 
+\subsection*{b.}
+We have that the eigenfunction for $t$ is 
+\[
+  T_n(t) = \exp(-\lambda_n t)
+\]
+Assume the appropriate eigenfunctions for $x$ is $X_n$. Then 
+\[
+  u(x,t) = \sum_{n=1}^\infty A_n  \exp(-\lambda_n t) X_n(x)
+\]
+To solve for $A_n$, we have that 
+\[
+  f(x) = u(x,0) = \sum_{n=1}^\infty A_n X_n(x)
+\]
+Multiplying by $X_m(x) c \rho$ and integrating on $[0,L]$. Then 
+\[
+  \int_0^L f(x) X_m(x) c \rho dx = \sum_{n=1}^\infty A_n \underbrace{\int_0^L X_n(x) X_m(x) \sigma(x)}_{ = 0 \text{ if } m \ne n} dx 
+\]
+Thus 
+\[
+  A_n = \displaystyle\frac{\int_0^L f(x) \phi_n(x) c\rho dx}{\int_0^L \phi^2_n(x) c \rho dx}
+\]
+\newpage
+\section*{10.}
 
-\subsubsection*{d.}
 \end{document}
