@@ -1,0 +1,164 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}  
+\usepackage{hyperref}
+\usepackage{xcolor}
+\definecolor{Mybackground}{RGB}{40,49,51}
+\pagecolor{Mybackground}
+\color{white}
+
+
+\newtheorem{definition}{Definition}[section]
+\newtheoremstyle{mystyle}%                % Name
+  {}%                                     % Space above
+  {}%                                     % Space below
+  {\itshape}%                                     % Body font
+  {}%                                     % Indent amount
+  {\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  { }%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+
+\theoremstyle{mystyle}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem*{exmp}{Example}
+\begin{document}
+\section*{1.}
+Since $f$ is measurable, then we know that for any open interval $(x,y), f^{-1}(x,y)$ is measurable, then for an arbitary $a \in \mathbb{R}$
+\begin{itemize}
+  \item If $a \ge 0$, $\{0 < f < 1/a \}$ is measurable thus $\{g > a \}$ is also measurable. 
+  \item Now if $a < 0$, we have that \\
+    $\{g > a\} = \{g > 0\} \cup \{g = 0\} \cup \{a < g < 0\}$, but we have 
+    \[
+      \{g = 0 \} = f^{-1}(\{0, \infty, -\infty\})
+    \]
+    and
+    \[
+      \{a < g < 0\} = \{a < 1/f < 0\} = \{f < 1/a\}
+    \]
+    are measurable.  
+\end{itemize}
+Therefore, 
+\[
+  \{g>a\}
+\]
+is measurable for all $a \in \mathbb{R}$. Thus $g$ is measurable.
+\newpage
+\section*{2.}
+Suppose $m(F) = 0$ then we can find $n_0$ such that $\cup_{k = n_0}^\infty E_k < \infty$ thus WLOG we assume that $\cup_{k=1}^\infty E_k < \infty$.  
+\[
+  0 = m(\limsup_{n \to \infty} E_n) \ge \limsup_{n \to \infty} m(E_n)
+\]
+Therefore, 
+\[
+  \limsup_{n \to \infty} m(E_n) = \lim_{n \to \infty} \sup_{m \ge n} m(E_n) = 0
+\]
+and thus $m(E_n) \to 0$ as $n \to \infty$ and 
+\[
+  \lim_{n \to \infty} \chi_{E_n}(x) = 0
+\]
+a.e. $x \in \mathbb{R}^d$. \\
+In the other direction, first let $G_n = \cup_{k=n}^\infty E_k$. \\
+Suppose $m(F) > 0$ then if $m\left(\cup_{k=j}^\infty E_k \right) = \infty$ for all $j \in \mathbb{N}$ then obviously, $m(G_n) = \infty > a$ for all $a \in \mathbb{R}$. \\ 
+Suppose $m(F) > 0$ and $m\left(\cup_{k=j}^\infty E_k \right) < \infty$ for some $j$ then 
+\[
+  \lim_{j \to \infty} m(\cup_{k=j}^\infty E_k) = m(F) > 0
+\]
+Thus there is $\varepsilon > 0$ and $n_0$ such that for all $n>n_0$, $m(\cup_{k=n}^\infty E_k) > \varepsilon$. \\
+Therefore, in both cases there is some $\varepsilon > 0$ and $n_0$ such that for all $n>n_0$, 
+\[
+  m(G_n) > \varepsilon
+\]
+But for every $x \in G_n$, there is some $j \ge n$ such that $x \in E_j$ and thus $\chi_{E_j}(x) = 1$. However, if  
+\[
+  \lim_{n \to \infty} \chi_{E_n}(x) = 0 
+\]
+for all $x \in \mathbb{R}^d \backslash G$ where $m(G) = 0$ which means that $\{x: \exists n' > n, \chi_{E_n'}(x) \ne 0\} \to 0$ as $n \to \infty$, which is a contradiction. \\
+\newpage
+\section*{3.}
+\subsection*{a.}
+We know from notes 2 there is a nonmeasurable set $\mathcal{N} \subset [0,1]$. Define 
+\[
+  g: \mathbb{R} \to \mathbb{R}, \indent x \to
+  \begin{cases}
+    x, \indent \text{ if } x \in \mathcal{N} \\
+    -x, \indent \text{ if } x \notin \mathcal{N}
+  \end{cases}
+\]
+$g^{-1}(x)$ has at most 2 elements thus is measurable. But $\{g \ge 0\} \backslash (-\infty, 0] = \mathcal{N}$ is nonmeasurable.   
+\subsection*{b.}
+We first have that 
+\[
+  g^{-1}(a,\infty) = 
+  \begin{cases}
+    f'^{-1}(a,\infty), \indent \text{ if } a \ge 0 \\ 
+    f'^{-1}(a,\infty) \cup \mathbb{R} \backslash B , \indent \text{ if } a < 0 \\
+  \end{cases}
+\]
+Thus, we only need to prove that $f'$ is measurable as $\mathbb{R} \backslash B$ is measurable.\\
+We have that 
+\[
+  f' = \lim_{h \to 0} \displaystyle\frac{f(x+h) - f(x)}{h}
+\]
+Let $g_h = \displaystyle\frac{f(x+h) - f(x)}{h}$, we can see that since $f(x+h)$ and $f(x)$ are both measurable, $g_h$ is measurable and thus $f'$ is measurable.
+\newpage
+\section*{4.}
+Since $\mu$ is $\sigma$-finite, there is some $X_n \in \mathcal{M}$ such that $X_n \subseteq X_{n+1}$ and $\mu(X_n) < \infty$ for all $n \in \mathbb{N}$. \\ 
+Thus for every $X_m$ and every $k \in \mathbb{N}$, we can apply the erogov's theorem on the set $X_m$ to get there is a subset $E_{m,k}$ such that $\mu(X_m \backslash E_{m,k}) < \varepsilon / 2^{mk} $ and $f_n \to f$ uniformly on $E_m$.\\
+Now we have 
+\begin{align*}
+  \mu((\cup_{n,k=1}^\infty E_{n,k})^c) &= \mu(\cup_{n=1}^\infty X_n \backslash \cup_{n,k=1}^\infty E_{j,k}) \\
+  &= \mu( \cup_{n=1}^\infty (X_n \backslash \cup_{k=1}^\infty E_{n,k})) \\
+  &\le \sum_{n=1}^\infty \mu(X_n \backslash \cup_{k=1}^\infty E_{n,k})) \\
+  &= \sum_{n=1}^\infty \mu (\cap_{k=1}^\infty (X_n \backslash E_{n,k})) \\ 
+  &\le \sum_{n=1}^\infty \sum_{k=1}^\infty \mu(X_n \backslash E_{n,k}) \\
+  &< \varepsilon \sum_{n=1}^\infty \displaystyle\frac{1}{2^n} \sum_{k=1}^\infty \displaystyle\frac{1}{2^k} \\
+  = \varepsilon
+\end{align*}
+\newpage
+\section*{5.}
+Let $Y_n = [1/n, n)$ and $X_n = f^{-1}(Y_n \cup \{0\})$ so that 
+\[
+  \cup_{n=1}^\infty X_n = \cup_{n=1}^\infty f^{-1}(Y_n \cup \{0\}) = f^{-1}(\{0\} \cup \cup_{n=1}^\infty Y_n ) = f^{-1}([0,\infty)) = X 
+\]  
+\[
+  Y_n \subset Y_{n+1} \implies X_n \subset X_{n+1}
+\]
+and 
+\[
+  \displaystyle\frac{1}{n} \cdot \mu(X_n) < \int_{X_n} f dx < \int_X f dx < \infty \implies \mu(X_n) < \infty 
+\]
+Then we can define the sequence of function 
+\[
+  f_n = f \cdot \chi_{X_n}
+\]
+that is
+\begin{itemize}
+  \item non-negative as $f, \chi_{X_n} > 0$ 
+  \item $f_n(x) \uparrow f(x)$ for all $x \in X$ because of 
+    \begin{enumerate}
+      \item $f_n(x) \le f_{n+1}(x)$ for all $x \in X$ as $X_n \subset X_{n+1}$ 
+      \item For all $x \in X$, $f(x) < \infty$, thus there exists $N \in \mathbb{N}$ such that $f(x) \in Y_N$ and thus $x \in X_N \subset X_{N+1} \subset \hdots $. Therefore, $f_n(x) \to f(x)$ as $n \to \infty$. 
+    \end{enumerate}
+\end{itemize}
+Therefore, the monotone convergence theorem states that 
+\[
+  \lim_{n \to \infty} \int_{X_n} f dx = \lim_{n \to \infty} \int_X f \cdot \chi_{X_n} dx = \int_X f dx
+\]
+and noted that it is monotone increasing as well, therefore, for all $\varepsilon > 0$, we can find $E = X_{n_0}$ such that $\mu(E) < \infty$ and  
+\[
+  \int_X f dx - \int_E f dx < \varepsilon
+\]
+\end{document}
