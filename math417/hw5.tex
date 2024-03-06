@@ -129,7 +129,7 @@ Now we have
 \end{align*}
 \newpage
 \section*{5.}
-Let $Y_n = [1/n, n)$ and $X_n = f^{-1}(Y_n \cup \{0\})$ so that 
+First, note that $f(x) < \infty$ as $\int_X f < \infty$. Let $Y_n = (1/n, n)$ and $X_n = f^{-1}(Y_n \cup \{0\})$ so that 
 \[
   \cup_{n=1}^\infty X_n = \cup_{n=1}^\infty f^{-1}(Y_n \cup \{0\}) = f^{-1}(\{0\} \cup \cup_{n=1}^\infty Y_n ) = f^{-1}([0,\infty)) = X 
 \]  
@@ -138,7 +138,7 @@ Let $Y_n = [1/n, n)$ and $X_n = f^{-1}(Y_n \cup \{0\})$ so that
 \]
 and 
 \[
-  \displaystyle\frac{1}{n} \cdot \mu(X_n) < \int_{X_n} f dx < \int_X f dx < \infty \implies \mu(X_n) < \infty 
+  \displaystyle\frac{1}{n} \cdot \mu(X_n \backslash f^{-1}(0)) < \int_{X_n \backslash f^{-1}(0))} f \le \int_X f  \le \infty \implies \mu(X_n \backslash f^{-1}(0)) < \infty 
 \]
 Then we can define the sequence of function 
 \[
@@ -157,8 +157,16 @@ Therefore, the monotone convergence theorem states that
 \[
   \lim_{n \to \infty} \int_{X_n} f dx = \lim_{n \to \infty} \int_X f \cdot \chi_{X_n} dx = \int_X f dx
 \]
-and noted that it is monotone increasing as well, therefore, for all $\varepsilon > 0$, we can find $E = X_{n_0}$ such that $\mu(E) < \infty$ and  
+and noted that it is monotone increasing as well, therefore, for all $\varepsilon > 0$, we can find $F = X_{n_0}$ such that  
 \[
-  \int_X f dx - \int_E f dx < \varepsilon
+  \int_X f - \int_F f < \varepsilon
+\]
+and thus let $E = F \backslash f^{-1}(0))$, we have $\mu(E) < \infty$ and 
+\[
+  \int_X f - \int_E f < \varepsilon
+\]
+as 
+\[
+  \int_E f = \int_F f
 \]
 \end{document}
