@@ -117,7 +117,7 @@ Since $\varepsilon$ is arbitary, choose $\varepsilon = \displaystyle\frac{\delta
 \]
 If $f_n \to f$ in measure is false then there is some $\varepsilon, \delta > 0$ such that for all $n_0 > 0$, there is $n> n_0$ such that 
 \[ 
-  \mu(\underbrace{\{x \in X: |f_n(x) - f(x)| \ge \varepsilon\}}_{X_n} = \delta
+  \mu(\underbrace{\{x \in X: |f_n(x) - f(x)| \ge \varepsilon\}}_{X_n} > \delta
 \]
 and therefore
 \begin{align*}
@@ -126,7 +126,7 @@ and therefore
   \ge& \int_{X_n} \displaystyle\frac{|f_n-f|}{|f_n-f|+ 1} d\mu \\
   > & \delta \displaystyle\frac{\varepsilon}{\varepsilon + 1} \\
 \end{align*} 
-since $|f_n - f| \ge \varepsilon$ and $\displaystyle\frac{x}{1+x}$ is an increasing function. Thus 
+since $|f_n - f| \ge \varepsilon$ and $\displaystyle\frac{x}{1+x} = 1 - \displaystyle\frac{1}{1+x}$ is an increasing function. Thus 
 \[
   \lim_{n \to \infty} \rho(f_n, f) \ge \displaystyle\frac{\delta \varepsilon}{\varepsilon+1} > 0
 \]
@@ -171,4 +171,15 @@ Thus,
 \[
   \lim_{n \to \infty} \int_E [f(x)]^{1/n} = \lim_{n \to \infty} \int_{E \backslash E_0} [f(x)]^{1/n} dx = m(E \backslash E_0)
 \]
+\newpage
+\section*{5.}
+Let $F_1 = \{x: f(x) \ge 1\}$ and thus $F_2 = \{x: 0< f(x) < 1\}$. Therefore, we have that $f(x)^{1/n}$ monotonely increasing converges to 1 for $x \in F_2$ and monotonely decreasing converges to 1 for $x \in F_1$. Thus we can apply the monotone converging theorem and get 
+\begin{align*}
+  \lim_{n \to \infty} \int_E f(x)^{1/n} dx 
+  &= \lim_{n \to \infty} \int_{F_1} f(x)^{1/n} dx + \int_{F_2} f(x)^{1/n} dx + \int_{E_0} f(x)^{1/n} dx  \\
+  &= \lim_{n \to \infty} \int_{F_1} f(x)^{1/n} dx + \int_{F_2} f(x)^{1/n} dx \\
+  &= \int_{F_1} \lim_{n \to \infty} f(x)^{1/n} dx + \int_{F_2} \lim_{n \to \infty} f(x)^{1/n} dx \\
+  &= \int_{F_1} dx + \int_{F_2} dx \\
+  &= \mu(E\backslash E_0)
+\end{align*}
 \end{document}
