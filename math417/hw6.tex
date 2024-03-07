@@ -1,0 +1,174 @@
+
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}  
+\usepackage{hyperref}
+\usepackage{xcolor}
+\definecolor{Mybackground}{RGB}{40,49,51}
+\pagecolor{Mybackground}
+\color{white}
+
+
+\newtheorem{definition}{Definition}[section]
+\newtheoremstyle{mystyle}%                % Name
+  {}%                                     % Space above
+  {}%                                     % Space below
+  {\itshape}%                                     % Body font
+  {}%                                     % Indent amount
+  {\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  { }%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+
+\theoremstyle{mystyle}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem*{exmp}{Example}
+\begin{document}
+\section*{1.}
+\subsection*{b.}
+Since $f_n(x) \uparrow f(x)$ for all $x \in X$, we have that 
+\[
+  \int_X f = \int_X \liminf_{n \to \infty} f_n \le \liminf_{n \to \infty} \int_X f_n 
+\]
+But we also know that $\sup_{n \ge k} \int_X f_n \le \int_X f$ for all $n \in \mathbb{N}$, thus 
+\[
+  \int_X f \ge \lim_{n \to \infty} \sup_{n \ge k} \int_X f_n 
+\] 
+Thus we have that 
+\[
+  \limsup_{n \to \infty} \int_X f_n = \liminf_{n \to \infty} \int_X f_n = \lim_{n \to \infty} \int_X f_n = \int_X f
+\]
+\subsection*{b.}
+Define a sequence of function
+\[
+  f_n(x) = f(x) \cdot \chi_{x \le n}
+\]
+Thus $f_n(x) \le f_{n+1}(x)$ for all $n \in \mathbb{N}$ and is nonnegative as $f$ is nonnegative. Then from part a, we know that 
+\[
+  \int_N f d\mu = \lim_{n\to \infty} \int_N f_n = \lim_{n \to \infty} \int_{\{1,2,\hdots, n\}} f_n d\mu = \lim_{n \to \infty} \sum_{i=1}^n f(i) 
+\]
+\newpage
+\section*{2.}
+For any measurable subset $E$, we have that 
+\[
+  \int_E f = \int_E \liminf_{n \to \infty} f_n \le \liminf_{n \to \infty} \int_E f_n \le \limsup_{n \to \infty} \int_E f_n
+\]
+We also have that
+\begin{align*}
+  \int_E f &= \int_X f - \int_{E^c} f \\
+  &= \int_X f - \int_{E^c} \liminf f_n \\
+  &\ge \int_X f - \liminf \int_{E^c} f_n \\
+  &= \int_X f + \limsup \int_{E^c} -f_n \\
+  &= \limsup \left( \int_X f - \int_{E^c} f \right) \\ 
+  &=\limsup \int_E f 
+\end{align*}
+Thus 
+\[
+  \int_E f = \limsup_{n \to \infty} \int_E f_n = \liminf_{n \to \infty} \int_E f_n = \lim_{n \to \infty} \int_E f_n
+\]
+\newpage
+\section*{3.}
+\subsection*{a.}
+Let $\varphi = \sum_{j=0}^n c_j \chi_{E_j}$, where $c_0 = 0$ and $E_j$ are pairwise disjoint and $\cup_{j=0}^n E_j = X$.  
+\[
+  \int_X \varphi d\nu =\sum_{j=0}^n \int_{E_j} c_j f d\mu = \int_{X}  d\mu = \int_X \sum_{j=0}^n c_j \chi_{E_j} f d\mu = \int_X \varphi f d\mu
+\]
+\subsection*{b.}
+Since $X$ is a nonnegative measurable function, there is a sequence of nonnegative simple function $\phi_n$ such that $\phi_n \uparrow g$ for all $x \in X$. Then 
+\[
+  \int_X \phi_n d\nu = \int_X \phi_n f d\mu
+\]
+and 
+\[
+  \lim_{n \to \infty} \int_X \phi_n d\nu = \lim_{n \to \infty} \int_X \phi_n f d\mu
+\]
+Since $\phi_n \uparrow g$ andthus $\phi_n f \uparrow gf$, we have that 
+\[
+  \int_X g d\nu = \int_X gf d\mu
+\]
+\newpage
+\section*{4.}
+Definition: If $f_n \to f$ in measure then for an arbitary $\varepsilon > 0$,  
+\[
+  \lim_{n \to \infty} \mu(\underbrace{\{x \in X: |f_n(x) - f(x)| \ge \varepsilon\}}_{X_n} = 0
+\]
+Therefore, for all $\delta > 0$, we can find $n_0$ such that for all $n>n_0$, $\mu(X_n) < \delta/2$ and $|f_n-f| < \varepsilon$ for all $x \in X \backslash X_n$.  
+\begin{align*} 
+  &\lim_{n \to \infty} \rho(f_n, f) \\ 
+  =& \lim_{n \to \infty} \int_X \displaystyle\frac{|f_n-f|}{|f_n - f| + 1} d\mu \\
+  \le& \lim_{n \to \infty} \int_X d\mu + \int_{X\backslash X_n} \displaystyle\frac{\varepsilon}{\varepsilon + 1} d\mu \\
+  \le& \displaystyle\frac{\delta}{2} + \mu(X) \cdot \displaystyle\frac{\varepsilon}{\varepsilon + 1}  
+\end{align*}
+Since $\varepsilon$ is arbitary, choose $\varepsilon = \displaystyle\frac{\delta}{2\mu(X)-\delta}$ so that 
+\[
+  \lim_{n \to \infty} \rho(f_n, f) \le \displaystyle\frac{\delta}{2} + \mu(X) \cdot \displaystyle\frac{\delta}{\delta + 2\mu(X) - \delta} = \delta
+\]
+If $f_n \to f$ in measure is false then there is some $\varepsilon, \delta > 0$ such that 
+\[ 
+  \lim_{n \to \infty} \mu(\underbrace{\{x \in X: |f_n(x) - f(x)| \ge \varepsilon\}}_{X_n} = \delta
+\]
+which means that there is $n_0$ such that for all $n>n_0, \displaystyle\frac{\delta}{2} < \mu(X_n) < \displaystyle\frac{3\delta}{2}$. Now, for $n>n_0$, we have 
+\begin{align*}
+  &\rho(f_n, f) \\
+  =& \int_X \displaystyle\frac{|f_n-f|}{|f_n - f| + 1} d\mu \\
+  \ge& \int_{X_n} \displaystyle\frac{|f_n-f|}{|f_n-f|+ 1} d\mu \\
+  >& \delta \displaystyle\frac{\varepsilon}{\varepsilon + 1} 
+\end{align*} 
+since $|f_n - f| \ge \varepsilon$ and $\displaystyle\frac{x}{1+x}$ is an increasing function. Thus 
+\[
+  \lim_{n \to \infty} \rho(f_n, f) \ge \displaystyle\frac{\delta \varepsilon}{\varepsilon+1} > 0
+\]
+for some $\varepsilon, \delta > 0$, thus is a contradiction. 
+\newpage
+\section*{5.}
+Applying Fatou's, we have that  
+\[
+  \lim_{n \to \infty} \int_{E\backslash E_0} [f(x)]^{1/n} dx = \liminf_{n \to \infty} \int_{E\backslash E_0} [f(x)]^{1/n} dx \ge \int_{E \backslash E_0} \liminf_{n \to \infty} [f(x)]^{1/n} = \int_{E\backslash E_0} 1 = m(E \backslash E_0)
+\]
+and also 
+\[
+  \lim_{n \to \infty} \int_{E\backslash E_0} [f(x)]^{1/n} dx \le \limsup_{n \to \infty} \int_{E\backslash E_0} [f(x)]^{1/n} dx 
+\]
+We first prove the reverse Fatou's lemma: Suppose that $(f_n)_{n\in \mathbb{N}}$ is a sequence of measurable functions and $g$ an integrable function such that $f_n \le g$ for all $n \in \mathbb{N}$. Then $\limsup_{n \to \infty} \int_{X} f_n \le \int_{X} \limsup_{n \to \infty} f_n$. \\
+We can apply the fatou's lemma to $g-f_n \ge 0$, 
+\[
+  \int_X \liminf_{n \to \infty} (g-f_n) \le \liminf_{n \to \infty} \int_X (g-f_n)
+\]
+Thus 
+\[
+  \int_X \liminf_{n \to \infty} - f_n \le \liminf_{n \to \infty} \int_X -f_n
+\]
+and therefore, 
+\[
+  - \int_X \limsup_{n \to \infty} f_n \le -\limsup_{n \to \infty} \int_X f_n
+\]
+which concludes the proof for the reverse version. Now apply the lemma with the function $g$ on the domain $D$ of $f$ 
+\[
+  g: D \to \mathbb{R}, \indent x \to f(x) + 1
+\]
+so that $g \ge f_n$ for all $n \in \mathbb{N}$ as 
+\begin{itemize}
+  \item if $f(x) \ge 1$, then $f_n(x) \le f(x) < g(x)$  
+  \item if $f(x) < 1$, then $f_n(x) < 1 \le f(x) + 1$ 
+\end{itemize}
+thus we have 
+\[
+  \lim_{n \to \infty} \int_{E \backslash E_0} [f(x)]^{1/n} dx \le \int_{E \backslash E_0} \limsup_{n \to \infty} [f(x)]^{1/n} dx = \int_{E \backslash E_0} 1 dx = m(E \backslash E_0) 
+\]
+Thus, 
+\[
+  \lim_{n \to \infty} \int_E [f(x)]^{1/n} = \lim_{n \to \infty} \int_{E \backslash E_0} [f(x)]^{1/n} dx = m(E \backslash E_0)
+\]
+\end{document}
