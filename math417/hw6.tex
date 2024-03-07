@@ -113,7 +113,7 @@ Therefore, for all $\delta > 0$, we can find $n_0$ such that for all $n>n_0$, $\
 \end{align*}
 Since $\varepsilon$ is arbitary, choose $\varepsilon = \displaystyle\frac{\delta}{2\mu(X)-\delta}$ so that 
 \[
-  \lim_{n \to \infty} \rho(f_n, f) \le \displaystyle\frac{\delta}{2} + \mu(X) \cdot \displaystyle\frac{\delta}{\delta + 2\mu(X) - \delta} = \delta
+  \lim_{n \to \infty} \rho(f_n, f) \le \displaystyle\frac{\delta}{2} + \mu(X) \cdot \displaystyle\frac{\delta}{\delta + 2\mu(X) - \delta} > \delta
 \]
 If $f_n \to f$ in measure is false then there is some $\varepsilon, \delta > 0$ such that for all $n_0 > 0$, there is $n> n_0$ such that 
 \[ 
@@ -124,7 +124,7 @@ and therefore
   &\rho(f_n, f) \\
   =& \int_X \displaystyle\frac{|f_n-f|}{|f_n - f| + 1} d\mu \\
   \ge& \int_{X_n} \displaystyle\frac{|f_n-f|}{|f_n-f|+ 1} d\mu \\
-  \ge & \delta \displaystyle\frac{\varepsilon}{\varepsilon + 1} \\
+  > & \delta \displaystyle\frac{\varepsilon}{\varepsilon + 1} \\
 \end{align*} 
 since $|f_n - f| \ge \varepsilon$ and $\displaystyle\frac{x}{1+x}$ is an increasing function. Thus 
 \[
