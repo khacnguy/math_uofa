@@ -108,7 +108,7 @@ Therefore, for all $\delta > 0$, we can find $n_0$ such that for all $n>n_0$, $\
 \begin{align*} 
   &\lim_{n \to \infty} \rho(f_n, f) \\ 
   =& \lim_{n \to \infty} \int_X \displaystyle\frac{|f_n-f|}{|f_n - f| + 1} d\mu \\
-  \le& \lim_{n \to \infty} \int_X d\mu + \int_{X\backslash X_n} \displaystyle\frac{\varepsilon}{\varepsilon + 1} d\mu \\
+  \le& \lim_{n \to \infty} \int_{X_n} d\mu + \int_{X\backslash X_n} \displaystyle\frac{\varepsilon}{\varepsilon + 1} d\mu \\
   \le& \displaystyle\frac{\delta}{2} + \mu(X) \cdot \displaystyle\frac{\varepsilon}{\varepsilon + 1}  
 \end{align*}
 Since $\varepsilon$ is arbitary, choose $\varepsilon = \displaystyle\frac{\delta}{2\mu(X)-\delta}$ so that 
