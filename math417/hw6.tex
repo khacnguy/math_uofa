@@ -133,53 +133,28 @@ since $|f_n - f| \ge \varepsilon$ and $\displaystyle\frac{x}{1+x} = 1 - \display
 for some $\varepsilon, \delta > 0$, thus is a contradiction. 
 \newpage
 \section*{5.}
-Applying Fatou's, we have that  
-\[
-  \lim_{n \to \infty} \int_{E\backslash E_0} [f(x)]^{1/n} dx = \liminf_{n \to \infty} \int_{E\backslash E_0} [f(x)]^{1/n} dx \ge \int_{E \backslash E_0} \liminf_{n \to \infty} [f(x)]^{1/n} = \int_{E\backslash E_0} 1 = m(E \backslash E_0)
-\]
-and also 
-\[
-  \lim_{n \to \infty} \int_{E\backslash E_0} [f(x)]^{1/n} dx \le \limsup_{n \to \infty} \int_{E\backslash E_0} [f(x)]^{1/n} dx 
-\]
-We first prove the reverse Fatou's lemma: Suppose that $(f_n)_{n\in \mathbb{N}}$ is a sequence of measurable functions and $g$ an integrable function such that $f_n \le g$ for all $n \in \mathbb{N}$. Then $\limsup_{n \to \infty} \int_{X} f_n \le \int_{X} \limsup_{n \to \infty} f_n$. \\
-We can apply the fatou's lemma to $g-f_n \ge 0$, 
-\[
-  \int_X \liminf_{n \to \infty} (g-f_n) \le \liminf_{n \to \infty} \int_X (g-f_n)
-\]
-Thus 
-\[
-  \int_X \liminf_{n \to \infty} - f_n \le \liminf_{n \to \infty} \int_X -f_n
-\]
-and therefore, 
-\[
-  - \int_X \limsup_{n \to \infty} f_n \le -\limsup_{n \to \infty} \int_X f_n
-\]
-which concludes the proof for the reverse version. Now apply the lemma with the function $g$ on the domain $D$ of $f$ 
-\[
-  g: D \to \mathbb{R}, \indent x \to f(x) + 1
-\]
-so that $g \ge f_n$ for all $n \in \mathbb{N}$ as 
-\begin{itemize}
-  \item if $f(x) \ge 1$, then $f_n(x) \le f(x) < g(x)$  
-  \item if $f(x) < 1$, then $f_n(x) < 1 \le f(x) + 1$ 
-\end{itemize}
-thus we have 
-\[
-  \lim_{n \to \infty} \int_{E \backslash E_0} [f(x)]^{1/n} dx \le \int_{E \backslash E_0} \limsup_{n \to \infty} [f(x)]^{1/n} dx = \int_{E \backslash E_0} 1 dx = m(E \backslash E_0) 
-\]
-Thus, 
-\[
-  \lim_{n \to \infty} \int_E [f(x)]^{1/n} = \lim_{n \to \infty} \int_{E \backslash E_0} [f(x)]^{1/n} dx = m(E \backslash E_0)
-\]
-\newpage
-\section*{5.}
 Let $F_1 = \{x: f(x) \ge 1\}$ and thus $F_2 = \{x: 0< f(x) < 1\}$. Therefore, we have that $f(x)^{1/n}$ monotonely increasing converges to 1 for $x \in F_2$ and monotonely decreasing converges to 1 for $x \in F_1$. Thus we can apply the monotone converging theorem and get 
 \begin{align*}
-  \lim_{n \to \infty} \int_E f(x)^{1/n} dx 
-  &= \lim_{n \to \infty} \int_{F_1} f(x)^{1/n} dx + \int_{F_2} f(x)^{1/n} dx + \int_{E_0} f(x)^{1/n} dx  \\
-  &= \lim_{n \to \infty} \int_{F_1} f(x)^{1/n} dx + \int_{F_2} f(x)^{1/n} dx \\
-  &= \int_{F_1} \lim_{n \to \infty} f(x)^{1/n} dx + \int_{F_2} \lim_{n \to \infty} f(x)^{1/n} dx \\
-  &= \int_{F_1} dx + \int_{F_2} dx \\
-  &= \mu(E\backslash E_0)
+  &\lim_{n \to \infty} \int_{F_2} f(x)^{1/n} dx \\
+  &= \lim_{n \to \infty} \int_{F_2} f(x)^{1/n} dx \\
+  &= \int_{F_2} \lim_{n \to \infty} f(x)^{1/n} dx \\
+  &= \int_{F_2} dx \\
+  &= \mu(F_2)
 \end{align*}
+Let the function $g$ be 
+\[
+  g: F_1 \to \mathbb{R}, \indent x \to f(x)
+\]
+so that $g \ge |f(x)^{1/n}|$ for all $x \in F_1$, therefore, 
+\begin{align*}
+  &\lim_{n \to \infty} \int_{F_1} f(x)^{1/n} dx \\
+  &= \lim_{n \to \infty} \int_{F_1} f(x)^{1/n} dx \\
+  &= \int_{F_1} \lim_{n \to \infty} f(x)^{1/n} dx \\
+  &= \int_{F_1} dx \\
+  &= \mu(F_1)
+\end{align*}
+Thus 
+\[
+  \lim_{n \to \infty} \int_E f(x)^{1/n} dx = \lim_{n \to \infty} \int_{F_1 \sqcup F_2 \sqcup E_0} f(x)^{1/n} dx = \lim_{n \to \infty} \int_{F_1 \sqcup F_2} f(x)^{1/n} dx = \mu(F_1) + \mu(F_2) = \mu(E \backslash E_0)
+\]
 \end{document}
