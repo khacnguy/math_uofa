@@ -1,0 +1,50 @@
+
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}  
+\usepackage{hyperref}
+\usepackage{xcolor}
+\definecolor{Mybackground}{RGB}{40,49,51}
+\pagecolor{Mybackground}
+\color{white}
+
+
+\newtheorem{definition}{Definition}[section]
+\newtheoremstyle{mystyle}%                % Name
+  {}%                                     % Space above
+  {}%                                     % Space below
+  {\itshape}%                                     % Body font
+  {}%                                     % Indent amount
+  {\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  { }%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+
+\theoremstyle{mystyle}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem*{exmp}{Example}
+\begin{document}
+\section*{2.}
+\subsection*{a.}
+Imagine the point on a 2 dimensianl planes Oxy. Notice that for any points labeled $-1$, the first element is less than 2 and larger than 2 otherwise thus the idea is to create a vertical lineat $2$, which is the line $x = 2$, which can be done by setting $w = [1,0]$ and $b = -2$. Indeed, plugging in we will see that $ w \cdot (x, y) + b = 0 \implies x = -b = 2$ is the line equation.
+\subsection*{b.}
+Notice that every point labeled -1 have their elements with absolute value 1 and labeled 1 have their elements with absolute value 2. Thus we can use any form of k-th norm to first transform it, we will use norm 1. Let $f$ be that transformation
+\[
+  f: \mathbb{R}^2 \to \mathbb{R}, \indent (x,y) \to |x| + |y| 
+\]
+Thus we can rewrite the data points, every data points labeled -1 now have value 2 and labeled 1 now have value 4. Thus we can simply compare that to number 3 which means $w = 1$ and $b = -3$.
+\section*{3.}
+
+\end{document}
