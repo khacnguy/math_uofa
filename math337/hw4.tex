@@ -1,0 +1,975 @@
+
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}  
+\usepackage{hyperref}
+\usepackage{xcolor}
+\definecolor{Mybackground}{RGB}{40,49,51}
+\pagecolor{Mybackground}
+\color{white}
+
+
+\newtheorem{definition}{Definition}[section]
+\newtheoremstyle{mystyle}%                % Name
+  {}%                                     % Space above
+  {}%                                     % Space below
+  {\itshape}%                                     % Body font
+  {}%                                     % Indent amount
+  {\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  { }%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+
+\theoremstyle{mystyle}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem*{exmp}{Example}
+\begin{document}
+\section*{1.}
+Since $u(t, x, y) = T(t) f(x, y)$, then 
+\[
+  T'(t) f(x,y) = k T(t) (f_{xx}(x,y) + f_{yy}(x,y))
+\]
+thus 
+\[
+  \displaystyle\frac{T'(t)}{T(t)} = k\displaystyle\frac{ f_{xx}(x,y) + f_{yy}(x,y)}{f(x,y)} = -\lambda
+\]
+We have that 
+\[
+  T'(t) + \lambda T(t) = 0 \implies T_n(t) = Ce^{-\lambda t}
+\]
+and then apply $f(x,y) = X(x) Y(y)$, we get the 2 dimensional eigenvalue problem: 
+\[
+  \begin{cases}  
+    f_{xx}(x,y) + f_{yy}(x,y) = -\displaystyle\frac{\lambda}{k} f(x,y) \\
+    u(x,0,t) = X(x) Y(0) T(t) = 0 \implies Y(0) = 0 \\  
+  u(x,H,t) = X(x) Y(H) T(t) = 0 \implies Y(H) = 0 \\ 
+  u_x(0,y,t) = X'(0) Y) T(t) = 0 \implies X'(0) = 0 \\ 
+  u_x(L,y,t) = X'(L) Y(y) T(t) = 0 \implies X'(L) = 0
+  \end{cases}
+\]
+We have 
+\[
+  X''(x)Y(y) + X(x)Y''(y) = -\displaystyle\frac{\lambda}{k} X(x)Y(y)
+\]
+thus 
+\[
+  \displaystyle\frac{Y''(y)}{Y(y)}= -\displaystyle\frac{\displaystyle\frac{\lambda_1}{k} X(x)+ X''(x)}{X(x)} = - \mu 
+\]
+Therefore,  
+\[
+  \mu = \left(\displaystyle\frac{n\pi}{H} \right)^2
+\]
+for $n = 1,2, \hdots$ and the eigenfunctions are
+\[
+  Y_n(y) = \sin \displaystyle\frac{n\pi y}{H}
+\]
+Now, we solve for 
+\[
+  -\displaystyle\frac{\lambda}{k} X(x) + X''(x) = - \left(\displaystyle\frac{n\pi}{H}\right)^2 X(x)
+\]
+which can be rewritten as 
+\[
+  X''(x) = -X(x) \left(\mu -\displaystyle\frac{\lambda}{k} \right) 
+\] 
+Thus the eigenvalue for the equations with is for $m = 0,1,2, \hdots$
+\[
+  \mu - \displaystyle\frac{\lambda}{k} = \left( \displaystyle\frac{m \pi}{L}\right)^2  \implies \lambda = k \left( \left(\displaystyle\frac{n\pi}{H}\right)^2 - \left(\displaystyle\frac{m\pi}{L}\right)^2 \right)
+\]
+and 
+\[
+  X_m(x) = \cos\left(\displaystyle\frac{m\pi x}{L}\right)
+\]
+Therefore, we have that 
+\[
+  f_{m,n}(x,y) = \sin \displaystyle\frac{n\pi y}{H} \cos \displaystyle\frac{m\pi x}{L}
+\]
+and 
+\begin{align*}
+  u(x,y,t) = \sum_{m=0}^\infty \sum_{n=1}^\infty A_{mn} e^{-\lambda_{mn}t} \cos \left( \displaystyle\frac{m\pi x}{L}\right) \sin\left(\displaystyle\frac{n\pi y}{H}\right)
+\end{align*}
+where 
+\[
+  \lambda_{mn} = -k \left( \left(\displaystyle\frac{n\pi}{H}\right)^2 - \left(\displaystyle\frac{m\pi}{L}\right)^2\right) 
+\]
+We have that 
+\[
+  u(x,y,0) = \sum_{m=0}^\infty \left( \sum_{n=1}^\infty A_{mn} \sin\left(\displaystyle\frac{n\pi y}{H}\right) \right) \cos \left( \displaystyle\frac{m\pi x}{L}\right) = \alpha(x,y)
+\]
+Thus for $m > 0$,  
+\[
+  \sum_{n=1}^\infty A_{mn} \sin \displaystyle\frac{n\pi y}{H} = \displaystyle\frac{2}{L} \int_0^L \alpha(x,y) \cos \displaystyle\frac{n\pi x}{L} dx 
+\]
+and 
+\[
+  \sum_{n=1}^\infty A_{0n} \sin \displaystyle\frac{n\pi y}{H} = \displaystyle\frac{1}{L} \int_0^L \alpha(x,y) dx 
+\]
+Therefore, for $m>0$, 
+\begin{align*}
+  A_{mn} 
+  &= \displaystyle\frac{2}{H} \int_0^H \sin \displaystyle\frac{n\pi y}{H} \cdot \left(  \displaystyle\frac{2}{L} \int_0^L \alpha(x,y) \cos \displaystyle\frac{n\pi x}{L} dx \right) dy \\
+  &= \displaystyle\frac{4}{HL} \int_0^H \sin \displaystyle\frac{n\pi y}{H} \cdot \left( \int_0^L \alpha(x,y) \cos \displaystyle\frac{n\pi x}{L} dx \right) dy 
+\end{align*}
+and 
+similarly, 
+\[
+  A_{0n} = \displaystyle\frac{2}{HL} \int_0^H \sin \displaystyle\frac{n\pi y}{H} \cdot \left( \int_0^L \alpha(x,y) dx \right) dy \\
+\]
+\newpage
+\section*{2.}
+Separation of variables $u(x,y,z) = f(x,y) Z(z)$, we have 
+\[
+  f_{xx}(x,y) Z(z) + f_{yy}(x,y) Z(z) + f(x,y)Z''(z) = 0
+\]
+thus 
+\[
+  \displaystyle\frac{Z''(z)}{Z(z)} = - \displaystyle\frac{f_{xx}(x,y) + f_{yy}(x,y)}{f(x,y)} = -\lambda
+\]
+and thus we have the system of equations 
+\[
+    \begin{cases}
+      Z''(z) = -\lambda Z(z) \\ 
+      u_z(x,y,0) = X(x) Y(y) Z'(0) = 0 \implies Z'(0) = 0 
+    \end{cases}
+\]
+Applying $f(x,y) = X(x) Y(y)$, the other equation is
+\[
+  X''(x) Y(y) + Y''(y) X(x) = \lambda X(x) Y(y) \implies \displaystyle\frac{X''(x)}{X(x)} = \lambda - \displaystyle\frac{Y''(y)}{Y(y)} = -\mu 
+\]
+Thus we have 
+\[
+  \begin{cases}
+    X''(x) = -\mu X(x) \\ 
+    u(x,y,z) = 0 \text{ for } (x,y) \in \partial \Gamma \implies X(0) = X(L) = 0
+  \end{cases}
+\]
+and 
+\[
+  \begin{cases}
+    Y''(x) = -(-\lambda - \mu) X(x) \\ 
+    u(x,y,z) = 0 \text{ for } (x,y) \in \partial \Gamma \implies X(0) = X(L) = 0
+  \end{cases}
+\]
+hence 
+\[
+  \mu = \left( \displaystyle\frac{n\pi}{L}\right)^2
+\]
+for $n=1,2,\hdots$ and 
+\[
+  -\lambda - \mu = \left( \displaystyle\frac{m\pi }{H}\right)^2
+\]
+for $m= 1,2,\hdots$, thus 
+\[
+  \lambda_{mn} = - \left( \displaystyle\frac{n\pi}{L}\right)^2 - \left( \displaystyle\frac{m\pi}{H}\right)^2  < 0 
+\]
+Therefore, 
+\[
+  Z(z) = c_1 \exp (\sqrt{-\lambda}z) + c_2 \exp(-\sqrt{-\lambda}z)
+\]
+and 
+\[
+  Z'(z) = \sqrt{-\lambda}(c_1 \exp (\sqrt{-\lambda}z) - c_2 \exp(-\sqrt{-\lambda}z))
+\]
+and plugging in $Z'(0) = 0$, we have $c_1 = c_2$ thus 
+\[
+  Z(z) = c_2 \cosh(\sqrt{-\lambda}z)
+\]
+Therefore, 
+\begin{align*}
+  u(x,y,z) = \sum_{n=1}^\infty \sum_{m=1}^\infty A_{mn} \sin \left( \displaystyle\frac{n\pi x}{L}\right) \sin \left( \displaystyle\frac{m\pi y}{H}\right) \cosh\left(z \sqrt{-\lambda_{mn}} \right)
+\end{align*}
+where 
+\[
+  \lambda_{mn} = -\left(\displaystyle\frac{n\pi}{L}\right)^2 - \left(\displaystyle\frac{m\pi}{H}\right)^2
+\]
+Applying $u(x,y,H) = \alpha(x,y)$, then using orthogonality we have 
+\begin{align*}
+  &\int_0^L \int_0^H \alpha(x,y) \sin \displaystyle\frac{n\pi x}{L} \sin \displaystyle\frac{n\pi y}{H} dx dy \\ 
+  =& A_{mn} \cosh (H\sqrt{-\lambda_{mn}}) \int_0^L \int_0^H \sin^2 \displaystyle\frac{n\pi x}{L} \sin^2 \displaystyle\frac{m\pi y}{H} dx dy \\
+  =& A_{mn} \cosh(H \sqrt{-\lambda_{mn}}) \displaystyle\frac{LH}{4}
+\end{align*}
+Therefore, 
+\[
+  A_{mn} = \displaystyle\frac{4}{LH \cosh(H \sqrt{-\lambda_{mn}})} \int_0^L \int_0^H \alpha(x,y) \sin \displaystyle\frac{n\pi x}{L} \sin \displaystyle\frac{n\pi y}{H} dx dy \\ 
+\]
+\newpage
+\section*{3.}
+Apply separation of variables $u(r, \theta, t) = f(r, \theta) T(t)$, we have 
+\[
+  T''(t) f(r, \theta) = c^2 \left(\displaystyle\frac{1}{r} \displaystyle\frac{\partial}{\partial r} \left( r f_r(r, \theta) T(t)\right) + \displaystyle\frac{1}{r^2} f_{\theta \theta}(r, \theta)T(t)\right)
+\]
+Thus 
+\[
+  \displaystyle\frac{T''(t)}{c^2 T(t)} = \displaystyle\frac{\displaystyle\frac{1}{r} \displaystyle\frac{\partial}{\partial r} (r f_r(r, \theta)) + \displaystyle\frac{1}{r^2}f_{\theta \theta}(r, \theta)}{f(r, \theta)} = -\lambda
+\]
+Now, apply separation of variables $f(r, \theta) = R(r) \phi(\theta)$, we have 
+\[
+  \displaystyle\frac{1}{r} \displaystyle\frac{\partial}{\partial r} (rR'(r) \phi(\theta)) + \displaystyle\frac{1}{r^2} R(r) \phi''(\theta) = - \lambda R(r) \phi(\theta) 
+\]
+and thus 
+\[
+  \displaystyle\frac{1}{r^2} R(r) \phi''(\theta) = - \phi(\theta) \left(\lambda R(r) + \displaystyle\frac{1}{r} (rR''(r) + R'(r)) \right)
+\]
+and 
+\[
+  \displaystyle\frac{\phi''(\theta)}{\phi(\theta)} = -\displaystyle\frac{ r^2\lambda R(r) + r^2R''(r) + rR'(r))}{R(r)} =  -\mu 
+\]
+Now since 
+\[
+  u(r, -\pi, t) = u(r, \pi, t) \implies \phi(-\pi) = \phi(\pi) 
+\]
+and 
+\[
+  u_\theta(r, -\pi, t) = u_\theta(r, \pi, t) \implies \phi'(-\pi) = \phi'(\pi) \\
+\]
+We have for $n = 0,1,2, \hdots$, 
+\[
+  \mu_n = n^2 
+\]
+and for $n=1,2,\hdots$
+\[
+  \phi_n(\theta) = \sin(n\theta), \cos(n\theta)
+\]
+with 
+\[
+  \phi_0(\theta) = 1
+\]
+Now to solve for $R$, we look at the equation 
+\[
+  r^2R''(r) + rR'(r) + \left(\lambda r^2 - \mu \right) R(r) = 0
+\]
+Let $z = \sqrt{\lambda }r$, we have 
+\[
+  z^2\displaystyle\frac{\partial^2 R}{\partial z^2} + z \displaystyle\frac{\partial R}{\partial z} + \left(z^2 - n^2 \right) R(z) = 0
+\]
+which is a bessel DE of order $n$. Thus 
+\[
+  R(z) = c_1 J_n(z) + c_2 Y_n(z)
+\]
+But since $R(0)$ is bounded, 
+\[
+  R(r) = c_1 J_n(\sqrt{\lambda }r)
+\]
+But $R(a) = 0$ so $\sqrt{\lambda} a$ is zeros of the $J_n$ function. Thus let $z_{mn}$ be the m-th zeros, we get 
+\[
+  \lambda_{mn} = \displaystyle\frac{z^2_{mn}}{a^2} > 0
+\]
+Since $\lambda_{mn} > 0$, we can find 
+\[
+  T(t) = cos( c\sqrt{\lambda}t), \sin(c\sqrt{\lambda}t)
+\]
+Thus 
+\begin{align*}
+  u(r, \theta, t) 
+  =& \sum_{n=0}^\infty \sum_{m=1}^\infty A_{mn} J_n(\sqrt{\lambda_{mn}}r) \cos(n \theta) \cos(c \sqrt{\lambda_{mn}}t) \\
+  +&\sum_{n=0}^\infty \sum_{m=1}^\infty A_{mn} J_n(\sqrt{\lambda_{mn}}r) \cos(n \theta) \sin(c \sqrt{\lambda_{mn}}t) \\
+  +&\sum_{n=1}^\infty \sum_{m=1}^\infty A_{mn} J_n(\sqrt{\lambda_{mn}}r) \sin(n \theta) \cos(c \sqrt{\lambda_{mn}}t) \\
+  +&\sum_{n=1}^\infty \sum_{m=1}^\infty A_{mn} J_n(\sqrt{\lambda_{mn}}r) \sin(n \theta) \sin(c \sqrt{\lambda_{mn}}t)
+\end{align*}
+\newpage
+\section*{4.}
+Apply separation of variables $u(r, \theta, t) = f(r, \theta) T(t)$, we have 
+\[
+  T''(t) f(r, \theta) = c^2 \left(\displaystyle\frac{1}{r} \displaystyle\frac{\partial}{\partial r} \left( r f_r(r, \theta) T(t)\right) + \displaystyle\frac{1}{r^2} f_{\theta \theta}(r, \theta)T(t)\right)
+\]
+Thus 
+\[
+  \displaystyle\frac{T''(t)}{c^2 T(t)} = \displaystyle\frac{\displaystyle\frac{1}{r} \displaystyle\frac{\partial}{\partial r} (r f_r(r, \theta)) + \displaystyle\frac{1}{r^2}f_{\theta \theta}(r, \theta)}{f(r, \theta)} = -\lambda
+\]
+Now, apply separation of variables $f(r, \theta) = R(r) \phi(\theta)$, we have 
+\[
+  \displaystyle\frac{1}{r} \displaystyle\frac{\partial}{\partial r} (rR'(r) \phi(\theta)) + \displaystyle\frac{1}{r^2} R(r) \phi''(\theta) = - \lambda R(r) \phi(\theta) 
+\]
+and thus 
+\[
+  \displaystyle\frac{1}{r^2} R(r) \phi''(\theta) = - \phi(\theta) \left(\lambda R(r) + \displaystyle\frac{1}{r} (rR''(r) + R'(r)) \right)
+\]
+and 
+\[
+  \displaystyle\frac{\phi''(\theta)}{\phi(\theta)} = -\displaystyle\frac{ r^2\lambda R(r) + r^2R''(r) + rR'(r))}{R(r)} =  -\mu 
+\]
+Now since 
+\[
+  u(r, -\pi, t) = u(r, \pi, t) \implies \phi(-\pi) = \phi(\pi) 
+\]
+and 
+\[
+  u_\theta(r, -\pi, t) = u_\theta(r, \pi, t) \implies \phi'(-\pi) = \phi'(\pi) \\
+\]
+We have for $n = 0,1,2, \hdots$, 
+\[
+  \mu_n = n^2 
+\]
+and for $n=1,2,\hdots$
+\[
+  \phi_n(\theta) = \sin(n\theta), \cos(n\theta)
+\]
+with 
+\[
+  \phi_0(\theta) = 1
+\]
+Now to solve for $R$, we look at the equation 
+\[
+  r^2R''(r) + rR'(r) + \left(\lambda r^2 - \mu \right) R(r) = 0
+\]
+Let $z = \sqrt{\lambda }r$, we have 
+\[
+  z^2\displaystyle\frac{\partial^2 R}{\partial z^2} + z \displaystyle\frac{\partial R}{\partial z} + \left(z^2 - n^2 \right) R(z) = 0
+\]
+which is a bessel DE of order $n$. Thus 
+\[
+  R(z) = c_1 J_n(z) + c_2 Y_n(z)
+\]
+But since $R(0)$ is bounded, 
+\[
+  R(r) = c_1 J_n(\sqrt{\lambda }r) 
+\]
+But $R'(a) = 0$ so $\sqrt{\lambda} a$ is the extrema of the $J_n$ function. Thus let $z_{mn}$ be the m-th extrema, we get 
+\[
+  \lambda_{mn} = \displaystyle\frac{z^2_{mn}}{a^2} > 0
+\]
+Since $\lambda_{mn} > 0$, we can find 
+\[
+  T(t) = cos( c\sqrt{\lambda}t), \sin(c\sqrt{\lambda}t)
+\]
+Thus 
+\begin{align*}
+  u(r, \theta, t) 
+  =& \sum_{n=0}^\infty \sum_{m=1}^\infty A_{mn} J_n(\sqrt{\lambda_{mn}}r) \cos(n \theta) \cos(c \sqrt{\lambda_{mn}}t) \\
+  +&\sum_{n=0}^\infty \sum_{m=1}^\infty A_{mn} J_n(\sqrt{\lambda_{mn}}r) \cos(n \theta) \sin(c \sqrt{\lambda_{mn}}t) \\
+  +&\sum_{n=0}^\infty \sum_{m=1}^\infty A_{mn} J_n(\sqrt{\lambda_{mn}}r) \sin(n \theta) \cos(c \sqrt{\lambda_{mn}}t) \\
+  +&\sum_{n=0}^\infty \sum_{m=1}^\infty A_{mn} J_n(\sqrt{\lambda_{mn}}r) \sin(n \theta) \sin(c \sqrt{\lambda_{mn}}t)
+\end{align*}
+\newpage
+\section*{5.}
+If equilibrium exists then 
+\[
+  ku_{xx} = - Q(x)
+\]
+Thus if $Q = 0$ 
+\[
+  u_{E} = c_1 x + c_2
+\]
+and 
+\[
+  u_{E}' = c_1
+\]
+\subsection*{a.}
+Substituting the boundary conditions, we have  
+\[
+  u_{E} = Bx + A
+\]
+Now let 
+\[
+  u(x,t) = v(x,t) + u_E(x)
+\]
+Thus as $u_E$ is independent of $t$ and $u_E'' = 0$
+\[
+  v_t(x,t) = k v_{xx}(x,t)
+\]
+with boundary and initial conditions  
+\[
+  \begin{cases}
+    v(0,t) = 0 \\
+    v_x(L,t) = 0 \\
+    v(x,0) = u(x,0) - u_{eq}(x) = f(x) - Bx - A
+  \end{cases}
+\]
+$v(x,t) = X(x) T(t)$, we have 
+\[
+  X(x)T'(t) = k X''(x)T(t) \implies \displaystyle\frac{T'(t)}{kT(t)} = \displaystyle\frac{X''(x)}{X(x)} = -\lambda
+\]
+with boundary conditions
+\[
+  X(0) = 0 \text{ and } X'(L) = 0
+\]
+which has the eigenfunctions with $n=1,3,5, \hdots$ 
+\[
+  X_n(x) = \sin(\sqrt{\lambda_n }x)
+\]
+where 
+\[
+  \lambda_n = \left(\displaystyle\frac{n\pi}{2L}\right)^2
+\]
+and 
+\[
+  T_n(t) = \exp(-k\lambda_n t)
+\]
+Thus 
+\[
+  v(x,t) = \sum_{n = 1,3,\hdots}^\infty A_n \sin(\sqrt{\lambda_n}x)\exp(-k\lambda_n t)
+\]
+Applying the initial conditions, we have 
+\[
+  v(x,0) = \sum_{n=1,3,\hdots}^\infty A_n \sin(\sqrt{\lambda_n}x) = f(x) - Bx - A
+\]
+Therefore, 
+\[
+  A_n = \displaystyle\frac{2}{L} \int_0^L (f(x) - Bx - A) \sin(\sqrt{\lambda_n}x) dx
+\]
+and the final solution is 
+\[
+  u(x,t) = v(x,t) + Bx + A 
+\]
+where $v(x,t)$ is given above. 
+\subsection*{b.}
+The equilibrium does not exists as $u_x(0,t) = 0 < B = u_x(L,t)$, $u_{xx}(x_0,t) \ne 0$ for some $x_0$ thus $u_t(x_0, t) \ne 0$. Since equilibrium does not exists and the known boundary conditions for $u$, we can find the function 
+\[
+  r(x) = \displaystyle\frac{B}{2L}x^2 
+\]
+so that 
+\[
+  r'(0) = 0 \text{ and } r'(L) = B
+\]
+Then let
+\[
+  u(x,t) = v(x,t) + r(x)
+\]
+we find that 
+\[
+  \begin{cases}
+    v_t(x,t) = u_t(x,t) = ku_{xx}(x,t) = k(v_{xx}(x,t) + \displaystyle\frac{B}{L}) \\
+    v_t(0,t) = 0 \\
+    v_t(L,t) = 0 \\
+    u(x,0) = v(x,0) + r(x) \implies v(x,0) = f(x) - \displaystyle\frac{B}{2L}x^2
+  \end{cases}
+\]
+\subsection*{c.}
+If equilibrium exists then 
+\[
+  u_E''(x) = \displaystyle\frac{-Q(x)}{k}
+\]
+Thus 
+\[
+  u_E(x) = \displaystyle\frac{L^2}{k 4\pi^2}\sin \displaystyle\frac{2\pi x}{L} + c_1 x 
+\]
+Thus, 
+\[
+  u_E'(x) = \displaystyle\frac{L}{2k\pi}\cos \displaystyle\frac{2\pi x}{L} + c_1 
+\]
+and substitute the boundary conditions in 
+\[
+  u_E'(0) = u_E'(L) = c_1 + \displaystyle\frac{L}{2k\pi}= 0 \implies c_1 = - \displaystyle\frac{L}{2k\pi}  
+\]
+Thus, 
+\[
+  v_t(x,t) = u_t(x,t) = ku_{xx}(x,t) + Q(x,t) = kv_{xx}(x,t) + ku_E''(x) + Q(x,t) 
+\]
+Therefore, 
+\[
+  v_t(x,t) = kv_{xx}(x,t)
+\]
+with boundary and initial conditions 
+\[
+  \begin{cases}
+    v_x(0,t) = 0 \\
+    v_x(L,t) = 0 \\
+    v(x,0) = f(x) - u_E(x)
+  \end{cases}
+\]
+$v(x,t) = X(x) T(t)$, then 
+\[
+  X'(0) = X'(L) = 0
+\]
+Thus for $n=0,1,2, \hdots$ 
+\[
+  X_n(x) = \cos(\sqrt{\lambda_n }x)
+\]
+where $\lambda_n = \left( \displaystyle\frac{n\pi}{L}\right)^2$
+and thus similar to part a
+\[
+  v(x,t) = \sum_{n=0}^\infty A_n \cos(\sqrt{\lambda_n}x) \exp(-k \lambda_n t)
+\]
+and by using the initial conditions, we get 
+\[
+  A_n = \displaystyle\frac{2}{L} \int_0^L (f(x) - u_E(x)) \cos(\sqrt{\lambda_n}x) dx
+\]
+and the final solution is 
+\[
+  u(x,t) = v(x,t) + u_E(x)
+\]
+where $v(x,t)$ and $u_E(x)$ are given above. 
+\newpage
+\section*{6.}
+Let 
+\[
+  u(x,t) = v(x,t) + r(x,t)
+\]
+\subsection*{a.}
+Let 
+\[
+  r(x,t) = c_1(t) x^2 + c_2(t) x
+\]
+then 
+\[
+  r_x(x,t) = 2c_1(t)x + c_2(t) 
+\]
+and thus using the boundary conditions, 
+\[
+  r(x,t) = \displaystyle\frac{B(t) - A(t)}{2L} x^2 + A(t)x
+\]
+We also have 
+\[
+  v_t(x,t) - r_t(x,t) = k v_{xx}(x,t) - kr_{xx}(x,t) + Q(x, t)
+\]
+Thus the equation is 
+\[
+  v_t(x,t) = kv_{xx}(x,t) + Q(x,t) + k\displaystyle\frac{B(t) -A(t)}{L} + r_t(x,t)
+\]
+where 
+\[
+  r_t(x,t) = \displaystyle\frac{B'(t) - A'(t)}{2L}x^2 + A'(t)x
+\]
+with the boundary conditions 
+\[
+  v_t(0,t) = v_t(L, t) = 0
+\]
+and initial conditions 
+\[
+  v(x,0) = u(x,0) - r(x,0) = f(x) + \displaystyle\frac{B(0)-A(0)}{2L}x^2 - A(0)x
+\]
+\subsection*{b.}
+Let 
+\[
+  r(x,t) = c_1(t)x + c_2(t)
+\]
+then 
+\[
+  r_x(x,t) = c_1(t)
+\]
+and thus using the boundary conditions
+\[
+  r(x,t) = A(t) x + B(t) - A(t) L
+\]
+Therefore, 
+\[
+  v_t(x,t) = kv_{xx}(x,t) + Q(x,t) + r_t(x,t)
+\]
+with the boundary conditions 
+\[
+  v_t(0,t) = v_t(L,t) = 0 
+\]
+and initial conditions 
+\[
+  v(x,0) = u(x,0) - r(x,0) = f(x) - A(0) x + B(0) - A(0)L
+\]
+\subsection*{c.}
+Let 
+\[
+  r(x,t) = c_1(t)x  + c_2(t)
+\]
+then 
+\[
+  r_x(0,t) = c_1(t) = 0 
+\]
+and 
+\[
+  h(c_3(t) - B(t)) = 0 \implies c_2(t) = B(t) 
+\]
+Thus 
+\[
+  v_t(x,t) = kv_{xx}(x,t) + Q(x,t) + r_t(x,t)  = kv_{xx}(x,t) + Q(x,t) + B'(t)
+\]
+with the boundary conditions 
+\[
+  v_t(0,t) = v_t(L,t) = 0 
+\]
+and initial conditions 
+\[
+  v(x,0) = u(x,0) - r(x,0) = f(x) - B(0)
+\]
+\newpage
+\section*{7.}
+\subsection*{a.}
+Suppose there is an equilibrium 
+\[
+  u_E''(x) = - \displaystyle\frac{Q(x)}{k} = -\displaystyle\frac{1}{k}
+\]
+Then let 
+\[
+  u_E(x) = - \displaystyle\frac{1}{2k}x^2 + c_1 x + c_2
+\]
+Plugging in the boundary conditions $u_E(0) = A, u_E(L) = B$, we have 
+\[
+  u_E(x) = -\displaystyle\frac{1}{2k}x^2 + \left(\displaystyle\frac{L}{2k} + \displaystyle\frac{B-A}{L}\right)x+ A 
+\]
+Then let 
+\[
+  v(x,t) = u(x,t) - u_E(x)
+\]
+We have that 
+\[
+  \begin{cases}
+    v_t = k v_{xx} \\
+    v(0,t) = u(0,t) - u_E(0) = 0 \\
+    v(L,t) = u(L,t) - u_E(L) = 0 \\
+    v(x,0) = u(x,0) - u_E(x) = f(x) - u_E(x) \\
+    v_t(x,0) = u_t(x,0) = g(x)
+  \end{cases}
+\]
+Let $v(x,t) = X(x) T(t)$, we know the boundary conditions for $X$ are 
+\[
+  X(0) = 0 \text{ and } X(L) = 0
+\]
+Thus the eigenfunctions are for $n=1,2,3, \hdots$, 
+\[
+  X_n(x) = \sin(\sqrt{\lambda_n}x)
+\]
+where $\lambda_n = \left( \displaystyle\frac{n\pi}{L}\right)^2$and 
+\[
+  T_n(t) = \exp(-k \lambda_n t)
+\]
+Thus 
+\[
+  v(x,t) = \sum_{n=1}^\infty A_n \sin(\sqrt{\lambda_n} x) \exp(-k\lambda_n t)
+\]
+where we can find $A_n$ using the initial conditions $v(x,0) = f(x) - u_E(x)$
+\[
+  A_n = \displaystyle\frac{2}{L} \int_0^L (f(x) - u_E(x)) \sin \displaystyle\frac{n\pi x}{L} dx
+\]
+However, we have another initial conditions to satisfy
+\[
+  v_t(x,0) = - \sum_{n=1}^\infty A_n k \lambda_n \sin(\sqrt{\lambda_n}x) = g(x)
+\]
+Thus 
+\[
+  -A_n k\lambda_n =  \displaystyle\frac{2}{L} \int_0^L g(x) \sin \displaystyle\frac{n\pi x}{L} dx
+\]
+which means
+\[
+  A_n = -\displaystyle\frac{2}{Lk \lambda_n} \int_0^L g(x) \sin\displaystyle\frac{n\pi x}{L} dx
+\]
+Therefore, there is a solution only when the two version of $A_n$ are equal to each other, that is 
+\[
+  \int_0^L (f(x) - u_E(x)) \sin \displaystyle\frac{n\pi x}{L} dx = -\displaystyle\frac{1}{k \lambda_n} \int_0^L g(x) \sin \displaystyle\frac{n\pi x}{L} dx
+\]
+and the solution is 
+\[
+  u(x,t) = v(x,t) + u_E(x)
+\]
+where $v(x,t)$ and $u_E(x)$ are mentioned above. 
+\subsection*{b.}
+Suppose that there is an equilibrium solution, that is 
+\[
+  u_E''(x) = - \displaystyle\frac{\sin \displaystyle\frac{\pi x}{L}}{k}
+\]
+Then let 
+\[
+  u_E(x) = \displaystyle\frac{L^2}{k\pi^2} \sin \displaystyle\frac{\pi x}{L} + c_1x
+\]
+Plugging in the boundary conditions, 
+\[
+  \begin{cases}
+    u_E(0) = \displaystyle\frac{L^2}{k\pi^2} \sin(0) = 0 \\
+    u_E(L) = \displaystyle\frac{L^2}{k\pi^2}\sin(\pi) + c_1 L = 0
+  \end{cases}
+\]
+Thus $c_1 = 0$ and we have 
+\[
+  \begin{cases}  
+    v_t(x,t) = kv_{xx}(x,t) \\
+    v(0,t) = u(0,t) + u_E(0) = u(0,t) = 0 \\
+    v(L,t) = u(L,t) + u_E(L) = u(L,t) = 0 \\
+    v(x,0) = u(x,0) - u_E(x) = f(x) - u_E(x) \\
+    u_t(x,0) = v_t(x,0) = g(x)
+  \end{cases}
+\]
+Let $v(x,t) = X(x) T(t)$, we know the boundary conditions for $X$ are 
+\[
+  X(0) = 0 \text{ and } X(L) = 0
+\]
+Thus the eigenfunctions are for $n=1,2,3, \hdots$, 
+\[
+  X_n(x) = \sin(\sqrt{\lambda_n}x)
+\]
+where $\lambda_n = \left( \displaystyle\frac{n\pi}{L}\right)^2$and 
+\[
+  T_n(t) = \exp(-k \lambda_n t)
+\]
+Thus 
+\[
+  v(x,t) = \sum_{n=1}^\infty A_n \sin(\sqrt{\lambda_n} x) \exp(-k\lambda_n t)
+\]
+where we can find $A_n$ using the initial conditions $v(x,0) = f(x) - u_E(x)$
+\[
+  A_n = \displaystyle\frac{2}{L} \int_0^L (f(x) - u_E(x)) \sin \displaystyle\frac{n\pi x}{L} dx
+\]
+However, we have another initial conditions to satisfy
+\[
+  v_t(x,0) = - \sum_{n=1}^\infty A_n k \lambda_n \sin(\sqrt{\lambda_n}x) = g(x)
+\]
+Thus 
+\[
+  -A_n k\lambda_n =  \displaystyle\frac{2}{L} \int_0^L g(x) \sin \displaystyle\frac{n\pi x}{L} dx
+\]
+which means
+\[
+  A_n = -\displaystyle\frac{2}{Lk \lambda_n} \int_0^L g(x) \sin\displaystyle\frac{n\pi x}{L} dx
+\]
+Therefore, there is a solution only when the two version of $A_n$ are equal to each other, that is 
+\[
+  \int_0^L (f(x) - u_E(x)) \sin \displaystyle\frac{n\pi x}{L} dx = -\displaystyle\frac{1}{k \lambda_n} \int_0^L g(x) \sin \displaystyle\frac{n\pi x}{L} dx
+\]
+and the solution is 
+\[
+  u(x,t) = v(x,t) + u_E(x)
+\]
+where $v(x,t)$ and $u_E(x)$ are mentioned above. 
+\newpage
+\section*{8.}
+\subsection*{a.}
+Let $r(x)$ satisfy the $r(0) = 0, r'(L) = 0$, thus let 
+\[
+  r(x) = c_1 x^2 + c_2x + c_3
+\]
+then applying the boudary conditions, we have 
+\[
+  r(x) = c_1 x^2 - 2c_1 Lx
+\]
+Then let 
+\[
+  v(x,t) = u(x,t) - r(x)
+\]
+and 
+\[
+  r''(x) = - \displaystyle\frac{Q}{k} \implies c_1 = -\displaystyle\frac{Q}{k}
+\]
+and therefore, 
+\[
+  \begin{cases}
+    v_t(x,t) = kv_{xx}(x,t) \\
+    v(0,t) = u(0,t) - r(0) = 0 \\
+    v_x(L,t) = u_x(L,t) - r'(L) = 0 \\
+    v(x,0) = u(x,0) - r(x) = f(x) - r(x)
+  \end{cases}
+\]
+Thus let $v(x,t) = X(x) T(t)$, we have the boundary conditions for $X$
+\[
+  \begin{cases}
+    v(0,t) = X(0) T(t) =0 \implies X(0) = 0 \\
+    v_x(L,t) = X'(L) T(t) = 0 \implies X'(L) = 0 
+  \end{cases}
+\]
+Then we know that for $n=1,3,5, \hdots$
+\[
+  X_n(x) = \sin(\sqrt{\lambda_n}x)
+\]
+where $\lambda_n = \left( \displaystyle\frac{n\pi}{2L}\right)^2$ and 
+\[
+  T_n(t) = \exp(-k \lambda_n t)
+\]
+Therefore, 
+\[
+  u(x,t) = \sum_{n=1,3,5, \hdots}^\infty A_n \sin(\sqrt{\lambda_n}x) \exp(-k \lambda t)
+\]
+Applying the initial conditions, we have 
+\[
+  A_n = \displaystyle\frac{2}{L} \int_0^L (f(x)-r(x)) \sin \displaystyle\frac{n\pi x}{L} dx
+\]
+and the solution is 
+\[
+  u(x,t) = v(x,t) + r(x)
+\]
+where $v(x,t)$ and $r(x)$ are mentioned above. 
+\subsection*{b.}
+Let $r(x,t)$ satisfy the $r(0,t) = A(t), r_x(L,t) = 0$, thus let
+\[
+  r(x,t) = c_1 x^2 + c_2x + c_3
+\]
+then applying the boudary conditions, we have 
+\[
+  r(x,t) = c_1 x^2 - 2c_1 Lx + A(t)
+\]
+Then let 
+\[
+  v(x,t) = u(x,t) - r(x,t)
+\]
+and 
+\[
+  r_{xx}(x,t) = - \displaystyle\frac{Q}{k} \implies c_1 = -\displaystyle\frac{Q}{k}
+\]
+and therefore, 
+\[
+  \begin{cases}
+    v_t(x,t) = kv_{xx}(x,t) \\
+    v(0,t) = u(0,t) - r(0) = 0 \\
+    v_x(L,t) = u_x(L,t) - r'(L) = 0 \\
+    v(x,0) = u(x,0) - r(x) = f(x) - r(x)
+  \end{cases}
+\]
+Thus let $v(x,t) = X(x) T(t)$, we have the boundary conditions for $X$
+\[
+  \begin{cases}
+    v(0,t) = X(0) T(t) =0 \implies X(0) = 0 \\
+    v_x(L,t) = X'(L) T(t) = 0 \implies X'(L) = 0 
+  \end{cases}
+\]
+Then we know that for $n=1,3,5, \hdots$
+\[
+  X_n(x) = \sin(\sqrt{\lambda_n}x)
+\]
+where $\lambda_n = \left( \displaystyle\frac{n\pi}{2L}\right)^2$ and 
+\[
+  T_n(t) = \exp(-k \lambda_n t)
+\]
+Therefore, 
+\[
+  u(x,t) = \sum_{n=1,3,5, \hdots}^\infty A_n \sin(\sqrt{\lambda_n}x) \exp(-k \lambda t)
+\]
+Applying the initial conditions, we have 
+\[
+  A_n = \displaystyle\frac{2}{L} \int_0^L (f(x)-r(x)) \sin \displaystyle\frac{n\pi x}{L} dx
+\]
+and the solution is 
+\[
+  u(x,t) = v(x,t) + r(x)
+\]
+where $v(x,t)$ and $r(x)$ are mentioned above.
+\newpage
+\section*{9.}
+Let 
+\[
+  r(x) = - \displaystyle\frac{x}{\pi} + 1
+\]
+so that $r(0) = 1$ and $r(\pi) = 0$, then let 
+\[
+  v(x,t) = u(x,t) - r(x)
+\]
+so that we have 
+\[
+  \begin{cases}
+    v_t = v_{xx} + e^{-2t} \sin(5x) \\
+    v(0,t) = 0 \\
+    v(\pi, t) = 0 \\
+    v(x,0) = u(x,0) - r(x) = \displaystyle\frac{\pi}{x} - 1
+  \end{cases}
+\]
+Let's first solve the homogenous part $v_t = v_{xx}$, let $v(x,t) = X(x)T(t)$, then we know $v$ has the solution 
+\[
+  v(x,t) = \sum_{n=1}^\infty  \sin(\sqrt{\lambda_n} x) A_n(t)
+\]
+where $\lambda_n = n^2$ for $n=1,2,3, \hdots$, plugging this back in the equations, 
+\[
+  \sum_{n=1}^\infty  A_n'(t) \sin(\sqrt{\lambda_n} x) = -\sum_{n=1}^\infty \lambda_n \sin(\sqrt{\lambda_n} x) A_n(t) + \exp(-2t) \sin(5x)
+\]
+Thus 
+\[
+  \sum_{n=1}^\infty \sin(n x) \left(A_n'(t) + n^2 A_n(t)\right) = \exp(-2t) \sin(5x)
+\]
+which means that 
+\[
+  A_n'(t) + n^2 A_n(t) = 
+  \begin{cases}
+    0, \indent& \text{ if } n\ne 5 \\
+    \exp(-2t), \indent& \text{ if } n = 5
+  \end{cases}
+\]
+In case $n \ne 5$, 
+\[
+  A_n'(t) + n^2 A_n(t) = 0 \implies A_n(t) = ce^{-n^2 t}
+\]
+and thus 
+\[
+  c = A_n(0)
+\]
+In case $n=5$, 
+\[
+  A_5'(t) + 25 A_5(t) = \exp(-2t) \implies A_5(t) = \displaystyle\frac{\exp(-2t)}{23} + ce^{-25t}
+\]
+and since $A_5(0) = \displaystyle\frac{1}{23} + c \implies c = A_5(0) - \displaystyle\frac{1}{23}$. \\
+Now all we need to do is find $A_n(0)$, we have 
+\[
+  \sum_{n=1}^\infty \sin(nx) A_n(0) = v(x,0) = \displaystyle\frac{\pi}{x}-1
+\]
+Thus 
+\[
+  A_n(0) = \displaystyle\frac{2}{\pi} \int_0^\pi \left( \displaystyle\frac{\pi}{x}-1\right) \sin(nx) dx = \displaystyle\frac{-2}{n\pi}
+\]
+and therefore the solution is 
+\[
+  u(x,t) = \sum_{n=1}^\infty A_n(t)\sin(nx) + 1 - \displaystyle\frac{x}{\pi}
+\]
+where 
+\[
+  A_n(t) = 
+  \begin{cases}
+    \displaystyle\frac{1}{23}e^{-2t} - \left(\displaystyle\frac{2}{5}\pi + \displaystyle\frac{1}{23}\right)e^{-25t}, \indent &\text{ if } n = 5 \\
+    -\displaystyle\frac{2}{n\pi}e^{-n^2t}, \indent &\text{ otherwise}
+  \end{cases}
+\]
+\newpage
+\section*{10.}
+Let's first solve the homogenous part $u_{xx} = u_{yy}$, then we know $u$ has the solution 
+\[
+  u(x,y) = \sum_{n=1}^\infty A_n(y) \sin(xn)
+\]
+Plugging back in the equation, 
+\[
+  \sum_{n=1}^\infty - A_n(y) \sin(xn) + \sum_{n=1}^\infty A_n''(y) \sin(xn) = e^{2y}\sin(x)
+\]
+Thus 
+\[
+  \sum_{n=1}^\infty \sin(nx)(A_n''(y) - A_n(y)) = e^{2y}\sin(x)
+\]
+Therefore, 
+\[
+  A_n''(y) - A_n(y) = 
+  \begin{cases}
+    e^{2y} \sin(x), \indent &\text{ if } n = 1 \\
+    0, \indent &\text{ if } n \ne 1
+  \end{cases}
+\]
+In case $n=1$, 
+\begin{align*}
+  A_1''(y) - A_1(y) = e^{2y}
+\end{align*}
+and therefore, 
+\[
+  A_1(y) = C_1e^y + C_2e^{-y} + \displaystyle\frac{1}{3} e^{2y}
+\]
+We have $A_1(0) = 0$, thus $C_1 + C_2 +\displaystyle\frac{1}{3}=0$
+and 
+\[
+  A_1(y) = K_1 e^y - (K_1 + 1/3)e^{-y} + \displaystyle\frac{1}{3}e^{2y}
+\]
+Then we can rewrite it as 
+\[
+  A_1(y) = C_n \sinh(y) + \displaystyle\frac{1}{3}(e^{-y} + e^{2y})
+\]
+In case $n\ne 1$, 
+\[
+  A_n(y) = K_1 e^y + K_2 e^{-y}
+\]
+Since $A_1(y) = 0$, $K_1 = - K_2$ and $A_n(y) = C_n \sinh(y)$.
+Then all we need to do is find $C_n$, we have 
+\[
+  \sum_{n=1}^\infty \sin(nx) A_n(L) = f(x) 
+\]
+Thus for $n\ne 1$, 
+\[
+  A_n(L) = C_n \sinh(L) = \displaystyle\frac{2}{L} \int_0^L f(x) \sin(nx) dx  
+\]
+and 
+\[
+  C_n = \displaystyle\frac{2}{L\sinh(L)} \int_0^L f(x) \sin(nx) dx  
+\]
+and for $n = 1$, 
+\[
+  A_n(L) = C_1 \sinh(L) + \displaystyle\frac{1}{3} (e^{-L} + e^{2L}) = \displaystyle\frac{2}{L} \int_0^L f(x) \sin(nx) dx  
+\]
+and 
+\[
+  C_1 = \displaystyle\frac{2}{L} \left( \displaystyle\frac{2}{L}\int_0^L f(x) \sin(nx) dx  - \displaystyle\frac{e^{-L} + e^{2L}}{3}\right)
+\]
+\end{document}
