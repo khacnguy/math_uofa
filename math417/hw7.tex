@@ -113,7 +113,8 @@ Thus applying the Generalized Dominance Convergence Theorem on $|f_n - f|$ and $
 \]
 \newpage
 \section*{4.}
-For all $\varepsilon >0 $ we can find a uniformly continuous function $g$ such that $\int_{\mathbb{R}^d} |f-g_n| < \varepsilon/3$ and small enough $t>0$ such that $|g(x-t) - g(x)| < \varepsilon / 3m(E)$ for all $x \in \mathbb{R}^d$. Then 
+\subsection*{a.}
+For all $\varepsilon >0 $ we can find a uniformly continuous function $g$ such that $\int_{\mathbb{R}^d} |f-g| < \varepsilon/3$ and small enough $t>0$ such that $|g(x-t) - g(x)| < \varepsilon / 3m(E)$ for all $x \in \mathbb{R}^d$. Then 
 \begin{align*}
   & \int_{\mathbb{R}^d} |f_t(x) - f(x)| \\
   \le& \int_{\mathbb{R}^d} |f(x-t) - g(x-t)| + |g(x-t) - g(x)| + |g(x) - f(x)| \\
@@ -125,7 +126,7 @@ Thus
   \int_{\mathbb{R}^d} |f_t(x) - f(x)| = 0
 \]
 \subsection*{b.}
-Since $\chi_E \in \mathcal{L}_1(\mathbb{R}^d)$, for all $\varepsilon > 0$, there is a continuous function $h$ such that $\int_\mathbb{R}^d |\chi_E - h| < \varepsilon / 3$, then let the sequence $x_n \to x$ and thus there is an $n_0$ such that for all $n > n_0$, $|h(x_n) - h(x)| < \varepsilon/3m(E)$. Then
+Since $\chi_E \in \mathcal{L}_1(\mathbb{R}^d)$, for all $\varepsilon > 0$, there is a uniformly continuous function $h$ such that $\int_{\mathbb{R}^d} |\chi_E - h| < \varepsilon / 3$, then let the sequence $x_n \to x$ and thus there is an $n_0$ such that for all $n > n_0$, $|h(x_n) - h(x)| < \varepsilon/3m(E)$. Then
 \begin{align*}
   & |\phi(x) - \phi(x_n)| \\
   =& \left| \int_{\mathbb{R}^d} \chi_E(x+t) \chi_E(t) - \chi_E(x_n+t) \chi_E(t) dt \right|\\
