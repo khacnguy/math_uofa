@@ -150,17 +150,24 @@ For every $\varepsilon > 0$, we can find a respective integrable step function $
 \[
   \phi = \sum_{k=1}^N a_k \chi_{R_k}
 \]
-where $a_k \in \mathbb{R}$ and $R_k$ are bounded intervals. Thus we can find an interval $R$ such that $\cup_{k=1}^N R_k \subseteq R$. Let $M = \max_R \phi$  \\
-Now for any $x \in R$, since $\sin(\lambda x) \to 0$ as $\lambda \to \infty$, there is $\delta > 0$ such that for all $\lambda < \delta$ , 
+where $a_k \in \mathbb{R}$ and $R_k$ are bounded intervals. Thus, there is an open interval $R$ such that $\cup_{k=1}^N R_k \subseteq R$, now we have that 
 \[
-  |\sin(\lambda x)| < \displaystyle\frac{m(R) \varepsilon}{2M}
+  \lim_{n \to \infty} \int_R |\sin(nx) | dx \le \lim_{n \to \infty} \int_{R_{n,1}} 1 dx + \int_{R_{n,2}} 1 dx + \int_{R_n} \sin(nx) dx = 0 
 \]
-Then 
+where $R_n = (a,b)$ is the largest interval such that $\int_{R_n} \sin(nx) dx = 0$ and $\sin(na) = \sin(nb) = 0$. $R_{n,1}$ and $R_{n,2}$ are the intervals on the left and right of $R_n$ respectively so that 
+$m(R_{n,1}) \to 0$ and $m(R_{n,2}) \to 0$. Thus 
+\[
+  \lim_{n \to \infty} \int_R |\sin(nx) | dx = 0
+\]
+and hence 
+\[
+  \lim_{n \to \infty} \int_R |\phi(x) \sin(nx)| dx = 0
+\]
+Therefore, for every $\varepsilon$, there exists $\lambda_0$ such that for all $\lambda > \lambda_0$,  
 \begin{align*}
   & \left|\int_\mathbb{R} f(x) \sin(\lambda x) dx \right| \\ 
   \le & \int_\mathbb{R} |f(x) - \phi(x)| |\sin(\lambda x)| dx + \int_\mathbb{R} |\phi(x) \sin(\lambda x)| dx \\
   \le & \int_\mathbb{R} |f(x) - \phi(x)| dx + \int_R |\phi(x)| |\sin(\lambda x)| dx \\
-  \le &  \displaystyle\frac{\varepsilon}{2} + \int_R \displaystyle\frac{m(R) \varepsilon}{2M} \cdot M dx \\
   \le & \displaystyle\frac{\varepsilon}{2} + \displaystyle\frac{\varepsilon}{2} \\
   = \varepsilon
 \end{align*}
