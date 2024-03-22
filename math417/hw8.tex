@@ -1,0 +1,99 @@
+
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}  
+\usepackage{hyperref}
+\usepackage{xcolor}
+\definecolor{Mybackground}{RGB}{40,49,51}
+\pagecolor{Mybackground}
+\color{white}
+
+
+\newtheorem{definition}{Definition}[section]
+\newtheoremstyle{mystyle}%                % Name
+  {}%                                     % Space above
+  {}%                                     % Space below
+  {\itshape}%                                     % Body font
+  {}%                                     % Indent amount
+  {\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  { }%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+
+\theoremstyle{mystyle}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem*{exmp}{Example}
+\begin{document}
+\section*{1.}
+Since $f$ is integrable on $\mathbb{R}$, there is a compactly supported continuous function $h$ on $H$ such that $\int_\mathbb{R} |f-h|< \varepsilon/2$. Since $\int_{\mathbb{R}} |f| < \infty$, we have that $h$ is bounded on $H$ thus $h$ is uniformly continuous on $H$ and hence on $\mathbb{R}$. Thus for any $\varepsilon > 0$, there is $\delta > 0$ such that for all $|x-y|< \delta$, $|h(x)-h(y)| < \varepsilon/2m(H)$   
+\begin{align*}
+  |F(x) - F(y)|  
+  &= \left|\int_{-\infty}^x f(t) dt - \int_{-\infty}^y f(t) dt \right| \\
+  &= \left|\int_y^x f(t) dt \right| \\
+  &\le \int_y^x |f(t) - h(t)| dt + \int_y^x |h(t)| dt \\
+  &\le \displaystyle\frac{\varepsilon}{2} + \displaystyle\frac{\varepsilon}{2m(H)} m(H) \\
+  &= \varepsilon
+\end{align*}
+\newpage
+\section*{2.}
+For any $\{E_n\} \in \mathcal{M}$, $\{F_n\} \in \mathcal{N}$, if $D \subseteq \cup_{n=1}^\infty E_n \times F_n$, then for any $(x,x) \in D$ there is $n \in \mathbb{N}$ such that $(x,x) \in E_n \times F_n$ which implies $x \in E_n \cap F_n$. Therefore, $[0,1] \subseteq \cup_{n=1}^\infty (E_n \cap F_n)$. Thus $\mu(E_n \cap F_n) > 0$ for some $n \in \mathbb{N}$, which means that $\mu(E_n) > 0$ and $\nu(F_n) = \infty$. Therefore, $(\mu \times \nu)(D) = \infty$.
+\newpage
+\section*{3.}
+Apply Theorem 5.5
+\begin{align*}
+  \int_0^a |g(x)| dx 
+  &= \int_0^a \int_x^a |t^{-1}f(t)| dt dx \\ 
+  &= \int_0^a \int_0^t \displaystyle\frac{|f(t)|}{t} dx dt \\
+  &= \int_0^a |f(t)| dt \\
+  &< \infty
+\end{align*}
+Thus $g$ is integrable. Therefore, 
+\begin{align*}
+  \int_0^a g(x) dx 
+  &= \int_0^a \int_x^a t^{-1}f(t) dt dx \\ 
+  &= \int_0^a \int_0^t \displaystyle\frac{f(t)}{t} dx dt \\
+  &= \int_0^a f(t) dt \\
+\end{align*}
+\newpage
+\section*{4.}
+First, note that if $\lambda_f(\alpha) = \infty$ for some $\alpha > 0$ then 
+\[
+  \int_X |f(x)|^p d\mu(x) = \infty = p \int_0^\infty \alpha^{p-1} \lambda_f(\alpha) d\alpha
+\]
+Now suppose $\lambda_f(\alpha) < \infty$ for all $\alpha > 0$, then for any $x$, we have that 
+\[
+  \int_0^{|f(x)|} p\alpha^{p-1} d\alpha = \alpha^p |_{\alpha = 0}^{|f(x)|} = |f(x)|^p
+\]
+Thus 
+\begin{align*}
+  &\int_X |f(x)|^p d\mu(x) \\
+  =& \int_X \int_0^{|f(x)|} p \alpha^{p-1} d\alpha d\mu(x) \\
+  =& \int_X \int_0^\infty p\alpha^{p-1} 1_{|f(x)| > \alpha} d\alpha d\mu(x) \\
+  =& \int_0^\infty p\alpha^{p-1} \int_X 1_{|f(x)| > \alpha} d\mu(x)d\alpha \\
+  =& \int_0^\infty p \alpha^{p-1} \lambda_f(\alpha) d\alpha
+\end{align*}
+\newpage
+\section*{5.}
+\subsection*{a.}
+Let $M = \int_{\mathbb{R}^d} f(x) dx$ and $N = \int_{\mathbb{R}^d} g(y) dy$, then from theorem 5.5,  
+\begin{align*} 
+  &\int_{\mathbb{R}^{2d}} |H(x,y)| d(x\times y) \\
+  =& \int_{\mathbb{R}^d} \int_{\mathbb{R}^d} H(x,y) dx dy \\
+  =& \int_{\mathbb{R}^d} \int_{\mathbb{R}^d} f(x-y)g(y) dy dx \\
+  =& M \int_{\mathbb{R}^d} g(y) dy \\ 
+  =& MN < \infty
+\end{align*}
+
+\end{document}
