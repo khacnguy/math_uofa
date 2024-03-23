@@ -1,0 +1,167 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}  
+\usepackage{hyperref}
+\usepackage{xcolor}
+\definecolor{Mybackground}{RGB}{40,49,51}
+\pagecolor{Mybackground}
+\color{white}
+
+
+\newtheorem{definition}{Definition}[section]
+\newtheoremstyle{mystyle}%                % Name
+  {}%                                     % Space above
+  {}%                                     % Space below
+  {\itshape}%                                     % Body font
+  {}%                                     % Indent amount
+  {\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  { }%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+
+\theoremstyle{mystyle}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem*{exmp}{Example}
+\begin{document}
+\section*{1.}
+\subsection*{a.}
+\begin{align*}
+  \mathcal{F}[c_1 f + c_2g](\xi) 
+  &= \displaystyle\frac{1}{2\pi} \int_\mathbb{R} (c_1f + c_2g)(x) e^{ix \cdot \xi} dx \\
+  &= \displaystyle\frac{1}{2\pi}c_1 \int_\mathbb{R} f(x) e^{ix \cdot \xi} dx + \displaystyle\frac{1}{2\pi}c_2 \int_\mathbb{R} g(x) e^{ix \cdot \xi} dx \\
+  &= c_1\mathcal F f +c_2 \mathcal F g
+\end{align*}
+\subsection*{b.}
+\[
+  \mathcal F (fg) = \displaystyle\frac{1}{2\pi} \int_\mathbb{R} f(x)g(x) e^{-ix \cdot \xi} dx \ne \displaystyle\frac{1}{4\pi^2}\left(\int_\mathbb{R} f(x) e^{-ix \cdot \xi} \right)\left(\int_\mathbb{R} g(x) e^{-ix \cdot \xi} \right) = \mathcal F f \mathcal F g
+\]
+\newpage
+\section*{2.}
+\subsection*{a.}
+\begin{align*}
+  (\mathcal F f)(\xi) 
+  &= \displaystyle\frac{1}{2\pi} \int_\mathbb{R} f(x) e^{ix \xi} dx \\
+  &= \displaystyle\frac{1}{2\pi} \int_{-a}^a e^{ix \xi} dx \\
+  &= \displaystyle\frac{1}{2\pi} \left.\displaystyle\frac{e^{ix \xi}}{i\xi} \right|_{x =-a}^a \\
+  &= \displaystyle\frac{1}{2\pi} \displaystyle\frac{e^{ia \xi} - e^{-ia\xi}}{i\xi} \\
+  &= \displaystyle\frac{2\sinh(ia\xi)}{2\pi i\xi} \\
+  &= \displaystyle\frac{-i\sin(-a\xi)}{i\xi \pi} \\ 
+  &= \displaystyle\frac{sin(a\xi)}{\xi \pi}
+\end{align*}
+\subsection*{b.}
+\begin{align*}
+  f(x) &= \int_\mathbb{R} e^{-|\xi| \alpha} e^{-i\xi x} d\xi \\
+  &= \int_0^\infty e^{-\xi(\alpha + ix)} d\xi + \int_{-\infty}^0 e^{\xi(\alpha - ix)} d\xi \\
+  &= -\left.\displaystyle\frac{e^{-\xi(\alpha + ix)}}{\alpha + ix}\right|^\infty_{\xi = 0} + \left.\displaystyle\frac{e^{\xi(\alpha - ix)}}{\alpha - ix}\right|^0_{\xi = -\infty} \\
+  &= \displaystyle\frac{1}{\alpha + ix} + \displaystyle\frac{1}{\alpha - ix}\\
+  &= \displaystyle\frac{\alpha - ix + \alpha + ix}{(\alpha+ix)(\alpha -ix)} \\
+  &= \displaystyle\frac{2\alpha}{\alpha^2 + x^2}
+\end{align*}
+\subsection*{c.}
+\begin{align*}
+  &\int_\mathbb{R} -iF'(\xi) e^{-i\xi x} d\xi \\
+  =& -ie^{-i\xi x}|_{-\infty}^\infty - \int_\mathbb{R} F(\xi) (-i \cdot (-i x) e^{-i \xi x}) d\xi \\
+  =& x\int_\mathbb{R} F(\xi)e^{-i\xi x} d\xi \\
+  =& \mathcal F [x f(x)]
+\end{align*}
+\newpage
+\section*{3.}
+We have that 
+\begin{align*}
+  \mathcal F [u_t] = U_t &= k \mathcal F [u_{xx}] + c \mathcal[u_x] \\
+  &= -k\xi^2 U - ci \xi U 
+\end{align*}
+Thus we can find 
+\[
+  U(\xi, t) = C(\xi) e^{-k \xi^2 t -ci\xi t}
+\]
+and since $u(x,0) = f(x)$ and $U(\xi,0) = F(\xi)$, 
+\[
+  U(\xi, t) = F(\xi) e^{-k \xi^2 t-ci \xi t }
+\]
+Let $G(\xi) = e^{-k\xi^2 t}$, $H(\xi) = F(\xi) e^{-ci \xi t}$ we have 
+\[
+  U(\xi, t) = G(\xi) H(\xi)
+\]
+And the inverse fourier of $G,H$ are 
+\[
+  g(x) = \displaystyle\frac{1}{\sqrt{2kt}} e^{-x^2/4kt}
+\]
+\[
+  h(x) = f(x-ct)
+\]
+Thus the solution is 
+\[
+  u(x,t) = \displaystyle\frac{1}{2\pi} \left( f(x-ct) * \displaystyle\frac{1}{\sqrt{2kt}} e^{-x^2/4kt}\right)
+\]
+\newpage
+\section*{4.}
+Apply the fourier transform, we have that 
+\[
+  \begin{cases}
+    U_t = -k\xi^2 U - \gamma U \\
+    U(\xi,0) = F(\xi) 
+  \end{cases}
+\]
+Then, we can solve for 
+\[
+  U(\xi, t) = C(\xi) e^{-(k \xi^2 + \gamma)t}
+\]
+and using the initial condition, 
+\[
+  U(\xi, t) = F(\xi) e^{-(k \xi^2 + \gamma)t} = e^{-\gamma t} F(\xi) e^{-k\xi^2 t}
+\]
+And apply the inverse, we have 
+\[
+  u(x,t) = e^{-\gamma t} \left(f(x) * \displaystyle\frac{1}{\sqrt{2kt}} e^{-x^2/4kt} \right) 
+\]
+\newpage
+\section*{5.}
+Apply the fourier transform on $y$, we have that 
+\[
+  \begin{cases}
+    U_{xx} -\xi^2 U = 0 \\
+    U(0,\xi) = G_1(\xi) \\
+    U(L, \xi) = G_2(\xi)
+  \end{cases}
+\]
+Thus 
+\[
+  U(x, \xi) = C_1(\xi) e^{-\xi x} + C_2(\xi) e^{\xi x}
+\]
+To ensure the boundedness of the solution, we must have that 
+\[
+  C_1(\xi) = 0 \text{ if } \xi < 0 \text{ and } C_2(\xi) = 0 \text{ if } \xi > 0
+\]
+Thus, the solution can be rewrite as 
+\[
+  U(x,\xi) = C(\xi) e^{-|\xi|x}
+\]
+The initial conditions state that 
+\[
+  C(\xi) = G_1(\xi) 
+\]
+and 
+\[
+  U(L,\xi) = G_1(\xi) e^{-|\xi| L} = G_2(\xi)
+\]
+Thus, 
+\[
+  u(x,y) = \displaystyle\frac{1}{2\pi} \left(g_1(y) * \displaystyle\frac{2L}{y^2 + L^2}\right)
+\]
+\newpage
+\section*{6.}
+
+\end{document}
