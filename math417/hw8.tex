@@ -87,13 +87,56 @@ Thus
 \newpage
 \section*{5.}
 \subsection*{a.}
-Let $M = \int_{\mathbb{R}^d} f(x) dx$ and $N = \int_{\mathbb{R}^d} g(y) dy$, then from theorem 5.5,  
-\begin{align*} 
+Let $M = \int_{\mathbb{R}^d} |f(x)| dx$ and $N = \int_{\mathbb{R}^d} |g(y)| dy$, then from theorem 5.5,  
+\begin{align*}
   &\int_{\mathbb{R}^{2d}} |H(x,y)| d(x\times y) \\
-  =& \int_{\mathbb{R}^d} \int_{\mathbb{R}^d} H(x,y) dx dy \\
-  =& \int_{\mathbb{R}^d} \int_{\mathbb{R}^d} f(x-y)g(y) dy dx \\
-  =& M \int_{\mathbb{R}^d} g(y) dy \\ 
+  =& \int_{\mathbb{R}^d} \int_{\mathbb{R}^d} |H(x,y)| dy dx \indent  \left( =\int_{\mathbb{R}^d} [f * g](x) dx \right) \\
+  =& \int_{\mathbb{R}^d} |g(y)| \int_{\mathbb{R}^d} |f(x-y)|  dx dy \\
+  =& M \int_{\mathbb{R}^d} |g(y)| dy \\ 
   =& MN < \infty
+\end{align*}
+We also get from the above equations that 
+\[
+  \int_{\mathbb{R}^d} |f(x-y) g(y)| dy < \infty
+\]
+for a.e. $x \in \mathbb{R}^d$. Thus $[f*g]$ is well-defined a.e. $x \in \mathbb{R}^d$. 
+\subsection*{b.}
+Let $\xi_n \to \xi$, then for every $\varepsilon > 0$, we can find a uniformly continuous compact supported function $h$ on $X$ such that $\int_{\mathbb{R}^d} |f-h| < \varepsilon/4$.  
+Now, for every $x \in X$ we have 
+\begin{align*}
+  &\lim_{n \to \infty} |\exp(-ix \cdot (\xi - \xi_n)) - 1| \\
+  =& \lim_{n \to \infty}\sqrt{\left(\cos(- x \cdot (\xi - \xi_n)) -1 \right)^2 + \left(\sin(-x \cdot (\xi-\xi_n))\right)^2 } \\
+  =& \lim_{n \to \infty} \sqrt{2 - 2 \cos(-x \cdot (\xi-\xi_n)) } \\
+  =& 0
+\end{align*}
+Thus, there is $n_0$ such that for all $n > n_0$, 
+\[
+  |e^{-ix \cdot (\xi - \xi_n)} - 1| < \displaystyle\frac{\varepsilon}{2Mm(X)}
+\]
+where 
+\[
+  M = \sup_{x \in X} |x| < \infty
+\]
+Therefore, we have
+\begin{align*}
+  &| \widehat f(\xi) - \widehat f(\xi_n)| \\
+  \le &\int_{\mathbb{R}^d} |f(x)| |e^{-ix \cdot \xi} - e^{-ix \cdot \xi_n} | dx \\
+  \le &\int_{\mathbb{R}^d} |f(x) - h(x)| |e^{-ix \cdot \xi} - e^{-ix \cdot \xi_n} | dx \\ 
+  &+ \int_{\mathbb{R}^d} |h(x)| |e^{-ix \cdot \xi} - e^{-ix \cdot \xi_n} | dx \\
+  \le &2\int_{\mathbb{R}^d} |f(x) - h(x)| dx \\ 
+  &+ \int_X |h(x)|  |e^{-ix \cdot (\xi-\xi_n)} - 1 |  dx \\
+  < & \displaystyle\frac{\varepsilon}{2} + m(X) M \displaystyle\frac{\varepsilon}{2M m(X)} \\
+  =& \varepsilon
+\end{align*}
+and $\widehat f$ is continuous.
+Now since we know that $H$ is integrable, $H(x) e^{-ix \cdot \xi}$ is also integrable, therefore 
+\begin{align*}
+  &\widehat{f * g}(\xi) \\
+  =& \int_{\mathbb{R}^d} [f*g](x) e^{-ix \cdot \xi} dx \\
+  =& \int_{\mathbb{R}^d} \int_{\mathbb{R}^d} f(x-y)g(y) e^{-ix \cdot \xi} dy dx \\
+  =& \int_{\mathbb{R}^d} \int_{\mathbb{R}^d} f(x-y)g(y) e^{-ix \cdot \xi} dx dy \\
+  =& \widehat f(\xi)\int_{\mathbb{R}^d} g(y) e^{-i(y-x) \cdot \xi} e^{-ix \cdot \xi} dy \\
+  =& \widehat f(\xi) \widehat g(\xi)
 \end{align*}
 
 \end{document}
