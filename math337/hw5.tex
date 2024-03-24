@@ -163,5 +163,193 @@ Thus,
 \]
 \newpage
 \section*{6.}
-
+Apply fourier transform, we have 
+\[
+  \begin{cases}
+    U_{tt}(\xi, t) =  - c^2 \xi^2 U(\xi, t) \\
+    U(\xi, 0) = F(\xi) \\
+    U_t(\xi, 0) = 0
+  \end{cases}
+\]
+Thus 
+\[
+  U(\xi, t) = C_1(\xi) \cos(c\xi t) + C_2(\xi) \sin(c\xi t)
+\]
+Apply the boundary conditions, we have that 
+\[
+  C_2(\xi) c\xi \cos(c\xi 0) = 0 \implies C_2(\xi) = 0
+\]
+and 
+\[
+  C_1(\xi) = F(\xi)
+\]
+Thus 
+\[
+  U(\xi, t) = F(\xi) \cos(c\xi t)
+\]
+and therefore,
+\begin{align*}  
+  u(x,t)
+  &= \int_\mathbb{R} F(\xi) \cos(c\xi t) e^{-i\xi x} d\xi \\
+  &= \displaystyle\frac{1}{2} \int_\mathbb{R} F(\xi) (e^{-i\xi(x-ct)} + e^{-i\xi(x+ct)}) d\xi \\
+  &= \displaystyle\frac{1}{2} \left(f(x-ct) + f(x+ct) \right)
+\end{align*}
+\newpage
+\section*{7.}
+Apply the fourier cosine transform on y and $u_y(x,0) = 0$,  
+\[
+  \begin{cases}
+    U_{xx}(x, \xi) - \xi^2 U(x, \xi) = 0 \\
+    U(0, \xi) = G_1(\xi) \\
+    U_x(L, \xi) = 0 \\
+  \end{cases}
+\]
+We have that 
+\[
+  U(x, \xi) = C_1(\xi) e^{-\xi x} + C_2(\xi) e^{\xi x}
+\]
+Apply the boundary conditions, 
+\[
+    -\xi C_1(\xi) e^{-\xi L} + \xi C_2(\xi) e^{\xi L} = 0 \implies C_1(\xi) =C_2(\xi) e^{-2 \xi L}
+\]
+Thus, we can rewrite 
+\[
+  U(x, \xi) = C(\xi) \cosh(\xi (L-x))
+\]
+Apply the other boundary conditions give us 
+\[
+  C(\xi) = \displaystyle\frac{G_1(\xi)}{\cosh(\xi L)}
+\]
+Thus, solution is 
+\[
+  u(x,y) = \displaystyle\frac{1}{\pi}\int_0^\infty g_1(\overline x) (f(x, y-\overline x) + f(x,y+\overline x)) dx
+\]
+where 
+\[
+  f(x,y) = \int_0^\infty \displaystyle\frac{\cosh(\xi(L-x))}{\cosh(\xi L)} \cos(\xi y) d\xi
+\]
+\newpage
+\section*{8.}
+Apply fourier transform on $y$, 
+\[
+  \begin{cases}
+    U_{xx}(x, \xi) - \xi^2 U(x,\xi) = 0 \\
+    U(0,\xi) = G(\xi)
+  \end{cases}
+\]
+Then 
+\[
+  U(x, \xi) = C_1(\xi) e^{\xi x} + C_2(\xi) e^{-\xi x}
+\]
+To ensure $U$ is bounded for $x<0$, 
+\[
+  C_1(\xi) = 0 \text{ if } \xi < 0 \text{ and } C_2(\xi) = 0 \text{ if } \xi >0
+\]
+Thus, we can rewrite 
+\[
+  U(x, \xi) = C(\xi) e^{|\xi|x}
+\]
+and apply the boundary condition gives 
+\[
+  U(x,\xi) = G(\xi) e^{|\xi|x}
+\]
+Thus let $t = y-\overline x$ so that $dt = -d\overline x$, we have 
+\begin{align*}
+  u(x,y) &= \displaystyle\frac{1}{2\pi} \int_\mathbb{R} g(\overline x)  \displaystyle\frac{-2(y-\overline x)}{(y-\overline x)^2+x^2} d\overline x \\
+  &= \displaystyle\frac{1}{2\pi} \int_{y+1}^{y-1} \displaystyle\frac{2t}{t^2 + x^2} dt \\
+  &= \displaystyle\frac{1}{2\pi} \ln(x^2 + t^2)|_{t=y+1}^{y-1} \\
+  &= \displaystyle\frac{1}{2\pi} \left(\ln\left(y^2-2y+x^2+1\right)-\ln\left(y^2+2y+x^2+1\right) \right)
+\end{align*}
+\newpage
+\section*{9.}
+Since both a,b have $u(0,y) = 0$, apply the fourier sine transform on $x$, we have 
+\[
+  U_{yy}(\xi, y) - \xi^2 U(\xi, y) = 0 
+\]
+Therefore, 
+\[
+  U(\xi, y) = C_1(\xi) e^{\xi y} + C_2(\xi) e^{-\xi y}
+\]
+To ensure the boundedness of $U$ on $y>0$, 
+\[
+  C_1(\xi) = 0
+\]
+Thus 
+\[
+  U(\xi, y) = C(\xi) e^{-\xi y}
+\]
+\subsection*{a.}
+\[
+  u_y(x,0) = f(x) \implies U_y(\xi, 0) = F(\xi)
+\]
+Hence, 
+\[
+  U_y(\xi, 0) = -\xi C(\xi) e^{-\xi 0} = F(\xi)
+\]
+and 
+\[
+  U(\xi, y) = - \displaystyle\frac{F(\xi)}{\xi} e^{-\xi y}
+\]
+and 
+\[
+  u(x, y) = \displaystyle\frac{1}{\pi} \int_0^\infty f(\overline x)[g(x-\overline x,y) + g(x+ \overline x,y)] d\overline{x}
+\]
+where $g(x,y)$ is the inverse fourier cosine of $-\displaystyle\frac{e^{-\xi y}}{\xi}$, which is 
+\[
+  g(x,y) = - \int_0^y \displaystyle\frac{x}{x^2 + \overline x^2} d\overline x = - \arctan \displaystyle\frac{y}{x}
+\]
+\subsection*{b.}
+\[
+  u(x,0) = f(x) \implies U(\xi, 0) = F(\xi)
+\]
+Hence, 
+\[
+  U(\xi, y) = F(\xi) e^{-\xi y}
+\]
+and 
+\[
+  u(x, y) = \displaystyle\frac{1}{\pi} \int_0^\infty f(\overline x)[g(x-\overline x,y) + g(x+ \overline x,y)] d\overline{x}
+\]
+where 
+\[
+  g(x,y) = \displaystyle\frac{y}{x^2 + y^2}
+\]
+\newpage
+\section*{10.}
+Apply the fourier transform on $x$,    
+\[
+  \begin{cases}
+    U_{tt}(\xi, t) = - c^2 \xi^2 U(\xi, t) \\
+    U(\xi, 0) = 0 \\
+    U_t(\xi, 0) = G(\xi) 
+  \end{cases}
+\]
+Thus 
+\[
+  U(\xi, t) = C_1(\xi) \cos(c\xi t) + C_2(\xi) \sin(c \xi t)
+\]
+Apply the boundary condition $C_1(\xi) = 0$ and 
+\[
+  U(\xi, t) = C(\xi) \sin(c\xi t)
+\]
+Apply the other boundary conditions, 
+\[
+  U_t(\xi, 0) = C(\xi) c\xi \cos(c\xi 0) = G(\xi) \implies C(\xi) = \displaystyle\frac{G(\xi)}{c \xi}
+\]
+Hence, 
+\[
+  U(\xi, t) = G(\xi) \displaystyle\frac{\sin(c\xi t)}{c\xi }
+\]
+Thus 
+\[
+  u(x,t) = \displaystyle\frac{1}{2\pi} \int_\mathbb{R} g(\overline x) f(x-\overline x, t) d\overline x
+\]
+where 
+\[
+  f(x, t) = 
+  \begin{cases}
+    \displaystyle\frac{\pi}{c} &\text{ if } |x| < ct \\
+    0 &\text{ if } |x| > ct
+  \end{cases}
+\]
 \end{document}
