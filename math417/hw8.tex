@@ -48,7 +48,27 @@ Since $f$ is integrable on $\mathbb{R}$, there is a compactly supported continuo
 \end{align*}
 \newpage
 \section*{2.}
+\subsection*{a.}
 For any $\{E_n\} \in \mathcal{M}$, $\{F_n\} \in \mathcal{N}$, if $D \subseteq \cup_{n=1}^\infty E_n \times F_n$, then for any $(x,x) \in D$ there is $n \in \mathbb{N}$ such that $(x,x) \in E_n \times F_n$ which implies $x \in E_n \cap F_n$. Therefore, $[0,1] \subseteq \cup_{n=1}^\infty (E_n \cap F_n)$. Thus $\mu(E_n \cap F_n) > 0$ for some $n \in \mathbb{N}$, which means that $\mu(E_n) > 0$ and $\nu(F_n) = \infty$. Therefore, $(\mu \times \nu)(D) = \infty$.
+\subsection*{b.}
+\[
+  A_x = \{x\} \text{ and } A^y = \{y\}
+\]
+Thus 
+\[
+  \nu(A_x) = 1 \text{ and } \mu(A^y) = 0
+\]
+and hence
+\[
+  \int_Y \int_X \chi_D d\mu d\nu = \int_{[0,1]} \mu(A^y) d\nu = 0
+\]
+\[
+  \int_X \int_Y \chi_D d\nu d\mu = \int_{[0,1]} \nu(A_x) d\mu = 1
+\]
+and 
+\[
+  \iint_{X \times Y} \chi_D d(\mu \times \nu) = \infty
+\]
 \newpage
 \section*{3.}
 Apply Theorem 5.5
