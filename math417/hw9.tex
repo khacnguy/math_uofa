@@ -1,0 +1,149 @@
+
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}  
+\usepackage{hyperref}
+\usepackage{xcolor}
+\definecolor{Mybackground}{RGB}{40,49,51}
+\pagecolor{Mybackground}
+\color{white}
+
+
+\newtheorem{definition}{Definition}[section]
+\newtheoremstyle{mystyle}%                % Name
+  {}%                                     % Space above
+  {}%                                     % Space below
+  {\itshape}%                                     % Body font
+  {}%                                     % Indent amount
+  {\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  { }%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+
+\theoremstyle{mystyle}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem*{exmp}{Example}
+\begin{document}
+\section*{1.}
+\subsection*{a.}
+Since $\displaystyle\frac{1}{x^2} \to \infty$ as $x \to 0$ there is infinitely $x \in (0,1)$ such that 
+\[
+  \displaystyle\frac{1}{x^2} = n\pi + \displaystyle\frac{\pi}{2} = \displaystyle\frac{2n\pi + \pi}{2}
+\]
+for some $n \in \mathbb{N}$. Let 
+\[
+  x_n = \displaystyle\frac{\sqrt{2}}{\sqrt{2n\pi + \pi}}
+\]
+Notice that 
+\[
+  \sin\left(\displaystyle\frac{1}{x^2}\right) = 1 \text{ if n is even }  
+\]
+and 
+\[
+  \sin\left(\displaystyle\frac{1}{x^2}\right) = -1 \text{ if n is odd }  
+\]
+and we can define a sequence of partition $\Gamma_n = \{1, x_0, x_1, x_2, \hdots x_n, 0\}$, note that we have $1> x_0 > x_1 > \hdots > x_n > 0$ instead. Then we have  
+\begin{align*}
+  V(f,\Gamma_n) >& \sum_{j=1}^n |f(x_j) - f(x_{j-1})| \\
+  =& \sum_{j=1}^n \left|(-1)^n (x_j^2 + x_{j-1}^2)\right| \\
+  =& \sum_{j=1}^n \displaystyle\frac{2}{2j\pi + \pi} + \displaystyle\frac{2}{2j\pi - \pi} \\ 
+  >& \sum_{j=1}^n \displaystyle\frac{2}{2j\pi + \pi} \\
+  >& \displaystyle\frac{1}{\pi} \sum_{j=1}^n \displaystyle\frac{2}{2j+2} \\
+  =& \displaystyle\frac{1}{\pi} \sum_{j=2}^n \displaystyle\frac{1}{j} 
+\end{align*}
+Thus $V(f, \Gamma_n) \to \infty$ as $n \to \infty$ and thus $f$ is not a bounded variation. 
+\subsection*{b.}
+If $V_I(f) > \liminf_{n \to \infty} V_I(f_n)$, then there is $\varepsilon >0$ such that for all $n \in \mathbb{N}, n_0 > n$ such that $V_I(f_{n_0}) < V_I(f) + \varepsilon$. Thus there is a partition $\Gamma$ such that $V_I(f_{n_0}, \Gamma) < V_I(f, \Gamma) + \varepsilon/2$. \\
+However, we have $f_n \to f$ on $\Gamma$, therefore, there is $n_0'$ such that for all $n>n_0'$ 
+\[
+  \left| |f_n(x_j) - f_n(x_{j-1})| - |f(x_j) - f(x_{j-1})| \right| < \displaystyle\frac{|\Gamma| \varepsilon}{2}
+\]
+and hence 
+\[
+  |V_I(f_n, \Gamma) - V_I(f, \Gamma)| < \varepsilon/2
+\]
+which is a contradiction. 
+\subsection*{c.}
+If $\inf_{x \in \mathbb{R}} |f(x)| = 0$, then for every $\varepsilon > 0$, there is $x \in \mathbb{R}$ such that $|f(x)| < \varepsilon$.  Thus for every $M > 0$, there is $x$ such that $|\frac{1}{f(x)}| > M $ and for any $N > 0$, we can fix $x_1$ and choose $x_2$ so that 
+\[
+  \left|\displaystyle\frac{1}{f(x_1)} - \displaystyle\frac{1}{f(x_2)}\right| > N  
+\]
+Therefore, $V(f, \{x_1, x_2\}) > N$ and $\displaystyle\frac{1}{f}$ is not of bounded variation. \\
+If $\inf_{x \in \mathbb{R}} |f(x)| > 0$ then there is some $\varepsilon > 0$ such that $|f(x)| > \varepsilon$ and $\displaystyle\frac{1}{|f(x)|} < \displaystyle\frac{1}{\varepsilon}$. For every partition $\Gamma$,  
+\begin{align*}
+  V(1/f, \Gamma) &= \sum_{j=1}^n |1/f(x_j) - 1/f(x_{j-1}) | \\
+  &= \sum_{j=1}^n \left| \displaystyle\frac{f(x_{j-1}) - f(x_j)}{f(x_j)f(x_{j-1})} \right| \\
+  &\le \displaystyle\frac{1}{\varepsilon^2} \sum_{j=1}^n \left|f(x_{j-1}) -f(x_j) \right| \\
+  &= \displaystyle\frac{1}{\varepsilon^2} V(f)
+\end{align*}
+\newpage
+\section*{2.}
+If $f$ is absolutely continuous on $[a,b]$ and $f(x) \ne 0$ for all $x \in [a,b]$, there is $M > 0$ such that $|f(x)| > M$ for all $x\in [a,b]$. \\
+Also, since $f$ is absolutely continuous, for every $\varepsilon > 0$, there is $\delta > 0$ such that there is $x_j, y_j$ such that $\sum_{j=1}^n |x_j - y_j| < \delta$. 
+and 
+\[
+  \sum_{j=1}^n |f(y_j) - f(x_j)| < M^2 / \varepsilon
+\]
+Thus
+\[
+  \sum_{j=1}^n |1/f(y_j) - 1/f(x_j)| < \displaystyle\frac{1}{M^2} \sum_{j=1}^n |f(y_j) - f(x_j)| < \varepsilon  
+\]
+\newpage 
+\section*{3.}
+\subsection*{a.}
+Since $m(E) = 0$, for all $\delta > 0$, there is a set of intervals $I_n := [a_n, b_n]$ such that $E \subseteq \cup_{n=1}^\infty I_n$ and $\sum_{n=1}^\infty m(I_n) < \delta$, hence $\sum_{n=1}^\infty |b_n - a_n| < \delta$. \\
+Therefore, because of $f$ being absolutely continuous, for every $\varepsilon > 0$, the finite collection $(a_j, b_j)_{j=1}^n$ satisfies 
+\[
+  \sum_{j=1}^n |f(b_j) - f(a_j)| < \varepsilon
+\]
+But $f$ is an increasing continuous function, thus $m(f(I_j)) = f(b_j) - f(a_j)$. Hence, 
+\[
+  \sum_{j=1}^n m(f(I_j)) < \varepsilon
+\]
+finally since $E \subseteq \cup_{j=1}^\infty I_j, f(E) \subseteq \cup_{j=1}^\infty f(I_j)$ and the inequality works for all $n \in \mathbb{N}$. 
+\[
+  m(F(E)) \le \sum_{j=1}^\infty m(f(I_j)) \le \varepsilon
+\]
+\subsection*{b.}
+Since $F$ is Lesbegue measurable and $m^*(F) = b-a < \infty$, for all $\varepsilon > 0$, there is a compact set $K \subseteq E$ such that $m^*(F\backslash K) < \varepsilon$, and $F = (F\backslash K) \cup K$. From part a, we know that $f(F \backslash K)$ has measure zero and $f(K)$ is measurable since $K$ is compact. Then, we have that 
+\[
+  f(F) = f(F \backslash K) \cup f(K)
+\]
+is measurable.
+\newpage
+\section*{4.}
+If $f$ is Lipschitz continuous then 
+\[
+  |f'(x_0)| = \lim_{x \to x_0} \left|\displaystyle\frac{f(x_0) - f(x)}{x_0-x}\right| \le M 
+\]
+and for all $\varepsilon > 0$, there is $\delta = \varepsilon/M > 0$ such that
+\[
+  \sum_{j=1}^n |f(y_j) - f(x_j)| \le M \sum_{j=1}^n |y_j - x_j| = \varepsilon
+\]
+for all finite collection $\{(x_j, y_j)\}_{j=1}^n$ that satisfies $\sum_{j=1}^n |y_j - x_j| < \delta$. \\
+Now suppose $f$ is not Lipschitz continuous, for every $N>0$, there is $x_0, y_0$ such that  
+\[
+  |f(x_0) - f(y_0)| > |x_0-y_0|N 
+\]
+but since $f' \in L_\infty ([a,b])$, there is $\delta > 0$ and $M> 0$ such that $|f(x) - f(y)| \le M|x-y|$ for all $|x_0 - y_0|< \delta$. Thus, for all $N>0$ and $x_0$ we can find $y_0$ such that 
+\[
+  |f(x_0) - f(y_0)| > |x_0 - y_0|N > N\delta
+\]
+Thus for all $\varepsilon > 0$, there is a finite collection $\{(x_{j-1}, x_j)\}_{j=1}^n$, with $x_a = x_0, x_b = y_0$ and $|x_{j-1} - x_j| < \varepsilon$ such that  
+\[
+  \sum_{j=1}^n |f(x_{j}) - f(x_{j-1})| > |f(x_0) - f(y_0)| > \delta N
+\]
+for all $N> 0$, since $\delta$ is fixed that is a contradiction because $f$ is absolutely continuous. 
+\end{document}
