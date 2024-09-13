@@ -1,0 +1,79 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepackage{hyperref}
+
+
+
+\newtheorem{definition}{Definition}[section]
+\newtheoremstyle{mystyle}%                % Name
+  {}%                                     % Space above
+  {}%                                     % Space below
+  {\itshape}%                                     % Body font
+  {}%                                     % Indent amount
+  {\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  { }%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+
+\theoremstyle{mystyle}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem*{exmp}{Example}
+\begin{document}
+\section*{Question 1.}
+\subsection*{a.}
+\begin{align*}
+  \mathcal{L}(\mu, \sigma | x_1, x_2, \hdots, x_n) &= \prod_{i=1}^n \displaystyle\frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{1}{2\sigma^2} (x_i-\mu)^2} \\
+  &= \left(\displaystyle\frac{1}{\sqrt{2\pi\sigma^2}} \right)^n e^{-\sum_{i=1}^n \frac{1}{2\sigma^2} (x_i -\mu)^2} \\
+  &= \left(\displaystyle\frac{1}{\sqrt{2 \pi \sigma^2}} \right)^n e^{-\frac{1}{2\sigma^2} \sum_{i=1}^n (x_i-\mu)^2} \\
+\end{align*}
+Thus 
+\begin{align*}
+  l(\mu, \sigma | x_1, x_2, \hdots, x_n) &= - \displaystyle\frac{n}{2} \log(2\pi) - \displaystyle\frac{n}{2} \log(\sigma^2) - \frac{1}{2\sigma^2} \sum_{i=1}^n (x_i-\mu)^2 
+\end{align*}
+and 
+\begin{align*}
+  \displaystyle\frac{dl}{d\mu} = \displaystyle\frac{1}{2\sigma^2} \sum_{i=1}^n 2(x_i-\mu) = \displaystyle\frac{1}{\sigma^2} \left(-n \mu + \sum_{i=1}^n x_i \right) = 0 \implies \hat \mu= \displaystyle\frac{1}{n} \sum_{i=1}^n x_i
+\end{align*}
+\subsection*{b.}
+We also have that 
+\begin{align*}
+  \displaystyle\frac{dl}{d\sigma^2} = - \displaystyle\frac{n}{2 \sigma^2} + \displaystyle\frac{1}{2\sigma^4} \sum_{i=1}^n (x_i -\hat \mu)^2 = 0 \implies \hat \sigma^2 = \displaystyle\frac{1}{n} \sum_{i=1}^n (x_i-\hat \mu ) ^2
+\end{align*}
+\pagebreak
+\section*{2.}
+\subsection*{a.}
+\[
+  P_X^2 = X (X^T X)^{-1} \underbrace{X^T X (X^T X)^{-1}}_{I_p} X^T = X (X^T X)^{-1} X^T = P_X 
+\]
+For any $u = X\beta$, 
+\[
+  P_X u = P_X \underbrace{X \beta = X (X^T X)^{-1} X^T X}_{I_p} \beta = X\beta = \mu
+\]
+\subsection*{b.}
+The modified version does not have part b 
+\pagebreak
+\section*{3.}
+\subsection*{a.}
+\[
+  \hat y = X \hat \beta = X (X^T X)^{-1} X^T y = P_X y
+\]
+\subsection*{b.}
+\[
+  X^T y - X^T X \hat \beta = X^T y - X^T X (X^T X)^{-1} X^T y = X^Ty - X^Ty = 0 
+\]
+\subsection*{c.}
+Since $X^T y = X^T \hat y$, we proved that there is no better solution that can be represented using the column space of $X$ because $X^T \hat y$ already has the same value.
+\end{document}
