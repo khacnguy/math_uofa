@@ -1,0 +1,308 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepackage{hyperref}
+
+
+
+\newtheorem{definition}{Definition}[section]
+\newtheoremstyle{mystyle}%                % Name
+  {}%                                     % Space above
+  {}%                                     % Space below
+  {\itshape}%                                     % Body font
+  {}%                                     % Indent amount
+  {\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  { }%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+
+\theoremstyle{mystyle}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem*{exmp}{Example}
+\begin{document}
+\section*{1.}
+Solve $u_t + 3tu_x = u$ with $u(0,x) = h(x)$ for $x \in \mathbb{R}$.
+Follow the method, we have 
+\[
+  \displaystyle\frac{dT(\sigma; s)}{ds} = 1, 
+  \displaystyle\frac{dX(\sigma; s)}{ds} = 3t, 
+  \displaystyle\frac{dU(\sigma; s)}{ds} = U
+\]
+with 
+\[
+  T(\sigma; 0) = 0, 
+  X(\sigma; 0) = \sigma,
+  U(\sigma; 0) = h(\sigma)
+\]
+Thus, 
+\[
+  T(\sigma; s) = s, X(\sigma;s) = \sigma + s, U(\sigma; s) = e^{s + \ln(h(\sigma))} 
+\]
+Next, we can obtain the inverse function, 
+\[
+  \begin{cases}
+    t = T(\sigma;s) = s \\
+    x = X(\sigma;s) = \sigma + s
+  \end{cases}
+  \implies 
+  \begin{cases}
+    \sigma = \Sigma(t,x) = x - t \\
+    s = S(t,x) = t
+  \end{cases}
+\]
+Finally, the solution is obtained as 
+\[
+  u(t,x) = U(\Sigma(t,x), S(t,x)) = e^{t + \ln(h(x-t))} 
+\]
+\pagebreak
+\section*{2.}
+Solve $u_t + u u_x = 2t$ with $u(0,x) = x$. 
+Follow the method, we have 
+\[
+  \displaystyle\frac{dT(\sigma; s)}{ds} = 1, 
+  \displaystyle\frac{dX(\sigma; s)}{ds} = U, 
+  \displaystyle\frac{dU(\sigma; s)}{ds} = 2t
+\]
+with 
+\[
+  T(\sigma;0) = 0, X(\sigma;0) = \sigma, U(\sigma;0) = \sigma
+\]
+Thus, 
+\[
+  T(\sigma; s) = s, X(\sigma;s) = ts^2+ \sigma s + \sigma , U(\sigma;s) = 2ts + \sigma
+\]
+Next, we can obtain the inverse function, 
+\[
+  \begin{cases}
+    t = T(\sigma;s) = s \\
+    x = X(\sigma;s) = ts^2 + \sigma s + \sigma
+  \end{cases}
+  \implies 
+  \begin{cases}
+    \sigma = \Sigma(t,x) = \displaystyle\frac{x-t^3}{t+1} \\
+    s = S(t,x) = t
+  \end{cases}
+\]
+Finally, the solution is obtained as 
+\[
+  u(t,x) = U(\Sigma(t,x), S(t,x)) = 2t^2 + \displaystyle\frac{x-t^3}{t+1} 
+\]
+\pagebreak
+\section*{3.}
+Solve $yu_x + xu_y = u$ with $u(x,0) = x^3, u(0,y) = y^3$ for $x,y > 0$. \\ 
+First, let's solve for $u(x,0) = x^3$. We have 
+\[
+  \displaystyle\frac{dX(\sigma; s)}{ds} = Y, 
+  \displaystyle\frac{dY(\sigma; s)}{ds} = X, 
+  \displaystyle\frac{dU(\sigma; s)}{ds} = U
+\]
+with 
+\[
+  X(\sigma;0) = \sigma, Y(\sigma;0) = 0, U(\sigma;0) = \sigma^3
+\]
+Thus, 
+\[
+  X(\sigma; s) = \displaystyle\frac{\sigma}{2} (e^{-s} + e^s), Y(\sigma;s) = \displaystyle\frac{\sigma}{2} (e^s - e^{-s}), U(\sigma;s) = e^{s + 3\ln(\sigma)}
+\]
+Next, we can obtain the inverse function, 
+\[
+  \begin{cases}
+    x = X(\sigma;s) =  \displaystyle\frac{\sigma}{2} (e^{-s} + e^s) \\
+    y = Y(\sigma;s) =  \displaystyle\frac{\sigma}{2} (- e^{-s} + e^s)
+  \end{cases}
+  \implies
+  \begin{cases}
+    x^2 = \displaystyle\frac{\sigma^2}{4} (e^{-2s} + 2 + e^{2s}) \\
+    y^2 = \displaystyle\frac{\sigma^2}{4} (e^{-2s} - 2 + e^{2s}) \\
+    x + y = \sigma e^s \\
+    x - y = \sigma e^{-s}
+  \end{cases}
+\]
+Hence,  
+\[
+  \begin{cases}
+    \sigma = \Sigma(x,y) = \sqrt{x^2 - y^2} \\
+    s = S(x,y) =  \displaystyle\frac{1}{2} \ln \left(\displaystyle\frac{x+y}{x-y} \right)
+  \end{cases}
+\]
+Finally, the solution is obtained as 
+\[
+  u_1(x,y) = U(\Sigma(x,y), S(x,y)) = e^{\frac{1}{2} \ln\left( \frac{x+y}{x-y}\right) + \frac{3}{2} \ln(x^2-y^2)} = (x+y)^2 + x -y 
+\]
+and similarly, on $u_2(0,y) = y^3$, we have
+\[
+  u_2(x,y) = (x+y)^2 + y-x
+\]
+which means that $u_1(x,y) = u_2(x,y)$ on $x=y$ thus 
+\[
+  u(x,y) = 
+  \begin{cases}
+    (x+y)^2 + x - y, &\text{ if } x > y\\
+    (x+y)^2 + y - x, &\text{ if } y > x\\ 
+  \end{cases}
+\]
+\pagebreak
+\section*{4.}
+Solve $u_x^2 + u_y = u$ with $u(x,0) = x^2$. \\
+First, let $F(x,y,u,p,q) = p^2 + q - u$, we further have
+\begin{equation}
+  X_0(\sigma) = \sigma, Y_0(\sigma) = 0, U_0(\sigma) = \sigma^2 
+\end{equation}
+We have
+\[
+  \begin{cases}
+    P_0^2 + Q_0^2 - U_0 = P_0^2 + Q_0^2 - \sigma^2 = 0 \\
+    2\sigma = U'_0(\sigma) = P_0
+  \end{cases}
+  \implies 
+  \begin{cases}
+    P_0 = 2\sigma \\
+    Q_0 = \sigma \sqrt{5} 
+  \end{cases}
+\]
+Then we have the ODE system 
+\[
+  \begin{cases}
+    \displaystyle\frac{dX}{ds} = F_p = 2P \\
+    \displaystyle\frac{dY}{ds} = F_q = 1 \\
+    \displaystyle\frac{dU}{ds} = PF_p + QF_q = 2P^2 + Q \\
+    \displaystyle\frac{dP}{ds} = -F_x - F_z P  =  P = 2 \sigma\\
+    \displaystyle\frac{dQ}{ds} = -F_y - F_z Q = Q = \sqrt{5} \sigma 
+  \end{cases}
+\]
+Therefore, 
+\[
+  \begin{cases}  
+    P(\sigma, s) = 2\sigma s + 2 \sigma \\
+    Q(\sigma, s) = \sqrt{5}\sigma s + \sqrt{5}\sigma
+  \end{cases}
+\]
+We have 
+\[
+  \begin{cases}
+    \displaystyle\frac{dX}{ds} = 4 \sigma s  + 4 \sigma \\ 
+    \displaystyle\frac{dY}{ds} = 1 \\
+    \displaystyle\frac{dU}{ds} = 2P^2 + Q = 8\sigma^2 (s+1)^2 + \sqrt{5} \sigma (s+1)
+  \end{cases}
+\]
+and with the initial conditions $(1)$, we have 
+\[
+  \begin{cases}
+    X(\sigma,s)= 2 \sigma s^2 + 4 \sigma s + \sigma \\
+    Y(\sigma, s)= s \\
+    U(\sigma, s)= \displaystyle\frac{8\sigma^2}{3}(s+1)^3 + \displaystyle\frac{\sqrt{5}\sigma}{2} (s+1)^2 - \displaystyle\frac{5\sigma^2}{3} - \displaystyle\frac{\sqrt{5}\sigma}{2} 
+  \end{cases}
+\]
+Hence, we can obtain the inverse function, 
+\[
+  \begin{cases}
+    \sigma = \displaystyle\frac{x}{4y+1}\\
+    s = y
+  \end{cases}
+\]
+and the solution  
+\[
+  u(x,y) = U(\sigma, s) = \left(\frac{x}{4y+1}\right)^2 \left(\displaystyle\frac{8}{3} (y+1)^3  - \displaystyle\frac{5}{3}\right) + \displaystyle\frac{\sqrt{5}x}{8y+2} ((y+1)^2 - 1) 
+\]
+\pagebreak
+\section*{5.}
+Solve $u_x u_y = xy$ with $u(x,0) = x$. \\
+First, let $F(x,y,u,p,q) = pq - xy$, we further have that 
+\begin{equation}
+  X_0(\sigma) = \sigma, Y_0(\sigma) = 0, U_0(\sigma) = \sigma 
+\end{equation}
+We have 
+\[
+  \begin{cases}
+    P_0Q_0 - X_0Y_0 = P_0 Q_0 = 0 \\
+    1 = U_0'(\sigma) = X_0'(\sigma) P_0 + Y_0'(\sigma) Q_0 = P_0 
+  \end{cases}
+  \implies 
+  \begin{cases}
+    P_0 = 1 \\
+    Q_0 = 0
+  \end{cases}
+\]
+Then we have the ODE system 
+\[
+  \begin{cases}
+    \displaystyle\frac{dX}{ds} = F_p = Q \\
+    \displaystyle\frac{dY}{ds} = F_q = P \\
+    \displaystyle\frac{dU}{ds} = PF_p + QF_q = 2PQ  \\
+    \displaystyle\frac{dP}{ds} = -F_x - F_z P  =  Y  \\
+    \displaystyle\frac{dQ}{ds} = -F_y - F_z Q = X  
+  \end{cases}
+\]
+From which, we have
+\[
+  \displaystyle\frac{d^2Q}{ds^2} = \displaystyle\frac{dX}{ds} = Q 
+\]
+thus 
+\[
+  Q(\sigma, s) = C_1(\sigma) e^s + C_2(\sigma) e^{-s} \text{ with } Q(\sigma, 0) = 0
+\]
+and 
+\[
+  Q(\sigma, s) = C_5(\sigma)(e^s - e^{-s}) = C_5(\sigma) \sinh(s) 
+\]
+and similarly, 
+\[
+  P(\sigma, s) = C_3(\sigma) e^s + C_4(\sigma) e^{-s} \text{ with } P(\sigma, 0) = 1
+\]
+and hence $C_3 + C_4 = 1$. \\ 
+Finally, we can obtain 
+\[
+  X = C_5\cosh(s)
+\]
+and 
+\[
+  Y = C_3(\sigma) e^s - C_4(\sigma) e^{-s} = C_3(\sigma) e^s + (C_3(\sigma) - 1) e^{-s} = C_3(\sigma)\cosh(s) - e^{-s}
+\]
+Now, using the initial conditions, we can get 
+\[
+  X = \sigma \cosh(s) \text{ and } Y = \cosh(s) - e^{-s} = \sinh(s)
+\]
+and the inverse functions
+\[
+  \begin{cases}
+    \sigma = \displaystyle\frac{x}{\cosh(\ln(y + \sqrt{1+y^2}))} = \displaystyle\frac{x}{\sqrt{y^2+1}}\\
+    s = \sinh^{-1}(y) = \ln(y + \sqrt{1 + y^2})
+  \end{cases}
+\]
+We can also obtain that 
+\begin{align*}
+  \displaystyle\frac{dU}{ds} &= 2C_5(\sigma) \sinh(s) \left(C_3(\sigma) e^s + C_4(\sigma) e^{-s}\right) \\
+  &= 2 C_5(\sigma) \sinh(s) (C_3(\sigma) e^s + (1 - C_3(\sigma)) e^{-s}) \\
+  &= 2C_5(\sigma) \sinh(s) (e^{-s} + C_3(\sigma) 2\sinh(s)) \\
+  &= C_6(\sigma) \sinh(s) e^{-s} + C_7(\sigma) \sinh^2(s) 
+\end{align*}
+Thus 
+\[
+  U = C_6(\sigma) \frac{\mathrm{e}^{-2s} + 2s}{4} + C_7(\sigma)\frac{\sinh\left(2s\right) - 2s}{4}
+\]
+with the initial conditions
+\[
+  \sigma = U_0(\sigma) = C_6(\sigma) \displaystyle\frac{3}{4} 
+\]
+Thus 
+\[
+  U(\sigma, s) = \displaystyle\frac{\sigma (e^{-2s} + 2s)}{3} + C_7(\sigma) \displaystyle\frac{\sinh(2s) - 2s}{4} 
+\]
+Therefore, the solution is 
+\begin{align*}
+  u(x,y) &= \displaystyle\frac{x((y+\sqrt{1+y^2})^{-2} + 2 \ln(y+ \sqrt{1+y^2}))}{3\sqrt{y^2+1}} \\
+  & + C\left( \displaystyle\frac{x}{\sqrt{y^2+1}}\right) \displaystyle\frac{\sinh(2\ln(y+ \sqrt{1+y^2}))-2\ln(y + \sqrt{1+y^2})}{4}
+\end{align*}
+\end{document}
