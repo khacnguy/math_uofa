@@ -281,28 +281,30 @@ and the inverse functions
     s = \sinh^{-1}(y) = \ln(y + \sqrt{1 + y^2})
   \end{cases}
 \]
-We can also obtain that 
+We also have 
+\[
+  \displaystyle\frac{dQ}{ds} = X = \sigma\cosh(s) \implies Q = \sigma\sinh(s)
+\]
+and 
+\[
+  \displaystyle\frac{dP}{ds} = Y = \sinh(s) \implies P = \cosh(s)
+\]
+Thus,  
 \begin{align*}
-  \displaystyle\frac{dU}{ds} &= 2C_5(\sigma) \sinh(s) \left(C_3(\sigma) e^s + C_4(\sigma) e^{-s}\right) \\
-  &= 2 C_5(\sigma) \sinh(s) (C_3(\sigma) e^s + (1 - C_3(\sigma)) e^{-s}) \\
-  &= 2C_5(\sigma) \sinh(s) (e^{-s} + C_3(\sigma) 2\sinh(s)) \\
-  &= C_6(\sigma) \sinh(s) e^{-s} + C_7(\sigma) \sinh^2(s) 
+  \displaystyle\frac{dU}{ds} &= 2 \sigma \sinh(s) \cosh(s) 
 \end{align*}
 Thus 
 \[
-  U = C_6(\sigma) \frac{\mathrm{e}^{-2s} + 2s}{4} + C_7(\sigma)\frac{\sinh\left(2s\right) - 2s}{4}
+  U(\sigma, s) =  \sigma \sinh^2(s) + C
 \]
-with the initial conditions
+and using the initial condition $U_0(\sigma) = \sigma$, we have that 
 \[
-  \sigma = U_0(\sigma) = C_6(\sigma) \displaystyle\frac{3}{4} 
+  U(\sigma, s) = \sigma \sinh^2(s) + \sigma 
 \]
-Thus 
-\[
-  U(\sigma, s) = \displaystyle\frac{\sigma (e^{-2s} + 2s)}{3} + C_7(\sigma) \displaystyle\frac{\sinh(2s) - 2s}{4} 
-\]
-Therefore, the solution is 
+Finally, we have the solution 
 \begin{align*}
-  u(x,y) &= \displaystyle\frac{x((y+\sqrt{1+y^2})^{-2} + 2 \ln(y+ \sqrt{1+y^2}))}{3\sqrt{y^2+1}} \\
-  & + C\left( \displaystyle\frac{x}{\sqrt{y^2+1}}\right) \displaystyle\frac{\sinh(2\ln(y+ \sqrt{1+y^2}))-2\ln(y + \sqrt{1+y^2})}{4}
+  u(x,y) &= U\left(\displaystyle\frac{x}{\sqrt{y^2+1}}, \ln(y + \sqrt{1+y^2})\right) \\
+  &= \displaystyle\frac{x}{\sqrt{y^2+1}} \left(\sinh^2(\ln(y + \sqrt{1+y^2})) + 1\right) \\
+  &= \displaystyle\frac{x(y^2+1) }{\sqrt{y^2+1}} = x \sqrt{y^2+1}
 \end{align*}
 \end{document}
