@@ -137,20 +137,21 @@ Hence,
     s = S(x,y) =  \displaystyle\frac{1}{2} \ln \left(\displaystyle\frac{x+y}{x-y} \right)
   \end{cases}
 \]
+Thus the domain for this is $\{(x,y): x>y\}$ as $x^2-y^2 > 0$
 Finally, the solution is obtained as 
 \[
-  u_1(x,y) = U(\Sigma(x,y), S(x,y)) = e^{\frac{1}{2} \ln\left( \frac{x+y}{x-y}\right) + \frac{3}{2} \ln(x^2-y^2)} = (x+y)^2 + x -y 
+  u_1(x,y) = U(\Sigma(x,y), S(x,y)) = e^{\frac{1}{2} \ln\left( \frac{x+y}{x-y}\right) + \frac{3}{2} \ln(x^2-y^2)} = (x+y)^2(x -y) 
 \]
 and similarly, on $u_2(0,y) = y^3$, we have
 \[
-  u_2(x,y) = (x+y)^2 + y-x
+  u_2(x,y) = (x+y)^2(y-x)
 \]
 which means that $u_1(x,y) = u_2(x,y)$ on $x=y$ thus 
 \[
   u(x,y) = 
   \begin{cases}
-    (x+y)^2 + x - y, &\text{ if } x > y\\
-    (x+y)^2 + y - x, &\text{ if } y > x\\ 
+    (x+y)^2(x - y), &\text{ if } x > y\\
+    (x+y)^2(y - x), &\text{ if } y > x\\ 
   \end{cases}
 \]
 \pagebreak
