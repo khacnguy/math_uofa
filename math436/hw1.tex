@@ -37,7 +37,7 @@ Solve $u_t + 3tu_x = u$ with $u(0,x) = h(x)$ for $x \in \mathbb{R}$.
 Follow the method, we have 
 \[
   \displaystyle\frac{dT(\sigma; s)}{ds} = 1, 
-  \displaystyle\frac{dX(\sigma; s)}{ds} = 3t, 
+  \displaystyle\frac{dX(\sigma; s)}{ds} = 3T, 
   \displaystyle\frac{dU(\sigma; s)}{ds} = U
 \]
 with 
@@ -48,23 +48,23 @@ with
 \]
 Thus, 
 \[
-  T(\sigma; s) = s, X(\sigma;s) = \sigma + s, U(\sigma; s) = e^{s + \ln(h(\sigma))} 
+  T(\sigma; s) = s, X(\sigma;s) = 3s^2/2 + \sigma, U(\sigma; s) = e^s h(\sigma) 
 \]
 Next, we can obtain the inverse function, 
 \[
   \begin{cases}
     t = T(\sigma;s) = s \\
-    x = X(\sigma;s) = \sigma + s
+    x = X(\sigma;s) = 3s^2/2 + \sigma
   \end{cases}
   \implies 
   \begin{cases}
-    \sigma = \Sigma(t,x) = x - t \\
+    \sigma = \Sigma(t,x) = x - 3t^2/2 \\
     s = S(t,x) = t
   \end{cases}
 \]
 Finally, the solution is obtained as 
 \[
-  u(t,x) = U(\Sigma(t,x), S(t,x)) = e^{t + \ln(h(x-t))} 
+  u(t,x) = U(\Sigma(t,x), S(t,x)) = e^t h(x-3t^2/2) 
 \]
 \pagebreak
 \section*{2.}
@@ -73,7 +73,7 @@ Follow the method, we have
 \[
   \displaystyle\frac{dT(\sigma; s)}{ds} = 1, 
   \displaystyle\frac{dX(\sigma; s)}{ds} = U, 
-  \displaystyle\frac{dU(\sigma; s)}{ds} = 2t
+  \displaystyle\frac{dU(\sigma; s)}{ds} = 2T
 \]
 with 
 \[
@@ -81,23 +81,23 @@ with
 \]
 Thus, 
 \[
-  T(\sigma; s) = s, X(\sigma;s) = ts^2+ \sigma s + \sigma , U(\sigma;s) = 2ts + \sigma
+  T(\sigma; s) = s, X(\sigma;s) = \displaystyle\frac{s^3}{3} + \sigma s + \sigma , U(\sigma;s) = s^2 + \sigma
 \]
 Next, we can obtain the inverse function, 
 \[
   \begin{cases}
     t = T(\sigma;s) = s \\
-    x = X(\sigma;s) = ts^2 + \sigma s + \sigma
+    x = X(\sigma;s) = \displaystyle\frac{s^3}{3} + \sigma s + \sigma 
   \end{cases}
   \implies 
   \begin{cases}
-    \sigma = \Sigma(t,x) = \displaystyle\frac{x-t^3}{t+1} \\
+    \sigma = \Sigma(t,x) = \frac{x - t^3/3}{t+1} \\
     s = S(t,x) = t
   \end{cases}
 \]
 Finally, the solution is obtained as 
 \[
-  u(t,x) = U(\Sigma(t,x), S(t,x)) = 2t^2 + \displaystyle\frac{x-t^3}{t+1} 
+  u(t,x) = t^2 + \displaystyle\frac{x-t^3/3}{t+1} 
 \]
 \pagebreak
 \section*{3.}
@@ -164,13 +164,13 @@ First, let $F(x,y,u,p,q) = p^2 + q - u$, we further have
 We have
 \[
   \begin{cases}
-    P_0^2 + Q_0^2 - U_0 = P_0^2 + Q_0^2 - \sigma^2 = 0 \\
+    P_0^2 + Q_0 - U_0 = P_0^2 + Q_0 - \sigma^2 = 0 \\
     2\sigma = U'_0(\sigma) = P_0
   \end{cases}
   \implies 
   \begin{cases}
     P_0 = 2\sigma \\
-    Q_0 = \sigma \sqrt{5} 
+    Q_0 = -3\sigma^2  
   \end{cases}
 \]
 Then we have the ODE system 
@@ -179,43 +179,43 @@ Then we have the ODE system
     \displaystyle\frac{dX}{ds} = F_p = 2P \\
     \displaystyle\frac{dY}{ds} = F_q = 1 \\
     \displaystyle\frac{dU}{ds} = PF_p + QF_q = 2P^2 + Q \\
-    \displaystyle\frac{dP}{ds} = -F_x - F_z P  =  P = 2 \sigma\\
-    \displaystyle\frac{dQ}{ds} = -F_y - F_z Q = Q = \sqrt{5} \sigma 
+    \displaystyle\frac{dP}{ds} = -F_x - F_z P  =  P \\
+    \displaystyle\frac{dQ}{ds} = -F_y - F_z Q = Q
   \end{cases}
 \]
 Therefore, 
 \[
   \begin{cases}  
-    P(\sigma, s) = 2\sigma s + 2 \sigma \\
-    Q(\sigma, s) = \sqrt{5}\sigma s + \sqrt{5}\sigma
+    P(\sigma, s) = 2\sigma e^s \\
+    Q(\sigma, s) = -3 \sigma^2 e^s
   \end{cases}
 \]
 We have 
 \[
   \begin{cases}
-    \displaystyle\frac{dX}{ds} = 4 \sigma s  + 4 \sigma \\ 
+    \displaystyle\frac{dX}{ds} = 4 \sigma e^s \\ 
     \displaystyle\frac{dY}{ds} = 1 \\
-    \displaystyle\frac{dU}{ds} = 2P^2 + Q = 8\sigma^2 (s+1)^2 + \sqrt{5} \sigma (s+1)
+    \displaystyle\frac{dU}{ds} = 2P^2 + Q = 8\sigma^2 e^{2s} - 3\sigma^2 e^s
   \end{cases}
 \]
 and with the initial conditions $(1)$, we have 
 \[
   \begin{cases}
-    X(\sigma,s)= 2 \sigma s^2 + 4 \sigma s + \sigma \\
+    X(\sigma,s)= 4 \sigma e^s - 3\sigma \\
     Y(\sigma, s)= s \\
-    U(\sigma, s)= \displaystyle\frac{8\sigma^2}{3}(s+1)^3 + \displaystyle\frac{\sqrt{5}\sigma}{2} (s+1)^2 - \displaystyle\frac{5\sigma^2}{3} - \displaystyle\frac{\sqrt{5}\sigma}{2} 
+    U(\sigma, s)= 4\sigma^2 e^{2s} - 3\sigma^2 e^s 
   \end{cases}
 \]
 Hence, we can obtain the inverse function, 
 \[
   \begin{cases}
-    \sigma = \displaystyle\frac{x}{4y+1}\\
+    \sigma = \cfrac{x}{4e^y - 3}\\
     s = y
   \end{cases}
 \]
 and the solution  
 \[
-  u(x,y) = U(\sigma, s) = \left(\frac{x}{4y+1}\right)^2 \left(\displaystyle\frac{8}{3} (y+1)^3  - \displaystyle\frac{5}{3}\right) + \displaystyle\frac{\sqrt{5}x}{8y+2} ((y+1)^2 - 1) 
+  u(x,y) = U(\sigma, s) = \displaystyle\frac{x^2}{(4e^y-3)^2} (4e^{2y} - 3e^y) 
 \]
 \pagebreak
 \section*{5.}

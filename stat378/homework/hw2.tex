@@ -1,0 +1,101 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepackage{hyperref}
+
+
+
+\newtheorem{definition}{Definition}[section]
+\newtheoremstyle{mystyle}%                % Name
+  {}%                                     % Space above
+  {}%                                     % Space below
+  {\itshape}%                                     % Body font
+  {}%                                     % Indent amount
+  {\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  { }%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+
+\theoremstyle{mystyle}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem*{exmp}{Example}
+\begin{document}
+\section*{1.}
+We first have, 
+\[
+  F = \displaystyle\frac{SS_{\exp}/p}{SS_{\text{res}}/(n-p-1)}
+\]
+hence
+\[
+  \displaystyle\frac{F}{F+c} = \displaystyle\frac{1}{1 + c/F}
+\]
+and  
+\[
+  1 - \displaystyle\frac{SS_{\text{res}}}{SS_{\text{total}}} = \displaystyle\frac{SS_{\exp}}{SS_{\text{total}}}
+\]
+Therefore,
+\begin{align*} 
+  &1 + \displaystyle\frac{c}{F} = \frac{SS_\text{total}}{SS_{\exp}}\\
+  \implies &1 + \displaystyle\frac{c(n-p-1)}{p} \displaystyle\frac{SS_\text{res}}{SS_{\exp}} = \frac{SS_\text{total}}{SS_{\exp}}\\
+  \implies &SS_{\exp}+ \displaystyle\frac{c(n-p-1)}{p} SS_\text{res} = SS_\text{total} \\
+  \implies &c = \displaystyle\frac{p}{n-p-1}
+\end{align*}
+We then have 
+\[
+  5 = \displaystyle\frac{8}{n-8-1} \implies n = 10.6 
+\]
+\pagebreak
+\section*{2.}
+We first have that 
+\[
+  X^T X = 
+  \begin{pmatrix}
+    n & \sum x_i \\
+    \sum x_i & \sum x_i^2
+  \end{pmatrix}
+  = 
+  \begin{pmatrix}
+    45 & 0 \\
+    0 & \sum x_i^2
+  \end{pmatrix}
+\]
+and thus the inverse is 
+\[
+  \begin{pmatrix}
+    \displaystyle\frac{1}{45} & 0 \\
+    0 & \displaystyle\frac{1}{\sum x_i^2}
+  \end{pmatrix}
+\]
+then we can calculate 
+\[
+  \text{se}(c) = \sqrt{\displaystyle\frac{1}{45} SS_\text{res} / 43}
+\]
+where
+\[
+  SS_\text{res} = \sum_{i=1}^{45} (Y_i - \hat Y_i)^2
+\]
+Thus, we can find the confidence interval for $c$
+\[
+  \hat c - t_{\alpha/2, 43} \sqrt{\displaystyle\frac{SS_\text{res}}{1935}} < c < \hat c + t_{\alpha/2, 43} \sqrt{\displaystyle\frac{SS_\text{res}}{1935}}
+\]
+Similarly, 
+\[
+  \text{se}(c) = \sqrt{\displaystyle\frac{1}{\sum x_i^2} SS_\text{res} / 43}
+\]
+and the confidence for $d$ is 
+\[
+  \hat d - t_{\alpha/2, 43} \sqrt{\displaystyle\frac{SS_\text{res}}{43 \sum_{i=1}^45 x_i^2}} < d < \hat d + t_{\alpha/2, 43} \sqrt{\displaystyle\frac{SS_\text{res}}{43 \sum_{i=1}^45 x_i^2}}
+\]
+\end{document}
