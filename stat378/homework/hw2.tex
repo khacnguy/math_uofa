@@ -96,6 +96,54 @@ Similarly,
 \]
 and the confidence for $d$ is 
 \[
-  \hat d - t_{\alpha/2, 43} \sqrt{\displaystyle\frac{SS_\text{res}}{43 \sum_{i=1}^45 x_i^2}} < d < \hat d + t_{\alpha/2, 43} \sqrt{\displaystyle\frac{SS_\text{res}}{43 \sum_{i=1}^45 x_i^2}}
+  \hat d - t_{\alpha/2, 43} \sqrt{\displaystyle\frac{SS_\text{res}}{43 \sum_{i=1}^{45} x_i^2}} < d < \hat d + t_{\alpha/2, 43} \sqrt{\displaystyle\frac{SS_\text{res}}{43 \sum_{i=1}^{45} x_i^2}}
+\]
+Thus the $1-\alpha$ confidence interval for $c + 5d$ is
+\[
+  \hat c + 5\hat d - t_{\alpha/2,43} \left(\sqrt{\displaystyle\frac{SS_\text{res}}{1935}} + 5\sqrt{\displaystyle\frac{SS_\text{res}}{43 \sum x_i^2}} \right) < c + 5d < \hat c + 5\hat d + t_{\alpha/2,43} \left(\sqrt{\displaystyle\frac{SS_\text{res}}{1935}} + 5\sqrt{\displaystyle\frac{SS_\text{res}}{43 \sum x_i^2}} \right)
+\]
+where $\hat c$ and $\hat d$ can be estimated by MLE
+\begin{align*}
+  \mathcal{L}(c,d, \sigma^2 | X) &
+  = \prod_{i=1}^{45} \displaystyle\frac{1}{\sqrt{2\pi\sigma^2}} \cdot \exp \left(-\displaystyle\frac{(y_i - c - d x_i)^2}{2\sigma^2}\right) \\
+  &= \displaystyle\frac{1}{\sqrt{(2\pi\sigma^2)^{45}}} \exp \left(-\displaystyle\frac{1}{2\sigma^2} \sum_{i=1}^{45} (y_i - c - d x_i)^2 \right)
+\end{align*}
+then 
+\[
+  l(c,d,\sigma^2 | X) = -\displaystyle\frac{n}{2} \log(2\pi \sigma^2) - \displaystyle\frac{1}{2\sigma^2} \sum_{i=1}^{45} (y_i - c - d x_i)^2 
+\]
+Thus 
+\[
+  \displaystyle\frac{dl}{dc} = \displaystyle\frac{1}{\sigma^2} \sum_{i=1}^{45} (y_i - c - d x_i) \implies \hat c = \overline y - \hat d \overline x
+\]
+and 
+\begin{align*}
+  \displaystyle\frac{dl}{dd} &= \displaystyle\frac{1}{\sigma^2} \sum_{i=1}^{45} (x_i y_i - c x_i - d x_i^2)  \\
+  \implies 0 &= \displaystyle\frac{1}{\hat \sigma^2} \sum_{i=1}^{45} (x_i y_i - \hat c x_i - \hat d x_i^2) \\
+  \implies 0 &= \sum_{i=1}^{45} (x_i y_i - (\overline y - \hat d \overline x) x_i - \hat d x_i^2) \\
+  \implies 0 &= \sum_{i=1}^{45} x_i y_i - 45 \overline x \overline y + \hat d 45 \overline x ^2 - \hat d \sum_{i=1}^{45} x_i^2 \\
+  \implies \hat d &= \displaystyle\frac{\sum_{i=1}^{45} (x_i - \overline x)(y_i - \overline y)}{\sum_{i=1}^{45} (x_i - \overline x)^2}
+\end{align*}
+\pagebreak
+\section*{3.}
+First, let's calculate 
+\[
+  x^T (X^T X)^{-1} x = 
+  \begin{pmatrix}
+    1 & 7
+  \end{pmatrix}
+  \begin{pmatrix}
+    \displaystyle\frac{1}{n} & 0 \\
+    0 & \displaystyle\frac{1}{\sum x_i^2}
+  \end{pmatrix}
+  \begin{pmatrix}
+    1 \\ 
+    7
+  \end{pmatrix}
+  = \frac{1}{n} + \displaystyle\frac{1}{49 \sum x_i^2} 
+\]
+We can just apply the formula and get the predection interval for when $x=7$,
+\[
+  \hat c + 7 \hat d - t_{\alpha/2,43} \sqrt{\displaystyle\frac{SS_\text{res}}{43}} \left(\frac{1}{n} + \displaystyle\frac{1}{49 \sum x_i^2} \right) \le E(\hat Y_0 | X_0 = x) \le \hat c + 7 \hat d + t_{\alpha/2,43} \sqrt{\displaystyle\frac{SS_\text{res}}{43}} \left(\frac{1}{n} + \displaystyle\frac{1}{49 \sum x_i^2} \right) 
 \]
 \end{document}
