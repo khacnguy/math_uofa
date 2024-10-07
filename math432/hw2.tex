@@ -1,0 +1,695 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepackage{hyperref}
+
+
+\usepackage{tikz}
+\usetikzlibrary{plotmarks}
+
+
+\newtheorem{definition}{Definition}[section]
+\newtheoremstyle{mystyle}%                % Name
+  {}%                                     % Space above
+  {}%                                     % Space below
+  {\itshape}%                                     % Body font
+  {}%                                     % Indent amount
+  {\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  { }%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+
+\theoremstyle{mystyle}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem*{exmp}{Example}
+
+
+
+\begin{document}
+\section*{3.2}
+\subsection*{iii.}
+\subsubsection*{a.}
+\[
+  A = 
+  \begin{pmatrix}
+    1 & 1 \\
+    -1 & 0
+  \end{pmatrix}
+\]
+\[
+  |A-\lambda I |= 
+  \begin{vmatrix}
+    1 - \lambda & 1 \\
+    -1 & -\lambda
+  \end{vmatrix}
+  = \lambda^2 - \lambda + 1 
+  \implies \lambda = \displaystyle\frac{1 \pm \sqrt{3}i}{2}
+\]
+For $\lambda = \displaystyle\frac{1 + \sqrt{3}i}{2}$, the eigenvector is 
+$\begin{pmatrix}
+  \displaystyle\frac{-\sqrt{3}i-1}{2} \\
+  1
+\end{pmatrix}
+$. \\
+For $\lambda = \displaystyle\frac{1 - \sqrt{3}i}{2}$, the eigenvector is 
+$\begin{pmatrix}
+  \displaystyle\frac{\sqrt{3}i-1}{2} \\
+  1
+\end{pmatrix}
+$
+\subsection*{b.}
+Thus 
+\[
+  T = 
+  \begin{pmatrix}
+    \frac{\sqrt{3}i - 1}{2} & \frac{-\sqrt{3}i -1}{2} \\
+    1 & 1
+  \end{pmatrix}
+\]
+\subsection*{c.}
+First, let's look at the solution of 
+\[
+  X' = AX
+\]
+Based on the eigenvector the general solution is 
+\[
+  X(t) = c_1 e^{t/2} 
+  \begin{pmatrix}
+    \cos (\sqrt{3}t/2) \\
+    - \sin (\sqrt{3}t/2) \\
+  \end{pmatrix}
+  + c_2 e^{t/2}
+  \begin{pmatrix}
+    \sin (\sqrt{3}t/2) \\
+    \cos (\sqrt{3}t/2) \\
+  \end{pmatrix}
+\]
+and we have 
+\[
+  T^{-1} A T = 
+  \begin{pmatrix}
+    \frac{1-i\sqrt{3}}{2} & 0 \\
+    0 & \frac{1+i\sqrt{3}}{2} 
+  \end{pmatrix}
+\]
+which yields 
+\[
+  Y(t) = c_1 e^{t/2} 
+  \begin{pmatrix}
+    \cos (\sqrt{3}t/2) \\
+    - \sin (\sqrt{3}t/2) \\
+  \end{pmatrix}
+  + c_2 e^{t/2}
+  \begin{pmatrix}
+    \sin (\sqrt{3}t/2) \\
+    \cos (\sqrt{3}t/2) \\
+  \end{pmatrix}
+\]
+\subsubsection*{d.}
+Spiral source for both system (taken from book):
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{/home/dani/Desktop/2024-10-06_17-23.png}
+  \caption{}
+  \label{fig:2024-10-06_17-23}
+\end{figure}
+\subsection*{iv.}
+\subsubsection*{a.}
+\[
+  A = 
+  \begin{pmatrix}
+    1 & 1 \\
+    -1 & 3
+  \end{pmatrix}
+\]
+\[
+  |A-\lambda I |= 
+  \begin{vmatrix}
+    1 - \lambda & 1 \\
+    -1 & 3-\lambda
+  \end{vmatrix}
+  = \lambda^2 - 4\lambda + 4 
+  \implies \lambda = 2
+\]
+For $\lambda = 2$, the eigenvector is 
+$\begin{pmatrix}
+  -1 \\
+  0
+\end{pmatrix}
+$
+and 
+$ 
+\begin{pmatrix}
+  1 \\
+  1
+\end{pmatrix}
+$
+\subsection*{b.}
+Thus 
+\[
+  T = 
+  \begin{pmatrix}
+    1 & -1\\
+    1 & 0
+  \end{pmatrix}
+\]
+\subsection*{c.}
+First, let's look at the solution of 
+\[
+  X' = AX
+\]
+Based on the eigenvector the general solution is 
+\[
+  X(t) = c_1 e^{2t} 
+  \begin{pmatrix}
+    -1 \\
+    0 
+  \end{pmatrix}
+  + c_2 \left(te^{2t} 
+  \begin{pmatrix}
+    -1 \\
+    0
+  \end{pmatrix}
+  + e^{2t}
+  \begin{pmatrix}
+    1 \\
+    1 
+  \end{pmatrix}
+    \right)
+\]
+and we have 
+\[
+  T A T^{-1} = 
+  \begin{pmatrix}
+    2 & 1 \\
+    0 & 2 
+  \end{pmatrix}
+\]
+which has eigenvalue $2$ with eigenvector $ \begin{pmatrix}
+  1 \\ 0
+\end{pmatrix}$ and $ \begin{pmatrix}
+  0 \\ 1
+\end{pmatrix}$,  thus 
+\[
+  Y(t) = c_1 e^{2t} 
+  \begin{pmatrix}
+    1 \\
+    0 
+  \end{pmatrix}
+  + c_2 \left(te^{2t} 
+  \begin{pmatrix}
+    1 \\
+    0
+  \end{pmatrix}
+  + e^{2t}
+  \begin{pmatrix}
+    0 \\
+    1 
+  \end{pmatrix}
+    \right)
+\]
+\subsubsection*{d.}
+Portrait graphs for both system, (graph is taken from book and is wrong, to make it right, change the direction of the arrow since it is a source instead of sink as the eigenvalue is positive).
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{/home/dani/Desktop/2024-10-06_17-30.png}
+  \caption{}
+  \label{fig:2024-10-06_17-30}
+\end{figure}
+\subsection*{v.}
+\subsubsection*{a.}
+\[
+  A = 
+  \begin{pmatrix}
+    1 & 1 \\
+    -1 & -3
+  \end{pmatrix}
+\]
+\[
+  |A-\lambda I |= 
+  \begin{vmatrix}
+    1 - \lambda & 1 \\
+    -1 & -3-\lambda
+  \end{vmatrix}
+  = \lambda^2 + 2\lambda - 4 
+  \implies \lambda = -1 \pm \sqrt{3} 
+\]
+For $\lambda = -1 -\sqrt{3}$, the eigenvector is 
+$\begin{pmatrix}
+  -2 + \sqrt{3} \\
+  1
+\end{pmatrix}
+$. \\
+For $\lambda = -1 + \sqrt{3}$, the eigenvector is 
+$\begin{pmatrix}
+  -2 - \sqrt{3} \\
+  1
+\end{pmatrix}
+$
+\subsection*{b.}
+Thus 
+\[
+  T = 
+  \begin{pmatrix}
+    -2 + \sqrt{3} & - 2 - \sqrt{3} \\
+    1 & 1
+  \end{pmatrix}
+\]
+\subsection*{c.}
+First, let's look at the solution of 
+\[
+  X' = AX
+\]
+Based on the eigenvector the general solution is 
+\[
+  X(t) = c_1 e^{t(-1-\sqrt{3})} 
+  \begin{pmatrix}
+    -2 + \sqrt{3} \\
+    1 \\
+  \end{pmatrix}
+  + c_2 e^{t(-1 + \sqrt{3})}
+  \begin{pmatrix}
+    -2 - \sqrt{3} \\
+    1 \\
+  \end{pmatrix}
+\]
+and we have 
+\[
+  T A T^{-1} = 
+  \begin{pmatrix}
+    -1 - \sqrt{3} & 0 \\
+    0 & -1 + \sqrt{3} 
+  \end{pmatrix}
+\]
+which yields 
+\[
+  Y(t) = c_1 e^{t(-1-\sqrt{3})} 
+  \begin{pmatrix}
+    -1 + \sqrt{3} \\
+    1 \\
+  \end{pmatrix}
+  + c_2 e^{t(-1 + \sqrt{3})}
+  \begin{pmatrix}
+    -1 - \sqrt{3} \\
+    1 \\
+  \end{pmatrix}
+\]
+\subsubsection*{d.}
+For both systems, 
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{/home/dani/Desktop/IMG_1991.png}
+  \caption{}
+  \label{fig:img_1991}
+\end{figure}
+\clearpage
+\section*{3.3}
+\subsection*{a.}
+\[
+  x'' + x' + x = 0 
+\]
+The charateristics equation is $r^2 + r + 1 = 0$ thus 
+\[
+  r = \displaystyle\frac{-1 \pm \sqrt{3}i}{2}
+\]
+and the general solution is 
+\[
+  x(t) = c_1 e^{-t/2}\cos(\sqrt{3}t/2) + c_2 e^{-t/2} \sin(\sqrt{3}t/2)
+\]
+\subsection*{b.}
+\[
+  x'' + 2x' + x = 0 
+\]
+The charateristics equation is $r^2 + 2r + 1 = 0$ thus 
+\[
+  r = -1
+\]
+and the general solution is 
+\[
+  x(t) = c_1 e^{-t} + c_2 te^{-t}
+\]
+\clearpage
+\section*{3.5}
+The charateristics polynomial is 
+\[
+  \lambda^2 -\lambda(2+a) = 0 \implies \lambda = 0,2+a
+\]
+For eigenvalue 0, the eigenvector is 
+\[
+  \begin{pmatrix}
+    -1 \\
+    a
+  \end{pmatrix}
+\]
+For eigenvalue $2+a$, the eigenvector is 
+\[
+  \begin{pmatrix}
+    1 \\
+    2
+  \end{pmatrix}
+\]
+Thus the bifurcation point is $a=-2$. \\
+\begin{itemize}
+  \item $a > -2$
+    As the eigenvector $(-1,a)$ is a constant in the solution. 
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{/home/dani/Desktop/IMG_1993.png}
+  \caption{}
+  \label{fig:img_1993}
+\end{figure}
+  \item $a = -2$
+    Let $(1,0)$ be the other eigenvector, then the solution is just 
+    $c_1 (1,0) + c_2 (1,2)$ which is just constant everywhere. 
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{/home/dani/Desktop/IMG_1994.png}
+  \caption{}
+  \label{fig:img_1994}
+\end{figure}
+\clearpage
+  \item $a < -2$
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{/home/dani/Desktop/IMG_1995.png}
+  \caption{}
+  \label{fig:img_1995}
+\end{figure}
+\end{itemize}
+\clearpage
+\section*{3.11}
+Let $A$ be the matrix in the equation
+\[
+  |A-\lambda I | = (a-\lambda)(d-\lambda) - bc = -\lambda(a+d) + \lambda^2 = 0
+\]
+Thus 
+\[
+  \lambda \in \{0, a+d\}
+\]
+For $\lambda = 0$, the eigenvector will be 
+$\begin{pmatrix}
+  d \\
+  -c
+\end{pmatrix}
+$ \\
+For $\lambda = a+d$, the eigenvector will be 
+$
+\begin{pmatrix}
+  b \\
+  d
+\end{pmatrix}
+$
+which we can use to obtain the general solution 
+\[
+  X(t) = c_1 \begin{pmatrix}
+    d \\
+    -c
+  \end{pmatrix} + c_2 e^{a+d} 
+  \begin{pmatrix}
+    b \\ 
+    d
+  \end{pmatrix}
+\]
+Since $c_1 
+\begin{pmatrix}
+  d \\
+  -c
+\end{pmatrix}
+$ is constant, the curves should eventually converge to a line parallel with 
+$ \text{sign}(c_2) \cdot 
+\begin{pmatrix}
+  b \\
+  d
+\end{pmatrix}$. \\ 
+Thus, if $a+d > 0$, it is a source, and every curves should eventually converges to said vector. \\
+If $a+d = 0$, then it is a source and every curves is a line. \\
+If $a+d < 0$, then it is a sink and every curves should eventually converges to said vector.
+\clearpage
+\section*{3.13}
+Let the matrix be 
+\[
+  A = 
+  \begin{pmatrix}
+    a & b \\
+    c & d 
+  \end{pmatrix}
+\]
+Since we know the charateristics polynomial is 
+\[
+  \lambda^2 - (a+d) \lambda + ad - bc = 0
+\]
+We can substitute $\alpha = -a-d, \beta = ad-bc$ in and have 
+\begin{align*}
+  &A^2 - (a+d)A + (ad-bc)I \\
+  =& 
+  \begin{pmatrix}
+    a^2 +bc & ab + bd \\
+    ac + cd & bc + d^2
+  \end{pmatrix}
+  - 
+  \begin{pmatrix}
+    a(a+d) & b(a+d) \\
+    c(a+d) & d(a+d) 
+  \end{pmatrix}
+  +
+  (ad-bc)I \\
+  =&
+  \begin{pmatrix}
+    0 & 0 \\
+    0 & 0
+  \end{pmatrix}
+\end{align*}
+\clearpage 
+\section*{4.1}
+$T = a$, $D = \displaystyle\frac{a^2}{4} - 2$ and the charateristics polynomial is 
+\[
+  -a\lambda + \lambda^2 - 2 + \displaystyle\frac{a^2}{4} = 0
+\]
+Thus, there is 2 real eigenvalue as 
+\[
+  a^2 - 4\left(-2 + \displaystyle\frac{a^2}{4}\right) = 8 > 0  
+\]
+Now the eigenvalue are 
+\[
+  \lambda_{1,2} = \displaystyle\frac{a \pm \sqrt{8}}{2}
+\]
+where $\lambda_1 > \lambda_2$. Thus there are three section. 
+\begin{itemize}
+  \item $\lambda_1 > \lambda_2 > 0$, $a > \sqrt{8}$. 
+  \item $\lambda_1 >0 > \lambda_2 $, $-\sqrt{8} < a < \sqrt{8}$ 
+  \item $0 > \lambda_1 > \lambda_2 > 0$, $a < -\sqrt{8}$
+\end{itemize}
+and 2 subsection 
+\begin{itemize}
+  \item $\lambda_1 > \lambda_2 = 0, a = \sqrt{8}$, then the solution has a constant vector and the all curves should converges to parallel with the other one.
+  \item $\lambda_2 < \lambda_1 = 0, a = -\sqrt{8}$, then the solution has a constant vector and the all curves should converges to parallel with the other one.
+\end{itemize}
+Hence, the trace determinant plane is 
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{/home/dani/Desktop/IMG_2004.png}
+  \caption{}
+  \label{fig:img_2004}
+\end{figure}
+\clearpage 
+\section*{4.2}
+\[
+  T = 2a, D = a^2-b^2
+\]
+\[
+  T^2 - 4D = 4a^2 -4a^2 + 4b^2 = 4b^2\ge 0
+\]
+and the charateristics polynomial is 
+\[
+  a^2 - 2a\lambda + \lambda^2 -b^2 = 0 
+\]
+Thus if $b = 0$, then there is only 1 eigenvalue which is $a$ (which the corresponding eigenvector is $(1,0),(0,1)$. \\ 
+If $b \ne 0$, then there is 2 eigenvalue 
+\[
+  \lambda_{1,2} = a \pm |b|
+\]
+If $b > 0$,  
+\[
+  \lambda_{1} = a + b > 
+  \lambda_{2} = a - b
+\]
+If $b < 0$, 
+\[
+  \lambda_{1} = a - b > \lambda_2 = a+b 
+\]
+The eigenvector for eigenvalue $ a + b$ is
+\[
+  \begin{pmatrix}
+    1 \\ 1
+  \end{pmatrix}
+\]
+and the eigenvector for eigenvalue $ a - b$ is \[
+  \begin{pmatrix}
+    1 \\ -1
+  \end{pmatrix}
+\]
+Thus we have 4 regions in the ab plane 
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{/home/dani/Desktop/IMG_2005.png}
+  \caption{}
+  \label{fig:img_2005}
+\end{figure}
+
+\clearpage
+\section*{4.3}
+The charateristics equation is $r^2 +br + k$ and thus 
+have  
+\begin{itemize}
+  \item 2 real solutions if $b^2 > 4k$ \\
+    We know that $r_{1,2} = -b \pm \sqrt{b^2 -4k}$
+    , $r_1 = -b - \sqrt{b^2-4k} < 0$ and $r_2 = -b + \sqrt{b^2 - 4k} < 0$. Thus $b^2 > 4k$ has similar portraits. 
+  \item 1 real duplicated solution if $b = 2\sqrt{k}$, and. There is obviously 1 portraits here.  
+  \item 2 complex solution if $b^2 < 4k$. 
+    Since $b>0$, the region $b^2 < 4k$ also has similar portraits as $b>0$. The real parts of the solution of the charateristics polynomial is always positive.
+\end{itemize}
+\clearpage
+\section*{4.5}
+\subsection*{a.}
+We first put them into canonical form. \\
+The first matrix $A$ has eigenvalue $2$ with eigenvector 
+\[
+  \begin{pmatrix}
+    1 \\
+    3
+  \end{pmatrix}
+\]
+and eigenvalue $-1$ with eigenvector 
+\[
+  \begin{pmatrix}
+    1 \\ 
+    0
+  \end{pmatrix}
+\]
+Thus we can find the canonical form 
+\[
+\begin{pmatrix}
+  -1 & 0 \\
+  0 & 2
+\end{pmatrix}  
+\]
+The second matrix $B$ has eigenvalue $-2$ with eigenvector 
+\[
+  \begin{pmatrix}
+    0 \\
+    1
+  \end{pmatrix}
+\]
+and eigenvalue $1$ with eigenvector 
+\[
+  \begin{pmatrix}
+    3 \\ 
+    1
+  \end{pmatrix}
+\]
+Thus we can find the canonical form 
+\[
+\begin{pmatrix}
+  -2 & 0 \\
+  0 & 1
+\end{pmatrix}  
+\]
+Thus we can obtain the conjugacy
+\[
+  H(x,y) = (h_1(x), h_2(y))
+\]
+where 
+\[
+  h_1(x) = 
+  \begin{cases}
+    x^2, &\text{ if } x \ge 0\\
+    -x^2, &\text{ if } x < 0\\
+  \end{cases}
+\]
+and 
+\[
+  h_2(y) = 
+  \begin{cases}
+    y^2, &\text{ if } y \ge 0 \\
+    -y^2, &\text{ if } y < 0
+  \end{cases}
+\]
+\subsection*{b.}
+We first put them into canonical form. \\
+The first matrix $A$ has eigenvalue $2i$ with eigenvector 
+\[
+  \begin{pmatrix}
+    -i \\
+    2
+  \end{pmatrix}
+\]
+and eigenvalue $-2i$ with eigenvector 
+\[
+  \begin{pmatrix}
+    i \\ 
+    2
+  \end{pmatrix}
+\]
+Thus we can find the canonical form 
+\[
+\begin{pmatrix}
+  -2i & 0 \\
+  0 & 2i
+\end{pmatrix}  
+\]
+The second matrix $B$ has eigenvalue $2i$ with eigenvector 
+\[
+  \begin{pmatrix}
+    -i \\
+    1
+  \end{pmatrix}
+\]
+and eigenvalue $-2i$ with eigenvector 
+\[
+  \begin{pmatrix}
+    i \\ 
+    1
+  \end{pmatrix}
+\]
+Thus we can find the canonical form 
+\[
+\begin{pmatrix}
+  -2i & 0 \\
+  0 & 2i
+\end{pmatrix}  
+\]
+Thus we can obtain the conjugacy
+\[
+  H(x,y) = (h_1(x), h_2(y))
+\]
+where 
+\[
+  h_1(x) = 
+  \begin{cases}
+    x^2, &\text{ if } x \ge 0\\
+    -x^2, &\text{ if } x < 0\\
+  \end{cases}
+\]
+and 
+\[
+  h_2(y) = 
+  \begin{cases}
+    y^2, &\text{ if } y \ge 0 \\
+    -y^2, &\text{ if } y < 0
+  \end{cases}
+\]
+\end{document}
