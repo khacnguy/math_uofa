@@ -191,7 +191,7 @@ Based on the eigenvector the general solution is
 \]
 and we have 
 \[
-  T A T^{-1} = 
+  T^{-1} A T = 
   \begin{pmatrix}
     2 & 1 \\
     0 & 2 
@@ -287,7 +287,7 @@ Based on the eigenvector the general solution is
 \]
 and we have 
 \[
-  T A T^{-1} = 
+  T^{-1} A T = 
   \begin{pmatrix}
     -1 - \sqrt{3} & 0 \\
     0 & -1 + \sqrt{3} 
@@ -582,10 +582,19 @@ and eigenvalue $-1$ with eigenvector
 \]
 Thus we can find the canonical form 
 \[
-\begin{pmatrix}
+ T_1^{-1}AT = 
+ \begin{pmatrix}
   -1 & 0 \\
   0 & 2
 \end{pmatrix}  
+\]
+where
+\[
+  T_1 = 
+  \begin{pmatrix}
+    1 & 1 \\
+    0 & 3
+  \end{pmatrix}
 \]
 The second matrix $B$ has eigenvalue $-2$ with eigenvector 
 \[
@@ -603,14 +612,26 @@ and eigenvalue $1$ with eigenvector
 \]
 Thus we can find the canonical form 
 \[
-\begin{pmatrix}
+ T_2^{-1} A T_2 = \begin{pmatrix}
   -2 & 0 \\
   0 & 1
 \end{pmatrix}  
 \]
+where 
+\[
+  T_2 = 
+  \begin{pmatrix}
+    0 & 3 \\
+    1 & 1
+  \end{pmatrix}
+\]
 Thus we can obtain the conjugacy
 \[
-  H(x,y) = (h_1(x), h_2(y))
+  H(x,y) = T_2 T_1^{-1} H'(x,y)
+\]
+with $H'$ being the conjugacy between the 2 canonical form of the 2 matrices and 
+\[
+  H'(x,y) = (h_1(x), h_2(y))
 \]
 where 
 \[
@@ -628,6 +649,7 @@ and
     -y^2, &\text{ if } y < 0
   \end{cases}
 \]
+The reason this works is explained in first 6 lines in 4.6.
 \subsection*{b.}
 We first put them into canonical form. \\
 The first matrix $A$ has eigenvalue $2i$ with eigenvector 
@@ -646,10 +668,18 @@ and eigenvalue $-2i$ with eigenvector
 \]
 Thus we can find the canonical form 
 \[
-\begin{pmatrix}
+ T_1^{-1}A T_1 = \begin{pmatrix}
   -2i & 0 \\
   0 & 2i
 \end{pmatrix}  
+\]
+where 
+\[
+  T_1 = 
+  \begin{pmatrix}
+    i & -i \\
+    2 & 2
+  \end{pmatrix}
 \]
 The second matrix $B$ has eigenvalue $2i$ with eigenvector 
 \[
@@ -667,29 +697,41 @@ and eigenvalue $-2i$ with eigenvector
 \]
 Thus we can find the canonical form 
 \[
-\begin{pmatrix}
+  T_2^{-1} A T_2 = \begin{pmatrix}
   -2i & 0 \\
   0 & 2i
 \end{pmatrix}  
 \]
-Thus we can obtain the conjugacy
-\[
-  H(x,y) = (h_1(x), h_2(y))
-\]
 where 
 \[
-  h_1(x) = 
-  \begin{cases}
-    x^2, &\text{ if } x \ge 0\\
-    -x^2, &\text{ if } x < 0\\
-  \end{cases}
+  T_2 = 
+  \begin{pmatrix}
+    i & -i \\
+    1 & 1
+  \end{pmatrix}
 \]
-and 
+Thus we can obtain the conjugacy
 \[
-  h_2(y) = 
-  \begin{cases}
-    y^2, &\text{ if } y \ge 0 \\
-    -y^2, &\text{ if } y < 0
-  \end{cases}
+  H(x,y) = T_2 \circ T_1^{-1}
 \]
+since they have the same Jordan canonical form. 
+\clearpage
+\section*{4.6}
+If 2 linear system $X' = AX$ and $Y' = BY$ have the same eigenvalue $\pm i\beta \ne 0$, then we know that both matrix have the same canonical form 
+\[
+  C = \begin{pmatrix}
+    0 & \beta \\
+    -\beta & 0 
+  \end{pmatrix}
+\]
+Thus the conjugacy is $T_2 T_1^{-1}$ since $T_1^{-1}$ send the solution of $X' =AX$ to $Z' = CZ$ and $T_2$ send the solution of $Z' = CZ$ to $Y' = BY$ (this can also be applied to 4.5). \\
+If they have different eigenvalue $\pm i\beta$ and $\pm i\gamma$ then WLOG assume $|\gamma| > |\beta|$ then the solution of both consists of $\sin$ and $\cos$ with period $\displaystyle\frac{2\pi}{|\gamma|}$ or $\displaystyle\frac{2\pi}{|\beta|}$  
+\[
+  \phi^A(t,X_0) = \phi^A(t + \displaystyle\frac{2\pi}{\beta}, X_0)
+\]
+\[
+  \phi^B(t,X_0) = \phi^B(t + \displaystyle\frac{2\pi}{\gamma}, X_0)
+\]
+Thus there is no conjugacy. \\
+$\gamma = - \beta$ means that the systems have the same eigenvalue which is the first scenario. 
 \end{document}
