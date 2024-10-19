@@ -1,0 +1,1013 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepackage{hyperref}
+
+
+\usepackage{tikz}
+\usetikzlibrary{plotmarks}
+
+
+\newtheorem{definition}{Definition}[section]
+\newtheoremstyle{mystyle}%                % Name
+  {}%                                     % Space above
+  {}%                                     % Space below
+  {\itshape}%                                     % Body font
+  {}%                                     % Indent amount
+  {\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  { }%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+
+\theoremstyle{mystyle}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem*{exmp}{Example}
+
+
+
+\begin{document}
+\section*{4.2}
+\subsection*{b.}
+\[
+  |B-\lambda I| = \lambda^2 (2-\lambda) - 3(2-\lambda) = -\lambda^3 + 2 \lambda^2 + 3\lambda - 6 = (\lambda-2)(\lambda^2 - 3) = 0 
+\]
+Thus $\lambda \in \{\pm \sqrt{3}, 2\}$. \\
+\begin{itemize}
+  \item $\lambda = 2$ \\
+    \[
+    B 
+    \begin{pmatrix}
+      v_1 \\
+      v_2 \\
+      v_3
+    \end{pmatrix} = 
+    \begin{pmatrix}
+      v_3 \\
+      2v_2 \\
+      3v_1
+    \end{pmatrix} 
+    = 
+    \begin{pmatrix}
+      2v_1 \\ 
+      2v_2 \\
+      2v_3
+    \end{pmatrix}
+    \]
+    Thus 
+    \[
+      \begin{pmatrix}
+        v_1 \\
+        v_2 \\
+        v_3 
+      \end{pmatrix}
+      = k 
+      \begin{pmatrix}
+        0 \\
+        1 \\
+        0
+      \end{pmatrix}
+    \]
+  \item $\lambda = \sqrt{3}$ \\
+    \[
+    B 
+    \begin{pmatrix}
+      v_1 \\
+      v_2 \\
+      v_3
+    \end{pmatrix} = 
+    \begin{pmatrix}
+      v_3 \\
+      2v_2 \\
+      3v_1
+    \end{pmatrix} 
+    = 
+    \begin{pmatrix}
+      \sqrt{3} v_1 \\ 
+      \sqrt{3} v_2 \\
+      \sqrt{3} v_3
+    \end{pmatrix}
+    \]
+    Thus 
+    \[
+      \begin{pmatrix}
+        v_1 \\
+        v_2 \\
+        v_3 
+      \end{pmatrix}
+      = k 
+      \begin{pmatrix}
+        1 \\
+        0 \\
+        \sqrt{3}
+      \end{pmatrix}
+    \]
+  \item $\lambda = -\sqrt{3}$ \\
+    \[
+    B 
+    \begin{pmatrix}
+      v_1 \\
+      v_2 \\
+      v_3
+    \end{pmatrix} = 
+    \begin{pmatrix}
+      v_3 \\
+      2v_2 \\
+      3v_1
+    \end{pmatrix} 
+    = 
+    \begin{pmatrix}
+      -\sqrt{3}v_1 \\ 
+      -\sqrt{3}v_2 \\
+      -\sqrt{3}v_3
+    \end{pmatrix}
+    \]
+    Thus 
+    \[
+      \begin{pmatrix}
+        v_1 \\
+        v_2 \\
+        v_3 
+      \end{pmatrix}
+      = k 
+      \begin{pmatrix}
+        1 \\
+        0 \\
+        -\sqrt{3}
+      \end{pmatrix}
+    \]
+\end{itemize}
+\subsection*{c.}
+\[
+  |C- \lambda I| = (1-\lambda)^3 + 1 + 1 - 3(1-\lambda) = -\lambda^3 +3\lambda^2
+\]
+Thus $\lambda \in \{0, 3\}$. \\
+\begin{itemize}
+  \item $\lambda = 3$ \\
+    \[
+    C 
+    \begin{pmatrix}
+      v_1 \\
+      v_2 \\
+      v_3
+    \end{pmatrix} = 
+    \begin{pmatrix}
+      v_1 + v_2 + v_3 \\
+      v_1 + v_2 + v_3 \\
+      v_1 + v_2 + v_3 \\
+    \end{pmatrix} 
+    =
+      \begin{pmatrix}
+        3v_1 \\
+        3v_2 \\
+        3v_3 
+      \end{pmatrix}
+    \]
+    Thus 
+    \[
+      \begin{pmatrix}
+        v_1 \\
+        v_2 \\
+        v_3 
+      \end{pmatrix}
+      = k 
+      \begin{pmatrix}
+        1 \\
+        1 \\
+        1
+      \end{pmatrix}
+    \]
+  \item $\lambda = 0$ \\
+    \[
+    C 
+    \begin{pmatrix}
+      v_1 \\
+      v_2 \\
+      v_3
+    \end{pmatrix} = 
+    \begin{pmatrix}
+      v_1 + v_2 + v_3 \\
+      v_1 + v_2 + v_3 \\
+      v_1 + v_2 + v_3 
+    \end{pmatrix} 
+    = 
+      O
+    \]
+    Thus 
+    \[
+      \begin{pmatrix}
+        v_1 \\
+        v_2 \\
+        v_3 
+      \end{pmatrix}
+      = k 
+      \begin{pmatrix}
+        1 \\
+        0 \\
+        -1
+      \end{pmatrix}
+    \]
+    and 
+    \[
+      \begin{pmatrix}
+        v_1 \\
+        v_2 \\
+        v_3 
+      \end{pmatrix}
+      = k 
+      \begin{pmatrix}
+        1 \\
+        -1 \\
+        0
+      \end{pmatrix}
+    \]
+\end{itemize}
+\clearpage 
+\section*{4.}
+\begin{align*}
+  |A - \lambda I| &= (a-\lambda)^4  - (a-\lambda)^2 bc + a^2 bc - (a-\lambda)^2 a^2 \\
+  &= ((a-\lambda)^2 - a^2) ( (a-\lambda)^2 - bc)
+\end{align*}
+Thus 
+\[
+  \lambda \in \left\{0, 2a, a \pm \sqrt{bc}\right\}
+\]
+So the eigenvalues are real when $bc \ge 0$. \\
+The eigenvalues are complex if $bc < 0$. \\
+If $a = bc = 0$ then the eigenvalue is $0$ with multiplicity 4. \\
+If $a = \pm \sqrt{bc} \ne 0$ then $0 = a \mp \sqrt{bc}$ and $2a = a \pm \sqrt{bc}$. Thus the eigenvalue $0$ and $2a$ are with multiplicity 2. 
+\clearpage 
+\section*{5}
+\subsection*{c.}
+\[
+  \det(A - \lambda I) = -(\lambda - 1)(\lambda^2 + 1)
+\]
+Thus $\lambda \in \{1, \pm i\}$. 
+\begin{itemize}
+  \item For $\lambda = 1$, the eigenvector is 
+    $\begin{pmatrix}
+    0 \\ 0 \\ 1 
+    \end{pmatrix}$
+  \item For $\lambda = i$, the eigenvector is 
+    $\begin{pmatrix}
+    i \\ -1 \\ 1 
+    \end{pmatrix}$
+  \item For $\lambda = -i$, the eigenvector is 
+    $\begin{pmatrix}
+    -i \\ -1 \\ 1 
+    \end{pmatrix}$
+\end{itemize}
+Thus we let 
+\[
+  T = 
+  \begin{pmatrix}
+    -i & i & 0 \\
+    -1 & -1 & 0 \\
+    1 & 1 & 1
+  \end{pmatrix}
+\]
+so that 
+\[
+  T^{-1} A T = 
+  \begin{pmatrix}
+    -i & 0 & 0 \\
+    0 & i & 0 \\
+    0 & 0 & 1
+  \end{pmatrix}
+\]
+\subsection*{d.}
+\[
+  \det(B - \lambda I) = -(\lambda-1)^2 (\lambda+1)
+\]
+Thus $\lambda \in \{-1,1\}$. 
+\begin{itemize}
+  \item For $\lambda = -1$, the eigenvector is 
+    $\begin{pmatrix}
+    -1 \\ 1 \\ 0 
+    \end{pmatrix}$
+  \item For $\lambda = 1$, the eigenvectors are
+    $\begin{pmatrix}
+    1 \\ 1 \\ 0 
+    \end{pmatrix}$
+    and 
+    $\begin{pmatrix}
+    0 \\ 0 \\ 1 
+    \end{pmatrix}$
+\end{itemize}
+Thus we let 
+\[
+  T = 
+  \begin{pmatrix}
+    -1 & 0 & 1/2 \\
+    1 & 0 & 1/2 \\
+    0 & 1 & 0
+  \end{pmatrix}
+\]
+so that 
+\[
+  T^{-1} B T = 
+  \begin{pmatrix}
+    -1 & 0 & 0 \\
+    0 & 1 & 2 \\
+    0 & 0 & 1
+  \end{pmatrix}
+\]
+\subsection*{g.}
+\[
+  \det(C - \lambda I) = -(\lambda-1)^3
+\]
+Thus $\lambda =1$. 
+\begin{itemize}
+  \item For $\lambda = 1$, the eigenvector are 
+    $\begin{pmatrix}
+      1 \\ 0 \\ 0 
+    \end{pmatrix}$
+    ,
+    $\begin{pmatrix}
+    0 \\ 1 \\ 0 
+    \end{pmatrix}$
+    and 
+    $\begin{pmatrix}
+    -1 \\ 0 \\ 1 
+    \end{pmatrix}$
+\end{itemize}
+Thus we let 
+\[
+  T = 
+  \begin{pmatrix}
+    0 & -1 & -1 \\
+    1 & 0 & 0 \\
+    0 & 0 & 1
+  \end{pmatrix}
+\]
+so that 
+\[
+  T^{-1} C T = 
+  \begin{pmatrix}
+    1 & 1 & 0 \\
+    0 & 1 & 1 \\
+    0 & 0 & 1
+  \end{pmatrix}
+\]
+\section*{5.8}
+\subsection*{a.}
+\[
+  Tv = 
+  \begin{pmatrix}
+    v_1 + 2v_2 \\
+    2v_1 + 4v_2
+  \end{pmatrix}
+\]
+Thus 
+\[
+  \text{Ker } T = 
+  \left\{
+    \left. k
+    \begin{pmatrix}
+    2 \\
+    -1
+    \end{pmatrix}
+    \right| k \in \mathbb{R}
+    \right\}
+\]
+\[
+  \text{Range } T = 
+  \left\{
+    \left. k
+    \begin{pmatrix}
+    1 \\
+    2
+    \end{pmatrix}
+    \right| k \in \mathbb{R}
+  \right\}
+\]
+\subsection*{b.}
+\[
+  Tv = 
+  \begin{pmatrix}
+    v_1 + v_2 + v_3 \\
+    v_1 + v_2 + v_3 \\
+    v_1 + v_2 + v_3 \\
+  \end{pmatrix}
+\]
+Thus 
+\[
+  \text{Ker } T = 
+  \left\{
+    \left. k_1
+    \begin{pmatrix}
+      1 \\
+      -1 \\
+      0
+    \end{pmatrix} + k_2
+    \begin{pmatrix}
+      1 \\
+      0 \\
+      -1
+    \end{pmatrix} 
+    \right| k_1, k_2 \in \mathbb{R}
+    \right\}
+\]
+\[
+  \text{Range } T = 
+  \left\{
+    \left. k
+    \begin{pmatrix}
+      1 \\
+      1 \\
+      1
+    \end{pmatrix}
+    \right| k \in \mathbb{R}
+  \right\}
+\]
+\subsection*{c.}
+The RREF form is 
+\[
+  \begin{pmatrix}
+    1 & 0 & -3 \\
+    0 & 1 & 1 \\
+    0 & 0 & 0
+  \end{pmatrix}
+\]
+Thus 
+\[
+  \text{Ker } T = 
+  \left\{
+    \left. k_1
+    \begin{pmatrix}
+     3 \\ 0 \\ 1
+    \end{pmatrix}
+    + k_2 
+    \begin{pmatrix}
+      0 \\ 1 \\ -1
+    \end{pmatrix}
+    \right| k_1, k_2 \in \mathbb{R}
+    \right\}
+\]
+Since the matrix has 2 linearly independent columns, we can choose any 2 as the basis of our range
+\[
+  \text{Range } T = 
+  \left\{
+    \left. k_1
+    \begin{pmatrix}
+      1 \\ 1 \\ 2
+    \end{pmatrix}
+    + k_2 
+    \begin{pmatrix}
+      6 \\ 1 \\ 1
+    \end{pmatrix}
+    \right| k_1, k_2 \in \mathbb{R}
+    \right\}
+\]
+\clearpage
+\section*{5.14}
+\subsection*{a.}
+Is open since we can find a neighborhood with small enough radius compare to $\det A$ so that $\det A$ remains $\ne 0$. \\
+Is not dense, since determinant is continuous. 
+\subsection*{b.}
+Is not open and not dense since the rational set in $\mathbb{R}$ is not open and dense. 
+\subsection*{c.}
+Is not open and is dense since the integers in $\mathbb{R}$ is not open and is dense. 
+\subsection*{d.}
+Is not open since continuous map matrix to determinant is continuous maps the compact set to compact sets. Is not dense since there is a small enough neighborhood around $\det = 0$ such that no elements of the said set is in.  
+\subsection*{e.}
+Is open since the sets of of matrices that has distinct eigenvalue are open and dense, which we can start at some value $\lambda_1, \lambda_2, \lambda_3$ satisfies the initial condition and start expanding until it reaches the condition some eigenvalue $= 1$. \\
+Is obviously not dense since we can find matrix with characteristic polynomial $\lambda^n - 100^n$ which results in all eigenvalue $> 99$ in the neighborhood. 
+\subsection*{f.}
+Is obviously not dense since we can find matrix with characteristic polynomial $\lambda^n - 100^n$ which results in all eigenvalue $> 99$ in the neighborhood. \\
+Is open since if a matrix has only complex eigenvalue $a + bi$ then $a - bi$ are also an eigenvalue, thus we can rewrite the characteristic polynomial as a product of $x^2 + cx + d$, the sets $\{(c,d) \in \mathbb{R}^2: c^2 - 4d < 0\}$ is open. Thus the set is open.  
+\subsection*{g.}
+The sets of real eigenvalue with multiplicity $>1$ is closed since $\{(c,d) \in \mathbb{R}^2: c^2 = 4d\}$ is closed. The set is dense since matrix with all complex eigenvalue satisfies the condition, thus let's consider matrix with some real eigenvalue. If there is a neighborhood then supposed if there is some matrix in that neighborhood with real eigenvalue with multiplicity $> 1$ by $(\lambda-r_i)^{k_i}$, then we can find another matrix in such neighborhood such that all real eigenvalue has multiplicity $1$ as we can break $(\lambda-r_i)^k$ into $k$ eigenvalue with multiplicity 1. 
+\clearpage
+\section*{6.1}
+\subsection*{a.}
+\[
+  \det(A-\lambda I) = \lambda^2(1-\lambda) - (1-\lambda) = -(1-\lambda)^2(1+ \lambda)
+\]
+Thus $\lambda \in \{-1,1\}$. \\
+\begin{itemize}
+  \item For $\lambda = 1$, the eigenvectors are 
+    $  
+    \begin{pmatrix}
+      0 \\ 1 \\ 0 
+    \end{pmatrix}
+    $ 
+    and 
+    $  
+    \begin{pmatrix}
+      1 \\ 0 \\ 1 
+    \end{pmatrix}
+    $ 
+  \item For $\lambda = -1$, the eigenvector is
+    $  
+    \begin{pmatrix}
+      -1 \\ 0 \\ 1 
+    \end{pmatrix}
+    $
+\end{itemize}
+Thus we can choose 
+\[
+  T = 
+  \begin{pmatrix}
+    0 & 1 & -1 \\
+    1 & 0 & 0 \\
+    0 & 1 & 1
+  \end{pmatrix}
+\]
+so that 
+\[
+  T^{-1}AT = 
+  \begin{pmatrix}
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & -1
+  \end{pmatrix}
+\]
+and thus the solution is 
+\[
+  X(t) = T \left(
+  c_1 e^t 
+  \begin{pmatrix}
+    1 \\ 0 \\ 0
+  \end{pmatrix}
+  + c_2 e^t 
+  \begin{pmatrix}
+    0 \\ 1 \\ 0
+  \end{pmatrix}
+  + c_3 e^{-t}
+  \begin{pmatrix}
+    0 \\ 0 \\ -1
+  \end{pmatrix}
+  \right)
+\]
+\subsection*{b.}
+\[
+  \det(B-\lambda I) = (1-\lambda)^3 - (1-\lambda) = (1-\lambda)(\lambda^2 -2\lambda)
+\]
+Thus $\lambda \in \{0,1,2\}$. \\
+\begin{itemize}
+  \item For $\lambda = 0$, the eigenvector is 
+    $  
+    \begin{pmatrix}
+      -1 \\ 0 \\ 1 
+    \end{pmatrix}
+    $ 
+  \item For $\lambda = 1$, the eigenvector is
+    $  
+    \begin{pmatrix}
+      0 \\ 1 \\ 0 
+    \end{pmatrix}
+    $
+  \item For $\lambda = 2$, the eigenvector is
+    $  
+    \begin{pmatrix}
+      1 \\ 0 \\ 1 
+    \end{pmatrix}
+    $
+\end{itemize}
+Thus we can choose 
+\[
+  T = 
+  \begin{pmatrix}
+    -1 & 0 & 1 \\
+    0 & 1 & 0 \\
+    1 & 0 & 1
+  \end{pmatrix}
+\]
+so that 
+\[
+  T^{-1}AT = 
+  \begin{pmatrix}
+    0 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 2
+  \end{pmatrix}
+\]
+and thus the solution is 
+\[
+  X(t) = T \left(
+  c_1  
+  \begin{pmatrix}
+    1 \\ 0 \\ 0
+  \end{pmatrix}
+  + c_2 e^t 
+  \begin{pmatrix}
+    0 \\ 1 \\ 0
+  \end{pmatrix}
+  + c_3 e^{2t}
+  \begin{pmatrix}
+    0 \\ 0 \\ 1
+  \end{pmatrix}
+  \right)
+\]
+\subsection*{c.}
+\[
+  \det(C-\lambda I) = (1-\lambda)(\lambda^2 + 1)
+\]
+Thus $\lambda \in \{1, \pm i\}$. \\
+\begin{itemize}
+  \item For $\lambda = 1$, the eigenvector is
+    $  
+    \begin{pmatrix}
+      0 \\ 0 \\ 1 
+    \end{pmatrix}
+    $ 
+  \item For $\lambda = i$, the eigenvector is
+    $  
+    \begin{pmatrix}
+      i \\ -1 \\ 1 
+    \end{pmatrix}
+    $
+  \item For $\lambda = -i$, the eigenvector is
+    $  
+    \begin{pmatrix}
+      -i \\ -1 \\ 1 
+    \end{pmatrix}
+    $
+\end{itemize}
+Thus we can choose 
+\[
+  T = 
+  \begin{pmatrix}
+    0 & i & -i \\
+    0 & -1 & -1 \\
+    1 & 1 & 1
+  \end{pmatrix}
+\]
+so that 
+\[
+  T^{-1}AT = 
+  \begin{pmatrix}
+    1 & 0 & 0 \\
+    0 & i & 0 \\
+    0 & 0 & -i
+  \end{pmatrix}
+\]
+and thus the solution is 
+\[
+  X(t) = T \left(
+  c_1 e^t 
+  \begin{pmatrix}
+    1 \\ 0 \\ 0
+  \end{pmatrix}
+  + c_2 
+  \begin{pmatrix}
+    0 \\ \cos(t) \\ -\sin(t)
+  \end{pmatrix}
+  + c_3 
+  \begin{pmatrix}
+    0 \\ \sin(t) \\ \cos(t)
+  \end{pmatrix}
+  \right)
+\]
+\newpage 
+\section*{6.6}
+\subsection*{a.}
+\[
+  \det(A-\lambda I) = (a-\lambda)^2(b-\lambda) + b^2(b-\lambda) = (b-\lambda)(\lambda^2 - 2a\lambda + a^2 + b^2)
+\]
+Thus $\lambda \in \{b, a \pm bi\}$. \\
+\begin{itemize}
+  \item For $\lambda = b$, the eigenvector is
+    $  
+    \begin{pmatrix}
+      0 \\ 1 \\ 0 
+    \end{pmatrix}
+    $ 
+  \item For $\lambda = a-bi$, the eigenvector is
+    $  
+    \begin{pmatrix}
+      i \\ 0 \\ 1 
+    \end{pmatrix}
+    $
+  \item For $\lambda = a+bi$, the eigenvector is
+    $  
+    \begin{pmatrix}
+      -i \\ 0 \\ 1 
+    \end{pmatrix}
+    $
+\end{itemize}
+Thus we can choose 
+\[
+  T = 
+  \begin{pmatrix}
+    0 & i & -i \\
+    1 & 0 & 0 \\
+    0 & 1 & 1
+  \end{pmatrix}
+\]
+so that 
+\[
+  T^{-1}AT = 
+  \begin{pmatrix}
+    b & 0 & 0 \\
+    0 & a-bi & 0 \\
+    0 & 0 & a+bi
+  \end{pmatrix}
+\]
+and thus the solution is 
+\[
+  X(t) = T \left(
+  c_1 e^{bt} 
+  \begin{pmatrix}
+    1 \\ 0 \\ 0
+  \end{pmatrix}
+  + c_2 e^{at} 
+  \begin{pmatrix}
+    0 \\ \cos(bt) \\ -\sin(bt)
+  \end{pmatrix}
+  + c_3 e^{at}
+  \begin{pmatrix}
+    0 \\ \sin(bt) \\ \cos(bt)
+  \end{pmatrix}
+  \right)
+\]
+\subsection*{b.}
+On the x-axis, it is a sink if $b < 0$ and is a source if $b>0$.  \\
+On the yz-plane, it is a sink if $a <0$ and is a source if $a > 0$. \\
+Note that it is a sink on the x-axis does not means it is a sink on yz-plane and vice versa. Thus we can divide the ab-plane into 4 regions which have different phase portraits using the axis. 
+\clearpage
+\section*{7.}
+Let $y_1 = x_1'$ and $y_2 = x_2'$ then we get the system 
+\[
+  \begin{pmatrix}
+    0 & 1 & 0 & 0\\
+    -(k_1 + k_2) & 0 & k_2 & 0\\
+    0 & 0 & 0 & 1 \\
+    k_2 & 0 & -(k_1 + k_2) & 0
+  \end{pmatrix}
+  \begin{pmatrix}
+    x_1 \\
+    y_1 \\
+    x_2 \\
+    y_2
+  \end{pmatrix}
+  = 
+  \begin{pmatrix}
+    x_1' \\
+    y_1' \\
+    x_2' \\
+    y_2'
+  \end{pmatrix} 
+\]
+Thus the characteristic polynomial is 
+\[
+  \det(A - \lambda I) = (\lambda^2+k_1)(\lambda^2 + k_1+2k_2) 
+\]
+Thus the eigenvalues are $\pm i\sqrt{k_1}, \pm i\sqrt{k_1 + 2k_2}$ and 
+\begin{itemize}
+  \item For $\lambda = -i\sqrt{k_1}$, the eigenvector is $
+    \begin{pmatrix}
+      \displaystyle\frac{i}{\sqrt{k_1}} \\ 1 \\ \displaystyle\frac{i}{\sqrt{k_1}} \\ 1
+    \end{pmatrix}$
+  \item For $\lambda = i\sqrt{k_1}$, the eigenvector is $
+    \begin{pmatrix}
+      -\displaystyle\frac{i}{\sqrt{k_1}} \\ 1 \\ -\displaystyle\frac{i}{\sqrt{k_1}} \\ 1
+    \end{pmatrix}$
+  \item For $\lambda = -i\sqrt{k_1 + 2k_2}$, the eigenvector is $
+    \begin{pmatrix}
+      -\displaystyle\frac{i}{\sqrt{k_1 + 2k_2}} \\ -1 \\ \displaystyle\frac{i}{\sqrt{k_1 + 2k_2}} \\ 1
+    \end{pmatrix}$
+  \item For $\lambda = i\sqrt{k_1 + 2k_2}$, the eigenvector is $
+    \begin{pmatrix}
+      \displaystyle\frac{i}{\sqrt{k_1 + 2k_2}} \\ -1 \\ - \displaystyle\frac{i}{\sqrt{k_1 + 2k_2}} \\ 1
+    \end{pmatrix}$
+\end{itemize}
+Thus we can let 
+\[
+  T = 
+  \begin{pmatrix} 
+    \displaystyle\frac{i}{\sqrt{k_1}} & -\displaystyle\frac{i}{\sqrt{k_1}} & -\displaystyle\frac{i}{\sqrt{k_1 + 2k_2}} &  \displaystyle\frac{i}{\sqrt{k_1 + 2k_2}} \\
+    1 & 1 & - 1 & -1\\ 
+    \displaystyle\frac{i}{\sqrt{k_1}} & -\displaystyle\frac{i}{\sqrt{k_1}} &  \displaystyle\frac{i}{\sqrt{k_1 + 2k_2}} &  -\displaystyle\frac{i}{\sqrt{k_1 + 2k_2}}   \\ 
+    1 & 1 & 1 & 1
+  \end{pmatrix}
+\]
+so that 
+\[
+  T^{-1}AT =  
+  \begin{pmatrix}
+    -i\sqrt{k_1} & 0 & 0 & 0\\
+    0 & i\sqrt{k_1} & 0 & 0 \\
+    0 & 0 & -i\sqrt{k_1 + 2k_2} &0 \\
+    0 & 0 & 0 & i\sqrt{k_1 + 2k_2}
+  \end{pmatrix}
+\]
+and thus the general solution is 
+\begin{align*}
+  X(t) &= T \left( 
+  c_1 
+  \begin{pmatrix}
+    \cos(\sqrt{k_1}t) \\
+    -\sin(\sqrt{k_1}t) \\
+    0 \\
+    0
+  \end{pmatrix} +
+  c_2
+  \begin{pmatrix}
+    \sin(\sqrt{k_1}t) \\
+    \cos(\sqrt{k_1}t) \\
+    0 \\ 
+    0
+  \end{pmatrix} \right. \\
+  &+ 
+  c_3
+  \left.
+  \begin{pmatrix}
+    0 \\
+    0 \\
+    \cos(\sqrt{k_1 + 2k_2}t) \\
+    -\sin(\sqrt{k_1 + 2k_2}t) \\
+  \end{pmatrix} +
+  c_4
+  \begin{pmatrix}
+    0 \\
+    0 \\
+    \sin(\sqrt{k_1 + 2k_2}t) \\
+    \cos(\sqrt{k_1 + 2k_2}t) \\
+  \end{pmatrix}
+  \right)
+\end{align*}
+\subsection*{d.}
+The periodicity of the first 2 dimensions of the solution is $w_1$ while the periodicity of the last 2 dimensions of the solutions is $w_2$. 
+\clearpage
+\section*{6.12}
+\subsection*{a.}
+The characteristic polynomial is 
+\[
+  \det(A- \lambda I) = (\lambda + 1)(\lambda-2)
+\]
+Thus the eigenvalue is $-1,2$ with respective eigenvector
+$ 
+\begin{pmatrix}
+  1 \\ 1
+\end{pmatrix}
+$
+and 
+$ 
+\begin{pmatrix}
+  2 \\ 1
+\end{pmatrix}
+$. Thus we can find 
+\[
+  T = 
+  \begin{pmatrix}
+    1 & 2 \\
+    1 & 1
+  \end{pmatrix}
+  \text{ and }
+  T^{-1} = 
+  \begin{pmatrix}
+    -1 & 2 \\
+    1 & -1
+  \end{pmatrix}
+\]
+such that 
+\[
+  T^{-1}AT = 
+  \begin{pmatrix}
+    -1 & 0 \\
+    0 & 2
+  \end{pmatrix}
+\]
+and thus  
+\[
+  A^k = T
+  \begin{pmatrix}
+    (-1)^k & 0 \\
+    0 & 2^k
+  \end{pmatrix}
+  T^{-1}
+  = 
+  \begin{pmatrix}
+    2^{k+1} - (-1)^k & 2^k - (-1)^k \\
+    2(-1)^k- 2^{k+1} & 2(-1)^k - 2^k 
+  \end{pmatrix}
+\]
+and 
+\[
+  \exp(A) = 
+  \begin{pmatrix}
+    2e^2 - e^{-1} & e^2 - e^{-1} \\
+    2e^{-1} - 2e^2 & 2e^{-1} - e^2
+  \end{pmatrix}
+\]
+\subsection*{c.}
+Let's inspect 
+\[
+  C^2 = 
+  \begin{pmatrix}
+    4 & -4 \\
+    0 & 4
+  \end{pmatrix}
+\]
+We can see that the $C^k_{1,1} = C^k_{2,2} = 2^k, C^k_{2,1} = 0$. Now we claim that $C^k_{1,2} = -2^{k-1} + 2C^{k-1}_{1,2}$. Indeed, the base is $k = 2$, 
+\[
+  C_{1,2}^2 = -2 + 2 (-1) = -4
+\]
+and the inductive steps
+\[
+  C^k C = 
+  \begin{pmatrix}
+    2^k & C^k_{1,2} \\
+    0 & 2^k
+  \end{pmatrix}
+  \begin{pmatrix}
+    2 & -1 \\
+    0 & 2
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    2^{k+1} & -2^k + 2C_{1,2}^k \\
+    0 & 2^{k+1}
+  \end{pmatrix}
+\]
+Now let's look at the sequence $a_n = -2^{n-1} + 2a_{n-1}$ with $a_1 = -1$.
+\begin{align*}
+  a_n = -2^{n-1} + 2a_{n-1} = -2^{n-1} + 2 (-2^{n-2} + a_{n-2}) = \hdots = -n2^{n-1}
+\end{align*}
+and 
+Thus 
+\[
+  \exp(C) = 
+  \begin{pmatrix}
+    2e^2 & -\sum_{k=0}^\infty \displaystyle\frac{k2^{k-1}}{k!} \\
+    0 & 2e^2
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    2e^2 & -1 -\sum_{k=1}^\infty \displaystyle\frac{2^{k-1}}{(k-1)!} \\
+    0 & 2e^2
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    2e^2 & - e^2 \\
+    0 & 2e^2
+  \end{pmatrix}
+\]
+\subsection*{e.}
+Since the matrix is nilpotent, 
+\[
+  E^2 = 
+  \begin{pmatrix}
+    0 & 0 & 3 \\
+    0 & 0 & 0 \\
+    0 & 0 & 0 \\
+  \end{pmatrix}
+\]
+and 
+\[
+  E^{3} = 
+  \begin{pmatrix}
+    0 & 0 & 0 \\
+    0 & 0 & 0 \\
+    0 & 0 & 0 \\
+  \end{pmatrix}
+\]
+We have that 
+\[
+  \exp(E) = I + E + E^2/2 =  
+  \begin{pmatrix}
+    1 & 1  & 2 + 3/2 \\
+    0 & 1 & 3 \\
+    0 & 0 & 1 \\
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    1 & 1  & 3.5 \\
+    0 & 1 & 3 \\
+    0 & 0 & 1 \\
+  \end{pmatrix}
+\]
+\subsection*{h.}
+\[
+  H^k = \begin{pmatrix}
+    i^k & 0 \\
+    0 & (-i)^k
+  \end{pmatrix}
+\]
+Thus 
+\[
+  \exp(H) = 
+  \begin{pmatrix}
+    e^i & 0 \\
+    0 & e^{-i}
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    \cos(1) + i\sin(1) & 0 \\
+    0 & \cos(-1) + i\sin(-1)
+  \end{pmatrix}
+\]
+\end{document}
