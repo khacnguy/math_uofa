@@ -1,0 +1,139 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepackage{hyperref}
+
+
+
+\newtheorem{definition}{Definition}[section]
+\newtheoremstyle{mystyle}%                % Name
+  {}%                                     % Space above
+  {}%                                     % Space below
+  {\itshape}%                                     % Body font
+  {}%                                     % Indent amount
+  {\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  { }%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+
+\theoremstyle{mystyle}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem*{exmp}{Example}
+\begin{document}
+\section*{1.}
+\begin{align*}
+  (I-P_X)_{i,i} SS_{\text{res}} = [e_i^T (I-P_X) e_i] [y^T (I-P_X)y] \ge [e_i^T(I-P_X)y]^2 = r^2_i
+\end{align*}
+from the hints and
+\[
+  SS_{\text{res}} = r^T r = (y^T - \hat y^T) r = y^T r - \underbrace{0}_{\text{since } x^T r = 0} = y^T(I-P_X)y
+\]
+Thus we have 
+\[
+  |s_i| \le \displaystyle\frac{|r_i|}{\sqrt{r_i^2/(n-p-1)}} = \sqrt{n-p-1}
+\]
+\clearpage
+\section*{2.}
+\subsection*{a.}
+\[
+  V[Y] = \mu^2 \implies s(\mu) = \mu
+\]
+\[
+  T(\mu) = \int \displaystyle\frac{1}{\mu} d\mu = \ln(\mu)
+\]
+\subsection*{b.}
+\[
+  V[Y] = \mu^k \implies s(\mu) = \mu^{k/2}
+\]
+\[
+  T(\mu) = \int \displaystyle\frac{1}{\mu^{k/2}} d\mu = \frac{\mu^{-k/2 + 1}}{-k/2 + 1}
+\]
+\subsection*{c.}
+\[
+  V[Y] =e^\mu \implies s(\mu) = e^{\mu/2}
+\]
+\[
+  T(\mu) = \int \displaystyle\frac{1}{e^{\mu/2}} d\mu = -\displaystyle\frac{2}{e^{\mu/2}}
+\]
+\subsection*{d.}
+\[
+  V[Y] = \mu^{-2} \implies s(\mu) = \mu^{-1}
+\]
+\[
+  T(\mu) = \int \mu d\mu = \mu^2
+\]
+\subsection*{e.}
+\[
+  V[Y] = \displaystyle\frac{\mu^2}{e^{2\mu}} \implies s(\mu) = \displaystyle\frac{\mu}{e^\mu}
+\]
+\[
+  T(\mu) = \int \displaystyle\frac{e^\mu}{\mu} d\mu 
+\]
+which is not integrable, though we can express $e^\mu$ as a Maclaurin series and take the antiderivative terms by terms to get 
+\[
+  T(\mu) = \int \displaystyle\frac{e^\mu}{\mu} d\mu =\ln|x| + \sum_{n=1}^\infty \displaystyle\frac{x^n}{n \cdot n!}
+\]
+\clearpage
+\section*{3.}
+\subsection*{a.}
+We have that 
+\[
+  \displaystyle\frac{1}{n} \sum_{i=1}^n V(\varepsilon_i) = \sigma_1^2
+\]
+and
+\[
+  \displaystyle\frac{1}{m} \sum_{i=m+1}^{m+n} V(\varepsilon_i) = \sigma_2^2
+\]
+Thus 
+\[
+  \displaystyle\frac{1}{n+m} \sum_{i=1}^{m+n} V(\varepsilon_i) = \displaystyle\frac{n}{m+n} \sigma_1^2 + \displaystyle\frac{m}{m+n} \sigma_2^2
+\]
+and we can find 
+\[
+  \delta = \displaystyle\frac{n}{m+n} < 1
+\]
+\subsection*{b.}
+We have that 
+\begin{align*} 
+  E[SS_{\text{res}}] &= E[Y^T (I-P_X)Y]  \\
+  &= \text{Tr}(E[Y^T (I-P_X)Y]) \\
+  &= \text{Tr}(I-P_X) E[YY^T] \\
+  &= \text{Tr}((I-P_X)YY^T) + \text{Tr}((I-P_X)\Sigma)  \\
+  &= E[Y^T] (I-P_X)E[Y] + \text{Tr} ((I-P_X) \Sigma) \\
+  &= 0 + \sigma_1^2 n + \sigma_2^2 m - \sigma_1^2 \sum_{i=1}^n P_{X_{i,i}} - \sigma_2^2 \sum_{i=n+1}^{m+n} P_{X_{i,i}}
+\end{align*}
+since $(I-P_X)E[Y]= 0$. 
+Thus 
+\[
+  E\left[\frac{SS_{\text{res}}}{(n+m-p-1)}\right] = \displaystyle\frac{n- \sum_{i=1}^n P_{X_{i,i}}}{n+m-p-1}\sigma_1^2 + \displaystyle\frac{m-\sum_{i=n+1}^{m+n} P_{X_{i,i}}}{n+m-p-1} \sigma_2^2  
+\]
+Thus since $\sum_{i=1}^{m+n} P_{X_{i,i}} = p+1$, we have 
+\[
+  E\left[\frac{SS_{\text{res}}}{(n+m-p-1)}\right] - \sigma_1^2 =   \displaystyle\frac{m-\sum_{i=n+1}^{m+n} P_{X_{i,i}}}{n+m-p-1} (\sigma_2^2 -\sigma_1^2) < 0
+\]
+and similarly, 
+\[
+  E\left[\frac{SS_{\text{res}}}{(n+m-p-1)}\right] - \sigma_2^2 =   \displaystyle\frac{m-\sum_{i=1}^{n} P_{X_{i,i}}}{n+m-p-1} (\sigma_1^2 -\sigma_2^2) < 0
+\]
+\subsection*{c.}
+We first have additionally, 
+\[
+  \displaystyle\frac{1}{k} \sum_{m+n+1}^{m+n+k} V(\varepsilon_i) = \sigma_3^2
+\]
+and thus 
+\[
+  \displaystyle\frac{1}{m+n+k} \sum_{i=1}^{m+n+k}V(\varepsilon_i) = \displaystyle\frac{n}{m+n+k} \sigma_1^2 + \displaystyle\frac{m}{m+n+k}\sigma_2^2 + \displaystyle\frac{k}{m+n+k}\sigma_3^2
+\]
+\end{document}
