@@ -110,7 +110,7 @@ We have that
   E[SS_{\text{res}}] &= E[Y^T (I-P_X)Y]  \\
   &= \text{Tr}(E[Y^T (I-P_X)Y]) \\
   &= \text{Tr}(I-P_X) E[YY^T] \\
-  &= \text{Tr}((I-P_X)YY^T) + \text{Tr}((I-P_X)\Sigma)  \\
+  &= \text{Tr}((I-P_X)E[Y]E[Y^T]) + \text{Tr}((I-P_X)\Sigma)  \\
   &= E[Y^T] (I-P_X)E[Y] + \text{Tr} ((I-P_X) \Sigma) \\
   &= 0 + \sigma_1^2 n + \sigma_2^2 m - \sigma_1^2 \sum_{i=1}^n P_{X_{i,i}} - \sigma_2^2 \sum_{i=n+1}^{m+n} P_{X_{i,i}}
 \end{align*}
