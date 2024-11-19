@@ -1,0 +1,140 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepackage{hyperref}
+
+
+\usepackage{tikz}
+\usetikzlibrary{plotmarks}
+
+
+\newtheorem{definition}{Definition}[section]
+\newtheoremstyle{mystyle}%                % Name
+  {}%                                     % Space above
+  {}%                                     % Space below
+  {\itshape}%                                     % Body font
+  {}%                                     % Indent amount
+  {\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  { }%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+
+\theoremstyle{mystyle}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem*{exmp}{Example}
+
+
+
+\begin{document}
+\section*{1}
+\subsection*{a.}
+\[
+  u_0(t) = x_0 = 2
+\]
+\[
+  u_1(t) = x_0 + \int_0^t F(u_0(s)) ds = 2 + \int_0^t F(2) ds = 2 + 4t 
+\]
+Induction: 
+\[
+  u_{n+1}(t) = x_0 + \int_0^t F(u_n(s)) ds = 2 + \int_0^t \sum_{i=0}^n \displaystyle\frac{4t^i}{i!} dt = 2 + \sum_{i=1}^{n+1} \displaystyle\frac{4t^{i}}{i!} = \sum_{i=0}^n  \displaystyle\frac{4t^i}{i!} - 2 
+\]
+Thus, we see that as $n \to \infty$ 
+\[
+  u_n(t) = \sum_{i=0}^n  \displaystyle\frac{4t^i}{i!} - 2 \to 4e^t - 2
+\]
+Domain is $\mathbb{R}$. 
+\subsection*{b.}
+\[
+  u_0(t) = x_0 = 0
+\]
+\[
+  u_1(t) = x_0 + \int_0^t F(u_0(s)) ds = \int_0^t F(0) ds = 0
+\]
+\[
+  u_{n+1}(t) = x_0 + \int_0^t F(u_1(s)) ds = \int_0^t F(0) ds = 0 
+\]
+Thus, we see that 
+\[
+  u_n(t) = 0
+\]
+Domain is $\mathbb{R}$. 
+\subsection*{e.}
+\[
+  u_0(t) = x_0 = 1
+\]
+\[
+  u_1(t) = x_0 + \int_0^t F(u_0(s)) ds = 1 + \int_0^t F(1) ds = 1 + t/2 
+\]
+\[
+  u_2(t) = x_0 + \int_0^t F(u_1(s)) ds = 1 + \int_0^t \displaystyle\frac{1}{2+s} ds = 1 + \ln|t+2| - \ln(2) 
+\]
+\clearpage
+\section*{2.}
+We have that 
+\[
+  u_0(t) = u_0 = X_0
+\]
+\[
+  u_1(t) = X_0 + \int_0^t f(X_0) ds = X_0 + AX_0 \int_0^t ds = X_0 + AX_0 t
+\]
+Induction:
+\[
+  u_{n+1}(t) = X_0 + \int_0^t f(u_n(t)) ds = X_0 + \int_0^t A\sum_{i=0}^n \displaystyle\frac{s^i A^i}{i!} ds = \sum_{i=0}^{n+1} \displaystyle\frac{(tA)^i}{i!} 
+\]
+Thus as $n \to \infty$
+\[
+  u_n(t) = X_0 \sum_{i=0}^n \displaystyle\frac{(tA)^i}{i!} \to \exp(tA)X_0
+\]
+\clearpage 
+\section*{4.}
+If $Y(t)$ and $Z(t)$ are solutions of 
+\[
+  X' = A X 
+\]
+Then 
+\[
+  (\alpha Y(t) + \beta Z(t))' = \alpha Y'(t) + \beta Z'(t) = \alpha AY(t) + \beta AZ(t) = A(\alpha Y(t) + \beta Z(t))
+\]
+Thus also satisfied 
+\[
+  X' = AX
+\]
+\clearpage
+\section*{6.}
+In the cases of $a \notin \mathbb{Q}$ or irreducible $a = p/q \in \mathbb{Q}$ with even q, the domain of $f(x) = x^a$ is $\mathbb{R}^+$. Thus $f(x)$ is continuously differentiable everywhere in the domain. Hence, the solution would then be unique in the domain and not unique in $\mathbb{R}$. \\
+In case off odd $q$, the domain for $f(x)$ would be $\mathbb{R}$. If $a \ge 1$, then $f(x)$ is continuously differentiable everywhere thus the solution is unique. If $a < 1$, then $f(x)$ is not continuously differentiable at $0$ thus not unique solution. 
+\clearpage
+\section*{7.}
+We have the solution 
+\[
+  P(t) = P_0 \exp\left( \int_0^t A(s) ds \right)
+\]
+Thus 
+\[
+  \det(P(t)) = \det(P_0) \det\left(\exp\left(\int_0^t A(s) ds\right)\right)
+\]
+Now let $T(t)$ be the matrix that transform $\int_0^t A(s) ds$ to its normal jordan form $J(t)$, we have that 
+\[
+  \det\left(\exp\left(\int_0^t A(s) ds \right)\right) = \det(\exp(T(t) J(t) T^{-1}(t))) = \det(\exp(J(t)))
+\]
+Since $J(t)$ is an upper-triangular matrix we have that 
+\[
+  \det(\exp(J(t))) = \exp(\text{Tr}(J(t))) = \exp\left(\text{Tr}\left(\int_0^t A(s) ds\right)\right) = \exp\left(\int_0^t \text{Tr}(A(s)) ds\right)
+\]
+Thus 
+\[
+  \det(P(t)) = \det(P_0) \exp\left( \int_0^t \text{Tr}(A(s)ds)\right)
+\]
+\end{document}
