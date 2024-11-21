@@ -1,0 +1,246 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepackage{hyperref}
+\usepackage{pgfplots} 
+\usepackage{tikz}
+\usetikzlibrary{plotmarks}
+
+\newtheorem{definition}{Definition}[section]
+\newtheoremstyle{mystyle}%                % Name
+  {}%                                     % Space above
+  {}%                                     % Space below
+  {\itshape}%                                     % Body font
+  {}%                                     % Indent amount
+  {\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  { }%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+\definecolor{Mybackground}{RGB}{40,49,51}
+\pagecolor{Mybackground}
+\color{white}
+
+\theoremstyle{mystyle}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem*{exmp}{Example}
+\begin{document}
+\section*{1.}
+We can first rewrite, 
+\[
+  e^z = e^{a + ib} = e^a (\cos(b) + i\sin(b))
+\]
+Thus, for any $w = r(\cos \theta + i\sin(\theta)) \ne 0$, if $a = \ln(r), b = \theta$, then 
+\[
+  e^z = r(\cos(\theta) + i\sin(\theta)) = w
+\]
+\clearpage 
+\section*{2.}
+We will first calculate 
+\[
+  \int_{-\infty}^\infty \displaystyle\frac{e^{iz}}{1+z^2} 
+\]
+whose real part is 
+\[
+  \int_{-\infty}^\infty \displaystyle\frac{\cos(x)}{1+x^2} dx
+\]
+The roots of $z^2 + 1$ is $\pm i$, thus consider $0 < \delta < R < \infty$
+\[
+  \Omega_{R, \delta} = \{z \in \mathbb{C}, |z| < R,|z -i| > \delta \}
+\]
+so that $\displaystyle\frac{e^{iz}}{z^2+1}$ is differentiable in $\Omega_{R, \delta}$, and thus 
+\[
+  \int_{-R}^R \displaystyle\frac{e^{iz}}{1+z^2} dz + \int_{\Gamma_R} \displaystyle\frac{e^{iz}}{1+z^2} dz = \oint_{|z-i| = \delta}   \displaystyle\frac{e^{iz}}{1+z^2} dz   
+\]
+We then calculate 
+\begin{align*}
+  \left|\int_{\Gamma_R} \displaystyle\frac{e^{iz}}{1+z^2} \right| dz 
+  &= \left|\int_0^\pi \displaystyle\frac{e^{iRe^{i\theta}}}{1+ (Re^{i\theta})^2} Rie^{i\theta}d\theta \right| \\ 
+  &\le |Ri| \int_0^\pi \left| \displaystyle\frac{e^{iRe^{i\theta}}}{1+ (Re^{i\theta})^2} \right| |e^{i\theta}| d\theta \\ 
+  &= R \int_0^\pi \left| \displaystyle\frac{e^{iRe^{i\theta}}}{1+ (Re^{i\theta})^2} \right| d\theta \\ 
+\end{align*}
+Notice that 
+\[
+  |1+(Re^{i\theta})^2 | \ge ||Re^{i\theta}|^2 - |-1|| \ge R^2 - 1
+\]
+Thus we have 
+\begin{align*}
+  \left|\int_{\Gamma_R} \displaystyle\frac{e^{iz}}{1+z^2} \right| dz 
+  &\le R \int_0^\pi \left| \displaystyle\frac{e^{iRe^{i\theta}}}{R^2-1} \right| d\theta \\
+  &= \displaystyle\frac{R}{|R^2-1|} \int_0^\pi |e^{iR\cos(\theta)}||e^{-R\sin(\theta)}| d\theta \\
+  &= \displaystyle\frac{R}{|R^2-1|} \int_0^\pi |e^{-R\sin(\theta)}| d\theta \\
+  &\le \displaystyle\frac{2R}{|R^2-1|} \int_0^{\pi/2} |e^{-2R\theta/\pi}| d\theta \\
+  &= 0 \text{ as } R \to \infty 
+\end{align*}
+Thus  
+\[
+  \lim_{R \to \infty} \int_{\Gamma_R} \displaystyle\frac{e^{iz}}{1+z^2} = 0
+\]
+Finally, 
+\begin{align*}
+  \oint_{|z-i| = \delta} \displaystyle\frac{e^{iz} dz}{z^2 + 1} 
+  &= \oint_{|z-z_0| = \delta} \frac{1}{2i} \left(\displaystyle\frac{e^{iz}}{z-i} - \frac{e^{iz}}{z+i} \right) dz\\
+  &= \oint_{|z-z_0| = \delta} \frac{1}{2i} \displaystyle\frac{e^{iz}}{z-i}   dz\\
+  &= \displaystyle\frac{2\pi i}{2i} e^{-1} = \displaystyle\frac{\pi}{e} 
+\end{align*}
+Thus, 
+\[
+  \int_{-\infty}^\infty \displaystyle\frac{\cos(x)}{x^2+1} = \displaystyle\frac{\pi}{e}
+\]
+\clearpage
+\section*{3.}
+\begin{align*}
+  &\int_{-\infty}^\infty \displaystyle\frac{-ie^{-\pi^2 \xi^2}}{\pi \xi} e^{i 2\pi x \xi} d\xi \\
+  =& \displaystyle\frac{-i}{\pi} \mathcal{F}\left( \displaystyle\frac{e^{-\pi^2 \xi^2}}{\xi}\right)(x) \\
+  =& \displaystyle\frac{-i}{\pi} \left(\mathcal{F}\left(\displaystyle\frac{1}{\xi}\right) * \mathcal{F}\left(e^{-\pi^2 \xi^2}\right)\right) (x) \\
+  =& \displaystyle\frac{-i}{\pi} \int_{-\infty}^\infty \mathcal{F}\left(\displaystyle\frac{1}{t}\right)(-x-s) \mathcal{F}(e^{-\pi^2 s^2})(s) ds \\
+  =& \displaystyle\frac{-i}{\pi} \int_{-\infty}^\infty -i\pi \text{sgn}(x+s) \displaystyle\frac{1}{\sqrt{\pi}} e^{-s^2} ds \\
+  =& \int_{-\infty}^\infty \text{sgn}(x-s) \displaystyle\frac{1}{\sqrt{\pi}} e^{-s^2} ds \\
+  =& \underbrace{\int_{-\infty}^{-x}  \displaystyle\frac{1}{\sqrt{\pi}} e^{-s^2} ds 
+  - \int_{x}^\infty  \displaystyle\frac{1}{\sqrt{\pi}} e^{-s^2} ds}_{0} + \int_{-x}^x  \displaystyle\frac{1}{\sqrt{\pi}} e^{-s^2} ds \\
+  =& 2 \int_{0}^{x}  \displaystyle\frac{1}{\sqrt{\pi}} e^{-s^2} ds 
+\end{align*}
+\clearpage 
+\section*{4.}
+Consider 
+\[
+  \Gamma_1: t \to -R + (b/2a)(1-t), \indent [0,1] \to \mathbb{C}
+\]
+\[
+  \Gamma_2: t \to 2Rt - R, \indent [0,1] \to \mathbb{C}
+\]
+\[
+  \Gamma_3: t \to (b/2a)t + R, \indent [0,1] \to \mathbb{C}
+\]
+\[
+  \Gamma_4: b/2a + R - 2Rt, \indent [0,1] \to \mathbb{C}
+\]
+so that $\Gamma_1 \oplus \Gamma_2 \oplus \Gamma_3 \oplus \Gamma_4$ is the rectangle with vertices $-R, R, R+b/2a, -R+b/2a$
+\begin{align*}
+  & \int_{-R}^R e^{-ix\xi} f(x) dx \\
+  =& \int_{-R}^R e^{-ix\xi -a(x+b/2a)^2 + b^2/4a - c} dx \\
+  =& -\int_{\Gamma_4} e^{-i(x-b/2a)\xi - ax^2 + b^2/4a - c} dx \\
+  =& - e^{ib\xi/2a +b^2/4a - c} \int_{\Gamma_4} e^{-ix \xi - ax^2} dx \\
+\end{align*}
+Now we have 
+\[
+  \lim_{R \to \infty} \int_{\Gamma_1}| e^{-ix\xi -ax^2}| dx = 
+  \lim_{R \to \infty} \int_{\Gamma_1}| e^{-ax^2}| dx = 0 
+\]
+as the length of the line is fixed at $|b/2a|$ while $|e^{-ax^2}| \to 0$ on $\Gamma_1$ as $R \to \infty$. Similarly, for $\Gamma_3$. Thus 
+\[
+  \lim_{R \to \infty} \int_{\Gamma_1} e^{-ix\xi -ax^2} dx = 
+  \lim_{R \to \infty} \int_{\Gamma_3} e^{-ix\xi -ax^2} dx = 0
+\] 
+Thus as $R \to \infty$ 
+\[
+  -\displaystyle\frac{1}{\sqrt{2\pi}}\int_{\Gamma_4} e^{-ix \xi - ax^2} dx = \displaystyle\frac{1}{\sqrt{2\pi}}\int_{\Gamma_2} e^{-ix \xi - ax^2} dx \to \displaystyle\frac{1}{\sqrt{2a}} e^{-\xi^2/4a}
+\]
+Hence, the final answer is 
+\[
+  \displaystyle\frac{1}{\sqrt{2a}}e^{ib\xi/2a + b^2/4a - c - \xi^2/4a}
+\]
+\clearpage 
+\section*{5.}
+\[
+  U_{tt} + (i\xi)^4 U = U_{tt} + \xi^4 U = 0, \indent U(\xi,0) = F(\xi), U_t(\xi,0) = 0
+\]
+Thus, 
+\[
+  U(\xi, t) = c_1 \sin(\xi^2 t) + c_2 \cos(\xi^2 t)
+\]
+and 
+\[
+  U_t(\xi,t) = \xi^2 (c_1 \cos(\xi^2 t) - c_2 \sin(\xi^2 t))
+\]
+Using the initial condition, we have $c_1 = 0$, thus 
+\[
+  U(\xi, t) = C \cos(\xi^2 t)
+\]
+Apply the other initial condition, we have 
+\[
+  U(\xi, 0) = C = F(\xi)
+\]
+Thus 
+\[
+  U(\xi, t) = F(\xi) \cos(\xi^2 t)
+\]
+Finally, we can get 
+\[
+  u(x,t) = \mathcal{F}^{-1}(F(\xi) \cos(\xi^2t)) = \displaystyle\frac{1}{\sqrt{2\pi}} f * \mathcal{F}^{-1}(\cos(\xi^2 t))
+\]
+Thus, we only need to calculate 
+\begin{align*}
+  \mathcal{F}^{-1}(\cos(\xi^2 t))
+  &= \displaystyle\frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{ix\xi + i\xi^2 t} + e^{ix \xi - i\xi^2t} d\xi \\
+\end{align*}
+We also have 
+\begin{align*}
+  &\displaystyle\frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{ix\xi + i\xi^2 t} d\xi \\
+  =&\displaystyle\frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{it\left[(\xi + x/2t)^2 - x^2/4t^2\right] } d\xi \\
+  =&\displaystyle\frac{e^{-ix^2/4t}}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{it\xi^2}  d\xi \\
+  =&\displaystyle\frac{e^{-ix^2/4t}}{\sqrt{2\pi}} e^{i\pi/4}\sqrt{\pi/t} \\
+  =&\displaystyle\frac{e^{-i(x^2/4t - \pi/4)}}{\sqrt{2t}} 
+\end{align*}
+while for  
+\begin{align*}
+  &\displaystyle\frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{ix\xi - i\xi^2 t} d\xi \\
+  =&\displaystyle\frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{-it\left[(\xi - x/2t)^2 - x^2/4t^2\right] } d\xi \\
+  =&\displaystyle\frac{e^{ix^2/4t}}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{-it\xi^2}  d\xi \\
+  =&\displaystyle\frac{e^{ix^2/4t}}{\sqrt{2\pi t}} \int_{-\infty}^\infty e^{-i\xi^2}  d\xi \\
+\end{align*}
+We solve $\int_{-\infty}^\infty e^{-ix^2} dx = 2\int_0^\infty e^{-ix^2} dx$. 
+Let consider the function $e^{-z^2}$ and 
+\[
+  \Gamma_1:t \to Rt,  \indent [0,1] \to \mathbb{C}
+\]
+\[
+  \Gamma_2:t \to Re^{it\pi/4 },  \indent [0,1] \to \mathbb{C}
+\]
+\[
+  \Gamma_3:t \to (1-t)Re^{i\pi/4},  \indent [0,1] \to \mathbb{C}
+\]
+Hence, as 
+\[
+  \int_{\Gamma_3} e^{-z^2} dz = -e^{i\pi/4} \int_0^R e^{-iz^2 } dz
+\]
+\begin{align*}
+  \int_0^R e^{-x^2} dx + \int_{\Gamma_2} e^{-z^2} dz - e^{i\pi/4} \int_0^R e^{-iz^2} dz = 0 
+\end{align*}
+We have 
+\[
+  \int_0^R e^{-x^2} dx = \displaystyle\frac{\sqrt{\pi}}{2}
+\]
+and 
+\begin{align*}
+  \int_{\Gamma_2} |e^{-z^2}| dz 
+  &= \int_0^{\pi/4} \left| R i e^{i\theta}\right| |e^{-\left(Re^{i\theta}\right)^2} | d\theta \\ 
+  &= |R| \int_0^{\pi/4} \left|e^{-R^2 \cos\left(2\theta\right)} \right| d\theta \\ 
+  &\le |R| \int_0^{\pi/4} \left|e^{-R^2 (1-4\theta/\pi) }\right| d\theta \\ 
+  &= |R|/e^{-R^2} \int_0^{\pi/4} \underbrace{\left|e^{4R^2\theta/\pi }\right| d\theta}_{\text{const}} \to 0 \text{ as } R \to \infty
+\end{align*}
+since 
+\[
+  \cos(2 \theta) = \sin(\pi/2 - 2\theta) \ge \displaystyle\frac{2}{\pi}(\pi/2 - 2\theta) = 1-4\theta/\pi
+\]
+for $\theta \in [0,\pi/4]$. 
+Thus 
+\[
+  \int_{-\infty}^\infty e^{-ix^2} dx = 2 e^{-i\pi/4} \displaystyle\frac{\sqrt{\pi}}{2} = \sqrt{\pi} e^{-i\pi/4}   
+\]
+Therefore, we have 
+\[
+  \mathcal{F}^{-1}(\cos(\xi^2 t)) = \displaystyle\frac{e^{-i(x^2/4t-\pi/4)}}{\sqrt{2t}} + \displaystyle\frac{e^{ix^2/4t}}{\sqrt{2t}} e^{-i\pi/4}
+\]
+\end{document}
