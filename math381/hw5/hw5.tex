@@ -1,0 +1,147 @@
+\documentclass[11pt]{article}
+    \title{\textbf{Math 217 Homework I}}
+    \author{Khac Nguyen Nguyen}
+    \date{}
+    
+    \addtolength{\topmargin}{-3cm}
+    \addtolength{\textheight}{3cm}
+    
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{xfrac}
+\usepackage{hyperref}
+
+
+
+\newtheorem{definition}{Definition}[section]
+\newtheoremstyle{mystyle}%                % Name
+  {}%                                     % Space above
+  {}%                                     % Space below
+  {\itshape}%                                     % Body font
+  {}%                                     % Indent amount
+  {\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  { }%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+
+\theoremstyle{mystyle}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem*{exmp}{Example}
+\begin{document}
+\section*{Question 1.}
+\subsection*{a.}
+\begin{align*}
+  \int_0^4 \cos(\sqrt{x}) dx &= \int_0^2 2u\cos(u) du \\
+  &= 2u \sin(u) |_0^2 - 2\int_0^2 \sin(u) du \\
+  &= 4 \sin(2) + 2\cos(u) |_0^2 \\
+  &= 4 \sin(2) + 2\cos(2) -2 \\ 
+  &\approx 0.8049
+\end{align*}
+\subsection*{b.}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{/home/dani/Downloads/2024-12-05_11-03.png}
+  \caption{}
+  \label{fig:2024-12-05_11-03}
+\end{figure}
+Thus Simpson gives a more accurate estimation.
+\subsection*{c.}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{/home/dani/Downloads/2024-12-05_11-07.png}
+  \caption{}
+  \label{fig:2024-12-05_11-07}
+\end{figure}
+Minimum $m$ is thus 3.
+\clearpage 
+\section*{2.}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.5\textwidth]{/home/dani/Downloads/2024-12-05_11-28.png}
+  \caption{}
+  \label{fig:2024-12-05_11-28}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{/home/dani/Downloads/Jacobi.png}
+  \caption{}
+  \label{fig:jacobi}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{/home/dani/Downloads/GS.png}
+  \caption{}
+  \label{fig:gs}
+\end{figure}
+\subsection*{d.}
+Based on the sum of absolute value of the difference, the more accurate method is Gauss-Seidel and the fastest one is Gauss-Seidel.
+\clearpage 
+\section*{3.}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.9\textwidth]{/home/dani/Downloads/2024-12-05_11-46.png}
+  \caption{}
+  \label{fig:2024-12-05_11-46}
+\end{figure}
+\clearpage 
+\section*{4.}
+\subsection*{a.}
+\[
+  \int_{-\pi/2}^{\pi/2} 1^2 dx = \pi 
+\]
+\[
+  \int_{-\pi/2}^{\pi/2} x^2 dx = \displaystyle\frac{\pi^3}{12} 
+\]
+\[
+  \int_{-\pi/2}^{\pi/2} (x^2 - \pi^2/12)^2 dx = \displaystyle\frac{\pi^5}{180} 
+\]
+
+\[
+  \int_{-\pi/2}^{\pi/2} x dx = 0 
+\]
+\[
+  \int_{-\pi/2}^{\pi/2} (x^2 - \pi^2/12) dx = 0
+\]
+\[
+  \int_{-\pi/2}^{\pi/2} x(x^2 - \pi^2/12) dx = 0 
+\]
+\subsection*{b.}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{/home/dani/Downloads/2024-12-05_12-07.png}
+  \caption{}
+  \label{fig:2024-12-05_12-07}
+\end{figure}
+\clearpage 
+\section*{5.}
+\subsection{a.}
+We can first rewrite it 
+\[
+  F(x,y,z) = (x^2 + y-37, x-y^2-5,x+y+z-3)
+\]
+and the jacobian is 
+\[
+  \begin{pmatrix}
+    2x & 1 & 0\\
+    1 & -2y & 0\\
+    1 & 1 & 1
+  \end{pmatrix}
+\]
+\subsection*{b.}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{/home/dani/Downloads/2024-12-05_12-31.png}
+  \caption{}
+  \label{fig:2024-12-05_12-31}
+\end{figure}
+\end{document}
